@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{69698469-7C2B-4E2A-8C0C-7AC30A9505C6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SharpmapGDAL</RootNamespace>
+    <AssemblyName>SharpmapGDAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GeoAPI">
+      <HintPath>dep\SharpMap\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpMap">
+      <HintPath>dep\SharpMap\SharpMap.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpMap.Extensions">
+      <HintPath>dep\SharpMap.Extensions\SharpMap.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpMap.UI">
+      <HintPath>dep\SharpMap\SharpMap.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <None Include="data\testdata\GeoData\DEM\Golden_CO.dem" />
+    <None Include="data\testdata\GeoData\GeoTiff\airport.tfw">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\testdata\GeoData\GeoTiff\outline.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\testdata\GeoData\GeoTiff\outline.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\testdata\GeoData\GeoTiff\outline.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\testdata\GeoData\GeoTiff\outline.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\testdata\GeoData\GeoTiff\utm.jp2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="dep\SharpMap.Extensions\gdal\data\compdcs.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\coordinate_axis.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\cubewerx_extra.wkt" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\datum_shift.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\ecw_cs.wkt" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\ellipsoid.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\epsg.wkt" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\esri_extra.wkt" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\esri_StatePlane_extra.wkt" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\esri_Wisconsin_extra.wkt" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\gcs.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\gcs.override.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\gdal_datum.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\geoccs.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\gt_datum.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\gt_ellips.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\header.dxf" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\nitf_spec.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dep\SharpMap.Extensions\gdal\data\pcs.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\pcs.override.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\prime_meridian.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\projop_wparm.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\s57agencies.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\s57attributes.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\s57attributes_aml.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\s57attributes_iw.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\s57expectedinput.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\s57objectclasses.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\s57objectclasses_aml.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\s57objectclasses_iw.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\seed_2d.dgn" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\seed_3d.dgn" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\stateplane.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\trailer.dxf" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\unit_of_measure.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\vertcs.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\data\vertcs.override.csv" />
+    <None Include="dep\SharpMap.Extensions\gdal\share\esri.extra" />
+    <None Include="dep\SharpMap.Extensions\gdal\share\nad.lst" />
+    <None Include="dep\SharpMap.Extensions\gdal\share\ntf_r93.gsb" />
+    <None Include="dep\SharpMap.Extensions\gdal\share\ntv1_can.dat" />
+    <None Include="dep\SharpMap.Extensions\gdal\share\nzgd2kgrid0005.gsb" />
+    <None Include="dep\SharpMap.Extensions\gdal\share\other.extra" />
+    <None Include="dep\SharpMap.Extensions\gdal\share\proj_def.dat" />
+    <None Include="PMap.cs" />
+    <Compile Include="MyNonMovingDeco - Copy.cs" />
+    <Compile Include="MyNonMovingDeco.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TMap.cs" />
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\images\itaw.ico" />
+    <Content Include="data\images\MyNonMovingDeco - Copy.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\images\MyNonMovingDeco.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\testdata\GeoData\GeoTiff\airport.tif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\testdata\GeoData\GeoTiff\format01-image_a.tif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\testdata\GeoData\GeoTiff\format01-image_b.tif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\testdata\GeoData\GeoTiff\format01-image_c.tif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\testdata\GeoData\GeoTiff\format01-image_d.tif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\testdata\GeoData\GeoTiff\utm.tif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\testdata\GeoData\GeoTiff\world_raster_mod.tif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dep\SharpMap.Extensions\de\Npgsql.resources.dll" />
+    <RootContent Include="dep\SharpMap.Extensions\DotSpatial.Projections.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\DotSpatial.Projections.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <Content Include="dep\SharpMap.Extensions\es\Npgsql.resources.dll" />
+    <Content Include="dep\SharpMap.Extensions\fi\Npgsql.resources.dll" />
+    <Content Include="dep\SharpMap.Extensions\fr\Npgsql.resources.dll" />
+    <RootContent Include="dep\SharpMap.Extensions\gdalconst_csharp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <Content Include="dep\SharpMap.Extensions\gdal\data\gdalicon.png" />
+    <Content Include="dep\SharpMap.Extensions\gdal\data\GDALLogoBW.svg" />
+    <Content Include="dep\SharpMap.Extensions\gdal\data\GDALLogoColor.svg" />
+    <Content Include="dep\SharpMap.Extensions\gdal\data\GDALLogoGS.svg" />
+    <Content Include="dep\SharpMap.Extensions\gdal\data\nitf_spec.xml" />
+    <Content Include="dep\SharpMap.Extensions\gdal\data\pci_datum.txt" />
+    <Content Include="dep\SharpMap.Extensions\gdal\data\pci_ellips.txt" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\freexl.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\gdal19.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\gdalconst_wrap.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\gdal_wrap.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\geos_c.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\iconv.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\libcurl.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\libeay32.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\libexpat.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\libmysql.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\libpq.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\msvcp100.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\msvcr100.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\ogr_wrap.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\openjpeg.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\osr_wrap.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\proj.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\spatialite.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\ssleay32.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\xerces-c_2_8.dll" />
+    <Content Include="dep\SharpMap.Extensions\gdal\x64\zlib1.dll" />
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\freexl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\gdal19.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\gdalconst_wrap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\gdal_wrap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\geos_c.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\iconv.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\libcurl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\libeay32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\libexpat.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\libmysql.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\libpq.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\msvcp100.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\msvcr100.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\ogr_wrap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\openjpeg.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\osr_wrap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\proj.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\spatialite.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\ssleay32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\xerces-c_2_8.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal\x86\zlib1.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\gdal_csharp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <Content Include="dep\SharpMap.Extensions\ja\Npgsql.resources.dll" />
+    <RootContent Include="dep\SharpMap.Extensions\Mono.Security.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\NetTopologySuite.IO.GeoTools.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\NetTopologySuite.IO.MsSqlSpatial.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\NetTopologySuite.IO.PostGis.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\NetTopologySuite.IO.SpatiaLite.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\Npgsql.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\Npgsql.pdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\Npgsql.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\ogr_csharp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\Oracle.ManagedDataAccess.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\osr_csharp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\SharpMap.Extensions.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\SharpMap.Extensions.pdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\SharpMap.Extensions.XML">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\System.Data.SQLite.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap.Extensions\System.Data.SQLite.Linq.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <Content Include="dep\SharpMap.Extensions\zh-CN\Npgsql.resources.dll" />
+    <Content Include="dep\SharpMap\bin\Release\BruTile.Desktop.dll" />
+    <Content Include="dep\SharpMap\bin\Release\BruTile.dll" />
+    <Content Include="dep\SharpMap\bin\Release\BruTile.MbTiles.dll" />
+    <Content Include="dep\SharpMap\bin\Release\BruTile.Serialization.dll" />
+    <RootContent Include="dep\SharpMap\BruTile.Desktop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\BruTile.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\Common.Logging.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\GeoAPI.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\NetTopologySuite.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\Newtonsoft.Json.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\Newtonsoft.Json.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\PowerCollections.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\ProjNet.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\SharpMap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\SharpMap.pdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\SharpMap.UI.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\SharpMap.UI.pdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\SharpMap.UI.XML">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+    <RootContent Include="dep\SharpMap\SharpMap.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </RootContent>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <AvailableItemName Include="RootContent">
+      <Visible>false</Visible>
+    </AvailableItemName>
+  </ItemGroup>
+  <Target Name="AfterBuild">
+    <Copy DestinationFolder="$(OutputPath)" SourceFiles="@(RootContent)" SkipUnchangedFiles="true" />
+  </Target>
+</Project>

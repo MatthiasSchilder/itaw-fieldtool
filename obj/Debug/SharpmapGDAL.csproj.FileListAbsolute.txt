@@ -1,0 +1,151 @@
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpmapGDAL.exe.config
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\obj\Debug\SharpmapGDAL.Properties.Resources.resources
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\obj\Debug\SharpmapGDAL.csproj.GenerateResource.Cache
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpmapGDAL.exe
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpmapGDAL.pdb
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoAPI.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.UI.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\Newtonsoft.Json.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\Common.Logging.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\BruTile.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\BruTile.Desktop.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\ProjNet.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\NetTopologySuite.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\System.Data.SQLite.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\ogr_csharp.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\gdal_csharp.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\NetTopologySuite.IO.SpatiaLite.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\osr_csharp.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\Oracle.ManagedDataAccess.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\Npgsql.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\NetTopologySuite.IO.PostGis.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\PowerCollections.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\Mono.Security.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.pdb
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.xml
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions.pdb
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions.xml
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.UI.pdb
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.UI.xml
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\Newtonsoft.Json.xml
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\Npgsql.pdb
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\Npgsql.xml
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\de\Npgsql.resources.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\es\Npgsql.resources.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\fi\Npgsql.resources.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\fr\Npgsql.resources.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\ja\Npgsql.resources.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\zh-CN\Npgsql.resources.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\obj\Debug\SharpmapGDAL.exe
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\obj\Debug\SharpmapGDAL.pdb
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\DotSpatial.Projections.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\DotSpatial.Projections.xml
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\gdalconst_csharp.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\gdal_csharp.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\Mono.Security.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\NetTopologySuite.IO.GeoTools.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\NetTopologySuite.IO.MsSqlSpatial.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\NetTopologySuite.IO.PostGis.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\NetTopologySuite.IO.SpatiaLite.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\Npgsql.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\Npgsql.pdb
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\Npgsql.xml
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\ogr_csharp.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\Oracle.ManagedDataAccess.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\osr_csharp.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\SharpMap.Extensions.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\SharpMap.Extensions.pdb
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\SharpMap.Extensions.XML
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\System.Data.SQLite.dll
+c:\users\matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions (1)\System.Data.SQLite.Linq.dll
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\obj\Debug\SharpmapGDAL.MainWindow.resources
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\MyNonMovingDeco - Copy.PNG
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\MyNonMovingDeco.PNG
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\obj\Debug\SharpmapGDAL.csprojResolveAssemblyReference.cache
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\format01-image_a.tif
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\format01-image_b.tif
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\format01-image_c.tif
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\format01-image_d.tif
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\utm.tif
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\world_raster_mod.tif
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\outline.dbf
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\outline.prj
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\outline.shp
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\outline.shx
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\utm.jp2
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\airport.tif
+C:\Users\Matthias\documents\visual studio 2015\Projects\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\airport.tfw
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpmapGDAL.exe.config
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\obj\Debug\SharpmapGDAL.exe
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\obj\Debug\SharpmapGDAL.pdb
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\obj\Debug\SharpmapGDAL.csprojResolveAssemblyReference.cache
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\obj\Debug\SharpmapGDAL.MainWindow.resources
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\obj\Debug\SharpmapGDAL.Properties.Resources.resources
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\obj\Debug\SharpmapGDAL.csproj.GenerateResource.Cache
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\airport.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\format01-image_a.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\format01-image_b.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\format01-image_c.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\format01-image_d.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\utm.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\world_raster_mod.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\airport.tfw
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\outline.dbf
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\outline.prj
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\outline.shp
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\outline.shx
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoData\GeoTiff\utm.jp2
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\GeoAPI.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.UI.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\Common.Logging.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\BruTile.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\BruTile.Desktop.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\ProjNet.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\NetTopologySuite.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\System.Data.SQLite.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\ogr_csharp.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\gdal_csharp.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\NetTopologySuite.IO.SpatiaLite.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\osr_csharp.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\Npgsql.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\NetTopologySuite.IO.PostGis.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\PowerCollections.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\Mono.Security.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.pdb
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.xml
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions.pdb
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.Extensions.xml
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.UI.pdb
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpMap.UI.xml
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\Npgsql.pdb
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\Npgsql.xml
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\de\Npgsql.resources.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\es\Npgsql.resources.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\fi\Npgsql.resources.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\fr\Npgsql.resources.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\ja\Npgsql.resources.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\zh-CN\Npgsql.resources.dll
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\images\MyNonMovingDeco - Copy.PNG
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\images\MyNonMovingDeco.PNG
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\testdata\GeoData\GeoTiff\airport.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\testdata\GeoData\GeoTiff\format01-image_a.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\testdata\GeoData\GeoTiff\format01-image_b.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\testdata\GeoData\GeoTiff\format01-image_c.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\testdata\GeoData\GeoTiff\format01-image_d.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\testdata\GeoData\GeoTiff\utm.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\testdata\GeoData\GeoTiff\world_raster_mod.tif
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\testdata\GeoData\GeoTiff\airport.tfw
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\testdata\GeoData\GeoTiff\outline.dbf
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\testdata\GeoData\GeoTiff\outline.prj
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\testdata\GeoData\GeoTiff\outline.shp
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\testdata\GeoData\GeoTiff\outline.shx
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\data\testdata\GeoData\GeoTiff\utm.jp2
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpmapGDAL.exe
+C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpmapGDAL.pdb
