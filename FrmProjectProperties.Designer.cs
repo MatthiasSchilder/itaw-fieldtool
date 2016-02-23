@@ -53,10 +53,10 @@
             this.btnDeleteRaster = new System.Windows.Forms.Button();
             this.btnAddRaster = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.ftProjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbDefaultLookupPath = new System.Windows.Forms.TextBox();
             this.btnChooseDefaultPath = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.ftProjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -298,10 +298,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ftProjectBindingSource
-            // 
-            this.ftProjectBindingSource.DataSource = typeof(fieldtool.FtProject);
-            // 
             // tbDefaultLookupPath
             // 
             this.tbDefaultLookupPath.Location = new System.Drawing.Point(149, 65);
@@ -327,6 +323,10 @@
             this.label3.Size = new System.Drawing.Size(94, 26);
             this.label3.TabIndex = 7;
             this.label3.Text = "Standardsuchpfad\r\n für Movebanks";
+            // 
+            // ftProjectBindingSource
+            // 
+            this.ftProjectBindingSource.DataSource = typeof(fieldtool.FtProject);
             // 
             // FrmProjectProperties
             // 

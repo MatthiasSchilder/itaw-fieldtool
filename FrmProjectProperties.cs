@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -108,13 +109,13 @@ namespace fieldtool
 
         private void btnChooseDefaultPath_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();
-            dialog.ShowNewFolderButton = true;
-            DialogResult dr = dialog.ShowDialog();
-            if (dr != DialogResult.OK)
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            CommonFileDialogResult dr = dialog.ShowDialog();
+            if (dr != CommonFileDialogResult.Ok)
                 return;
 
-            tbDefaultLookupPath.Text = dialog.SelectedPath;
+            tbDefaultLookupPath.Text = dialog.FileName;
         }
     }
 }

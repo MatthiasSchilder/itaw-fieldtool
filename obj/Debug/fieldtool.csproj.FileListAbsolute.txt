@@ -170,9 +170,6 @@ F:\fieldtool\itaw-fieldtool\bin\Debug\data\testdata\movebank\tag4321_gps.txt
 F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.Properties.Resources.resources
 F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmProjectProperties.resources
 F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmMain.resources
-C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\SharpmapGDAL.exe.config
-C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\SharpmapGDAL.exe
-C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\SharpmapGDAL.pdb
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\data\testdata\movebank\info_tag1704.txt
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\data\testdata\movebank\info_tag1945.txt
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\data\testdata\movebank\info_tag2144.txt
@@ -242,8 +239,6 @@ C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\data\testdata\GeoDat
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\data\testdata\GeoData\GeoTiff\outline.shp
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\data\testdata\GeoData\GeoTiff\outline.shx
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\data\testdata\GeoData\GeoTiff\utm.jp2
-C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\SharpmapGDAL.exe
-C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\SharpmapGDAL.pdb
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\GeoAPI.dll
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\SharpMap.dll
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\SharpMap.Extensions.dll
@@ -284,3 +279,12 @@ C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmProject
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmMain.resources
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.Properties.Resources.resources
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.csproj.GenerateResource.Cache
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\ITAW-FieldTool.exe.config
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\ITAW-FieldTool.exe
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\ITAW-FieldTool.pdb
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\ITAW-FieldTool.exe
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\ITAW-FieldTool.pdb
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPICodePack.pdb
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPICodePack.Shell.pdb

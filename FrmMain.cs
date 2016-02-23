@@ -15,9 +15,24 @@ namespace fieldtool
 {
     public partial class FrmMain : Form
     {
+        private class WorkaroundSystemRenderer : ToolStripSystemRenderer
+        {
+            public WorkaroundSystemRenderer()
+            {
+            }
+            protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
+            {
+                base.OnRenderToolStripBorder(e);
+                e.Graphics.FillRectangle(Brushes.Black, e.ConnectedArea);
+            }
+        }
+
         public FrmMain()
         {
             InitializeComponent();
+            //toolStrip1.Renderer = new WorkaroundSystemRenderer();
+            //menuStrip1.Renderer = new WorkaroundSystemRenderer();
+
             mapBox1.MouseMove += MapBox1OnMouseMove;
         }
 
@@ -149,6 +164,17 @@ namespace fieldtool
                 mapBox1.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
             }
 
+        }
+
+        private void toolStripButtonSave_Click(object sender, EventArgs e)
+        {
+            FtManager.Instance().SaveProject();
+        }
+
+        private void toolStripButtonOpen_Click(object sender, EventArgs e)
+        {
+            FtManager.Instance().OpenProject();
+            UpdateGUI();
         }
     }
 }

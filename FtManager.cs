@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using fieldtool.Annotations;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace fieldtool
 {
@@ -39,10 +40,13 @@ namespace fieldtool
         {
             if (!IsProjectLoaded())
             {
-                MessageBox.Show("Die Projekteigenschaften können nicht angezeigt werden, da kein Projekt geöffnet ist.");
+                MessageBox.Show("Ein Import kann nicht ausgeführt werden, weil kein Projekt geladen ist.");
                 return;
             }
 
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            dialog.ShowDialog();
             //FrmProjectProperties frm = new FrmProjectProperties();
             //frm.ShowDialog();
         }
