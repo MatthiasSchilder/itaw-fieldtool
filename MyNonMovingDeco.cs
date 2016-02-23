@@ -10,7 +10,7 @@ using SharpMap;
 using SharpMap.Rendering.Decoration;
 using SharpMap.Utilities;
 
-namespace SharpmapGDAL
+namespace fieldtool
 {
     class MyNonMovingDeco : SharpMap.Rendering.Decoration.MapDecoration
     {

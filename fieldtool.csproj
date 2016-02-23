@@ -7,7 +7,7 @@
     <ProjectGuid>{69698469-7C2B-4E2A-8C0C-7AC30A9505C6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharpmapGDAL</RootNamespace>
+    <RootNamespace>fieldtool</RootNamespace>
     <AssemblyName>SharpmapGDAL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -58,11 +58,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="FrmProjectProperties.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
-      <DependentUpon>MainWindow.cs</DependentUpon>
+    <Compile Include="FrmProjectProperties.Designer.cs">
+      <DependentUpon>FrmProjectProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSettings.Designer.cs">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FtFileset.cs" />
+    <Compile Include="FtManager.cs" />
+    <Compile Include="FtProject.cs" />
+    <Compile Include="FtTransmitterAccelData.cs" />
+    <Compile Include="FtTransmitterAccelDataSeries.cs" />
+    <Compile Include="FtTransmitterData.cs" />
+    <Compile Include="FtTransmitterDataset.cs" />
+    <Compile Include="FtTransmitterDatasetFactory.cs" />
+    <Compile Include="FtTransmitterGPSData.cs" />
+    <Compile Include="FtTransmitterTagInfoData.cs" />
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <None Include="data\testdata\GeoData\DEM\Golden_CO.dem" />
     <None Include="data\testdata\GeoData\GeoTiff\airport.tfw">
@@ -129,14 +151,16 @@
     <None Include="dep\SharpMap.Extensions\gdal\share\nzgd2kgrid0005.gsb" />
     <None Include="dep\SharpMap.Extensions\gdal\share\other.extra" />
     <None Include="dep\SharpMap.Extensions\gdal\share\proj_def.dat" />
-    <None Include="PMap.cs" />
     <Compile Include="MyNonMovingDeco - Copy.cs" />
     <Compile Include="MyNonMovingDeco.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TMap.cs" />
-    <EmbeddedResource Include="MainWindow.resx">
-      <DependentUpon>MainWindow.cs</DependentUpon>
+    <Compile Include="FtMap.cs" />
+    <EmbeddedResource Include="FrmProjectProperties.resx">
+      <DependentUpon>FrmProjectProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -146,7 +170,10 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\FrmProjectProperties.datasource" />
+    <None Include="Properties\DataSources\FtProject.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
