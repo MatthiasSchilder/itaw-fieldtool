@@ -47,16 +47,19 @@
             this.btnDeleteRaster = new System.Windows.Forms.Button();
             this.btnAddRaster = new System.Windows.Forms.Button();
             this.ftProjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lvVektorkarten = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -121,6 +124,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -133,10 +137,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.listView1);
+            this.groupBox2.Controls.Add(this.lvVektorkarten);
             this.groupBox2.Controls.Add(this.btnDeleteVektor);
             this.groupBox2.Controls.Add(this.btnAddVektor);
-            this.groupBox2.Location = new System.Drawing.Point(6, 151);
+            this.groupBox2.Location = new System.Drawing.Point(6, 225);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(462, 144);
             this.groupBox2.TabIndex = 1;
@@ -151,6 +155,7 @@
             this.btnDeleteVektor.TabIndex = 3;
             this.btnDeleteVektor.Text = "Löschen";
             this.btnDeleteVektor.UseVisualStyleBackColor = true;
+            this.btnDeleteVektor.Click += new System.EventHandler(this.btnDeleteVektor_Click);
             // 
             // btnAddVektor
             // 
@@ -160,13 +165,14 @@
             this.btnAddVektor.TabIndex = 2;
             this.btnAddVektor.Text = "Hinzufügen";
             this.btnAddVektor.UseVisualStyleBackColor = true;
+            this.btnAddVektor.Click += new System.EventHandler(this.btnAddVektor_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lvRasterkarten);
             this.groupBox1.Controls.Add(this.btnDeleteRaster);
             this.groupBox1.Controls.Add(this.btnAddRaster);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(6, 80);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(462, 139);
             this.groupBox1.TabIndex = 0;
@@ -212,6 +218,7 @@
             this.btnDeleteRaster.TabIndex = 1;
             this.btnDeleteRaster.Text = "Löschen";
             this.btnDeleteRaster.UseVisualStyleBackColor = true;
+            this.btnDeleteRaster.Click += new System.EventHandler(this.btnDeleteRaster_Click);
             // 
             // btnAddRaster
             // 
@@ -221,25 +228,26 @@
             this.btnAddRaster.TabIndex = 0;
             this.btnAddRaster.Text = "Hinzufügen";
             this.btnAddRaster.UseVisualStyleBackColor = true;
+            this.btnAddRaster.Click += new System.EventHandler(this.btnAddRaster_Click);
             // 
             // ftProjectBindingSource
             // 
             this.ftProjectBindingSource.DataSource = typeof(fieldtool.FtProject);
             // 
-            // listView1
+            // lvVektorkarten
             // 
-            this.listView1.CheckBoxes = true;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvVektorkarten.CheckBoxes = true;
+            this.lvVektorkarten.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
-            this.listView1.FullRowSelect = true;
-            this.listView1.Location = new System.Drawing.Point(6, 19);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(369, 114);
-            this.listView1.TabIndex = 6;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lvVektorkarten.FullRowSelect = true;
+            this.lvVektorkarten.Location = new System.Drawing.Point(6, 19);
+            this.lvVektorkarten.Name = "lvVektorkarten";
+            this.lvVektorkarten.Size = new System.Drawing.Size(369, 114);
+            this.lvVektorkarten.TabIndex = 6;
+            this.lvVektorkarten.UseCompatibleStateImageBehavior = false;
+            this.lvVektorkarten.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader2
             // 
@@ -256,6 +264,26 @@
             this.columnHeader4.Text = "Dateipfad";
             this.columnHeader4.Width = 232;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.checkBox1);
+            this.groupBox3.Location = new System.Drawing.Point(6, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(462, 68);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Allgemein";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(22, 19);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(117, 17);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "ScaleBar darstellen";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // FrmProjectProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,6 +299,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -295,9 +325,11 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader colHeadName;
         private System.Windows.Forms.ColumnHeader colHeadPath;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lvVektorkarten;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

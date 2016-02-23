@@ -27,6 +27,9 @@ namespace fieldtool
 
         public FtProject(string filepath)
         {
+            Datasets = new List<FtTransmitterDataset>();
+            MapConfig = new FtMapConfig();
+
             ProjectName = Path.GetFileNameWithoutExtension(filepath);
             ProjectFilePath = filepath;
         }

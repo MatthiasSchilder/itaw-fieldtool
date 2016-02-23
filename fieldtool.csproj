@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="FtFileset.cs" />
     <Compile Include="FtManager.cs" />
+    <Compile Include="FtMapConfig.cs" />
     <Compile Include="FtProject.cs" />
     <Compile Include="FtTransmitterAccelData.cs" />
     <Compile Include="FtTransmitterAccelDataSeries.cs" />
