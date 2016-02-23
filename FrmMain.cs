@@ -13,20 +13,9 @@ namespace fieldtool
 {
     public partial class FrmMain : Form
     {
-        private FtMap tmap;
-
         public FrmMain()
         {
             InitializeComponent();
-
-            tmap = new FtMap();
-            SetupMapbox();
-        }
-
-        private void SetupMapbox()
-        {
-            FtMap.InitWithTestData(tmap);
-            mapBox1.Map = tmap;
             mapBox1.MouseMove += MapBox1OnMouseMove;
         }
 
@@ -68,7 +57,7 @@ namespace fieldtool
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            tmap?.ZoomToExtents();
+            mapBox1.Map?.ZoomToExtents();
             mapBox1.Refresh();
         }
 
@@ -90,6 +79,7 @@ namespace fieldtool
         private void eigenschaftenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FtManager.Instance().ShowProjectPropertiesDialog();
+            UpdateGUI();
         }
 
         private void movebankLadenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,6 +100,7 @@ namespace fieldtool
         private void öffnenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FtManager.Instance().OpenProject();
+            UpdateGUI();
         }
 
         private void schließenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -120,6 +111,19 @@ namespace fieldtool
         private void speichernToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FtManager.Instance().SaveProject();
+        }
+
+        private void UpdateGUI()
+        {
+            FtProject project = FtManager.Instance().Projekt;
+            if (project == null)
+                ;
+            else
+            {
+                FtMap ftMap = new FtMap(project);
+                mapBox1.Map = ftMap;
+            }
+
         }
     }
 }

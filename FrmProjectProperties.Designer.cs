@@ -46,20 +46,21 @@
             this.colHeadPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnDeleteRaster = new System.Windows.Forms.Button();
             this.btnAddRaster = new System.Windows.Forms.Button();
-            this.ftProjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lvVektorkarten = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkScaleBarDarstellen = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.ftProjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -69,7 +70,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(482, 487);
+            this.tabControl1.Size = new System.Drawing.Size(482, 450);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -81,7 +82,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(474, 461);
+            this.tabPage1.Size = new System.Drawing.Size(474, 424);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Allgemein";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -130,7 +131,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(474, 461);
+            this.tabPage2.Size = new System.Drawing.Size(474, 424);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Karten";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -230,10 +231,6 @@
             this.btnAddRaster.UseVisualStyleBackColor = true;
             this.btnAddRaster.Click += new System.EventHandler(this.btnAddRaster_Click);
             // 
-            // ftProjectBindingSource
-            // 
-            this.ftProjectBindingSource.DataSource = typeof(fieldtool.FtProject);
-            // 
             // lvVektorkarten
             // 
             this.lvVektorkarten.CheckBoxes = true;
@@ -266,7 +263,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.checkBox1);
+            this.groupBox3.Controls.Add(this.chkScaleBarDarstellen);
             this.groupBox3.Location = new System.Drawing.Point(6, 6);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(462, 68);
@@ -274,21 +271,37 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Allgemein";
             // 
-            // checkBox1
+            // chkScaleBarDarstellen
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(22, 19);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(117, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "ScaleBar darstellen";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkScaleBarDarstellen.AutoSize = true;
+            this.chkScaleBarDarstellen.Location = new System.Drawing.Point(22, 19);
+            this.chkScaleBarDarstellen.Name = "chkScaleBarDarstellen";
+            this.chkScaleBarDarstellen.Size = new System.Drawing.Size(117, 17);
+            this.chkScaleBarDarstellen.TabIndex = 0;
+            this.chkScaleBarDarstellen.Text = "ScaleBar darstellen";
+            this.chkScaleBarDarstellen.UseVisualStyleBackColor = true;
+            this.chkScaleBarDarstellen.CheckedChanged += new System.EventHandler(this.chkScaleBarDarstellen_CheckedChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(415, 468);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Schließen";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // ftProjectBindingSource
+            // 
+            this.ftProjectBindingSource.DataSource = typeof(fieldtool.FtProject);
             // 
             // FrmProjectProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(506, 511);
+            this.ClientSize = new System.Drawing.Size(506, 499);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
             this.Name = "FrmProjectProperties";
             this.Tag = "Projekteigenschaften - {0}";
@@ -298,9 +311,9 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -330,6 +343,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkScaleBarDarstellen;
+        private System.Windows.Forms.Button button1;
     }
 }

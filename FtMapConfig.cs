@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GeoAPI.CoordinateSystems.Transformations;
 
 namespace fieldtool
 {
@@ -34,6 +35,8 @@ namespace fieldtool
     {
         public List<FtLayer> RasterLayer { get; set; }
         public List<FtLayer> VektorLayer { get; set; }
+
+        public bool ScaleBarDarstellen { get; set; }
 
         public FtMapConfig()
         {

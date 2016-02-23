@@ -29,14 +29,18 @@ namespace fieldtool
             this.lblProjName.Text = _project.ProjectName;
             this.lblProjPath.Text = _project.ProjectFilePath;
 
+            chkScaleBarDarstellen.Checked = _project.MapConfig.ScaleBarDarstellen;
+
             UpdateLayerListViews();
         }
 
         private void UpdateLayerListViews()
         {
+            lvRasterkarten.Items.Clear();
             foreach (var ftLayer in _project.MapConfig.RasterLayer)
                 lvRasterkarten.Items.Add(CreateLayerListViewItem(ftLayer));
 
+            lvVektorkarten.Items.Clear();
             foreach (var ftLayer in _project.MapConfig.VektorLayer)
                 lvVektorkarten.Items.Add(CreateLayerListViewItem(ftLayer));
         }
@@ -88,6 +92,16 @@ namespace fieldtool
         private void btnDeleteVektor_Click(object sender, EventArgs e)
         {
             UpdateLayerListViews();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void chkScaleBarDarstellen_CheckedChanged(object sender, EventArgs e)
+        {
+            _project.MapConfig.ScaleBarDarstellen = (sender as CheckBox).Checked;
         }
     }
 }

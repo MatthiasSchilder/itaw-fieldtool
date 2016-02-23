@@ -1,24 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net.Configuration;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using GeoAPI.Geometries;
 using SharpMap.Data.Providers;
 using SharpMap.Layers.Symbolizer;
+using SharpMap.Rendering.Decoration.ScaleBar;
 using SharpMap.Rendering.Symbolizer;
 
 namespace fieldtool
 {
-    class FtMap : SharpMap.Map
+    public class FtMap : SharpMap.Map
     {
-        
-
-        public FtMap() : base()
+        public FtMap(FtProject project) : base()
         {
             this.BackColor = System.Drawing.Color.White;
+            Init(project);
+        }
+
+        private  void Init(FtProject project)
+        {
+            foreach (var rasterLayer in project.MapConfig.RasterLayer)
+                if(rasterLayer.Active)
+                    this.AddTiffLayer(Path.GetFileNameWithoutExtension(rasterLayer.FilePath), rasterLayer.FilePath);
+
+            foreach (var vektorLayer in project.MapConfig.VektorLayer)
+                if (vektorLayer.Active)
+                    this.AddShapeLayer(Path.GetFileNameWithoutExtension(vektorLayer.FilePath), vektorLayer.FilePath);
+
+            if(project.MapConfig.ScaleBarDarstellen)
+                AddScaleBar();
+            //map.AddDecoLayer();
+            //map.AddBLALayer();
+            this.ZoomToExtents();
         }
 
         public static void InitWithTestData(FtMap map)
@@ -43,14 +62,17 @@ namespace fieldtool
             map.ZoomToExtents();
         }
 
+        public void AddScaleBar()
+        {
+            SharpMap.Rendering.Decoration.ScaleBar.ScaleBar scaleBar =
+                new SharpMap.Rendering.Decoration.ScaleBar.ScaleBar();
+            this.Decorations.Add(scaleBar);   
+        }
+
         public void AddDecoLayer()
         {
-            
-            //var t = new SharpMap.Rendering.Decoration.ScaleBar.ScaleBar();
-
             var deco = new MyNonMovingDeco();
             this.Decorations.Add(deco);
-
         }
 
         public void AddBLALayer()

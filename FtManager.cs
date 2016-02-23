@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using fieldtool.Annotations;
 
 namespace fieldtool
 {
-    class FtManager
+    class FtManager : INotifyPropertyChanged
     {
         private static FtManager _instance;
         public static FtManager Instance()
@@ -17,7 +20,7 @@ namespace fieldtool
             return _instance;
         }
 
-        private FtProject _project {  get; set; }
+        public FtProject Projekt { get; private set; }
 
 
         public void ShowProjectPropertiesDialog()
@@ -28,7 +31,7 @@ namespace fieldtool
                 return;
             }
 
-            FrmProjectProperties frm = new FrmProjectProperties(_project);
+            FrmProjectProperties frm = new FrmProjectProperties(Projekt);
             frm.ShowDialog();
         }
 
@@ -67,7 +70,7 @@ namespace fieldtool
             if (dr == DialogResult.Abort)
                 return;
 
-            _project = new FtProject(dialog.FileName);
+            Projekt = new FtProject(dialog.FileName);
         }
 
         public void OpenProject()
@@ -83,8 +86,9 @@ namespace fieldtool
             if (dr == DialogResult.Abort)
                 return;
 
-            _project = FtProject.Deserialize(dialog.FileName);
+            Projekt = FtProject.Deserialize(dialog.FileName);
         }
+
 
         public void SaveProject()
         {
@@ -93,7 +97,7 @@ namespace fieldtool
                 MessageBox.Show("Es ist kein Projekt geöffnet.");
                 return;
             }
-            _project.Save();
+            Projekt.Save();
         }
 
         public void CloseProject()
@@ -107,14 +111,25 @@ namespace fieldtool
             DialogResult dr = MessageBox.Show("Soll das Projekt geschlossen werden?", "Schließen?",
                 MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
-                _project = null;
+            {
+                Projekt = null;
+            }
+                
         }
 
         public bool IsProjectLoaded()
         {
-            if (_project == null)
+            if (Projekt == null)
                 return false;
             return true;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

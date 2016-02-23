@@ -155,6 +155,7 @@
     <Compile Include="MyNonMovingDeco - Copy.cs" />
     <Compile Include="MyNonMovingDeco.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FtMap.cs" />
     <EmbeddedResource Include="FrmProjectProperties.resx">

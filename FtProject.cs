@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using fieldtool.Annotations;
 
 namespace fieldtool
 {
-    public class FtProject
+    public class FtProject : INotifyPropertyChanged
     {
         [XmlIgnore]
         public List<FtTransmitterDataset> Datasets { get; set; }
@@ -57,6 +60,14 @@ namespace fieldtool
             reader.Close();
 
             return project;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
