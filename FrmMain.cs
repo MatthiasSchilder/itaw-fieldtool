@@ -125,5 +125,10 @@ namespace fieldtool
             }
 
         }
+
+        private void kartenansichtAlsBildToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
