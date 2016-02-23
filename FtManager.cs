@@ -67,7 +67,7 @@ namespace fieldtool
             dialog.Filter = "FieldTool-Projekt|*.ftproj";
 
             DialogResult dr = dialog.ShowDialog();
-            if (dr == DialogResult.Abort)
+            if (dr != DialogResult.OK)
                 return;
 
             Projekt = new FtProject(dialog.FileName);
@@ -83,7 +83,7 @@ namespace fieldtool
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "FieldTool-Projekt|*.ftproj";
             DialogResult dr = dialog.ShowDialog();
-            if (dr == DialogResult.Abort)
+            if (dr != DialogResult.OK)
                 return;
 
             Projekt = FtProject.Deserialize(dialog.FileName);

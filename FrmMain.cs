@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GeoAPI.Geometries;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace fieldtool
 {
@@ -128,6 +130,24 @@ namespace fieldtool
 
         private void kartenansichtAlsBildToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (FtManager.Instance().Projekt.ExportToClipboard)
+            {
+                Clipboard.SetImage(mapBox1.Image);
+                MessageBox.Show("Die Kartenansicht wurde in die Zwischenablage kopiert.");
+            }
+            else
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.Filter = "PNG-Grafik|*.png";
+                DialogResult dr = dialog.ShowDialog();
+
+
+                if (dr != DialogResult.OK)
+                    return;
+
+
+                mapBox1.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+            }
 
         }
     }

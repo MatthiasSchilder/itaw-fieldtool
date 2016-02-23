@@ -23,6 +23,8 @@ namespace fieldtool
         public String ProjectName { get; set; }
         public String ProjectFilePath { get;  set; }
 
+        public bool   ExportToClipboard { get; set; }
+
         public FtProject()
         {
             
@@ -35,6 +37,7 @@ namespace fieldtool
 
             ProjectName = Path.GetFileNameWithoutExtension(filepath);
             ProjectFilePath = filepath;
+            ExportToClipboard = false;
         }
 
         public void Save()

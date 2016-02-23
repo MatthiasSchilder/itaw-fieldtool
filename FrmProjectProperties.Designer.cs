@@ -36,7 +36,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chkScaleBarDarstellen = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lvVektorkarten = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnDeleteVektor = new System.Windows.Forms.Button();
             this.btnAddVektor = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -46,20 +52,17 @@
             this.colHeadPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnDeleteRaster = new System.Windows.Forms.Button();
             this.btnAddRaster = new System.Windows.Forms.Button();
-            this.lvVektorkarten = new System.Windows.Forms.ListView();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chkScaleBarDarstellen = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.ftProjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbDefaultLookupPath = new System.Windows.Forms.TextBox();
+            this.btnChooseDefaultPath = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,6 +78,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.btnChooseDefaultPath);
+            this.tabPage1.Controls.Add(this.tbDefaultLookupPath);
             this.tabPage1.Controls.Add(this.lblProjName);
             this.tabPage1.Controls.Add(this.lblProjPath);
             this.tabPage1.Controls.Add(this.label2);
@@ -136,6 +142,27 @@
             this.tabPage2.Text = "Karten";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.chkScaleBarDarstellen);
+            this.groupBox3.Location = new System.Drawing.Point(6, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(462, 68);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Allgemein";
+            // 
+            // chkScaleBarDarstellen
+            // 
+            this.chkScaleBarDarstellen.AutoSize = true;
+            this.chkScaleBarDarstellen.Location = new System.Drawing.Point(22, 19);
+            this.chkScaleBarDarstellen.Name = "chkScaleBarDarstellen";
+            this.chkScaleBarDarstellen.Size = new System.Drawing.Size(117, 17);
+            this.chkScaleBarDarstellen.TabIndex = 0;
+            this.chkScaleBarDarstellen.Text = "ScaleBar darstellen";
+            this.chkScaleBarDarstellen.UseVisualStyleBackColor = true;
+            this.chkScaleBarDarstellen.CheckedChanged += new System.EventHandler(this.chkScaleBarDarstellen_CheckedChanged);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lvVektorkarten);
@@ -147,6 +174,36 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Vektorkarten";
+            // 
+            // lvVektorkarten
+            // 
+            this.lvVektorkarten.CheckBoxes = true;
+            this.lvVektorkarten.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.lvVektorkarten.FullRowSelect = true;
+            this.lvVektorkarten.Location = new System.Drawing.Point(6, 19);
+            this.lvVektorkarten.Name = "lvVektorkarten";
+            this.lvVektorkarten.Size = new System.Drawing.Size(369, 114);
+            this.lvVektorkarten.TabIndex = 6;
+            this.lvVektorkarten.UseCompatibleStateImageBehavior = false;
+            this.lvVektorkarten.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "";
+            this.columnHeader2.Width = 30;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Name";
+            this.columnHeader3.Width = 103;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Dateipfad";
+            this.columnHeader4.Width = 232;
             // 
             // btnDeleteVektor
             // 
@@ -231,57 +288,6 @@
             this.btnAddRaster.UseVisualStyleBackColor = true;
             this.btnAddRaster.Click += new System.EventHandler(this.btnAddRaster_Click);
             // 
-            // lvVektorkarten
-            // 
-            this.lvVektorkarten.CheckBoxes = true;
-            this.lvVektorkarten.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.lvVektorkarten.FullRowSelect = true;
-            this.lvVektorkarten.Location = new System.Drawing.Point(6, 19);
-            this.lvVektorkarten.Name = "lvVektorkarten";
-            this.lvVektorkarten.Size = new System.Drawing.Size(369, 114);
-            this.lvVektorkarten.TabIndex = 6;
-            this.lvVektorkarten.UseCompatibleStateImageBehavior = false;
-            this.lvVektorkarten.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "";
-            this.columnHeader2.Width = 30;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Name";
-            this.columnHeader3.Width = 103;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Dateipfad";
-            this.columnHeader4.Width = 232;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.chkScaleBarDarstellen);
-            this.groupBox3.Location = new System.Drawing.Point(6, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(462, 68);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Allgemein";
-            // 
-            // chkScaleBarDarstellen
-            // 
-            this.chkScaleBarDarstellen.AutoSize = true;
-            this.chkScaleBarDarstellen.Location = new System.Drawing.Point(22, 19);
-            this.chkScaleBarDarstellen.Name = "chkScaleBarDarstellen";
-            this.chkScaleBarDarstellen.Size = new System.Drawing.Size(117, 17);
-            this.chkScaleBarDarstellen.TabIndex = 0;
-            this.chkScaleBarDarstellen.Text = "ScaleBar darstellen";
-            this.chkScaleBarDarstellen.UseVisualStyleBackColor = true;
-            this.chkScaleBarDarstellen.CheckedChanged += new System.EventHandler(this.chkScaleBarDarstellen_CheckedChanged);
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(415, 468);
@@ -296,6 +302,32 @@
             // 
             this.ftProjectBindingSource.DataSource = typeof(fieldtool.FtProject);
             // 
+            // tbDefaultLookupPath
+            // 
+            this.tbDefaultLookupPath.Location = new System.Drawing.Point(149, 65);
+            this.tbDefaultLookupPath.Name = "tbDefaultLookupPath";
+            this.tbDefaultLookupPath.Size = new System.Drawing.Size(180, 20);
+            this.tbDefaultLookupPath.TabIndex = 5;
+            // 
+            // btnChooseDefaultPath
+            // 
+            this.btnChooseDefaultPath.Location = new System.Drawing.Point(335, 63);
+            this.btnChooseDefaultPath.Name = "btnChooseDefaultPath";
+            this.btnChooseDefaultPath.Size = new System.Drawing.Size(75, 23);
+            this.btnChooseDefaultPath.TabIndex = 6;
+            this.btnChooseDefaultPath.Text = "Auswählen";
+            this.btnChooseDefaultPath.UseVisualStyleBackColor = true;
+            this.btnChooseDefaultPath.Click += new System.EventHandler(this.btnChooseDefaultPath_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(94, 26);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Standardsuchpfad\r\n für Movebanks";
+            // 
             // FrmProjectProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,10 +341,10 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -345,5 +377,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox chkScaleBarDarstellen;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnChooseDefaultPath;
+        private System.Windows.Forms.TextBox tbDefaultLookupPath;
     }
 }

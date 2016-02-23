@@ -63,11 +63,13 @@ namespace fieldtool
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "GeoTIFF|*.tif";
+            dialog.Multiselect = true;
             DialogResult dr = dialog.ShowDialog();
             if (dr == DialogResult.Abort)
                 return;
 
-            _project.MapConfig.AddLayer(FtLayerType.FtRasterLayer, dialog.FileName);
+            foreach(var filename in dialog.FileNames)
+                _project.MapConfig.AddLayer(FtLayerType.FtRasterLayer, filename);
             UpdateLayerListViews();
         }
 
@@ -102,6 +104,17 @@ namespace fieldtool
         private void chkScaleBarDarstellen_CheckedChanged(object sender, EventArgs e)
         {
             _project.MapConfig.ScaleBarDarstellen = (sender as CheckBox).Checked;
+        }
+
+        private void btnChooseDefaultPath_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.ShowNewFolderButton = true;
+            DialogResult dr = dialog.ShowDialog();
+            if (dr != DialogResult.OK)
+                return;
+
+            tbDefaultLookupPath.Text = dialog.SelectedPath;
         }
     }
 }
