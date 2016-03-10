@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using SharpmapGDAL;
 
 namespace fieldtool
 {
@@ -119,6 +120,8 @@ namespace fieldtool
             if (dr != CommonFileDialogResult.Ok)
                 return;
 
+            var filesets = FtTransmitterDatasetFactory.EnumerateFileSets(cofd.FileName);
+            var datasets = FtTransmitterDatasetFactory.LoadFilesets(filesets);
 
         }
 
