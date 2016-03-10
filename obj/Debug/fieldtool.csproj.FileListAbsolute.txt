@@ -289,3 +289,5 @@ C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPI
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPICodePack.pdb
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPICodePack.Shell.pdb
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmInfo.resources
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\fieldtool.Data.dll
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\fieldtool.Data.pdb

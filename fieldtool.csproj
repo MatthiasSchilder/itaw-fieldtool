@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -86,18 +101,11 @@
     <Compile Include="FrmSettings.Designer.cs">
       <DependentUpon>FrmSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="FtFileset.cs" />
     <Compile Include="FtFormFactory.cs" />
     <Compile Include="FtMapConfig.cs" />
     <Compile Include="FtProject.cs" />
     <Compile Include="FtProjectMainPresenter.cs" />
     <Compile Include="FtProjectPropertiesPresenter.cs" />
-    <Compile Include="FtTransmitterAccelData.cs" />
-    <Compile Include="FtTransmitterAccelDataSeries.cs" />
-    <Compile Include="FtTransmitterData.cs" />
-    <Compile Include="FtTransmitterDataset.cs" />
-    <Compile Include="FtTransmitterDatasetFactory.cs" />
-    <Compile Include="FtTransmitterGPSData.cs" />
     <Compile Include="FtTransmitterTagInfoData.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
@@ -626,6 +634,24 @@
     <AvailableItemName Include="RootContent">
       <Visible>false</Visible>
     </AvailableItemName>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\fieldtool.Data\fieldtool.Data.csproj">
+      <Project>{61fcef23-c5e8-4e24-9002-63d87bfdacdd}</Project>
+      <Name>fieldtool.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Target Name="AfterBuild">
     <Copy DestinationFolder="$(OutputPath)" SourceFiles="@(RootContent)" SkipUnchangedFiles="true" />

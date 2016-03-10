@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace fieldtool
 {
@@ -106,6 +107,19 @@ namespace fieldtool
             View.ShowProjectProperties += View_ShowProjectProperties;
             View.MouseMovedOnMap += View_MouseMovedOnMap;
             View.ShowInfo += View_ShowInfo;
+            View.ShowMovebankImport += View_ShowMovebankImport;
+        }
+
+        private void View_ShowMovebankImport(object sender, EventArgs e)
+        {
+            CommonOpenFileDialog cofd = new CommonOpenFileDialog();
+            cofd.IsFolderPicker = true;
+
+            CommonFileDialogResult dr = cofd.ShowDialog();
+            if (dr != CommonFileDialogResult.Ok)
+                return;
+
+
         }
 
         private void View_ShowInfo(object sender, EventArgs e)
