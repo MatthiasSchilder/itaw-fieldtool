@@ -12,12 +12,17 @@ using System.Windows.Forms;
 
 namespace fieldtool
 {
-    public partial class FrmProjectProperties : Form
+    public partial class FrmProjectProperties : Form, IFtProjectPropertiesView
     {
+        private FtProjectPropertiesPresenter Presenter { get; set; }
         private FtProject _project;
+
+        public event EventHandler Initialize;
 
         public FrmProjectProperties(FtProject project)
         {
+            Presenter = new FtProjectPropertiesPresenter(this);
+
             InitializeComponent();
             _project = project;
 

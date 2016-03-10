@@ -68,6 +68,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInfo.Designer.cs">
+      <DependentUpon>FrmInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProjectProperties.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,9 +87,11 @@
       <DependentUpon>FrmSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="FtFileset.cs" />
-    <Compile Include="FtManager.cs" />
+    <Compile Include="FtFormFactory.cs" />
     <Compile Include="FtMapConfig.cs" />
     <Compile Include="FtProject.cs" />
+    <Compile Include="FtProjectMainPresenter.cs" />
+    <Compile Include="FtProjectPropertiesPresenter.cs" />
     <Compile Include="FtTransmitterAccelData.cs" />
     <Compile Include="FtTransmitterAccelDataSeries.cs" />
     <Compile Include="FtTransmitterData.cs" />
@@ -162,12 +170,19 @@
     <None Include="dep\SharpMap.Extensions\gdal\share\nzgd2kgrid0005.gsb" />
     <None Include="dep\SharpMap.Extensions\gdal\share\other.extra" />
     <None Include="dep\SharpMap.Extensions\gdal\share\proj_def.dat" />
+    <Compile Include="IFtProjcetMainView.cs" />
+    <Compile Include="IFtProjectPropertiesView.cs" />
+    <Compile Include="IView.cs" />
     <Compile Include="MyNonMovingDeco - Copy.cs" />
     <Compile Include="MyNonMovingDeco.cs" />
+    <Compile Include="Presenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FtMap.cs" />
+    <EmbeddedResource Include="FrmInfo.resx">
+      <DependentUpon>FrmInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmProjectProperties.resx">
       <DependentUpon>FrmProjectProperties.cs</DependentUpon>
     </EmbeddedResource>
@@ -392,6 +407,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="dep\SharpMap.Extensions\de\Npgsql.resources.dll" />
+    <None Include="Resources\IconITAW.ico" />
     <RootContent Include="dep\SharpMap.Extensions\DotSpatial.Projections.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </RootContent>

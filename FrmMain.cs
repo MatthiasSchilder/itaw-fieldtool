@@ -13,32 +13,61 @@ using System.Windows.Media.Imaging;
 
 namespace fieldtool
 {
-    public partial class FrmMain : Form
+    public partial class FrmMain : Form, IFtProjectMainView
     {
-        private class WorkaroundSystemRenderer : ToolStripSystemRenderer
-        {
-            public WorkaroundSystemRenderer()
-            {
-            }
-            protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
-            {
-                base.OnRenderToolStripBorder(e);
-                e.Graphics.FillRectangle(Brushes.Black, e.ConnectedArea);
-            }
-        }
+        private FtProjectMainPresenter Presenter { get; set; }
+
+        private const String WindowTitleNoProject = "itaw Fieldtool vX.XX";
+        private const String WindowTitleProject = "itaw Fieldtool vX.XX - {0}";
 
         public FrmMain()
         {
+            Presenter = new FtProjectMainPresenter(this);
             InitializeComponent();
-            //toolStrip1.Renderer = new WorkaroundSystemRenderer();
-            //menuStrip1.Renderer = new WorkaroundSystemRenderer();
+            AttachToPresenterEvents();
+            InvokeInitialize(new EventArgs());
 
-            mapBox1.MouseMove += MapBox1OnMouseMove;
+            mapBox1.MouseMove += MouseMovedOnMap;
         }
 
-        private void MapBox1OnMouseMove(Coordinate worldPos, MouseEventArgs imagePos)
+        private void AttachToPresenterEvents()
         {
-            toolStripStatusLabel1.Text = String.Format((string)toolStripStatusLabel1.Tag, worldPos.X, worldPos.Y);
+            Presenter.CursorCoordinatesChanged += CursorCoordinatesChanged;
+            Presenter.MapChanged += MapChanged;
+            Presenter.ProjectStateChanged += ProjectStateChanged;
+        }
+
+        private void ProjectStateChanged(object sender, ProjectStateArgs projectStateArgs)
+        {
+            if (projectStateArgs.ProjektGeladen)
+                this.Text = String.Format(WindowTitleProject, projectStateArgs.Name);
+            else
+            {
+                this.Text = WindowTitleNoProject;
+            }
+        }
+
+        private void MapChanged(object sender, MapChangedArgs eventArgs)
+        {
+            mapBox1.Map = eventArgs.Map;
+            if (mapBox1.Map == null)
+                return;
+
+            try
+            {
+                mapBox1.Map.ZoomToExtents();
+            }
+            catch (Exception)
+            {
+            }
+            mapBox1.Refresh();
+        }
+
+        private void CursorCoordinatesChanged(object sender, CursorCoordsChangedArgs cursorCoordsChangedArgs)
+        {
+            var xDisplay = Math.Round(cursorCoordsChangedArgs.X, 4);
+            var yDisplay = Math.Round(cursorCoordsChangedArgs.Y, 4);
+            statusLabelCoords.Text = String.Format((string)statusLabelCoords.Tag, xDisplay, yDisplay);
         }
 
         public void SetActiveTool(SharpMap.Forms.MapBox.Tools tool)
@@ -47,6 +76,8 @@ namespace fieldtool
         }
 
         private bool _statePanning = false;
+
+
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             if (_statePanning)
@@ -78,10 +109,6 @@ namespace fieldtool
             mapBox1.Refresh();
         }
 
-        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -95,86 +122,173 @@ namespace fieldtool
 
         private void eigenschaftenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FtManager.Instance().ShowProjectPropertiesDialog();
-            UpdateGUI();
+            InvokeShowProjectProperties(new EventArgs());
         }
 
         private void movebankLadenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FtManager.Instance().ShowImportMovebankDialog();
+            InvokeShowMovebankImport(new EventArgs());
         }
 
         private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FtManager.Instance().ShowSettingsDialog();
+            InvokeShowEinstellungen(new EventArgs());
         }
 
         private void neuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FtManager.Instance().NewProject();
+            InvokeNewProject(new EventArgs());
         }
 
         private void öffnenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FtManager.Instance().OpenProject();
-            UpdateGUI();
+            InvokeOpenProject(new EventArgs());
         }
 
         private void schließenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FtManager.Instance().CloseProject();
+            InvokeCloseProject(new EventArgs());
         }
 
         private void speichernToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FtManager.Instance().SaveProject();
+            InvokeSaveProject(new EventArgs());
         }
 
-        private void UpdateGUI()
-        {
-            FtProject project = FtManager.Instance().Projekt;
-            if (project == null)
-                ;
-            else
-            {
-                FtMap ftMap = new FtMap(project);
-                mapBox1.Map = ftMap;
-            }
 
-        }
 
         private void kartenansichtAlsBildToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (FtManager.Instance().Projekt.ExportToClipboard)
-            {
-                Clipboard.SetImage(mapBox1.Image);
-                MessageBox.Show("Die Kartenansicht wurde in die Zwischenablage kopiert.");
-            }
-            else
-            {
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "PNG-Grafik|*.png";
-                DialogResult dr = dialog.ShowDialog();
+            //if (FtManager.Instance().Projekt.ExportToClipboard)
+            //{
+            //    Clipboard.SetImage(mapBox1.Image);
+            //    MessageBox.Show("Die Kartenansicht wurde in die Zwischenablage kopiert.");
+            //}
+            //else
+            //{
+            //    SaveFileDialog dialog = new SaveFileDialog();
+            //    dialog.Filter = "PNG-Grafik|*.png";
+            //    DialogResult dr = dialog.ShowDialog();
 
 
-                if (dr != DialogResult.OK)
-                    return;
+            //    if (dr != DialogResult.OK)
+            //        return;
 
 
-                mapBox1.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
-            }
+            //    mapBox1.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+            //}
 
         }
 
         private void toolStripButtonSave_Click(object sender, EventArgs e)
         {
-            FtManager.Instance().SaveProject();
+            InvokeSaveProject(new EventArgs());
         }
 
         private void toolStripButtonOpen_Click(object sender, EventArgs e)
         {
-            FtManager.Instance().OpenProject();
-            UpdateGUI();
+            InvokeOpenProject(new EventArgs());
+        }
+
+        public event EventHandler OpenProject;
+        public void InvokeOpenProject(EventArgs e)
+        {
+            EventHandler handler = OpenProject;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public event EventHandler CloseProject;
+
+        public void InvokeCloseProject(EventArgs e)
+        {
+            EventHandler handler = CloseProject;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public event EventHandler SaveProject;
+        public void InvokeSaveProject(EventArgs e)
+        {
+            EventHandler handler = SaveProject;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+        
+        public event EventHandler NewProject;
+        public void InvokeNewProject(EventArgs e)
+        {
+            EventHandler handler = NewProject;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+        public event EventHandler ShowProjectProperties;
+        public void InvokeShowProjectProperties(EventArgs e)
+        {
+            EventHandler handler = ShowProjectProperties;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        
+        public event EventHandler ShowMovebankImport;
+        public void InvokeShowMovebankImport(EventArgs e)
+        {
+            EventHandler handler = ShowMovebankImport;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+        public event EventHandler ShowEinstellungen;
+        
+
+        public void InvokeShowEinstellungen(EventArgs e)
+        {
+            EventHandler handler = ShowEinstellungen;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public event EventHandler ShowInfo;
+
+
+        public void InvokeShowInfo(EventArgs e)
+        {
+            EventHandler handler = ShowInfo;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public event SharpMap.Forms.MapBox.MouseEventHandler MouseMovedOnMap;
+
+        public event EventHandler Initialize;
+        public void InvokeInitialize(EventArgs e)
+        {
+            EventHandler handler = Initialize;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        private void infoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeShowInfo(new EventArgs());
         }
     }
 }

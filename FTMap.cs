@@ -37,7 +37,7 @@ namespace fieldtool
                 AddScaleBar();
             //map.AddDecoLayer();
             //map.AddBLALayer();
-            this.ZoomToExtents();
+            //this.ZoomToExtents();
         }
 
         public static void InitWithTestData(FtMap map)
