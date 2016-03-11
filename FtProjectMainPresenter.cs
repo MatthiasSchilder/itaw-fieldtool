@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,6 @@ namespace fieldtool
             Name = projektName;
         }
     }
-
     class MovebankImportedArgs : EventArgs
     {
         public List<FtTransmitterDataset> Datasets { get; set; }
@@ -139,6 +139,81 @@ namespace fieldtool
             View.ShowRawAccel += View_ShowRawAccel;
             View.ShowRawGPS += View_ShowRawGPS;
             View.CurrentDatasetChanged += View_CurrentDatasetChanged;
+            View.ShowActivityDiagram += View_ShowActivityDiagram;
+        }
+
+//        12.03.15
+//05.05.15
+//3520
+        private void View_ShowActivityDiagram(object sender, EventArgs e)
+        {
+            AccelBurstActivityCalculator ab = new AccelBurstActivityCalculator(CurrentDataset.AccelData, new DateTime(2015, 3, 12), new DateTime(2015, 5, 5) );
+            var result = ab.Process();
+
+            var pxPerLine = 8;
+            var pxPerCol = 3;
+
+            double maxvalue = double.MinValue;
+            foreach (var kvp in result)
+            {
+                foreach (var value in kvp.Value)
+                {
+                    maxvalue = Math.Max(maxvalue, value);
+                }
+            }
+            Bitmap bmp = new Bitmap(240*3, result.Count * pxPerLine);
+            int i = 0;
+            foreach(var line in result)
+            {
+                var pxLineOffs = i*pxPerLine;
+
+                int xoffs = 0;
+                foreach (var bla in line.Value)
+                {
+                    var color = GetColor(maxvalue, bla);
+                    bmp.SetPixel(xoffs,pxLineOffs, color);
+                    bmp.SetPixel(xoffs, pxLineOffs+1, color);
+                    bmp.SetPixel(xoffs, pxLineOffs+2, color);
+                    bmp.SetPixel(xoffs, pxLineOffs+3, color);
+                    bmp.SetPixel(xoffs, pxLineOffs+4, color);
+                    bmp.SetPixel(xoffs, pxLineOffs+5, color);
+                    bmp.SetPixel(xoffs, pxLineOffs+6, color);
+                    bmp.SetPixel(xoffs, pxLineOffs+7, color);
+                    bmp.SetPixel(xoffs+1, pxLineOffs, color);
+                    bmp.SetPixel(xoffs + 1, pxLineOffs + 1, color);
+                    bmp.SetPixel(xoffs + 1, pxLineOffs + 2, color);
+                    bmp.SetPixel(xoffs + 1, pxLineOffs + 3, color);
+                    bmp.SetPixel(xoffs + 1, pxLineOffs + 4, color);
+                    bmp.SetPixel(xoffs + 1, pxLineOffs + 5, color);
+                    bmp.SetPixel(xoffs + 1, pxLineOffs + 6, color);
+                    bmp.SetPixel(xoffs + 1, pxLineOffs + 7, color);
+                    bmp.SetPixel(xoffs + 2, pxLineOffs, color);
+                    bmp.SetPixel(xoffs + 2, pxLineOffs + 1, color);
+                    bmp.SetPixel(xoffs + 2, pxLineOffs + 2, color);
+                    bmp.SetPixel(xoffs + 2, pxLineOffs + 3, color);
+                    bmp.SetPixel(xoffs + 2, pxLineOffs + 4, color);
+                    bmp.SetPixel(xoffs + 2, pxLineOffs + 5, color);
+                    bmp.SetPixel(xoffs + 2, pxLineOffs + 6, color);
+                    bmp.SetPixel(xoffs + 2, pxLineOffs + 7, color);
+
+                    xoffs += pxPerCol;
+                }
+
+                i++;
+            }
+
+            Form1 frm = new Form1(bmp);
+            frm.ShowDialog();
+
+        }
+
+        private Color GetColor(double maxValue, double value)
+        {
+            if (value.Equals(double.MinValue))
+                return Color.DarkSalmon;
+            int val = (int)((value/maxValue)*255);
+            return Color.FromArgb(255-val, 255-val, 255-val);
+            
         }
 
         private void View_CurrentDatasetChanged(object sender, CurrentDatasetChangedEventArgs e)
@@ -281,3 +356,4 @@ namespace fieldtool
         }
     }
 }
+

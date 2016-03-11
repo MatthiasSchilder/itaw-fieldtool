@@ -46,6 +46,10 @@
             this.movebankLadenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aktivitätsdiagrammToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rohdatenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tagInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.beschleunigungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gPSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kartenansichtAlsBildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.überToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,10 +72,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.rohdatenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tagInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.beschleunigungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gPSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -213,7 +213,7 @@
             // movebankLadenToolStripMenuItem
             // 
             this.movebankLadenToolStripMenuItem.Name = "movebankLadenToolStripMenuItem";
-            this.movebankLadenToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.movebankLadenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.movebankLadenToolStripMenuItem.Text = "Movebank";
             this.movebankLadenToolStripMenuItem.Click += new System.EventHandler(this.movebankLadenToolStripMenuItem_Click);
             // 
@@ -231,6 +231,38 @@
             this.aktivitätsdiagrammToolStripMenuItem.Name = "aktivitätsdiagrammToolStripMenuItem";
             this.aktivitätsdiagrammToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.aktivitätsdiagrammToolStripMenuItem.Text = "Aktivitätsdiagramm";
+            this.aktivitätsdiagrammToolStripMenuItem.Click += new System.EventHandler(this.aktivitätsdiagrammToolStripMenuItem_Click);
+            // 
+            // rohdatenToolStripMenuItem
+            // 
+            this.rohdatenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tagInfoToolStripMenuItem,
+            this.beschleunigungToolStripMenuItem,
+            this.gPSToolStripMenuItem});
+            this.rohdatenToolStripMenuItem.Name = "rohdatenToolStripMenuItem";
+            this.rohdatenToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.rohdatenToolStripMenuItem.Text = "Rohdaten";
+            // 
+            // tagInfoToolStripMenuItem
+            // 
+            this.tagInfoToolStripMenuItem.Name = "tagInfoToolStripMenuItem";
+            this.tagInfoToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.tagInfoToolStripMenuItem.Text = "TagInfo";
+            this.tagInfoToolStripMenuItem.Click += new System.EventHandler(this.tagInfoToolStripMenuItem_Click);
+            // 
+            // beschleunigungToolStripMenuItem
+            // 
+            this.beschleunigungToolStripMenuItem.Name = "beschleunigungToolStripMenuItem";
+            this.beschleunigungToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.beschleunigungToolStripMenuItem.Text = "Beschleunigung";
+            this.beschleunigungToolStripMenuItem.Click += new System.EventHandler(this.beschleunigungToolStripMenuItem_Click);
+            // 
+            // gPSToolStripMenuItem
+            // 
+            this.gPSToolStripMenuItem.Name = "gPSToolStripMenuItem";
+            this.gPSToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.gPSToolStripMenuItem.Text = "GPS";
+            this.gPSToolStripMenuItem.Click += new System.EventHandler(this.gPSToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem
             // 
@@ -447,41 +479,10 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 74);
+            this.tabPage2.Size = new System.Drawing.Size(1229, 210);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // rohdatenToolStripMenuItem
-            // 
-            this.rohdatenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tagInfoToolStripMenuItem,
-            this.beschleunigungToolStripMenuItem,
-            this.gPSToolStripMenuItem});
-            this.rohdatenToolStripMenuItem.Name = "rohdatenToolStripMenuItem";
-            this.rohdatenToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.rohdatenToolStripMenuItem.Text = "Rohdaten";
-            // 
-            // tagInfoToolStripMenuItem
-            // 
-            this.tagInfoToolStripMenuItem.Name = "tagInfoToolStripMenuItem";
-            this.tagInfoToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.tagInfoToolStripMenuItem.Text = "TagInfo";
-            this.tagInfoToolStripMenuItem.Click += new System.EventHandler(this.tagInfoToolStripMenuItem_Click);
-            // 
-            // beschleunigungToolStripMenuItem
-            // 
-            this.beschleunigungToolStripMenuItem.Name = "beschleunigungToolStripMenuItem";
-            this.beschleunigungToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.beschleunigungToolStripMenuItem.Text = "Beschleunigung";
-            this.beschleunigungToolStripMenuItem.Click += new System.EventHandler(this.beschleunigungToolStripMenuItem_Click);
-            // 
-            // gPSToolStripMenuItem
-            // 
-            this.gPSToolStripMenuItem.Name = "gPSToolStripMenuItem";
-            this.gPSToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.gPSToolStripMenuItem.Text = "GPS";
-            this.gPSToolStripMenuItem.Click += new System.EventHandler(this.gPSToolStripMenuItem_Click);
             // 
             // FrmMain
             // 

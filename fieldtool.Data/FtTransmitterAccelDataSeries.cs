@@ -45,5 +45,44 @@ namespace fieldtool
 
             return result;
         }
+
+        public int[] GetXArr()
+        {
+            var rawValueCount = AccelerationRawValues.Count;
+            List<int> result = new List<int>(rawValueCount);
+            int idx = 0;
+            while (idx < rawValueCount)
+            {
+                result.Add(AccelerationRawValues[idx]);
+                idx += 3;
+            }
+            return result.ToArray();
+        }
+        public int[] GetYArr()
+        {
+            var rawValueCount = AccelerationRawValues.Count;
+            List<int> result = new List<int>(rawValueCount);
+            int idx = 1;
+            while (idx < rawValueCount)
+            {
+                result.Add(AccelerationRawValues[idx]);
+                idx += 3;
+            }
+
+            return result.ToArray();
+        }
+        public int[] GetZArr()
+        {
+            var rawValueCount = AccelerationRawValues.Count;
+            List<int> result = new List<int>(rawValueCount);
+            int idx = 2;
+            while (idx < rawValueCount)
+            {
+                result.Add(AccelerationRawValues[idx]);
+                idx += 3;
+            }
+
+            return result.ToArray();
+        }
     }
 }
