@@ -46,7 +46,11 @@ namespace fieldtool
         private void PopulateDatasetListview(List<FtTransmitterDataset> datasets)
         {
             foreach (var dataset in datasets)
-                lviDatasets.Items.Add(dataset.TagId.ToString());
+            {
+                var listViewItem = new ListViewItem(dataset.TagId.ToString());
+                listViewItem.Tag = dataset.TagId;
+                lviDatasets.Items.Add(listViewItem);
+            }
         }
 
         private void ProjectStateChanged(object sender, ProjectStateArgs projectStateArgs)
@@ -286,6 +290,47 @@ namespace fieldtool
             }
         }
 
+        public event EventHandler ShowRawTagInfo;
+        public void InvokeShowRawTagInfo(EventArgs e)
+        {
+            EventHandler handler = ShowRawTagInfo;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public event EventHandler ShowRawAccel;
+        public void InvokeShowRawAccel(EventArgs e)
+        {
+            EventHandler handler = ShowRawAccel;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public event EventHandler ShowRawGPS;
+        public void InvokeShowRawGPS(EventArgs e)
+        {
+            EventHandler handler = ShowRawGPS;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public event EventHandler<CurrentDatasetChangedEventArgs> CurrentDatasetChanged;
+        public void InvokeCurrentDatasetChanged(CurrentDatasetChangedEventArgs e)
+        {
+            EventHandler<CurrentDatasetChangedEventArgs> handler = CurrentDatasetChanged;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+
         public event SharpMap.Forms.MapBox.MouseEventHandler MouseMovedOnMap;
 
         public event EventHandler Initialize;
@@ -301,6 +346,60 @@ namespace fieldtool
         private void infoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InvokeShowInfo(new EventArgs());
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void TableLayoutPanel_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
+        {
+            if (e.Column == 1 && e.Row == 0)
+            {
+                var rectangle = e.CellBounds;
+                rectangle.Inflate(-2, -2);
+
+                ControlPaint.DrawBorder(e.Graphics, rectangle, SystemColors.ControlDark, ButtonBorderStyle.Solid); // 3D border
+                
+            }
+        }
+
+        private void tagInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeShowRawTagInfo(new EventArgs());
+        }
+
+        private void beschleunigungToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeShowRawAccel(new EventArgs());
+        }
+
+        private void gPSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeShowRawGPS(new EventArgs());
+        }
+
+        private void lviDatasets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedItems = lviDatasets.SelectedItems;
+            if (selectedItems.Count == 0)
+                return;
+
+            if (selectedItems[0] == null)
+            {
+                InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs(null));
+                return;
+            }
+            InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs((int)selectedItems[0].Tag));
+        }
+    }
+    public class CurrentDatasetChangedEventArgs : EventArgs
+    {
+        public int? CurrentTagId { get; private set; }
+        public CurrentDatasetChangedEventArgs(int? currentTagId)
+        {
+            CurrentTagId = currentTagId;
         }
     }
 }

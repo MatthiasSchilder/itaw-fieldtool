@@ -98,6 +98,13 @@ namespace fieldtool
 
         private FtMap _map;
         private bool MapNeedsRefresh { get; set; }
+
+        private FtTransmitterDataset CurrentDataset { get; set; }
+        private bool CurrentDatasetAvailable
+        {
+            get { return CurrentDataset != null; }
+        }
+
         private FtMap Map
         {
             get
@@ -128,6 +135,36 @@ namespace fieldtool
             View.MouseMovedOnMap += View_MouseMovedOnMap;
             View.ShowInfo += View_ShowInfo;
             View.ShowMovebankImport += View_ShowMovebankImport;
+            View.ShowRawTagInfo += View_ShowRawTagInfo;
+            View.ShowRawAccel += View_ShowRawAccel;
+            View.ShowRawGPS += View_ShowRawGPS;
+            View.CurrentDatasetChanged += View_CurrentDatasetChanged;
+        }
+
+        private void View_CurrentDatasetChanged(object sender, CurrentDatasetChangedEventArgs e)
+        {
+            CurrentDataset = !e.CurrentTagId.HasValue ? null : Project.GetTransmitterDataset(e.CurrentTagId.Value);
+        }
+
+        private void View_ShowRawGPS(object sender, EventArgs e)
+        {
+            if (!CurrentDatasetAvailable)
+                return;
+            System.Diagnostics.Process.Start(CurrentDataset.Fileset.GetFilepathForFunction(FtFileFunction.GPSData));
+        }
+
+        private void View_ShowRawAccel(object sender, EventArgs e)
+        {
+            if (!CurrentDatasetAvailable)
+                return;
+            System.Diagnostics.Process.Start(CurrentDataset.Fileset.GetFilepathForFunction(FtFileFunction.AccelData));
+        }
+
+        private void View_ShowRawTagInfo(object sender, EventArgs e)
+        {
+            if (!CurrentDatasetAvailable)
+                return;
+            System.Diagnostics.Process.Start(CurrentDataset.Fileset.GetFilepathForFunction(FtFileFunction.TagInfo));
         }
 
         private void View_ShowMovebankImport(object sender, EventArgs e)

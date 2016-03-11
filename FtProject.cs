@@ -47,6 +47,13 @@ namespace fieldtool
             Datasets = FtTransmitterDatasetFactory.LoadFilesets(filesets);
         }
 
+        public FtTransmitterDataset GetTransmitterDataset(int tagId)
+        {
+            if (Datasets == null)
+                return null;
+            return Datasets.Find(d => d.TagId == tagId);
+        }
+
         public void Save()
         {
             FtProject.Serialize(this);

@@ -18,7 +18,7 @@ namespace SharpmapGDAL
         public static FtTransmitterDataset LoadFileset(FtFileset fileset)
         {
             FtTransmitterDataset transmitterDataset =
-                new FtTransmitterDataset(fileset.Id);
+                new FtTransmitterDataset(fileset.Id, fileset);
 
             if (!fileset.IsFunctionAvailable(FtFileFunction.TagInfo))
                 throw new Exception($"TagInfo not available for Tag {fileset.Id}. Skipping.");

@@ -271,7 +271,6 @@ C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\ja\Npgsql.resources.
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\zh-CN\Npgsql.resources.dll
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.csprojResolveAssemblyReference.cache
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmProjectProperties.resources
-C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmMain.resources
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.Properties.Resources.resources
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.csproj.GenerateResource.Cache
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\ITAW-FieldTool.exe.config
@@ -298,3 +297,4 @@ F:\fieldtool\itaw-fieldtool\bin\Debug\fieldtool.Data.pdb
 F:\fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPICodePack.pdb
 F:\fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPICodePack.Shell.pdb
 F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmInfo.resources
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmMain.resources

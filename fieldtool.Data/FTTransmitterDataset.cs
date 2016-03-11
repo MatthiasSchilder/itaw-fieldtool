@@ -10,14 +10,16 @@ namespace fieldtool
     public class FtTransmitterDataset
     {
         public int TagId { get; private set; }
+        public FtFileset Fileset { get; private set; }
 
         public FtTransmitterTagInfoData TagInfoData { get; private set; }
         public FtTransmitterAccelData   AccelData { get; private set; }
         public FtTransmitterGpsData     GPSData { get; private set; }
 
-        public FtTransmitterDataset(int id)
+        public FtTransmitterDataset(int id, FtFileset fileset)
         {
             TagId = id;
+            Fileset = fileset;
         }
 
         public void AddTagInfoData(FtTransmitterTagInfoData tagInfoData)
