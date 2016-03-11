@@ -41,6 +41,15 @@ namespace fieldtool
         }
     }
 
+    class MovebankImportedArgs : EventArgs
+    {
+        public List<FtTransmitterDataset> Datasets { get; set; }
+        public MovebankImportedArgs(List<FtTransmitterDataset> datasets)
+        {
+            Datasets = datasets;
+        }
+    }
+
     class FtProjectMainPresenter : Presenter<IFtProjectMainView>
     {
         public EventHandler<CursorCoordsChangedArgs> CursorCoordinatesChanged;
@@ -67,6 +76,16 @@ namespace fieldtool
         public void InvokeProjectStateChanged(ProjectStateArgs e)
         {
             var handler = ProjectStateChanged;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public EventHandler<MovebankImportedArgs> MovebankImported;
+        public void InvokeMovebankImported(MovebankImportedArgs e)
+        {
+            var handler = MovebankImported;
             if (handler != null)
             {
                 handler(this, e);
@@ -113,16 +132,15 @@ namespace fieldtool
 
         private void View_ShowMovebankImport(object sender, EventArgs e)
         {
-            CommonOpenFileDialog cofd = new CommonOpenFileDialog();
-            cofd.IsFolderPicker = true;
+            CommonOpenFileDialog movebankOpenFileDialog = new CommonOpenFileDialog();
+            movebankOpenFileDialog.IsFolderPicker = true;
 
-            CommonFileDialogResult dr = cofd.ShowDialog();
+            CommonFileDialogResult dr = movebankOpenFileDialog.ShowDialog();
             if (dr != CommonFileDialogResult.Ok)
                 return;
 
-            var filesets = FtTransmitterDatasetFactory.EnumerateFileSets(cofd.FileName);
-            var datasets = FtTransmitterDatasetFactory.LoadFilesets(filesets);
-
+            Project.LoadDatasets(movebankOpenFileDialog.FileName);
+            InvokeMovebankImported(new MovebankImportedArgs(Project.Datasets));
         }
 
         private void View_ShowInfo(object sender, EventArgs e)

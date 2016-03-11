@@ -46,6 +46,7 @@
     <Compile Include="FTTransmitterData.cs" />
     <Compile Include="FTTransmitterDataset.cs" />
     <Compile Include="FtTransmitterDatasetFactory.cs" />
+    <Compile Include="FTTransmitterGPSDataSeries.cs" />
     <Compile Include="FTTransmitterGPSData.cs" />
     <Compile Include="FTTransmitterTagInfoData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnChooseDefaultPath = new System.Windows.Forms.Button();
+            this.tbDefaultLookupPath = new System.Windows.Forms.TextBox();
             this.lblProjName = new System.Windows.Forms.Label();
             this.lblProjPath = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,9 +56,6 @@
             this.btnDeleteRaster = new System.Windows.Forms.Button();
             this.btnAddRaster = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.tbDefaultLookupPath = new System.Windows.Forms.TextBox();
-            this.btnChooseDefaultPath = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.ftProjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -92,6 +92,32 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Allgemein";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(94, 26);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Standardsuchpfad\r\n für Movebanks";
+            // 
+            // btnChooseDefaultPath
+            // 
+            this.btnChooseDefaultPath.Location = new System.Drawing.Point(335, 63);
+            this.btnChooseDefaultPath.Name = "btnChooseDefaultPath";
+            this.btnChooseDefaultPath.Size = new System.Drawing.Size(75, 23);
+            this.btnChooseDefaultPath.TabIndex = 6;
+            this.btnChooseDefaultPath.Text = "Auswählen";
+            this.btnChooseDefaultPath.UseVisualStyleBackColor = true;
+            this.btnChooseDefaultPath.Click += new System.EventHandler(this.btnChooseDefaultPath_Click);
+            // 
+            // tbDefaultLookupPath
+            // 
+            this.tbDefaultLookupPath.Location = new System.Drawing.Point(149, 65);
+            this.tbDefaultLookupPath.Name = "tbDefaultLookupPath";
+            this.tbDefaultLookupPath.Size = new System.Drawing.Size(180, 20);
+            this.tbDefaultLookupPath.TabIndex = 5;
             // 
             // lblProjName
             // 
@@ -297,32 +323,6 @@
             this.button1.Text = "Schließen";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // tbDefaultLookupPath
-            // 
-            this.tbDefaultLookupPath.Location = new System.Drawing.Point(149, 65);
-            this.tbDefaultLookupPath.Name = "tbDefaultLookupPath";
-            this.tbDefaultLookupPath.Size = new System.Drawing.Size(180, 20);
-            this.tbDefaultLookupPath.TabIndex = 5;
-            // 
-            // btnChooseDefaultPath
-            // 
-            this.btnChooseDefaultPath.Location = new System.Drawing.Point(335, 63);
-            this.btnChooseDefaultPath.Name = "btnChooseDefaultPath";
-            this.btnChooseDefaultPath.Size = new System.Drawing.Size(75, 23);
-            this.btnChooseDefaultPath.TabIndex = 6;
-            this.btnChooseDefaultPath.Text = "Auswählen";
-            this.btnChooseDefaultPath.UseVisualStyleBackColor = true;
-            this.btnChooseDefaultPath.Click += new System.EventHandler(this.btnChooseDefaultPath_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 26);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Standardsuchpfad\r\n für Movebanks";
             // 
             // ftProjectBindingSource
             // 

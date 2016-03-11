@@ -56,9 +56,6 @@ C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\obj\Debug\SharpmapGDAL.Properties.
 C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\obj\Debug\fieldtool.csproj.GenerateResource.Cache
 C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpmapGDAL.exe
 C:\Users\ma\Desktop\SharpmapGDAL\SharpmapGDAL\bin\Debug\SharpmapGDAL.pdb
-F:\fieldtool\itaw-fieldtool\bin\Debug\SharpmapGDAL.exe.config
-F:\fieldtool\itaw-fieldtool\obj\Debug\SharpmapGDAL.exe
-F:\fieldtool\itaw-fieldtool\obj\Debug\SharpmapGDAL.pdb
 F:\fieldtool\itaw-fieldtool\bin\Debug\data\images\MyNonMovingDeco - Copy.PNG
 F:\fieldtool\itaw-fieldtool\bin\Debug\data\images\MyNonMovingDeco.PNG
 F:\fieldtool\itaw-fieldtool\bin\Debug\data\testdata\GeoData\GeoTiff\airport.tif
@@ -74,8 +71,6 @@ F:\fieldtool\itaw-fieldtool\bin\Debug\data\testdata\GeoData\GeoTiff\outline.prj
 F:\fieldtool\itaw-fieldtool\bin\Debug\data\testdata\GeoData\GeoTiff\outline.shp
 F:\fieldtool\itaw-fieldtool\bin\Debug\data\testdata\GeoData\GeoTiff\outline.shx
 F:\fieldtool\itaw-fieldtool\bin\Debug\data\testdata\GeoData\GeoTiff\utm.jp2
-F:\fieldtool\itaw-fieldtool\bin\Debug\SharpmapGDAL.exe
-F:\fieldtool\itaw-fieldtool\bin\Debug\SharpmapGDAL.pdb
 F:\fieldtool\itaw-fieldtool\bin\Debug\GeoAPI.dll
 F:\fieldtool\itaw-fieldtool\bin\Debug\SharpMap.dll
 F:\fieldtool\itaw-fieldtool\bin\Debug\SharpMap.Extensions.dll
@@ -291,3 +286,15 @@ C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPI
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmInfo.resources
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\fieldtool.Data.dll
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\fieldtool.Data.pdb
+F:\fieldtool\itaw-fieldtool\bin\Debug\ITAW-FieldTool.exe.config
+F:\fieldtool\itaw-fieldtool\obj\Debug\ITAW-FieldTool.exe
+F:\fieldtool\itaw-fieldtool\obj\Debug\ITAW-FieldTool.pdb
+F:\fieldtool\itaw-fieldtool\bin\Debug\ITAW-FieldTool.exe
+F:\fieldtool\itaw-fieldtool\bin\Debug\ITAW-FieldTool.pdb
+F:\fieldtool\itaw-fieldtool\bin\Debug\fieldtool.Data.dll
+F:\fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPICodePack.dll
+F:\fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+F:\fieldtool\itaw-fieldtool\bin\Debug\fieldtool.Data.pdb
+F:\fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPICodePack.pdb
+F:\fieldtool\itaw-fieldtool\bin\Debug\Microsoft.WindowsAPICodePack.Shell.pdb
+F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmInfo.resources

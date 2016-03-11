@@ -24,17 +24,29 @@ namespace fieldtool
         {
             Presenter = new FtProjectMainPresenter(this);
             InitializeComponent();
-            AttachToPresenterEvents();
+            RegisterPresenterEvents();
             InvokeInitialize(new EventArgs());
 
             mapBox1.MouseMove += MouseMovedOnMap;
         }
 
-        private void AttachToPresenterEvents()
+        private void RegisterPresenterEvents()
         {
             Presenter.CursorCoordinatesChanged += CursorCoordinatesChanged;
             Presenter.MapChanged += MapChanged;
             Presenter.ProjectStateChanged += ProjectStateChanged;
+            Presenter.MovebankImported += MovebankImported;
+        }
+
+        private void MovebankImported(object sender, MovebankImportedArgs movebankImportedArgs)
+        {
+            PopulateDatasetListview(movebankImportedArgs.Datasets);
+        }
+
+        private void PopulateDatasetListview(List<FtTransmitterDataset> datasets)
+        {
+            foreach (var dataset in datasets)
+                lviDatasets.Items.Add(dataset.TagId.ToString());
         }
 
         private void ProjectStateChanged(object sender, ProjectStateArgs projectStateArgs)

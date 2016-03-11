@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using fieldtool.Annotations;
+using SharpmapGDAL;
 
 namespace fieldtool
 {
@@ -38,6 +39,12 @@ namespace fieldtool
             ProjectName = Path.GetFileNameWithoutExtension(filepath);
             ProjectFilePath = filepath;
             ExportToClipboard = false;
+        }
+
+        public void LoadDatasets(string filepath)
+        {
+            var filesets = FtFileset.EnumerateFileSets(filepath);
+            Datasets = FtTransmitterDatasetFactory.LoadFilesets(filesets);
         }
 
         public void Save()

@@ -9,7 +9,7 @@ namespace fieldtool
 {
     public class FtTransmitterDataset
     {
-        public int DatasetId { get; private set; }
+        public int TagId { get; private set; }
 
         public FtTransmitterTagInfoData TagInfoData { get; private set; }
         public FtTransmitterAccelData   AccelData { get; private set; }
@@ -17,7 +17,7 @@ namespace fieldtool
 
         public FtTransmitterDataset(int id)
         {
-            DatasetId = id;
+            TagId = id;
         }
 
         public void AddTagInfoData(FtTransmitterTagInfoData tagInfoData)

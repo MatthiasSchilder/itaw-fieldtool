@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,5 +44,52 @@ namespace SharpmapGDAL
 
             return this[function];
         }
+
+        public static List<FtFileset> EnumerateFileSets(string directoryPath)
+        {
+            var files = Directory.EnumerateFiles(directoryPath);
+            var dict = new Dictionary<int, FtFileset>();
+
+            foreach (var fileFullpath in files)
+            {
+                var fileName = Path.GetFileName(fileFullpath);
+                string id = GetTagId(fileName);
+                var fileFunction = GetFunction(fileName);
+
+                int numid = int.Parse(id);
+                if (dict.ContainsKey(numid))
+                {
+                    var fs = dict[numid];
+                    if (fs.IsFunctionAvailable(fileFunction))
+                        Debug.Assert(false);
+                    fs.AddFile(fileFunction, fileFullpath);
+                }
+                else
+                {
+                    var fileset = new FtFileset(numid);
+                    if (fileset.IsFunctionAvailable(fileFunction))
+                        Debug.Assert(false);
+                    fileset.AddFile(fileFunction, fileFullpath);
+                    dict.Add(numid, fileset);
+                }
+            }
+
+            return dict.Values.ToList();
+        }
+
+        private static String GetTagId(String filename)
+        {
+            return filename.Where(c => Char.IsDigit(c)).Aggregate("", (current, c) => current + c.ToString());
+        }
+
+        private static FtFileFunction GetFunction(String name)
+        {
+            if (name.StartsWith("info"))
+                return FtFileFunction.TagInfo;
+            if (Path.GetFileNameWithoutExtension(name).EndsWith("acc"))
+                return FtFileFunction.AccelData;
+            return FtFileFunction.GPSData;
+        }
+
     }
 }
