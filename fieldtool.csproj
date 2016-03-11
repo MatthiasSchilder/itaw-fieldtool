@@ -636,12 +636,6 @@
     </AvailableItemName>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\fieldtool.Data\fieldtool.Data.csproj">
-      <Project>{61fcef23-c5e8-4e24-9002-63d87bfdacdd}</Project>
-      <Name>fieldtool.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5.2 %28x86 und x64%29</ProductName>
@@ -652,6 +646,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="fieldtool.Data\fieldtool.Data.csproj">
+      <Project>{61fcef23-c5e8-4e24-9002-63d87bfdacdd}</Project>
+      <Name>fieldtool.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Target Name="AfterBuild">
     <Copy DestinationFolder="$(OutputPath)" SourceFiles="@(RootContent)" SkipUnchangedFiles="true" />

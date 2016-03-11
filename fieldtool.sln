@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieldtool", "fieldtool.csproj", "{69698469-7C2B-4E2A-8C0C-7AC30A9505C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieldtool.Data", "..\fieldtool.Data\fieldtool.Data.csproj", "{61FCEF23-C5E8-4E24-9002-63D87BFDACDD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieldtool.Data", "fieldtool.Data\fieldtool.Data.csproj", "{61FCEF23-C5E8-4E24-9002-63D87BFDACDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

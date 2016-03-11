@@ -1,0 +1,5 @@
+C:\Users\ma\Desktop\itaw-fieldtool\fieldtool.Data\bin\Debug\fieldtool.Data.dll
+C:\Users\ma\Desktop\itaw-fieldtool\fieldtool.Data\bin\Debug\fieldtool.Data.pdb
+C:\Users\ma\Desktop\itaw-fieldtool\fieldtool.Data\obj\Debug\fieldtool.Data.dll
+C:\Users\ma\Desktop\itaw-fieldtool\fieldtool.Data\obj\Debug\fieldtool.Data.pdb
+C:\Users\ma\Desktop\itaw-fieldtool\fieldtool.Data\obj\Debug\fieldtool.Data.csprojResolveAssemblyReference.cache
