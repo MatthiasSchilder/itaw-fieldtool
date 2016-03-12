@@ -41,5 +41,27 @@ namespace fieldtool
             }
         }
 
+        public DateTime GetFirstBurstTimestamp()
+        {
+            return AccelerationSeries.Min(burst => burst.StartTimestamp);
+        }
+
+        public DateTime GetLastBurstTimestamp()
+        {
+            return AccelerationSeries.Max(burst => burst.StartTimestamp);
+        }
+
+        public DateTime GetFirstBurstDate()
+        {
+            var res = GetFirstBurstTimestamp();
+            return new DateTime(res.Year, res.Month, res.Day, 0, 0, 0);
+        }
+
+        public DateTime GetLastBurstDate()
+        {
+            var res = GetLastBurstTimestamp();
+            return new DateTime(res.Year, res.Month, res.Day, 23, 59, 59);
+        }
+
     }
 }

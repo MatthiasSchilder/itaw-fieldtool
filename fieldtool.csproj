@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -88,11 +88,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccelBurstActivityCalculator.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="AccelVisualizer.cs" />
+    <Compile Include="FrmBurstActivityVisu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FrmBurstActivityVisu.Designer.cs">
+      <DependentUpon>FrmBurstActivityVisu.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmInfo.cs">
       <SubType>Form</SubType>
@@ -199,8 +200,8 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FtMap.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FrmBurstActivityVisu.resx">
+      <DependentUpon>FrmBurstActivityVisu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInfo.resx">
       <DependentUpon>FrmInfo.cs</DependentUpon>
@@ -665,6 +666,10 @@
     <ProjectReference Include="fieldtool.Data\fieldtool.Data.csproj">
       <Project>{61fcef23-c5e8-4e24-9002-63d87bfdacdd}</Project>
       <Name>fieldtool.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="fieldtool.FrameworkExt\fieldtool.FrameworkExt\fieldtool.FrameworkExt.csproj">
+      <Project>{83d95194-4aa0-46b0-832d-4cf9d3ea5a28}</Project>
+      <Name>fieldtool.FrameworkExt</Name>
     </ProjectReference>
   </ItemGroup>
   <Target Name="AfterBuild">

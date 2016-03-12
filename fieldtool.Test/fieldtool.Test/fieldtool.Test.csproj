@@ -50,6 +50,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FtTransmitterAccelDataTest.cs" />
+    <Compile Include="FtTimeSpanTest.cs" />
+    <Compile Include="DateTimeExtTest.cs" />
+    <Compile Include="AccelBurstActivityCalcTest.cs" />
     <Compile Include="FtTransmitterGpsDataSeriesTest.cs" />
     <Compile Include="FtTransmitterAccelDataSeriesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +66,10 @@
     <ProjectReference Include="..\..\fieldtool.Data\fieldtool.Data.csproj">
       <Project>{61fcef23-c5e8-4e24-9002-63d87bfdacdd}</Project>
       <Name>fieldtool.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\fieldtool.FrameworkExt\fieldtool.FrameworkExt\fieldtool.FrameworkExt.csproj">
+      <Project>{83d95194-4aa0-46b0-832d-4cf9d3ea5a28}</Project>
+      <Name>fieldtool.FrameworkExt</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

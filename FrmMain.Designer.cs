@@ -72,11 +72,14 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // mapBox1
@@ -213,7 +216,7 @@
             // movebankLadenToolStripMenuItem
             // 
             this.movebankLadenToolStripMenuItem.Name = "movebankLadenToolStripMenuItem";
-            this.movebankLadenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.movebankLadenToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.movebankLadenToolStripMenuItem.Text = "Movebank";
             this.movebankLadenToolStripMenuItem.Click += new System.EventHandler(this.movebankLadenToolStripMenuItem_Click);
             // 
@@ -466,6 +469,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.trackBar1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -483,6 +487,14 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(224, 36);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(502, 45);
+            this.trackBar1.TabIndex = 0;
+            
             // 
             // FrmMain
             // 
@@ -505,6 +517,9 @@
             this.toolStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -555,6 +570,7 @@
         private System.Windows.Forms.ToolStripMenuItem tagInfoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem beschleunigungToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gPSToolStripMenuItem;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 

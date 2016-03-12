@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace fieldtool
 {
-    public partial class Form1 : Form
+    public partial class FrmBurstActivityVisu : Form
     {
-        public Form1(Bitmap bmp)
+        public FrmBurstActivityVisu(int tagId, Image bmp)
         {
-            
             InitializeComponent();
+            this.Text = String.Format(this.Text, tagId);
             pictureBox1.Image = bmp;
         }
     }

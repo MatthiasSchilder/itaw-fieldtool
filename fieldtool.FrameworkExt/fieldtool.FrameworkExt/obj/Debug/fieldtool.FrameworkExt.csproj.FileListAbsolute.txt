@@ -1,0 +1,7 @@
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\bin\Debug\fieldtool.FrameworkExt.dll
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\bin\Debug\fieldtool.FrameworkExt.pdb
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\bin\Debug\fieldtool.Data.dll
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\bin\Debug\fieldtool.Data.pdb
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\obj\Debug\fieldtool.FrameworkExt.csprojResolveAssemblyReference.cache
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\obj\Debug\fieldtool.FrameworkExt.dll
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\obj\Debug\fieldtool.FrameworkExt.pdb

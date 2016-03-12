@@ -108,8 +108,12 @@ namespace fieldtool.Test
             Assert.AreEqual(expectedSpeedOverGroundMissing, SeriesMissingData.SpeedOverGround);
         }
 
-
-
+        [TestMethod]
+        public void TestIsValid()
+        {
+            Assert.IsTrue(SeriesVollstData.IsValid());
+            Assert.IsFalse(SeriesMissingData.IsValid());
+        }
 
 
     }

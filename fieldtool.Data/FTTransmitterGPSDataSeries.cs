@@ -29,6 +29,12 @@ namespace fieldtool
             ProcessColumns(columns);
         }
 
+
+        public bool IsValid()
+        {
+            return Longitude.HasValue && Latitude.HasValue;
+        }
+
         private string[] SeperateColumns(String line)
         {
             return line.Split(',');
