@@ -30,7 +30,7 @@ namespace fieldtool
         private void ProcessColumns(string[] columns)
         {
             StartTimestamp = DateTime.Parse(columns[2]);
-            AccelerationSamplingFrequency = double.Parse(columns[3]);
+            AccelerationSamplingFrequency = FtHelper.DoubleParse(columns[3]);
             AccelerationAxes = columns[4];
             AccelerationRawValues = ProcessRawAccelValues(columns[5]);
         }
