@@ -119,3 +119,4 @@ C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\obj\Debug\fieldtool.Test.pdb
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.FrameworkExt.dll
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.FrameworkExt.pdb
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
