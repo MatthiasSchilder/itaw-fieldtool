@@ -42,6 +42,7 @@ namespace fieldtool.View
         private FtTransmitterDataset _dataset;
         public FrmGraph(FtTransmitterDataset dataset)
         {
+            this.Text = String.Format("Graphdarstellung für Tag-ID {0}", _dataset.TagId);
             InitializeComponent();
             _dataset = dataset;
             PopulateComboBox();

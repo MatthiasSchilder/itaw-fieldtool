@@ -146,6 +146,8 @@ namespace fieldtool
 
         private void View_ShowTagGraphs(object sender, EventArgs e)
         {
+            if (!CurrentDatasetAvailable)
+                return;
             FrmGraph frm = new FrmGraph(CurrentDataset);
             FtFormFactory.Show(frm);
         }
