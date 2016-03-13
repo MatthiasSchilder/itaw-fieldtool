@@ -301,3 +301,4 @@ C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmMain.re
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\fieldtool.FrameworkExt.dll
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\fieldtool.FrameworkExt.pdb
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmBurstActivityVisu.resources
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.View.FrmGraph.resources

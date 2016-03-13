@@ -330,6 +330,16 @@ namespace fieldtool
             }
         }
 
+        public event EventHandler ShowTagGraphs;
+        public void InvokeShowTagGraphs(EventArgs e)
+        {
+            EventHandler handler = ShowTagGraphs;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
         public event EventHandler<CurrentDatasetChangedEventArgs> CurrentDatasetChanged;
         public void InvokeCurrentDatasetChanged(CurrentDatasetChangedEventArgs e)
         {
@@ -407,6 +417,11 @@ namespace fieldtool
         private void aktivitätsdiagrammToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InvokeShowActivityDiagram(new EventArgs());
+        }
+
+        private void graphToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeShowTagGraphs(new EventArgs());
         }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs

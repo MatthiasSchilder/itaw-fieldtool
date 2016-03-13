@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using fieldtool.View;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using SharpmapGDAL;
 
@@ -140,6 +141,13 @@ namespace fieldtool
             View.ShowRawGPS += View_ShowRawGPS;
             View.CurrentDatasetChanged += View_CurrentDatasetChanged;
             View.ShowActivityDiagram += View_ShowActivityDiagram;
+            View.ShowTagGraphs += View_ShowTagGraphs;
+        }
+
+        private void View_ShowTagGraphs(object sender, EventArgs e)
+        {
+            FrmGraph frm = new FrmGraph(CurrentDataset);
+            FtFormFactory.Show(frm);
         }
 
         private void View_ShowActivityDiagram(object sender, EventArgs e)
