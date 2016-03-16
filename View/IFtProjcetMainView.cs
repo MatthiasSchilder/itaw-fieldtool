@@ -9,6 +9,7 @@ namespace fieldtool
     public interface IFtProjectMainView : IView
     {
         event EventHandler OpenProject;
+        event EventHandler<MRUProjectOpenEventArgs> OpenMRUProject;
         event EventHandler SaveProject;
         event EventHandler CloseProject;
         event EventHandler NewProject;

@@ -38,7 +38,8 @@
             this.schließenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.eigenschaftenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.spacerInsertMRUAfter = new System.Windows.Forms.ToolStripSeparator();
+            this.spacerInsertMRUBefore = new System.Windows.Forms.ToolStripSeparator();
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bearbeitenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.einstellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +47,7 @@
             this.movebankLadenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aktivitätsdiagrammToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.graphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rohdatenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tagInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beschleunigungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,7 +75,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.graphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -128,11 +129,13 @@
             this.schließenToolStripMenuItem,
             this.toolStripSeparator1,
             this.eigenschaftenToolStripMenuItem,
-            this.toolStripSeparator2,
+            this.spacerInsertMRUAfter,
+            this.spacerInsertMRUBefore,
             this.beendenToolStripMenuItem});
             this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
             this.dateiToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.dateiToolStripMenuItem.Text = "Projekt";
+            this.dateiToolStripMenuItem.Click += new System.EventHandler(this.dateiToolStripMenuItem_Click);
             // 
             // neuToolStripMenuItem
             // 
@@ -178,10 +181,15 @@
             this.eigenschaftenToolStripMenuItem.Text = "Eigenschaften";
             this.eigenschaftenToolStripMenuItem.Click += new System.EventHandler(this.eigenschaftenToolStripMenuItem_Click);
             // 
-            // toolStripSeparator2
+            // spacerInsertMRUAfter
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(185, 6);
+            this.spacerInsertMRUAfter.Name = "spacerInsertMRUAfter";
+            this.spacerInsertMRUAfter.Size = new System.Drawing.Size(185, 6);
+            // 
+            // spacerInsertMRUBefore
+            // 
+            this.spacerInsertMRUBefore.Name = "spacerInsertMRUBefore";
+            this.spacerInsertMRUBefore.Size = new System.Drawing.Size(185, 6);
             // 
             // beendenToolStripMenuItem
             // 
@@ -237,6 +245,13 @@
             this.aktivitätsdiagrammToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.aktivitätsdiagrammToolStripMenuItem.Text = "Aktivitätsdiagramm";
             this.aktivitätsdiagrammToolStripMenuItem.Click += new System.EventHandler(this.aktivitätsdiagrammToolStripMenuItem_Click);
+            // 
+            // graphToolStripMenuItem
+            // 
+            this.graphToolStripMenuItem.Name = "graphToolStripMenuItem";
+            this.graphToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.graphToolStripMenuItem.Text = "Graph";
+            this.graphToolStripMenuItem.Click += new System.EventHandler(this.graphToolStripMenuItem_Click);
             // 
             // rohdatenToolStripMenuItem
             // 
@@ -497,13 +512,6 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // graphToolStripMenuItem
-            // 
-            this.graphToolStripMenuItem.Name = "graphToolStripMenuItem";
-            this.graphToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.graphToolStripMenuItem.Text = "Graph";
-            this.graphToolStripMenuItem.Click += new System.EventHandler(this.graphToolStripMenuItem_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -553,7 +561,7 @@
         private System.Windows.Forms.ToolStripMenuItem schließenToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem eigenschaftenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator spacerInsertMRUAfter;
         private System.Windows.Forms.ToolStripMenuItem beendenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem movebankLadenToolStripMenuItem;
@@ -580,6 +588,7 @@
         private System.Windows.Forms.ToolStripMenuItem gPSToolStripMenuItem;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.ToolStripMenuItem graphToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator spacerInsertMRUBefore;
     }
 }
 

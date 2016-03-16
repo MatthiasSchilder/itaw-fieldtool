@@ -17,17 +17,104 @@ namespace fieldtool
     {
         private FtProjectMainPresenter Presenter { get; set; }
 
-        private const String WindowTitleNoProject = "itaw Fieldtool vX.XX";
-        private const String WindowTitleProject = "itaw Fieldtool vX.XX - {0}";
+        private const String WindowTitleNoProject = "itaw Fieldtool v{0}";
+        private const String WindowTitleProject = "itaw Fieldtool v{0} - {1}";
 
         public FrmMain()
         {
+            
             Presenter = new FtProjectMainPresenter(this);
             InitializeComponent();
             RegisterPresenterEvents();
             InvokeInitialize(new EventArgs());
+            SetWindowTitle(false, null);
 
             mapBox1.MouseMove += MouseMovedOnMap;
+            AddRecentlyUsedProjects();
+        }
+
+        private void AddRecentlyUsedProjects()
+        {
+            var begin = GetStartIdxMRUList();
+            RemoveMRUEntries(dateiToolStripMenuItem.DropDownItems, begin);
+
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.MRUFile1))
+                InsertMenuEntry(dateiToolStripMenuItem.DropDownItems, ++begin, Properties.Settings.Default.MRUFile1);
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.MRUFile2))
+                InsertMenuEntry(dateiToolStripMenuItem.DropDownItems, ++begin, Properties.Settings.Default.MRUFile2);
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.MRUFile3))
+                InsertMenuEntry(dateiToolStripMenuItem.DropDownItems, ++begin, Properties.Settings.Default.MRUFile3);
+
+        }
+
+        private int GetStartIdxMRUList()
+        {
+            int i = 0;
+            foreach (ToolStripItem item in dateiToolStripMenuItem.DropDownItems)
+                if (item.Name != "spacerInsertMRUAfter")
+                    i++;
+                else
+                    break;
+            return i;
+        }
+
+        private void RemoveMRUEntries(ToolStripItemCollection collection, int beginIdx)
+        {
+            List<ToolStripItem> mruMenuItems = new List<ToolStripItem>();
+            for (int i = beginIdx + 1; i < collection.Count; i++)
+            {
+                var item = collection[i];
+                if (item is ToolStripSeparator)
+                {
+                    break;
+                }
+                mruMenuItems.Add(item);                    
+            }
+            foreach(var mruMenuItem in mruMenuItems)
+                collection.Remove(mruMenuItem);
+        }
+
+        private void InsertMenuEntry(ToolStripItemCollection collection, int idx, string content)
+        {
+            var menuItem = new ToolStripMenuItem(content);
+            menuItem.Click += MRUMenuItemClick;
+            menuItem.Tag = content;
+            collection.Insert(idx, menuItem);
+        }
+
+        private void MRUMenuItemClick(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem) sender;
+            InvokeMRUOpenProject(new MRUProjectOpenEventArgs((String) item.Tag));
+        }
+
+        private void AddMRUItem(string projectfilePath)
+        {
+            List<String> currentMRUEntries = new List<string>()
+            {
+                Properties.Settings.Default.MRUFile1,
+                Properties.Settings.Default.MRUFile2,
+                Properties.Settings.Default.MRUFile3
+            };
+
+            if (currentMRUEntries.Contains(projectfilePath))
+            {
+                var idx = currentMRUEntries.IndexOf(projectfilePath);
+                var item = currentMRUEntries[idx];
+                currentMRUEntries.RemoveAt(idx);
+                currentMRUEntries.Insert(0, item);
+            }
+            else // Project taucht noch nicht in der MRU-List auf.
+            {
+                currentMRUEntries[2] = currentMRUEntries[1];
+                currentMRUEntries[1] = currentMRUEntries[0];
+                currentMRUEntries[0] = projectfilePath;
+            }
+            Properties.Settings.Default.MRUFile1 = currentMRUEntries[0];
+            Properties.Settings.Default.MRUFile2 = currentMRUEntries[1];
+            Properties.Settings.Default.MRUFile3 = currentMRUEntries[2];
+            Properties.Settings.Default.Save();
+            AddRecentlyUsedProjects();
         }
 
         private void RegisterPresenterEvents()
@@ -56,10 +143,25 @@ namespace fieldtool
         private void ProjectStateChanged(object sender, ProjectStateArgs projectStateArgs)
         {
             if (projectStateArgs.ProjektGeladen)
-                this.Text = String.Format(WindowTitleProject, projectStateArgs.Name);
+            {
+                SetWindowTitle(true, projectStateArgs.FullFilePath);
+                AddMRUItem(projectStateArgs.FullFilePath);
+            }
             else
             {
-                this.Text = WindowTitleNoProject;
+                SetWindowTitle(false, null);
+            }
+        }
+
+        private void SetWindowTitle(bool projektGeladen, string projektName)
+        {
+            if (projektGeladen)
+            {
+                this.Text = String.Format(WindowTitleProject, Application.ProductVersion, projektName);
+            }
+            else
+            {
+                this.Text = String.Format(WindowTitleNoProject, Application.ProductVersion);
             }
         }
 
@@ -210,6 +312,16 @@ namespace fieldtool
         public void InvokeOpenProject(EventArgs e)
         {
             EventHandler handler = OpenProject;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public event EventHandler<MRUProjectOpenEventArgs> OpenMRUProject;
+        public void InvokeMRUOpenProject(MRUProjectOpenEventArgs e)
+        {
+            EventHandler<MRUProjectOpenEventArgs> handler = OpenMRUProject;
             if (handler != null)
             {
                 handler(this, e);
@@ -423,6 +535,11 @@ namespace fieldtool
         {
             InvokeShowTagGraphs(new EventArgs());
         }
+
+        private void dateiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs
     {
@@ -430,6 +547,15 @@ namespace fieldtool
         public CurrentDatasetChangedEventArgs(int? currentTagId)
         {
             CurrentTagId = currentTagId;
+        }
+    }
+
+    public class MRUProjectOpenEventArgs : EventArgs
+    {
+        public String FullFilePath { get; private set; }
+        public MRUProjectOpenEventArgs(string fullFilePath)
+        {
+            FullFilePath = fullFilePath;
         }
     }
 }

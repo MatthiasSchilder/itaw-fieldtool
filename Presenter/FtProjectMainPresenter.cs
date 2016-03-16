@@ -36,8 +36,10 @@ namespace fieldtool
     {
         public bool ProjektGeladen { get; private set; }
         public String Name { get; private set; }
-        public ProjectStateArgs(String projektName, bool projektGeladen)
+        public String FullFilePath { get; private set; }
+        public ProjectStateArgs(String fullFilepath, String projektName, bool projektGeladen)
         {
+            FullFilePath = fullFilepath;
             ProjektGeladen = projektGeladen;
             Name = projektName;
         }
@@ -129,6 +131,7 @@ namespace fieldtool
             base.OnViewInitialize(sender, e);
 
             View.OpenProject += View_OpenProject;
+            View.OpenMRUProject += View_OpenMRUProject;
             View.SaveProject += View_SaveProject;
             View.CloseProject += View_CloseProject;
             View.NewProject += View_NewProject;
@@ -142,6 +145,16 @@ namespace fieldtool
             View.CurrentDatasetChanged += View_CurrentDatasetChanged;
             View.ShowActivityDiagram += View_ShowActivityDiagram;
             View.ShowTagGraphs += View_ShowTagGraphs;
+        }
+
+        private void View_OpenMRUProject(object sender, MRUProjectOpenEventArgs e)
+        {
+            if (IsProjectLoaded())
+            {
+                MessageBox.Show("Bitte schließen Sie zunächst das geöffnete Projekt.");
+                return;
+            }
+            OpenProject(e.FullFilePath);
         }
 
         private void View_ShowTagGraphs(object sender, EventArgs e)
@@ -247,7 +260,8 @@ namespace fieldtool
                 return;
 
             Project = new FtProject(dialog.FileName);
-            InvokeProjectStateChanged(new ProjectStateArgs(Project.ProjectName, true));
+            Project.Save();
+            InvokeProjectStateChanged(new ProjectStateArgs(Project.ProjectFilePath, Project.ProjectName, true));
         }
 
         private void View_CloseProject(object sender, EventArgs e)
@@ -266,7 +280,7 @@ namespace fieldtool
             }
 
             InvokeMapChanged(new MapChangedArgs(null));
-            InvokeProjectStateChanged(new ProjectStateArgs(null, false));
+            InvokeProjectStateChanged(new ProjectStateArgs(null, null, false));
         }
 
         private void View_SaveProject(object sender, EventArgs e)
@@ -293,10 +307,15 @@ namespace fieldtool
             if (dr != DialogResult.OK)
                 return;
 
-            Project = FtProject.Deserialize(dialog.FileName);
+            OpenProject(dialog.FileName);
+        }
+
+        private void OpenProject(String fullFilePath)
+        {
+            Project = FtProject.Deserialize(fullFilePath);
 
             InvokeMapChanged(new MapChangedArgs(Map));
-            InvokeProjectStateChanged(new ProjectStateArgs(Project.ProjectName, true));
+            InvokeProjectStateChanged(new ProjectStateArgs(Project.ProjectFilePath, Project.ProjectName, true));
         }
 
         public bool IsProjectLoaded()

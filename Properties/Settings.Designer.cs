@@ -22,5 +22,41 @@ namespace fieldtool.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MRUFile1 {
+            get {
+                return ((string)(this["MRUFile1"]));
+            }
+            set {
+                this["MRUFile1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MRUFile2 {
+            get {
+                return ((string)(this["MRUFile2"]));
+            }
+            set {
+                this["MRUFile2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MRUFile3 {
+            get {
+                return ((string)(this["MRUFile3"]));
+            }
+            set {
+                this["MRUFile3"] = value;
+            }
+        }
     }
 }
