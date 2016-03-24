@@ -17,11 +17,57 @@ namespace fieldtool
 {
     public class FtMap : SharpMap.Map
     {
+        private FtProject _project;
         public FtMap(FtProject project) : base()
         {
+            _project = project;
             this.BackColor = System.Drawing.Color.White;
             Init(project);
+            project.DataChangedEventHandler += DataChangedEventHandler;
         }
+
+        private void DataChangedEventHandler(object sender, EventArgs eventArgs)
+        {
+            foreach (var datasets in _project.Datasets.Where(d => d.Active))
+            {
+                var geometryProvider = new GeometryProvider(GpsDataToCoordinates(datasets.GPSData));
+                //var symbolizer = new CharacterPointSymbolizer();
+                //{
+                //    Font = new Font("Arial", 24, FontStyle.Bold, GraphicsUnit.Pixel),
+                //    CharacterIndex = 65,
+                //    Foreground = new SolidBrush(Color.Violet),
+                //    Halo = 2,
+                //    HaloBrush = new SolidBrush(Color.Silver)
+                //};
+                var symbolizer = new NumericPointSymbolizer();
+
+
+
+                this.Layers.Add(new PuntalVectorLayer(datasets.TagId.ToString(), geometryProvider, symbolizer));
+            }
+            
+        }
+
+        private IEnumerable<IPoint> GpsDataToCoordinates(IEnumerable<FtTransmitterGpsDataSeries> gpsSeries)
+        {
+            foreach (var gps in gpsSeries)
+            {
+                if (gps.IsValid())
+                {
+                    yield return this.Factory.CreatePoint(new Coordinate(gps.Longitude.Value, gps.Latitude.Value));
+                }
+            }
+
+        }
+
+
+
+        //public void AddBLALayer()
+        //{
+        //    this.Layers.Add(new PuntalVectorLayer("Puntal with CharacterPointSymbolizer",
+        //            new GeometryProvider(this.Factory.CreatePoint(new Coordinate(0, 0))),
+                    
+        //}
 
         private  void Init(FtProject project)
         {
@@ -73,20 +119,6 @@ namespace fieldtool
         {
             var deco = new MyNonMovingDeco();
             this.Decorations.Add(deco);
-        }
-
-        public void AddBLALayer()
-        {
-            this.Layers.Add(new PuntalVectorLayer("Puntal with CharacterPointSymbolizer",
-                    new GeometryProvider(this.Factory.CreatePoint(new Coordinate(0,0))),
-                    new CharacterPointSymbolizer
-                    {
-                        Font = new Font("Arial", 120, FontStyle.Bold, GraphicsUnit.Pixel),
-                        CharacterIndex = 65,
-                        Foreground = new SolidBrush(Color.Violet),
-                        Halo = 2,
-                        HaloBrush = new SolidBrush(Color.Silver)
-                    }));
         }
 
         public void AddTiffLayer(string name, string path)

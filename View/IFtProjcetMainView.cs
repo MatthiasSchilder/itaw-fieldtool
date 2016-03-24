@@ -27,5 +27,6 @@ namespace fieldtool
 
         event EventHandler<CurrentDatasetChangedEventArgs> CurrentDatasetChanged;
         event SharpMap.Forms.MapBox.MouseEventHandler MouseMovedOnMap;
+        event EventHandler<DatasetCheckedEventArgs> DatasetCheckedChanged;
     }
 }

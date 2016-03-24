@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace fieldtool
 {
-    public class FtTransmitterGpsData : FtTransmitterData
+    public class FtTransmitterGpsData : FtTransmitterData, IEnumerable<FtTransmitterGpsDataSeries>
     {
         public List<FtTransmitterGpsDataSeries> GpsSeries = new
             List<FtTransmitterGpsDataSeries>();
@@ -29,6 +30,16 @@ namespace fieldtool
                 }
 
             }
+        }
+
+        public IEnumerator<FtTransmitterGpsDataSeries> GetEnumerator()
+        {
+            return GpsSeries.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

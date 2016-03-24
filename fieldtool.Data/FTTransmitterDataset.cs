@@ -12,6 +12,8 @@ namespace fieldtool
         public int TagId { get; private set; }
         public FtFileset Fileset { get; private set; }
 
+        public bool Active { get; set; }
+
         public FtTransmitterTagInfoData TagInfoData { get; private set; }
         public FtTransmitterAccelData   AccelData { get; private set; }
         public FtTransmitterGpsData     GPSData { get; private set; }

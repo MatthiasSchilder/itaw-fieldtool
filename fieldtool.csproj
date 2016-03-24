@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="AccelBurstActivityCalculator.cs" />
     <Compile Include="AccelVisualizer.cs" />
+    <Compile Include="NumericPointSymbolizer.cs" />
     <Compile Include="View\FrmBurstActivityVisu.cs">
       <SubType>Form</SubType>
     </Compile>

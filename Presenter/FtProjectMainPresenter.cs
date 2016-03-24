@@ -145,6 +145,13 @@ namespace fieldtool
             View.CurrentDatasetChanged += View_CurrentDatasetChanged;
             View.ShowActivityDiagram += View_ShowActivityDiagram;
             View.ShowTagGraphs += View_ShowTagGraphs;
+            View.DatasetCheckedChanged += View_DatasetCheckedChanged;
+        }
+
+        private void View_DatasetCheckedChanged(object sender, DatasetCheckedEventArgs e)
+        {
+            Project.SetDatasetState(e.TagId, e.Checked);
+            //MessageBox.Show(e.TagId.ToString());
         }
 
         private void View_OpenMRUProject(object sender, MRUProjectOpenEventArgs e)
@@ -210,12 +217,18 @@ namespace fieldtool
         {
             CommonOpenFileDialog movebankOpenFileDialog = new CommonOpenFileDialog();
             movebankOpenFileDialog.IsFolderPicker = true;
+            movebankOpenFileDialog.Multiselect = false;
 
             CommonFileDialogResult dr = movebankOpenFileDialog.ShowDialog();
             if (dr != CommonFileDialogResult.Ok)
                 return;
+            Project.ProjectMovebankPath = movebankOpenFileDialog.FileName;
+            ImportMovebank();
+        }
 
-            Project.LoadDatasets(movebankOpenFileDialog.FileName);
+        private void ImportMovebank()
+        {
+            Project.LoadDatasets();
             InvokeMovebankImported(new MovebankImportedArgs(Project.Datasets));
         }
 
@@ -312,10 +325,11 @@ namespace fieldtool
 
         private void OpenProject(String fullFilePath)
         {
-            Project = FtProject.Deserialize(fullFilePath);
+            Project = FtProject.Open(fullFilePath);
 
             InvokeMapChanged(new MapChangedArgs(Map));
             InvokeProjectStateChanged(new ProjectStateArgs(Project.ProjectFilePath, Project.ProjectName, true));
+            InvokeMovebankImported(new MovebankImportedArgs(Project.Datasets));
         }
 
         public bool IsProjectLoaded()

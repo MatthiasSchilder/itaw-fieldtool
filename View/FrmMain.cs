@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -74,11 +75,17 @@ namespace fieldtool
                 collection.Remove(mruMenuItem);
         }
 
+        private bool first = true;
         private void InsertMenuEntry(ToolStripItemCollection collection, int idx, string content)
         {
             var menuItem = new ToolStripMenuItem(content);
             menuItem.Click += MRUMenuItemClick;
             menuItem.Tag = content;
+            if(first)
+            {
+                menuItem.ShortcutKeys = Keys.F4;
+                first = false;
+            }
             collection.Insert(idx, menuItem);
         }
 
@@ -132,6 +139,7 @@ namespace fieldtool
 
         private void PopulateDatasetListview(List<FtTransmitterDataset> datasets)
         {
+            lviDatasets.Items.Clear();
             foreach (var dataset in datasets)
             {
                 var listViewItem = new ListViewItem(dataset.TagId.ToString());
@@ -462,6 +470,16 @@ namespace fieldtool
             }
         }
 
+        public event EventHandler<DatasetCheckedEventArgs> DatasetCheckedChanged;
+        public void InvokeDatasetCheckedChanged(DatasetCheckedEventArgs e)
+        {
+            EventHandler<DatasetCheckedEventArgs> handler = DatasetCheckedChanged;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
 
         public event SharpMap.Forms.MapBox.MouseEventHandler MouseMovedOnMap;
 
@@ -487,14 +505,14 @@ namespace fieldtool
 
         private void TableLayoutPanel_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
-            if (e.Column == 1 && e.Row == 0)
-            {
-                var rectangle = e.CellBounds;
-                rectangle.Inflate(-2, -2);
+            //if ((e.Column == 1 && e.Row == 0) || e.Column == 1 && e.Row == 1)
+            //{
+            //    var rectangle = e.CellBounds;
+            //    rectangle.Inflate(-2, -2);
 
-                ControlPaint.DrawBorder(e.Graphics, rectangle, SystemColors.ControlDark, ButtonBorderStyle.Solid); // 3D border
+            //    ControlPaint.DrawBorder(e.Graphics, rectangle, SystemColors.ControlDark, ButtonBorderStyle.Solid); // 3D border
                 
-            }
+            //}
         }
 
         private void tagInfoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -540,6 +558,12 @@ namespace fieldtool
         {
 
         }
+
+        private void lviDatasets_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            InvokeDatasetCheckedChanged(new DatasetCheckedEventArgs((int)e.Item.Tag, e.Item.Checked));
+            mapBox1.Refresh();
+        }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs
     {
@@ -556,6 +580,17 @@ namespace fieldtool
         public MRUProjectOpenEventArgs(string fullFilePath)
         {
             FullFilePath = fullFilePath;
+        }
+    }
+
+    public class DatasetCheckedEventArgs : EventArgs
+    {
+        public int TagId { get; private set; }
+        public bool Checked { get; private set; }
+        public DatasetCheckedEventArgs(int id, bool check)
+        {
+            TagId = id;
+            Checked = check;
         }
     }
 }

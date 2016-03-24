@@ -17,12 +17,17 @@ namespace fieldtool
     public class FtProject : INotifyPropertyChanged
     {
         [XmlIgnore]
+        public EventHandler DataChangedEventHandler;
+
+        [XmlIgnore]
         public List<FtTransmitterDataset> Datasets { get; set; }
         
         public FtMapConfig MapConfig { get; set; }
 
         public String ProjectName { get; set; }
         public String ProjectFilePath { get;  set; }
+        public String ProjectMovebankPath { get; set; }
+        public bool ProjectHasMovebank { get { return ProjectMovebankPath != null; } }
 
         public bool   ExportToClipboard { get; set; }
 
@@ -41,9 +46,19 @@ namespace fieldtool
             ExportToClipboard = false;
         }
 
-        public void LoadDatasets(string filepath)
+        public void SetDatasetState(int tagId, bool checkState)
         {
-            var filesets = FtFileset.EnumerateFileSets(filepath);
+            if (!Datasets.Any())
+                return;
+
+            var dataset = Datasets.Find(d => d.TagId == tagId);
+            dataset.Active = checkState;
+            DataChangedEventHandler(this, new EventArgs());
+        }
+
+        public void LoadDatasets()
+        {
+            var filesets = FtFileset.EnumerateFileSets(ProjectMovebankPath);
             Datasets = FtTransmitterDatasetFactory.LoadFilesets(filesets);
         }
 
@@ -59,7 +74,16 @@ namespace fieldtool
             FtProject.Serialize(this);
         }
 
-        public static void Serialize(FtProject project)
+        public static FtProject Open(string filepath)
+        {
+            var projekt = Deserialize(filepath);
+            if(projekt.ProjectHasMovebank)
+                projekt.LoadDatasets();
+
+            return projekt;
+        }
+
+        private static void Serialize(FtProject project)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(FtProject));
             using (TextWriter writer = new StreamWriter(project.ProjectFilePath))
@@ -68,7 +92,7 @@ namespace fieldtool
             }
         }
 
-        public static FtProject Deserialize(string filepath)
+        private static FtProject Deserialize(string filepath)
         {
             XmlSerializer deserializer = new XmlSerializer(typeof(FtProject));
             TextReader reader = new StreamReader(filepath);
