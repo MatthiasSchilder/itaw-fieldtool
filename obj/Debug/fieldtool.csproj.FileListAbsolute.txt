@@ -302,3 +302,4 @@ C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\fieldtool.FrameworkE
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\fieldtool.FrameworkExt.pdb
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmBurstActivityVisu.resources
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.View.FrmGraph.resources
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.DateIntervalPicker.resources

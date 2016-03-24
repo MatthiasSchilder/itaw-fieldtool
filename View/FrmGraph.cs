@@ -48,6 +48,7 @@ namespace fieldtool.View
             _dataset = dataset;
             
             InitializeComponent();
+            
             this.Text = String.Format("Graphdarstellung für Tag-ID {0}", _dataset.TagId);
             PopulateComboBox();
 
@@ -88,6 +89,11 @@ namespace fieldtool.View
 
             battVoltagevsTimeSeries.XValueType = ChartValueType.Date;
             battVoltagevsTimeSeries.YValueType = ChartValueType.Int32;
+
+
+            var maxDate = _dataset.GPSData.GpsSeries.Max(series => series.StartTimestamp);
+            var minDate = _dataset.GPSData.GpsSeries.Min(series => series.StartTimestamp);
+            dateIntervalPicker1.SetDateInterval(minDate, maxDate);
 
             foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries)
             {
@@ -131,6 +137,10 @@ namespace fieldtool.View
             tempvsTimeSeries.XValueType = ChartValueType.Date;
             tempvsTimeSeries.YValueType = ChartValueType.Int32;
 
+            var maxDate = _dataset.GPSData.GpsSeries.Max(series => series.StartTimestamp);
+            var minDate = _dataset.GPSData.GpsSeries.Min(series => series.StartTimestamp);
+            dateIntervalPicker1.SetDateInterval(minDate, maxDate);
+
             foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries)
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.BatteryVoltageFix);
@@ -163,6 +173,10 @@ namespace fieldtool.View
             battVoltagevsTimeSeries.XValueType = ChartValueType.Date;
             battVoltagevsTimeSeries.YValueType = ChartValueType.Int32;
 
+            var maxDate = _dataset.GPSData.GpsSeries.Max(series => series.StartTimestamp);
+            var minDate = _dataset.GPSData.GpsSeries.Min(series => series.StartTimestamp);
+            dateIntervalPicker1.SetDateInterval(minDate, maxDate);
+
             foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries)
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.BatteryVoltageFix);
@@ -191,6 +205,10 @@ namespace fieldtool.View
 
             battVoltagevsTimeSeries.XValueType = ChartValueType.Date;
             battVoltagevsTimeSeries.YValueType = ChartValueType.Int32;
+
+            var maxDate = _dataset.GPSData.GpsSeries.Max(series => series.StartTimestamp);
+            var minDate = _dataset.GPSData.GpsSeries.Min(series => series.StartTimestamp);
+            dateIntervalPicker1.SetDateInterval(minDate, maxDate);
 
             foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries)
             {
