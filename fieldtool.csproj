@@ -96,6 +96,12 @@
   <ItemGroup>
     <Compile Include="AccelBurstActivityCalculator.cs" />
     <Compile Include="AccelVisualizer.cs" />
+    <Compile Include="DateIntervalPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DateIntervalPicker.Designer.cs">
+      <DependentUpon>DateIntervalPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="NumericPointSymbolizer.cs" />
     <Compile Include="View\FrmBurstActivityVisu.cs">
       <SubType>Form</SubType>
@@ -214,6 +220,9 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FtMap.cs" />
+    <EmbeddedResource Include="DateIntervalPicker.resx">
+      <DependentUpon>DateIntervalPicker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmBurstActivityVisu.resx">
       <DependentUpon>FrmBurstActivityVisu.cs</DependentUpon>
     </EmbeddedResource>
