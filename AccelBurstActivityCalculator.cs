@@ -65,7 +65,7 @@ namespace fieldtool
             double sumY = SumElements(accelBurst.GetYArr());
             double sumZ = SumElements(accelBurst.GetZArr());
 
-            int n = accelBurst.AccelerationRawValues.Count/3;
+            int n = accelBurst.AccelerationRawValues.Length/3;
             return (sumX + sumY + sumZ)/((n - 1)*3);
         }
 

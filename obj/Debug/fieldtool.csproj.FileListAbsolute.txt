@@ -302,3 +302,9 @@ C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\fieldtool.FrameworkE
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\fieldtool.FrameworkExt.pdb
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmBurstActivityVisu.resources
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\obj\Debug\fieldtool.View.FrmGraph.resources
+F:\fieldtool\itaw-fieldtool\bin\Debug\fieldtool.FrameworkExt.dll
+F:\fieldtool\itaw-fieldtool\bin\Debug\fieldtool.FrameworkExt.pdb
+F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmBurstActivityVisu.resources
+F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.View.FrmGraph.resources
+F:\fieldtool\itaw-fieldtool\bin\Debug\DotSpatial.Projections.dll
+F:\fieldtool\itaw-fieldtool\bin\Debug\DotSpatial.Projections.xml

@@ -54,7 +54,7 @@ namespace fieldtool
             {
                 if (gps.IsValid())
                 {
-                    yield return this.Factory.CreatePoint(new Coordinate(gps.Longitude.Value, gps.Latitude.Value));
+                    yield return this.Factory.CreatePoint(new Coordinate(gps.Rechtswert.Value, gps.Hochwert.Value));
                 }
             }
 

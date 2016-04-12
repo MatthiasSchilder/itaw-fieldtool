@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,41 +16,52 @@ namespace fieldtool
         public DateTime StartTimestamp { get; private set; }
         public double   AccelerationSamplingFrequency { get; private set; }
         public String   AccelerationAxes { get; private set; }
-        public List<int> AccelerationRawValues { get; private set; }
+       
+        public int[] AccelerationRawValues { get; private set; }
+
+        public bool IsValid { get; private set; }
 
         public FtTransmitterAccelDataSeries(string line)
         {
-            string[] columns = SeperateColumns(line);
+            string[] columns = line.Split(',');
             ProcessColumns(columns);
-        }
-
-        private string[] SeperateColumns(String line)
-        {
-            return line.Split(',');
         }
 
         private void ProcessColumns(string[] columns)
         {
+            if (columns.Count() != 6)
+                return;
             StartTimestamp = DateTime.Parse(columns[2]);
-            AccelerationSamplingFrequency = FtHelper.DoubleParse(columns[3]);
+            AccelerationSamplingFrequency = double.Parse(columns[3], NumStyle, CultInfo);  
             AccelerationAxes = columns[4];
-            AccelerationRawValues = ProcessRawAccelValues(columns[5]);
+
+            string[] rawValues = columns[5].Split(' ');
+            AccelerationRawValues = new int[rawValues.Count()];
+
+            int i = 0;
+            foreach (var rawValue in rawValues)
+                if (rawValue != null && rawValue != " ")
+                    AccelerationRawValues[i++] = IntParseFast(rawValue);
+
+            IsValid = true;
         }
 
-        private List<int> ProcessRawAccelValues(string rawAccelValues)
-        {
-            string[] rawValues = rawAccelValues.Split(' ');
-            List<int> result = new List<int>();
-            foreach (var rawValue in rawValues)
-                if(!String.IsNullOrEmpty(rawValue))
-                    result.Add(int.Parse(rawValue));
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int IntParseFast(string value)
+        {
+            int result = 0;
+            for (int i = 0; i < value.Length; i++)
+            {
+                result = 10 * result + (value[i] - 48);
+            }
             return result;
         }
 
+
         public int[] GetXArr()
         {
-            var rawValueCount = AccelerationRawValues.Count;
+            var rawValueCount = AccelerationRawValues.Length;
             List<int> result = new List<int>(rawValueCount);
             int idx = 0;
             while (idx < rawValueCount)
@@ -60,7 +73,7 @@ namespace fieldtool
         }
         public int[] GetYArr()
         {
-            var rawValueCount = AccelerationRawValues.Count;
+            var rawValueCount = AccelerationRawValues.Length;
             List<int> result = new List<int>(rawValueCount);
             int idx = 1;
             while (idx < rawValueCount)
@@ -73,7 +86,7 @@ namespace fieldtool
         }
         public int[] GetZArr()
         {
-            var rawValueCount = AccelerationRawValues.Count;
+            var rawValueCount = AccelerationRawValues.Length;
             List<int> result = new List<int>(rawValueCount);
             int idx = 2;
             while (idx < rawValueCount)
@@ -85,5 +98,7 @@ namespace fieldtool
             return result.ToArray();
         }
 
+        private static readonly NumberStyles NumStyle = NumberStyles.Number;
+        private static readonly CultureInfo CultInfo = CultureInfo.InvariantCulture;
     }
 }

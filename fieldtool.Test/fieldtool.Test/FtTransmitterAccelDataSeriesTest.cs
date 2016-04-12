@@ -19,7 +19,7 @@ namespace fieldtool.Test
         [TestMethod]
         public void TestRawValueCount()
         {
-            int rawValueCount = Series.AccelerationRawValues.Count;
+            int rawValueCount = Series.AccelerationRawValues.Length;
             Assert.AreEqual(rawValueCount, 78);
         }
         [TestMethod]

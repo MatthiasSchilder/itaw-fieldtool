@@ -9,15 +9,15 @@ namespace fieldtool
 {
     public class FtTransmitterAccelData : FtTransmitterData
     {
-        private List<String> _columns = new List<string>()
-        {
-            "key-bin-checksum",
-            "tag-serial-number",
-            "start-timestamp",
-            "acceleration-sampling-frequency-per-axis",
-            "acceleration-axes",
-            "accelerations-raw"
-        };
+        //private List<String> _columns = new List<string>()
+        //{
+        //    "key-bin-checksum",
+        //    "tag-serial-number",
+        //    "start-timestamp",
+        //    "acceleration-sampling-frequency-per-axis",
+        //    "acceleration-axes",
+        //    "accelerations-raw"
+        //};
 
         public List<FtTransmitterAccelDataSeries> AccelerationSeries = new 
             List<FtTransmitterAccelDataSeries>(); 
@@ -29,15 +29,9 @@ namespace fieldtool
             accelDataReader.ReadLine(); // skip first line with fileheader
             while ((line = accelDataReader.ReadLine()) != null)
             {
-                try
-                {
-                    AccelerationSeries.Add(new FtTransmitterAccelDataSeries(line));
-                }
-                catch (Exception)
-                {
-                    
-                }
-                
+                FtTransmitterAccelDataSeries series = new FtTransmitterAccelDataSeries(line);
+                if(series.IsValid)
+                    AccelerationSeries.Add(series);               
             }
         }
 

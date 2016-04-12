@@ -24,7 +24,7 @@ namespace fieldtool
                 {
                     GpsSeries.Add(new FtTransmitterGpsDataSeries(line));
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                 }

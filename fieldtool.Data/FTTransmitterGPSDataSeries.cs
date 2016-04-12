@@ -4,12 +4,18 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DotSpatial.Projections;
+using GeoAPI.CoordinateSystems;
+using GeoAPI.CoordinateSystems.Transformations;
+using GeoAPI.Geometries;
 
 namespace fieldtool
 {
     public class FtTransmitterGpsDataSeries : FtTransmitterData
     {
         public DateTime StartTimestamp { get; private set; }
+        public double? Rechtswert { get; private set; }
+        public double? Hochwert { get; private set; }
         public double? Longitude { get; private set; }
         public double? Latitude { get; private set; }
         public double? HeightAboveEllipsoid { get; private set; }
@@ -51,6 +57,16 @@ namespace fieldtool
             double latitude;
             if (FtHelper.DoubleTryParse(columns[4], out latitude))
                 Latitude = latitude;
+
+            if (Longitude.HasValue && Latitude.HasValue)
+            {
+                var reprojectedCoord =
+                    ProectionManager.ReprojectCoordinate(new Coordinate(Longitude.Value, 
+                    Latitude.Value, 
+                    HeightAboveEllipsoid ?? 0));
+                Rechtswert = reprojectedCoord.X;
+                Hochwert = reprojectedCoord.Y;
+            }
 
             double heightAboveEllipsoid;
             if (FtHelper.DoubleTryParse(columns[5], out heightAboveEllipsoid))
