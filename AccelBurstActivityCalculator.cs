@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,13 +20,13 @@ namespace fieldtool
         private DateTime StartsAt;
         private DateTime EndsAt;
 
-        private BitArray MapProcessedBursts;
+        //private BitArray MapProcessedBursts;
         public AccelBurstActivityCalculator(FtTransmitterAccelData tagAccelData, DateTime start, DateTime stop)
         {
             TagAccelData = tagAccelData;
             StartsAt = start;
             EndsAt = stop;
-            MapProcessedBursts = new BitArray(TagAccelData.AccelerationSeries.Count);
+            //MapProcessedBursts = new BitArray(TagAccelData.AccelerationSeries.Count);
         }
 
         public Dictionary<DateTime, double[]> Process()
@@ -79,23 +80,26 @@ namespace fieldtool
             return result;
         }
 
+        private int _searchStoppedAtIdx = 0;
         private List<FtTransmitterAccelDataSeries> GetRelevantAccelBursts(FtTimeSpan timeSlot)
         {
             List<FtTransmitterAccelDataSeries> result = new List<FtTransmitterAccelDataSeries>();
-            for (int i = 0; i < TagAccelData.AccelerationSeries.Count; i++)
+            for (int i = _searchStoppedAtIdx; i < TagAccelData.AccelerationSeries.Count; i++)
             {
-                if (MapProcessedBursts[i])
-                    continue;
                 var burst = TagAccelData.AccelerationSeries[i];
                 if (burst.StartTimestamp > timeSlot.EndsAt)
+                {
+                    _searchStoppedAtIdx = i-1;
                     break; // da die Accel-Bursts chronologisch in AccelerationSeries vorliegen kann hier abgebrochen werden.
+                }
 
                 if (timeSlot.ContainsDate(burst.StartTimestamp))
                 {
                     result.Add(burst);
-                    MapProcessedBursts[i] = true;
                 }            
             }
+            if(!result.Any())
+                Debug.WriteLine(String.Format("Timeslot starting at {0} no value found", timeSlot.StartsAt.ToString()));
             return result;
         }
     }

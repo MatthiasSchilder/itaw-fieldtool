@@ -14,17 +14,17 @@ namespace fieldtool.FrameworkExt
         {
             int minutesPerSegment = MinutesPerDay / numTimeslots;
             TimeSpan segmentTimeSpan = new TimeSpan(0, 0, minutesPerSegment, 0);
-
+            
             List<FtTimeSpan> segments = new List<FtTimeSpan>(numTimeslots);
 
             DateTime segmentStartsAt = date;
             for (int i = 0; i < numTimeslots; i++)
             {
-                var segmentEndsAt = segmentStartsAt + segmentTimeSpan;
-                var timespan = new FtTimeSpan(segmentStartsAt, segmentEndsAt);
+                var segmentEndsAtTicks = segmentStartsAt + segmentTimeSpan;
+                var timespan = new FtTimeSpan(segmentStartsAt, segmentEndsAtTicks);
                 segments.Add(timespan);
 
-                segmentStartsAt = segmentEndsAt;
+                segmentStartsAt = segmentEndsAtTicks;
             }
             return segments;
         }
