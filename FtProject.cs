@@ -21,21 +21,15 @@ namespace fieldtool
 
         [XmlIgnore]
         public List<FtTransmitterDataset> Datasets { get; set; }
-        
-        public FtMapConfig MapConfig { get; set; }
-
-        public String ProjectName { get; set; }
-        public String ProjectFilePath { get;  set; }
-        //public String ProjectMovebankPath { get; set; }
 
         [XmlIgnore]
         public List<FtFileset> MovebankFilesets;
 
+        public FtMapConfig MapConfig { get; set; }
+
+        public String ProjectName { get; set; }
+        public String ProjectFilePath { get;  set; }
         public List<int> TagBlacklist { get; set; }
-
-        //public bool ProjectHasMovebank => ProjectMovebankPath != null;
-
-        //public bool ExportToClipboard { get; set; }
 
         public FtProject()
         {
@@ -50,7 +44,6 @@ namespace fieldtool
 
             ProjectName = Path.GetFileNameWithoutExtension(filepath);
             ProjectFilePath = filepath;
-            //ExportToClipboard = false;
         }
 
         public void SetDatasetState(int tagId, bool checkState)
