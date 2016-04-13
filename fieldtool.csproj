@@ -109,6 +109,12 @@
     <Compile Include="View\FrmBurstActivityVisu.Designer.cs">
       <DependentUpon>FrmBurstActivityVisu.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FrmEnterTagId.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmEnterTagId.Designer.cs">
+      <DependentUpon>FrmEnterTagId.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmGraph.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmBurstActivityVisu.resx">
       <DependentUpon>FrmBurstActivityVisu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmEnterTagId.resx">
+      <DependentUpon>FrmEnterTagId.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmGraph.resx">
       <DependentUpon>FrmGraph.cs</DependentUpon>

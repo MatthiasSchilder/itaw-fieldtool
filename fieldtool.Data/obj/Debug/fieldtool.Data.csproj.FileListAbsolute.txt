@@ -38,3 +38,4 @@ F:\fieldtool\itaw-fieldtool\fieldtool.Data\bin\Debug\SharpMap.xml
 F:\fieldtool\itaw-fieldtool\fieldtool.Data\bin\Debug\Newtonsoft.Json.xml
 F:\fieldtool\itaw-fieldtool\fieldtool.Data\obj\Debug\fieldtool.Data.dll
 F:\fieldtool\itaw-fieldtool\fieldtool.Data\obj\Debug\fieldtool.Data.pdb
+F:\fieldtool\itaw-fieldtool\fieldtool.Data\obj\Debug\fieldtool.Data.csprojResolveAssemblyReference.cache

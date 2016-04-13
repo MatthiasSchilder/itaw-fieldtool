@@ -57,6 +57,11 @@
             this.btnAddRaster = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.ftProjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.lbTagBlacklist = new System.Windows.Forms.ListBox();
+            this.btnDelBlacklistEntry = new System.Windows.Forms.Button();
+            this.btnAddBlacklistEntry = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -64,6 +69,8 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -78,13 +85,8 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.btnChooseDefaultPath);
-            this.tabPage1.Controls.Add(this.tbDefaultLookupPath);
-            this.tabPage1.Controls.Add(this.lblProjName);
-            this.tabPage1.Controls.Add(this.lblProjPath);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.groupBox5);
+            this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -96,7 +98,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 65);
+            this.label3.Location = new System.Drawing.Point(23, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 26);
             this.label3.TabIndex = 7;
@@ -104,7 +106,7 @@
             // 
             // btnChooseDefaultPath
             // 
-            this.btnChooseDefaultPath.Location = new System.Drawing.Point(335, 63);
+            this.btnChooseDefaultPath.Location = new System.Drawing.Point(381, 74);
             this.btnChooseDefaultPath.Name = "btnChooseDefaultPath";
             this.btnChooseDefaultPath.Size = new System.Drawing.Size(75, 23);
             this.btnChooseDefaultPath.TabIndex = 6;
@@ -114,15 +116,15 @@
             // 
             // tbDefaultLookupPath
             // 
-            this.tbDefaultLookupPath.Location = new System.Drawing.Point(149, 65);
+            this.tbDefaultLookupPath.Location = new System.Drawing.Point(159, 76);
             this.tbDefaultLookupPath.Name = "tbDefaultLookupPath";
-            this.tbDefaultLookupPath.Size = new System.Drawing.Size(180, 20);
+            this.tbDefaultLookupPath.Size = new System.Drawing.Size(216, 20);
             this.tbDefaultLookupPath.TabIndex = 5;
             // 
             // lblProjName
             // 
             this.lblProjName.AutoSize = true;
-            this.lblProjName.Location = new System.Drawing.Point(146, 12);
+            this.lblProjName.Location = new System.Drawing.Point(156, 23);
             this.lblProjName.Name = "lblProjName";
             this.lblProjName.Size = new System.Drawing.Size(35, 13);
             this.lblProjName.TabIndex = 4;
@@ -131,7 +133,7 @@
             // lblProjPath
             // 
             this.lblProjPath.AutoSize = true;
-            this.lblProjPath.Location = new System.Drawing.Point(146, 38);
+            this.lblProjPath.Location = new System.Drawing.Point(156, 49);
             this.lblProjPath.Name = "lblProjPath";
             this.lblProjPath.Size = new System.Drawing.Size(35, 13);
             this.lblProjPath.TabIndex = 3;
@@ -140,7 +142,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 38);
+            this.label2.Location = new System.Drawing.Point(23, 49);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 13);
             this.label2.TabIndex = 1;
@@ -149,7 +151,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 12);
+            this.label1.Location = new System.Drawing.Point(23, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 0;
@@ -183,9 +185,9 @@
             this.chkScaleBarDarstellen.AutoSize = true;
             this.chkScaleBarDarstellen.Location = new System.Drawing.Point(22, 19);
             this.chkScaleBarDarstellen.Name = "chkScaleBarDarstellen";
-            this.chkScaleBarDarstellen.Size = new System.Drawing.Size(117, 17);
+            this.chkScaleBarDarstellen.Size = new System.Drawing.Size(144, 17);
             this.chkScaleBarDarstellen.TabIndex = 0;
-            this.chkScaleBarDarstellen.Text = "ScaleBar darstellen";
+            this.chkScaleBarDarstellen.Text = "Maßstabsleiste darstellen";
             this.chkScaleBarDarstellen.UseVisualStyleBackColor = true;
             this.chkScaleBarDarstellen.CheckedChanged += new System.EventHandler(this.chkScaleBarDarstellen_CheckedChanged);
             // 
@@ -328,6 +330,62 @@
             // 
             this.ftProjectBindingSource.DataSource = typeof(fieldtool.FtProject);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.btnChooseDefaultPath);
+            this.groupBox4.Controls.Add(this.lblProjPath);
+            this.groupBox4.Controls.Add(this.tbDefaultLookupPath);
+            this.groupBox4.Controls.Add(this.lblProjName);
+            this.groupBox4.Location = new System.Drawing.Point(6, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(462, 113);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Projektinformationen";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnDelBlacklistEntry);
+            this.groupBox5.Controls.Add(this.btnAddBlacklistEntry);
+            this.groupBox5.Controls.Add(this.lbTagBlacklist);
+            this.groupBox5.Location = new System.Drawing.Point(6, 125);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(462, 130);
+            this.groupBox5.TabIndex = 9;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Auszuschließende Tags beim Importvorgang";
+            // 
+            // lbTagBlacklist
+            // 
+            this.lbTagBlacklist.FormattingEnabled = true;
+            this.lbTagBlacklist.Location = new System.Drawing.Point(26, 19);
+            this.lbTagBlacklist.Name = "lbTagBlacklist";
+            this.lbTagBlacklist.Size = new System.Drawing.Size(349, 95);
+            this.lbTagBlacklist.TabIndex = 0;
+            // 
+            // btnDelBlacklistEntry
+            // 
+            this.btnDelBlacklistEntry.Location = new System.Drawing.Point(381, 48);
+            this.btnDelBlacklistEntry.Name = "btnDelBlacklistEntry";
+            this.btnDelBlacklistEntry.Size = new System.Drawing.Size(75, 23);
+            this.btnDelBlacklistEntry.TabIndex = 3;
+            this.btnDelBlacklistEntry.Text = "Löschen";
+            this.btnDelBlacklistEntry.UseVisualStyleBackColor = true;
+            this.btnDelBlacklistEntry.Click += new System.EventHandler(this.btnDelBlacklistEntry_Click);
+            // 
+            // btnAddBlacklistEntry
+            // 
+            this.btnAddBlacklistEntry.Location = new System.Drawing.Point(381, 19);
+            this.btnAddBlacklistEntry.Name = "btnAddBlacklistEntry";
+            this.btnAddBlacklistEntry.Size = new System.Drawing.Size(75, 23);
+            this.btnAddBlacklistEntry.TabIndex = 2;
+            this.btnAddBlacklistEntry.Text = "Hinzufügen";
+            this.btnAddBlacklistEntry.UseVisualStyleBackColor = true;
+            this.btnAddBlacklistEntry.Click += new System.EventHandler(this.btnAddBlacklistEntry_Click);
+            // 
             // FrmProjectProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,13 +397,15 @@
             this.Tag = "Projekteigenschaften - {0}";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -380,5 +440,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnChooseDefaultPath;
         private System.Windows.Forms.TextBox tbDefaultLookupPath;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnDelBlacklistEntry;
+        private System.Windows.Forms.Button btnAddBlacklistEntry;
+        private System.Windows.Forms.ListBox lbTagBlacklist;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

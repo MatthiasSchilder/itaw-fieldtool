@@ -16,14 +16,13 @@ namespace fieldtool
 {
     public partial class FrmMain : Form, IFtProjectMainView
     {
-        private FtProjectMainPresenter Presenter { get; set; }
+        private FtProjectMainPresenter Presenter { get; }
 
         private const String WindowTitleNoProject = "itaw Fieldtool v{0}";
         private const String WindowTitleProject = "itaw Fieldtool v{0} - {1}";
 
         public FrmMain()
         {
-            
             Presenter = new FtProjectMainPresenter(this);
             InitializeComponent();
             RegisterPresenterEvents();

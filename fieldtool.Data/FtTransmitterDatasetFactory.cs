@@ -15,8 +15,11 @@ namespace SharpmapGDAL
         public static string SchemeFilenameAccelData = "tag%%%%_acc.txt";
         public static string SchemeFilenameGPSData = "tag%%%%_gps.txt";
 
-        public static FtTransmitterDataset LoadFileset(FtFileset fileset)
+        public static FtTransmitterDataset LoadFileset(FtFileset fileset, List<int> tagBlacklist)
         {
+            if (tagBlacklist.Contains(fileset.Id))
+                return null;
+
             FtTransmitterDataset transmitterDataset =
                 new FtTransmitterDataset(fileset.Id, fileset);
 
@@ -37,13 +40,13 @@ namespace SharpmapGDAL
             return transmitterDataset;
         }
 
-        public static List<FtTransmitterDataset> LoadFilesets(List<FtFileset> filesets)
+        public static List<FtTransmitterDataset> LoadFilesets(List<FtFileset> filesets, List<int> tagBlacklist)
         {
             List<FtTransmitterDataset> transmitterDatasets = 
                 new List<FtTransmitterDataset>(filesets.Count);
 
-            foreach (var fileset in filesets)
-                transmitterDatasets.Add(LoadFileset(fileset));
+            transmitterDatasets.AddRange(filesets.Select(
+                fileset => LoadFileset(fileset, tagBlacklist)).Where(result => result != null));
 
             return transmitterDatasets;
         }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using fieldtool.View;
 
 namespace fieldtool
 {
@@ -38,6 +39,7 @@ namespace fieldtool
             chkScaleBarDarstellen.Checked = _project.MapConfig.ScaleBarDarstellen;
 
             UpdateLayerListViews();
+            UpdateTagBlacklist();
         }
 
         private void UpdateLayerListViews()
@@ -49,6 +51,13 @@ namespace fieldtool
             lvVektorkarten.Items.Clear();
             foreach (var ftLayer in _project.MapConfig.VektorLayer)
                 lvVektorkarten.Items.Add(CreateLayerListViewItem(ftLayer));
+        }
+
+        private void UpdateTagBlacklist()
+        {
+            lbTagBlacklist.Items.Clear();
+            foreach (var blEntry in _project.TagBlacklist)
+                lbTagBlacklist.Items.Add(blEntry);
         }
 
         private ListViewItem CreateLayerListViewItem(FtLayer layer)
@@ -121,6 +130,23 @@ namespace fieldtool
                 return;
 
             tbDefaultLookupPath.Text = dialog.FileName;
+        }
+
+        private void btnAddBlacklistEntry_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmEnterTagId();
+            if (FtFormFactory.ShowDialog(frm) != DialogResult.OK)
+                return;
+            if (!frm.TagIDValid)
+                return;
+
+            _project.TagBlacklist.Add(frm.TagID);
+            UpdateTagBlacklist();
+        }
+
+        private void btnDelBlacklistEntry_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
