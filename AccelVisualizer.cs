@@ -9,10 +9,13 @@ namespace fieldtool
 {
     class AccelVisualizer
     {
+        private const int LineHeightPx = 15;
+        private const int LineHeightWoMarginPx = 13;
+
         public Bitmap RenderBurstActivitiesToBitmap(Dictionary<DateTime, double[]> result)
         {
             var dateBitmaps = CreateDateBitmaps(result.Keys.ToList());
-            var dateBitmap = MergeDateBitmaps(dateBitmaps, out pxPerLine);
+            var dateBitmap = MergeDateBitmaps(dateBitmaps);
 
             var burstBitmap = VisuBursts(result.Values.ToList());
 
@@ -46,7 +49,7 @@ namespace fieldtool
         private List<Bitmap> CreateDateBitmaps(List<DateTime> dates)
         {
             List<Bitmap> images = new List<Bitmap>();
-            Font font = new Font(FontFamily.GenericMonospace, 7, FontStyle.Regular);
+            Font font = new Font(FontFamily.GenericMonospace, 8, FontStyle.Regular);
             foreach (var date in dates)
             {
                 images.Add(DrawText(date.ToString("d"), font, Color.Black));
@@ -58,40 +61,44 @@ namespace fieldtool
         private int pxPerLine;
         private int pxPerCol;
         private double maxValue;
+        private List<double> _maxValues;
 
         private Bitmap VisuBursts(List<double[]> arrays)
         {
-            pxPerCol = 3;
-
-            maxValue = double.MinValue;
+            pxPerCol = 1;
+            _maxValues = new List<double>();
+            
             foreach (var valArray in arrays)
             {
+                maxValue = double.MinValue;
                 foreach (var value in valArray)
                 {
                     maxValue = Math.Max(maxValue, value);
                 }
+                _maxValues.Add(maxValue);
             }
-            Bitmap bmp = new Bitmap(240 * pxPerCol, arrays.Count * pxPerLine);
+            Bitmap bmp = new Bitmap(240 * pxPerCol, arrays.Count * 15);
+            
             int i = 0;
             foreach (var arr in arrays)
             {
-                WriteBurstToBitmap(arr, bmp, i++);
+                WriteBurstToBitmap(arr, bmp, i, _maxValues[i++]);
             }
             return bmp;
         }
 
-        private void WriteBurstToBitmap(double[] data, Bitmap bmp, int i)
+        private void WriteBurstToBitmap(double[] data, Bitmap bmp, int i, double bezugsWert)
         {
-            var pxLineOffs = i * pxPerLine;
+            var pxLineOffs = i * 15;
 
             int xoffs = 0;
             foreach (var val in data)
             {
-                var color = GetColor(maxValue, val);
+                var color = GetColor(bezugsWert, val);
 
                 for (int l = 0; l < pxPerCol; l++)
                 {
-                    for (int m = 0; m < pxPerLine; m++)
+                    for (int m = 1; m <= 13; m++)
                     {
                         bmp.SetPixel(xoffs + l, pxLineOffs + m, color);
                     }
@@ -101,23 +108,18 @@ namespace fieldtool
             }
         }
 
-        private Color GetColor(double maxValue, double value)
+        private Color GetColor(double bezugswert, double value)
         {
             if (value.Equals(double.MinValue))
-                return Color.DarkSalmon;
-            int val = (int)((value / maxValue) * 255);
-            return Color.FromArgb(255 - val, 255 - val, 255 - val);
+                return Color.LightGoldenrodYellow;
+            int val = (int)((value / bezugswert) * 192);
+            return Color.FromArgb((192 - val), (192 - val), (192 - val));
 
         }
 
-        private Bitmap MergeDateBitmaps(List<Bitmap> images, out int pxPerLine)
+        private Bitmap MergeDateBitmaps(List<Bitmap> images)
         {
-            int height = 0;
-            foreach (var image in images)
-                height += image.Height;
-
-            int heightPerDay = height/images.Count;
-            pxPerLine = heightPerDay;
+            int height = images.Count * LineHeightPx;
 
             int width = images[0].Width;
 
@@ -127,14 +129,14 @@ namespace fieldtool
             int k = 0;
             foreach (var image in images)
             {
-                var lineIdxOffs = heightPerDay*k++;
-                for (int i = 0; i < image.Height; i++)
+                var lineIdxOffs = LineHeightPx*k++;
+                for (int i = 0; i <= LineHeightWoMarginPx; i++)
                 {
                     for (int j = 0; j < image.Width; j++)
                     {
                         var color = image.GetPixel(j, i);
 
-                        img.SetPixel(j, i + lineIdxOffs, color);
+                        img.SetPixel(j, i + lineIdxOffs + 1, color);
                     }
                 }
             }
@@ -156,7 +158,7 @@ namespace fieldtool
             drawing.Dispose();
 
             //create a new image of the right size
-            img = new Bitmap((int)textSize.Width, (int)textSize.Height);
+            img = new Bitmap((int)textSize.Width, (int) LineHeightPx);
 
             drawing = Graphics.FromImage(img);
 
@@ -165,7 +167,7 @@ namespace fieldtool
             //create a brush for the text
             Brush textBrush = new SolidBrush(textColor);
 
-            drawing.DrawString(text, font, textBrush, 0, 0);
+            drawing.DrawString(text, font, textBrush, 0, (LineHeightPx - (int) textSize.Height)/2);
 
             drawing.Save();
 

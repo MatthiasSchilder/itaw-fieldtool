@@ -20,13 +20,11 @@ namespace fieldtool
         private DateTime StartsAt;
         private DateTime EndsAt;
 
-        //private BitArray MapProcessedBursts;
         public AccelBurstActivityCalculator(FtTransmitterAccelData tagAccelData, DateTime start, DateTime stop)
         {
             TagAccelData = tagAccelData;
             StartsAt = start;
             EndsAt = stop;
-            //MapProcessedBursts = new BitArray(TagAccelData.AccelerationSeries.Count);
         }
 
         public Dictionary<DateTime, double[]> Process()
@@ -87,9 +85,9 @@ namespace fieldtool
             for (int i = _searchStoppedAtIdx; i < TagAccelData.AccelerationSeries.Count; i++)
             {
                 var burst = TagAccelData.AccelerationSeries[i];
-                if (burst.StartTimestamp > timeSlot.EndsAt)
+                if (burst.StartTimestamp >= timeSlot.EndsAt)
                 {
-                    _searchStoppedAtIdx = i-1;
+                    _searchStoppedAtIdx = i;
                     break; // da die Accel-Bursts chronologisch in AccelerationSeries vorliegen kann hier abgebrochen werden.
                 }
 
