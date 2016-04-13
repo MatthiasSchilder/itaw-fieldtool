@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using fieldtool.Data;
 using fieldtool.View;
 
 namespace fieldtool
@@ -37,6 +38,9 @@ namespace fieldtool
             this.lblProjPath.Text = _project.ProjectFilePath;
 
             chkScaleBarDarstellen.Checked = _project.MapConfig.ScaleBarDarstellen;
+
+            numEPSGSource.Value = _project.EPSGSourceProjection;
+            numEPSGTarget.Value = _project.EPSGTargetProjection;
 
             UpdateLayerListViews();
             UpdateTagBlacklist();

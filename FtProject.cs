@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using fieldtool.Annotations;
+using fieldtool.Data;
 using SharpmapGDAL;
 
 namespace fieldtool
@@ -31,6 +32,9 @@ namespace fieldtool
         public String ProjectFilePath { get;  set; }
         public List<int> TagBlacklist { get; set; }
 
+        public int EPSGSourceProjection { get; set; }
+        public int EPSGTargetProjection { get; set; }
+
         public FtProject()
         {
             
@@ -44,6 +48,9 @@ namespace fieldtool
 
             ProjectName = Path.GetFileNameWithoutExtension(filepath);
             ProjectFilePath = filepath;
+
+            EPSGSourceProjection = 4314;
+            EPSGTargetProjection = 31467;
         }
 
         public void SetDatasetState(int tagId, bool checkState)

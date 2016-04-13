@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DotSpatial.Projections;
+using fieldtool.Data;
 using GeoAPI.CoordinateSystems;
 using GeoAPI.CoordinateSystems.Transformations;
 using GeoAPI.Geometries;
@@ -61,7 +62,7 @@ namespace fieldtool
             if (Longitude.HasValue && Latitude.HasValue)
             {
                 var reprojectedCoord =
-                    ProectionManager.ReprojectCoordinate(new Coordinate(Longitude.Value, 
+                    ProjectionManager.ReprojectCoordinate(new Coordinate(Longitude.Value, 
                     Latitude.Value, 
                     HeightAboveEllipsoid ?? 0));
                 Rechtswert = reprojectedCoord.X;

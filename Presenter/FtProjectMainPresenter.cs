@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using fieldtool.Data;
 using fieldtool.View;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using SharpmapGDAL;
@@ -348,9 +349,11 @@ namespace fieldtool
         {
             Project = FtProject.Open(fullFilePath);
 
+            ProjectionManager.SetSourceProjection(Project.EPSGSourceProjection);
+            ProjectionManager.SetTargetProjection(Project.EPSGTargetProjection);
+
             InvokeMapChanged(new MapChangedArgs(Map));
             InvokeProjectStateChanged(new ProjectStateArgs(Project.ProjectFilePath, Project.ProjectName, true));
-            InvokeMovebankImported(new MovebankImportedArgs(Project.Datasets));
         }
 
         public bool IsProjectLoaded()

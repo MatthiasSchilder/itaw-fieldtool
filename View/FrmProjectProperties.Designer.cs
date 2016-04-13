@@ -31,13 +31,18 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnDelBlacklistEntry = new System.Windows.Forms.Button();
+            this.btnAddBlacklistEntry = new System.Windows.Forms.Button();
+            this.lbTagBlacklist = new System.Windows.Forms.ListBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnChooseDefaultPath = new System.Windows.Forms.Button();
+            this.lblProjPath = new System.Windows.Forms.Label();
             this.tbDefaultLookupPath = new System.Windows.Forms.TextBox();
             this.lblProjName = new System.Windows.Forms.Label();
-            this.lblProjPath = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.chkScaleBarDarstellen = new System.Windows.Forms.CheckBox();
@@ -56,21 +61,26 @@
             this.btnDeleteRaster = new System.Windows.Forms.Button();
             this.btnAddRaster = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.numEPSGSource = new System.Windows.Forms.NumericUpDown();
+            this.numEPSGTarget = new System.Windows.Forms.NumericUpDown();
             this.ftProjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.lbTagBlacklist = new System.Windows.Forms.ListBox();
-            this.btnDelBlacklistEntry = new System.Windows.Forms.Button();
-            this.btnAddBlacklistEntry = new System.Windows.Forms.Button();
+            this.lblNameSourceProjection = new System.Windows.Forms.Label();
+            this.lblNameTargetProjection = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numEPSGSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEPSGTarget)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -85,6 +95,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox6);
             this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -95,6 +106,71 @@
             this.tabPage1.Text = "Allgemein";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnDelBlacklistEntry);
+            this.groupBox5.Controls.Add(this.btnAddBlacklistEntry);
+            this.groupBox5.Controls.Add(this.lbTagBlacklist);
+            this.groupBox5.Location = new System.Drawing.Point(3, 220);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(462, 130);
+            this.groupBox5.TabIndex = 9;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Auszuschließende Tags beim Importvorgang";
+            // 
+            // btnDelBlacklistEntry
+            // 
+            this.btnDelBlacklistEntry.Location = new System.Drawing.Point(381, 48);
+            this.btnDelBlacklistEntry.Name = "btnDelBlacklistEntry";
+            this.btnDelBlacklistEntry.Size = new System.Drawing.Size(75, 23);
+            this.btnDelBlacklistEntry.TabIndex = 3;
+            this.btnDelBlacklistEntry.Text = "Löschen";
+            this.btnDelBlacklistEntry.UseVisualStyleBackColor = true;
+            this.btnDelBlacklistEntry.Click += new System.EventHandler(this.btnDelBlacklistEntry_Click);
+            // 
+            // btnAddBlacklistEntry
+            // 
+            this.btnAddBlacklistEntry.Location = new System.Drawing.Point(381, 19);
+            this.btnAddBlacklistEntry.Name = "btnAddBlacklistEntry";
+            this.btnAddBlacklistEntry.Size = new System.Drawing.Size(75, 23);
+            this.btnAddBlacklistEntry.TabIndex = 2;
+            this.btnAddBlacklistEntry.Text = "Hinzufügen";
+            this.btnAddBlacklistEntry.UseVisualStyleBackColor = true;
+            this.btnAddBlacklistEntry.Click += new System.EventHandler(this.btnAddBlacklistEntry_Click);
+            // 
+            // lbTagBlacklist
+            // 
+            this.lbTagBlacklist.FormattingEnabled = true;
+            this.lbTagBlacklist.Location = new System.Drawing.Point(26, 19);
+            this.lbTagBlacklist.Name = "lbTagBlacklist";
+            this.lbTagBlacklist.Size = new System.Drawing.Size(349, 95);
+            this.lbTagBlacklist.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.btnChooseDefaultPath);
+            this.groupBox4.Controls.Add(this.lblProjPath);
+            this.groupBox4.Controls.Add(this.tbDefaultLookupPath);
+            this.groupBox4.Controls.Add(this.lblProjName);
+            this.groupBox4.Location = new System.Drawing.Point(6, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(462, 113);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Projektinformationen";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Projektname";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -103,6 +179,15 @@
             this.label3.Size = new System.Drawing.Size(94, 26);
             this.label3.TabIndex = 7;
             this.label3.Text = "Standardsuchpfad\r\n für Movebanks";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Speicherpfad";
             // 
             // btnChooseDefaultPath
             // 
@@ -113,6 +198,15 @@
             this.btnChooseDefaultPath.Text = "Auswählen";
             this.btnChooseDefaultPath.UseVisualStyleBackColor = true;
             this.btnChooseDefaultPath.Click += new System.EventHandler(this.btnChooseDefaultPath_Click);
+            // 
+            // lblProjPath
+            // 
+            this.lblProjPath.AutoSize = true;
+            this.lblProjPath.Location = new System.Drawing.Point(156, 49);
+            this.lblProjPath.Name = "lblProjPath";
+            this.lblProjPath.Size = new System.Drawing.Size(35, 13);
+            this.lblProjPath.TabIndex = 3;
+            this.lblProjPath.Text = "label4";
             // 
             // tbDefaultLookupPath
             // 
@@ -129,33 +223,6 @@
             this.lblProjName.Size = new System.Drawing.Size(35, 13);
             this.lblProjName.TabIndex = 4;
             this.lblProjName.Text = "label3";
-            // 
-            // lblProjPath
-            // 
-            this.lblProjPath.AutoSize = true;
-            this.lblProjPath.Location = new System.Drawing.Point(156, 49);
-            this.lblProjPath.Name = "lblProjPath";
-            this.lblProjPath.Size = new System.Drawing.Size(35, 13);
-            this.lblProjPath.TabIndex = 3;
-            this.lblProjPath.Text = "label4";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Speicherpfad";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Projektname";
             // 
             // tabPage2
             // 
@@ -326,65 +393,84 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.lblNameTargetProjection);
+            this.groupBox6.Controls.Add(this.lblNameSourceProjection);
+            this.groupBox6.Controls.Add(this.numEPSGTarget);
+            this.groupBox6.Controls.Add(this.numEPSGSource);
+            this.groupBox6.Controls.Add(this.label5);
+            this.groupBox6.Controls.Add(this.label4);
+            this.groupBox6.Location = new System.Drawing.Point(6, 125);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(462, 89);
+            this.groupBox6.TabIndex = 10;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Koordinatensystem";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(23, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Ursprung";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(23, 59);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(24, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Ziel";
+            // 
+            // numEPSGSource
+            // 
+            this.numEPSGSource.Location = new System.Drawing.Point(159, 24);
+            this.numEPSGSource.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numEPSGSource.Name = "numEPSGSource";
+            this.numEPSGSource.Size = new System.Drawing.Size(71, 20);
+            this.numEPSGSource.TabIndex = 2;
+            // 
+            // numEPSGTarget
+            // 
+            this.numEPSGTarget.Location = new System.Drawing.Point(159, 57);
+            this.numEPSGTarget.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numEPSGTarget.Name = "numEPSGTarget";
+            this.numEPSGTarget.Size = new System.Drawing.Size(71, 20);
+            this.numEPSGTarget.TabIndex = 3;
+            // 
             // ftProjectBindingSource
             // 
             this.ftProjectBindingSource.DataSource = typeof(fieldtool.FtProject);
             // 
-            // groupBox4
+            // lblNameSourceProjection
             // 
-            this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.btnChooseDefaultPath);
-            this.groupBox4.Controls.Add(this.lblProjPath);
-            this.groupBox4.Controls.Add(this.tbDefaultLookupPath);
-            this.groupBox4.Controls.Add(this.lblProjName);
-            this.groupBox4.Location = new System.Drawing.Point(6, 6);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(462, 113);
-            this.groupBox4.TabIndex = 8;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Projektinformationen";
+            this.lblNameSourceProjection.AutoSize = true;
+            this.lblNameSourceProjection.Location = new System.Drawing.Point(236, 26);
+            this.lblNameSourceProjection.Name = "lblNameSourceProjection";
+            this.lblNameSourceProjection.Size = new System.Drawing.Size(27, 13);
+            this.lblNameSourceProjection.TabIndex = 4;
+            this.lblNameSourceProjection.Text = "({0})";
             // 
-            // groupBox5
+            // lblNameTargetProjection
             // 
-            this.groupBox5.Controls.Add(this.btnDelBlacklistEntry);
-            this.groupBox5.Controls.Add(this.btnAddBlacklistEntry);
-            this.groupBox5.Controls.Add(this.lbTagBlacklist);
-            this.groupBox5.Location = new System.Drawing.Point(6, 125);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(462, 130);
-            this.groupBox5.TabIndex = 9;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Auszuschließende Tags beim Importvorgang";
-            // 
-            // lbTagBlacklist
-            // 
-            this.lbTagBlacklist.FormattingEnabled = true;
-            this.lbTagBlacklist.Location = new System.Drawing.Point(26, 19);
-            this.lbTagBlacklist.Name = "lbTagBlacklist";
-            this.lbTagBlacklist.Size = new System.Drawing.Size(349, 95);
-            this.lbTagBlacklist.TabIndex = 0;
-            // 
-            // btnDelBlacklistEntry
-            // 
-            this.btnDelBlacklistEntry.Location = new System.Drawing.Point(381, 48);
-            this.btnDelBlacklistEntry.Name = "btnDelBlacklistEntry";
-            this.btnDelBlacklistEntry.Size = new System.Drawing.Size(75, 23);
-            this.btnDelBlacklistEntry.TabIndex = 3;
-            this.btnDelBlacklistEntry.Text = "Löschen";
-            this.btnDelBlacklistEntry.UseVisualStyleBackColor = true;
-            this.btnDelBlacklistEntry.Click += new System.EventHandler(this.btnDelBlacklistEntry_Click);
-            // 
-            // btnAddBlacklistEntry
-            // 
-            this.btnAddBlacklistEntry.Location = new System.Drawing.Point(381, 19);
-            this.btnAddBlacklistEntry.Name = "btnAddBlacklistEntry";
-            this.btnAddBlacklistEntry.Size = new System.Drawing.Size(75, 23);
-            this.btnAddBlacklistEntry.TabIndex = 2;
-            this.btnAddBlacklistEntry.Text = "Hinzufügen";
-            this.btnAddBlacklistEntry.UseVisualStyleBackColor = true;
-            this.btnAddBlacklistEntry.Click += new System.EventHandler(this.btnAddBlacklistEntry_Click);
+            this.lblNameTargetProjection.AutoSize = true;
+            this.lblNameTargetProjection.Location = new System.Drawing.Point(236, 59);
+            this.lblNameTargetProjection.Name = "lblNameTargetProjection";
+            this.lblNameTargetProjection.Size = new System.Drawing.Size(27, 13);
+            this.lblNameTargetProjection.TabIndex = 5;
+            this.lblNameTargetProjection.Text = "({0})";
             // 
             // FrmProjectProperties
             // 
@@ -397,15 +483,19 @@
             this.Tag = "Projekteigenschaften - {0}";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numEPSGSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEPSGTarget)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -445,5 +535,12 @@
         private System.Windows.Forms.Button btnAddBlacklistEntry;
         private System.Windows.Forms.ListBox lbTagBlacklist;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.NumericUpDown numEPSGTarget;
+        private System.Windows.Forms.NumericUpDown numEPSGSource;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblNameTargetProjection;
+        private System.Windows.Forms.Label lblNameSourceProjection;
     }
 }

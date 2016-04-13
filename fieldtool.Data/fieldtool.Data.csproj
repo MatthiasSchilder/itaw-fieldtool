@@ -60,7 +60,7 @@
     <Compile Include="FTTransmitterGPSDataSeries.cs" />
     <Compile Include="FTTransmitterGPSData.cs" />
     <Compile Include="FTTransmitterTagInfoData.cs" />
-    <Compile Include="ProectionManager.cs" />
+    <Compile Include="ProjectionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
