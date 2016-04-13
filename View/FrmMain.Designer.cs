@@ -79,6 +79,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.movebankEinzelsetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -161,7 +162,8 @@
             // importToolStripMenuItem1
             // 
             this.importToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.movebankLadenToolStripMenuItem});
+            this.movebankLadenToolStripMenuItem,
+            this.movebankEinzelsetsToolStripMenuItem});
             this.importToolStripMenuItem1.Name = "importToolStripMenuItem1";
             this.importToolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
             this.importToolStripMenuItem1.Text = "Import";
@@ -169,8 +171,8 @@
             // movebankLadenToolStripMenuItem
             // 
             this.movebankLadenToolStripMenuItem.Name = "movebankLadenToolStripMenuItem";
-            this.movebankLadenToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.movebankLadenToolStripMenuItem.Text = "Movebank";
+            this.movebankLadenToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.movebankLadenToolStripMenuItem.Text = "Movebank (alle Sets)";
             this.movebankLadenToolStripMenuItem.Click += new System.EventHandler(this.movebankLadenToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem1
@@ -561,6 +563,13 @@
             this.panel2.Size = new System.Drawing.Size(103, 365);
             this.panel2.TabIndex = 8;
             // 
+            // movebankEinzelsetsToolStripMenuItem
+            // 
+            this.movebankEinzelsetsToolStripMenuItem.Name = "movebankEinzelsetsToolStripMenuItem";
+            this.movebankEinzelsetsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.movebankEinzelsetsToolStripMenuItem.Text = "Movebank (Einzelsets)";
+            this.movebankEinzelsetsToolStripMenuItem.Click += new System.EventHandler(this.movebankEinzelsetsToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -643,6 +652,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ToolStripMenuItem movebankEinzelsetsToolStripMenuItem;
     }
 }
 

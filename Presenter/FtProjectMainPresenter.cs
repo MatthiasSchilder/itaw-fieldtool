@@ -44,6 +44,7 @@ namespace fieldtool
             Name = projektName;
         }
     }
+
     class MovebankImportedArgs : EventArgs
     {
         public List<FtTransmitterDataset> Datasets { get; set; }
@@ -215,15 +216,35 @@ namespace fieldtool
 
         private void View_ShowMovebankImport(object sender, EventArgs e)
         {
-            CommonOpenFileDialog movebankOpenFileDialog = new CommonOpenFileDialog();
-            movebankOpenFileDialog.IsFolderPicker = true;
-            movebankOpenFileDialog.Multiselect = false;
+            var args = (MovebankImportStartArgs) e;
+            if (args.EinzelImport)
+            {
+                CommonOpenFileDialog movebankOpenFileDialog = new CommonOpenFileDialog {Multiselect = true};
+                movebankOpenFileDialog.Filters.Add(
+                    new CommonFileDialogFilter("Movebank", "*.txt"
+                    ));
 
-            CommonFileDialogResult dr = movebankOpenFileDialog.ShowDialog();
-            if (dr != CommonFileDialogResult.Ok)
-                return;
-            Project.ProjectMovebankPath = movebankOpenFileDialog.FileName;
-            ImportMovebank();
+                CommonFileDialogResult dr = movebankOpenFileDialog.ShowDialog();
+                if (dr != CommonFileDialogResult.Ok)
+                    return;
+                Project.MovebankFilesets = FtFileset.FileSetFromMultiselect(movebankOpenFileDialog.FileNames.ToList());
+                ImportMovebank();
+            }
+            else
+            {
+                CommonOpenFileDialog movebankOpenFileDialog = new CommonOpenFileDialog
+                {
+                    IsFolderPicker = true,
+                    Multiselect = false
+                };
+
+                CommonFileDialogResult dr = movebankOpenFileDialog.ShowDialog();
+                if (dr != CommonFileDialogResult.Ok)
+                    return;
+
+                Project.MovebankFilesets = FtFileset.FileSetFromDirectory(movebankOpenFileDialog.FileName);
+                ImportMovebank();
+            }
         }
 
         private void ImportMovebank()

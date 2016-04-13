@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,7 +46,27 @@ namespace SharpmapGDAL
             return this[function];
         }
 
-        public static List<FtFileset> EnumerateFileSets(string directoryPath)
+        public static List<FtFileset> FileSetFromMultiselect(List<String> filenames)
+        {
+            HashSet<string> tagIDs = new HashSet<string>();
+            foreach (string id in filenames.Select(GetTagId))
+            {
+                tagIDs.Add(id);
+            }
+            var basePath = Path.GetDirectoryName(filenames[0]);
+
+            var allFileSetsInDirectory = FileSetFromDirectory(basePath);
+
+            List<FtFileset> resultingFileSets = new List<FtFileset>();
+            foreach (var fileset in allFileSetsInDirectory)
+            {
+                if(tagIDs.Contains(fileset.Id.ToString()))
+                    resultingFileSets.Add(fileset);
+            }
+            return resultingFileSets;
+        }
+
+        public static List<FtFileset> FileSetFromDirectory(string directoryPath)
         {
             var files = Directory.EnumerateFiles(directoryPath);
             var dict = new Dictionary<int, FtFileset>();

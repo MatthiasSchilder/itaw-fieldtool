@@ -252,7 +252,12 @@ namespace fieldtool
 
         private void movebankLadenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InvokeShowMovebankImport(new EventArgs());
+            InvokeShowMovebankImport(new MovebankImportStartArgs(false));
+        }
+
+        private void movebankEinzelsetsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeShowMovebankImport(new MovebankImportStartArgs(true));
         }
 
         private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -376,10 +381,10 @@ namespace fieldtool
         }
 
         
-        public event EventHandler ShowMovebankImport;
-        public void InvokeShowMovebankImport(EventArgs e)
+        public event EventHandler<MovebankImportStartArgs> ShowMovebankImport;
+        public void InvokeShowMovebankImport(MovebankImportStartArgs e)
         {
-            EventHandler handler = ShowMovebankImport;
+            EventHandler<MovebankImportStartArgs> handler = ShowMovebankImport;
             if (handler != null)
             {
                 handler(this, e);
@@ -590,6 +595,15 @@ namespace fieldtool
         {
             TagId = id;
             Checked = check;
+        }
+    }
+
+    public class MovebankImportStartArgs : EventArgs
+    {
+        public bool EinzelImport;
+        public MovebankImportStartArgs(bool einzelImport)
+        {
+            EinzelImport = einzelImport;
         }
     }
 }

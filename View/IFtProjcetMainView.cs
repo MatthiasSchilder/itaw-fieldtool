@@ -15,7 +15,7 @@ namespace fieldtool
         event EventHandler NewProject;
 
         event EventHandler ShowProjectProperties;
-        event EventHandler ShowMovebankImport;
+        event EventHandler<MovebankImportStartArgs> ShowMovebankImport;
         event EventHandler ShowEinstellungen;
         event EventHandler ShowInfo;
 
