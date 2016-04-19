@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.numEPSGTarget = new System.Windows.Forms.NumericUpDown();
+            this.numEPSGSource = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnDelBlacklistEntry = new System.Windows.Forms.Button();
             this.btnAddBlacklistEntry = new System.Windows.Forms.Button();
@@ -61,25 +66,18 @@
             this.btnDeleteRaster = new System.Windows.Forms.Button();
             this.btnAddRaster = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.numEPSGSource = new System.Windows.Forms.NumericUpDown();
-            this.numEPSGTarget = new System.Windows.Forms.NumericUpDown();
             this.ftProjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lblNameSourceProjection = new System.Windows.Forms.Label();
-            this.lblNameTargetProjection = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numEPSGTarget)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEPSGSource)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numEPSGSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEPSGTarget)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,6 +103,61 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Allgemein";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.numEPSGTarget);
+            this.groupBox6.Controls.Add(this.numEPSGSource);
+            this.groupBox6.Controls.Add(this.label5);
+            this.groupBox6.Controls.Add(this.label4);
+            this.groupBox6.Location = new System.Drawing.Point(6, 125);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(462, 89);
+            this.groupBox6.TabIndex = 10;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Koordinatensystem";
+            // 
+            // numEPSGTarget
+            // 
+            this.numEPSGTarget.Location = new System.Drawing.Point(172, 57);
+            this.numEPSGTarget.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numEPSGTarget.Name = "numEPSGTarget";
+            this.numEPSGTarget.Size = new System.Drawing.Size(71, 20);
+            this.numEPSGTarget.TabIndex = 3;
+            // 
+            // numEPSGSource
+            // 
+            this.numEPSGSource.Location = new System.Drawing.Point(172, 24);
+            this.numEPSGSource.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numEPSGSource.Name = "numEPSGSource";
+            this.numEPSGSource.Size = new System.Drawing.Size(71, 20);
+            this.numEPSGSource.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(23, 59);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Ziel-Projektion (EPSG)";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(23, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(143, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Ursprungs-Projektion (EPSG)";
             // 
             // groupBox5
             // 
@@ -202,7 +255,7 @@
             // lblProjPath
             // 
             this.lblProjPath.AutoSize = true;
-            this.lblProjPath.Location = new System.Drawing.Point(156, 49);
+            this.lblProjPath.Location = new System.Drawing.Point(169, 49);
             this.lblProjPath.Name = "lblProjPath";
             this.lblProjPath.Size = new System.Drawing.Size(35, 13);
             this.lblProjPath.TabIndex = 3;
@@ -210,15 +263,15 @@
             // 
             // tbDefaultLookupPath
             // 
-            this.tbDefaultLookupPath.Location = new System.Drawing.Point(159, 76);
+            this.tbDefaultLookupPath.Location = new System.Drawing.Point(172, 76);
             this.tbDefaultLookupPath.Name = "tbDefaultLookupPath";
-            this.tbDefaultLookupPath.Size = new System.Drawing.Size(216, 20);
+            this.tbDefaultLookupPath.Size = new System.Drawing.Size(203, 20);
             this.tbDefaultLookupPath.TabIndex = 5;
             // 
             // lblProjName
             // 
             this.lblProjName.AutoSize = true;
-            this.lblProjName.Location = new System.Drawing.Point(156, 23);
+            this.lblProjName.Location = new System.Drawing.Point(169, 23);
             this.lblProjName.Name = "lblProjName";
             this.lblProjName.Size = new System.Drawing.Size(35, 13);
             this.lblProjName.TabIndex = 4;
@@ -393,84 +446,9 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.lblNameTargetProjection);
-            this.groupBox6.Controls.Add(this.lblNameSourceProjection);
-            this.groupBox6.Controls.Add(this.numEPSGTarget);
-            this.groupBox6.Controls.Add(this.numEPSGSource);
-            this.groupBox6.Controls.Add(this.label5);
-            this.groupBox6.Controls.Add(this.label4);
-            this.groupBox6.Location = new System.Drawing.Point(6, 125);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(462, 89);
-            this.groupBox6.TabIndex = 10;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Koordinatensystem";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Ursprung";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 59);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(24, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Ziel";
-            // 
-            // numEPSGSource
-            // 
-            this.numEPSGSource.Location = new System.Drawing.Point(159, 24);
-            this.numEPSGSource.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numEPSGSource.Name = "numEPSGSource";
-            this.numEPSGSource.Size = new System.Drawing.Size(71, 20);
-            this.numEPSGSource.TabIndex = 2;
-            // 
-            // numEPSGTarget
-            // 
-            this.numEPSGTarget.Location = new System.Drawing.Point(159, 57);
-            this.numEPSGTarget.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numEPSGTarget.Name = "numEPSGTarget";
-            this.numEPSGTarget.Size = new System.Drawing.Size(71, 20);
-            this.numEPSGTarget.TabIndex = 3;
-            // 
             // ftProjectBindingSource
             // 
             this.ftProjectBindingSource.DataSource = typeof(fieldtool.FtProject);
-            // 
-            // lblNameSourceProjection
-            // 
-            this.lblNameSourceProjection.AutoSize = true;
-            this.lblNameSourceProjection.Location = new System.Drawing.Point(236, 26);
-            this.lblNameSourceProjection.Name = "lblNameSourceProjection";
-            this.lblNameSourceProjection.Size = new System.Drawing.Size(27, 13);
-            this.lblNameSourceProjection.TabIndex = 4;
-            this.lblNameSourceProjection.Text = "({0})";
-            // 
-            // lblNameTargetProjection
-            // 
-            this.lblNameTargetProjection.AutoSize = true;
-            this.lblNameTargetProjection.Location = new System.Drawing.Point(236, 59);
-            this.lblNameTargetProjection.Name = "lblNameTargetProjection";
-            this.lblNameTargetProjection.Size = new System.Drawing.Size(27, 13);
-            this.lblNameTargetProjection.TabIndex = 5;
-            this.lblNameTargetProjection.Text = "({0})";
             // 
             // FrmProjectProperties
             // 
@@ -483,6 +461,10 @@
             this.Tag = "Projekteigenschaften - {0}";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numEPSGTarget)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEPSGSource)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -491,10 +473,6 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numEPSGSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEPSGTarget)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -540,7 +518,5 @@
         private System.Windows.Forms.NumericUpDown numEPSGSource;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblNameTargetProjection;
-        private System.Windows.Forms.Label lblNameSourceProjection;
     }
 }
