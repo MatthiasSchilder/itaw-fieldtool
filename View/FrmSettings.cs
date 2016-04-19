@@ -15,6 +15,27 @@ namespace fieldtool
         public FrmSettings()
         {
             InitializeComponent();
+            Init();
+        }
+
+        private void Init()
+        {
+            picColor.BackColor = Properties.Settings.Default.AccPlotNoDataColor;
+        }
+
+        private void picColor_Click(object sender, EventArgs e)
+        {
+            colorDialog1.Color = Properties.Settings.Default.AccPlotNoDataColor;
+            if (colorDialog1.ShowDialog() != DialogResult.OK)
+                return;
+            Properties.Settings.Default.AccPlotNoDataColor = colorDialog1.Color;
+            Properties.Settings.Default.Save();
+            picColor.BackColor = Properties.Settings.Default.AccPlotNoDataColor;
+        }
+
+        private void btnSchließen_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -138,6 +138,7 @@ namespace fieldtool
             View.CloseProject += View_CloseProject;
             View.NewProject += View_NewProject;
             View.ShowProjectProperties += View_ShowProjectProperties;
+            View.ShowEinstellungen += View_ShowEinstellungen;
             View.MouseMovedOnMap += View_MouseMovedOnMap;
             View.ShowInfo += View_ShowInfo;
             View.ShowMovebankImport += View_ShowMovebankImport;
@@ -148,6 +149,11 @@ namespace fieldtool
             View.ShowActivityDiagram += View_ShowActivityDiagram;
             View.ShowTagGraphs += View_ShowTagGraphs;
             View.DatasetCheckedChanged += View_DatasetCheckedChanged;
+        }
+
+        private void View_ShowEinstellungen(object sender, EventArgs e)
+        {
+            FtFormFactory.Show(new FrmSettings());
         }
 
         private void View_DatasetCheckedChanged(object sender, DatasetCheckedEventArgs e)

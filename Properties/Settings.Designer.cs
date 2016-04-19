@@ -58,5 +58,17 @@ namespace fieldtool.Properties {
                 this["MRUFile3"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
+        public global::System.Drawing.Color AccPlotNoDataColor {
+            get {
+                return ((global::System.Drawing.Color)(this["AccPlotNoDataColor"]));
+            }
+            set {
+                this["AccPlotNoDataColor"] = value;
+            }
+        }
     }
 }

@@ -111,7 +111,7 @@ namespace fieldtool
         private Color GetColor(double bezugswert, double value)
         {
             if (value.Equals(double.MinValue))
-                return Color.LightGoldenrodYellow;
+                return Properties.Settings.Default.AccPlotNoDataColor;
             int val = (int)((value / bezugswert) * 192);
             return Color.FromArgb((192 - val), (192 - val), (192 - val));
 

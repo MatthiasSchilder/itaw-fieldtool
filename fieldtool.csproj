@@ -151,6 +151,9 @@
     <Compile Include="View\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\FrmSettings.resx">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="data\testdata\GeoData\DEM\Golden_CO.dem" />
     <None Include="data\testdata\GeoData\GeoTiff\airport.tfw">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
