@@ -30,6 +30,10 @@ namespace fieldtool
 
         public String ProjectName { get; set; }
         public String ProjectFilePath { get;  set; }
+        public String DefaultMovebankLookupPath { get; set; }
+        [XmlIgnore]
+        public bool DefaultMovebankLookupPathAvailable => !String.IsNullOrEmpty(DefaultMovebankLookupPath);
+
         public List<int> TagBlacklist { get; set; }
 
         public int EPSGSourceProjection { get; set; }

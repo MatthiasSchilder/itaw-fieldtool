@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -227,6 +228,8 @@ namespace fieldtool
             if (args.EinzelImport)
             {
                 CommonOpenFileDialog movebankOpenFileDialog = new CommonOpenFileDialog {Multiselect = true};
+                if (Project.DefaultMovebankLookupPathAvailable)
+                    movebankOpenFileDialog.DefaultDirectory = Project.DefaultMovebankLookupPath;
                 movebankOpenFileDialog.Filters.Add(
                     new CommonFileDialogFilter("Movebank", "*.txt"
                     ));
@@ -244,7 +247,8 @@ namespace fieldtool
                     IsFolderPicker = true,
                     Multiselect = false
                 };
-
+                if (Project.DefaultMovebankLookupPathAvailable)
+                    movebankOpenFileDialog.DefaultDirectory = Project.DefaultMovebankLookupPath;
                 CommonFileDialogResult dr = movebankOpenFileDialog.ShowDialog();
                 if (dr != CommonFileDialogResult.Ok)
                     return;

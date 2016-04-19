@@ -42,6 +42,9 @@ namespace fieldtool
             numEPSGSource.Value = _project.EPSGSourceProjection;
             numEPSGTarget.Value = _project.EPSGTargetProjection;
 
+            if (_project.DefaultMovebankLookupPathAvailable)
+                tbDefaultLookupPath.Text = _project.DefaultMovebankLookupPath;
+
             UpdateLayerListViews();
             UpdateTagBlacklist();
         }
@@ -66,7 +69,7 @@ namespace fieldtool
 
         private ListViewItem CreateLayerListViewItem(FtLayer layer)
         {
-            string[] subItemsArr = new[] { "", Path.GetFileNameWithoutExtension(layer.FilePath), layer.FilePath };
+            string[] subItemsArr = { "", Path.GetFileNameWithoutExtension(layer.FilePath), layer.FilePath };
             ListViewItem lvi = new ListViewItem(subItemsArr);
             lvi.Checked = layer.Active;
 
@@ -134,6 +137,7 @@ namespace fieldtool
                 return;
 
             tbDefaultLookupPath.Text = dialog.FileName;
+            _project.DefaultMovebankLookupPath = dialog.FileName;
         }
 
         private void btnAddBlacklistEntry_Click(object sender, EventArgs e)
