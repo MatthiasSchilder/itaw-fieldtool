@@ -48,7 +48,7 @@ namespace fieldtool
             InvokeIntervalChanged();
         }
 
-        public EventHandler IntervalChanged;
+        public event EventHandler IntervalChanged;
         private void InvokeIntervalChanged()
         {
             IntervalChanged?.Invoke(this, new EventArgs());
@@ -85,6 +85,12 @@ namespace fieldtool
                 dateTimePicker1.Value = startDate;
             else
                 dateTimePicker1.Value = MinIntervalDate;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = MinIntervalDate;
+            dateTimePicker2.Value = MaxIntervalDate;
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -35,6 +36,8 @@
             this.btn7d = new System.Windows.Forms.Button();
             this.btn30d = new System.Windows.Forms.Button();
             this.btn90d = new System.Windows.Forms.Button();
+            this.btnWholeRange = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // dateTimePicker2
@@ -83,6 +86,7 @@
             this.btn7d.Size = new System.Drawing.Size(35, 21);
             this.btn7d.TabIndex = 14;
             this.btn7d.Text = "7d";
+            this.toolTip1.SetToolTip(this.btn7d, "letzte 7 Tage anzeigen");
             this.btn7d.UseVisualStyleBackColor = true;
             this.btn7d.Click += new System.EventHandler(this.btn7d_Click);
             // 
@@ -94,6 +98,7 @@
             this.btn30d.Size = new System.Drawing.Size(35, 21);
             this.btn30d.TabIndex = 15;
             this.btn30d.Text = "30d";
+            this.toolTip1.SetToolTip(this.btn30d, "letzte 30 Tage anzeigen");
             this.btn30d.UseVisualStyleBackColor = true;
             this.btn30d.Click += new System.EventHandler(this.btn30d_Click);
             // 
@@ -105,13 +110,27 @@
             this.btn90d.Size = new System.Drawing.Size(35, 21);
             this.btn90d.TabIndex = 16;
             this.btn90d.Text = "90d";
+            this.toolTip1.SetToolTip(this.btn90d, "letzte 90 Tage anzeigen");
             this.btn90d.UseVisualStyleBackColor = true;
             this.btn90d.Click += new System.EventHandler(this.btn90d_Click);
+            // 
+            // btnWholeRange
+            // 
+            this.btnWholeRange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWholeRange.Location = new System.Drawing.Point(398, 0);
+            this.btnWholeRange.Name = "btnWholeRange";
+            this.btnWholeRange.Size = new System.Drawing.Size(35, 21);
+            this.btnWholeRange.TabIndex = 17;
+            this.btnWholeRange.Text = "∞";
+            this.toolTip1.SetToolTip(this.btnWholeRange, "kompletten Datenbereich anzeigen");
+            this.btnWholeRange.UseVisualStyleBackColor = true;
+            this.btnWholeRange.Click += new System.EventHandler(this.button1_Click);
             // 
             // DateIntervalPicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnWholeRange);
             this.Controls.Add(this.btn90d);
             this.Controls.Add(this.btn30d);
             this.Controls.Add(this.btn7d);
@@ -121,7 +140,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "DateIntervalPicker";
-            this.Size = new System.Drawing.Size(401, 21);
+            this.Size = new System.Drawing.Size(439, 21);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,5 +155,7 @@
         private System.Windows.Forms.Button btn7d;
         private System.Windows.Forms.Button btn30d;
         private System.Windows.Forms.Button btn90d;
+        private System.Windows.Forms.Button btnWholeRange;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -49,9 +49,17 @@ namespace fieldtool.View
             
             InitializeComponent();
             
-            this.Text = String.Format("Graphdarstellung für Tag-ID {0}", _dataset.TagId);
+            this.Text = $"Graphdarstellung für Tag-ID {_dataset.TagId}";
             PopulateComboBox();
+            SetMinMaxDate();
 
+        }
+
+        private void SetMinMaxDate()
+        {
+            var maxDate = _dataset.GPSData.GpsSeries.Max(series => series.StartTimestamp);
+            var minDate = _dataset.GPSData.GpsSeries.Min(series => series.StartTimestamp);
+            dateIntervalPicker1.SetDateInterval(minDate, maxDate);
         }
 
         private void PopulateComboBox()
@@ -70,7 +78,7 @@ namespace fieldtool.View
 
         private void ShowFixtimeVsDate()
         {
-            chart2.Titles[0].Text = String.Format("Zeit bis GPS-Fix vs. Zeit - Tag-ID {0}", _dataset.TagId);
+            chart2.Titles[0].Text = $"Zeit bis GPS-Fix vs. Zeit - Tag-ID {_dataset.TagId}";
 
             chart2.ChartAreas.Clear();
             chart2.ChartAreas.Add(new ChartArea());
@@ -81,21 +89,17 @@ namespace fieldtool.View
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy";
 
             chart2.Series.Clear();
-            Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime");
-            battVoltagevsTimeSeries.ChartType = SeriesChartType.Line;
-            battVoltagevsTimeSeries.XAxisType = AxisType.Primary;
-            battVoltagevsTimeSeries.YAxisType = AxisType.Primary;
-            battVoltagevsTimeSeries.Enabled = true;
+            Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime")
+            {
+                ChartType = SeriesChartType.Line,
+                XAxisType = AxisType.Primary,
+                YAxisType = AxisType.Primary,
+                Enabled = true,
+                XValueType = ChartValueType.Date,
+                YValueType = ChartValueType.Int32
+            };
 
-            battVoltagevsTimeSeries.XValueType = ChartValueType.Date;
-            battVoltagevsTimeSeries.YValueType = ChartValueType.Int32;
-
-
-            var maxDate = _dataset.GPSData.GpsSeries.Max(series => series.StartTimestamp);
-            var minDate = _dataset.GPSData.GpsSeries.Min(series => series.StartTimestamp);
-            dateIntervalPicker1.SetDateInterval(minDate, maxDate);
-
-            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries)
+            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartDate && dp.StartTimestamp <= dateIntervalPicker1.EndDate))
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.UsedTimeToGetFix);
             }
@@ -105,7 +109,7 @@ namespace fieldtool.View
 
         private void ShowFixBatteryVoltageTemperatureVsTime()
         {
-            chart2.Titles[0].Text = String.Format("Fix-Batteriespannung / Temperatur vs. Zeit - Tag-ID {0}", _dataset.TagId);
+            chart2.Titles[0].Text = $"Fix-Batteriespannung / Temperatur vs. Zeit - Tag-ID {_dataset.TagId}";
 
             chart2.ChartAreas.Clear();
             chart2.ChartAreas.Add(new ChartArea());
@@ -117,31 +121,29 @@ namespace fieldtool.View
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy";
 
             chart2.Series.Clear();
-            Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime");
-            battVoltagevsTimeSeries.ChartType = SeriesChartType.Line;
-            battVoltagevsTimeSeries.XAxisType = AxisType.Primary;
-            battVoltagevsTimeSeries.YAxisType = AxisType.Primary;
+            Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime")
+            {
+                ChartType = SeriesChartType.Line,
+                XAxisType = AxisType.Primary,
+                YAxisType = AxisType.Primary,
+                Enabled = true,
+                XValueType = ChartValueType.Date,
+                YValueType = ChartValueType.Int32
+            };
 
-            battVoltagevsTimeSeries.Enabled = true;
+            Series tempvsTimeSeries = new Series("TempVsTime")
+            {
+                ChartType = SeriesChartType.Line,
+                XAxisType = AxisType.Primary,
+                YAxisType = AxisType.Secondary,
+                Enabled = true,
+                XValueType = ChartValueType.Date,
+                YValueType = ChartValueType.Int32
+            };
 
-            battVoltagevsTimeSeries.XValueType = ChartValueType.Date;
-            battVoltagevsTimeSeries.YValueType = ChartValueType.Int32;
 
-            Series tempvsTimeSeries = new Series("TempVsTime");
-            tempvsTimeSeries.ChartType = SeriesChartType.Line;
-            tempvsTimeSeries.XAxisType = AxisType.Primary;
-            tempvsTimeSeries.YAxisType = AxisType.Secondary;
 
-            tempvsTimeSeries.Enabled = true;
-
-            tempvsTimeSeries.XValueType = ChartValueType.Date;
-            tempvsTimeSeries.YValueType = ChartValueType.Int32;
-
-            var maxDate = _dataset.GPSData.GpsSeries.Max(series => series.StartTimestamp);
-            var minDate = _dataset.GPSData.GpsSeries.Min(series => series.StartTimestamp);
-            dateIntervalPicker1.SetDateInterval(minDate, maxDate);
-
-            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries)
+            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartDate && dp.StartTimestamp <= dateIntervalPicker1.EndDate))
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.BatteryVoltageFix);
                 tempvsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.Temperature);
@@ -153,7 +155,7 @@ namespace fieldtool.View
 
         private void ShowFixBatteryVoltageVsTime()
         {
-            chart2.Titles[0].Text = String.Format("Fix-Batteriespannung vs. Zeit - Tag-ID {0}", _dataset.TagId);
+            chart2.Titles[0].Text = $"Fix-Batteriespannung vs. Zeit - Tag-ID {_dataset.TagId}";
 
             chart2.ChartAreas.Clear();
             chart2.ChartAreas.Add(new ChartArea());
@@ -164,20 +166,17 @@ namespace fieldtool.View
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy";
 
             chart2.Series.Clear();
-            Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime");
-            battVoltagevsTimeSeries.ChartType = SeriesChartType.Line;
-            battVoltagevsTimeSeries.XAxisType = AxisType.Primary;
-            battVoltagevsTimeSeries.YAxisType = AxisType.Primary;
-            battVoltagevsTimeSeries.Enabled = true;
+            Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime")
+            {
+                ChartType = SeriesChartType.Line,
+                XAxisType = AxisType.Primary,
+                YAxisType = AxisType.Primary,
+                Enabled = true,
+                XValueType = ChartValueType.Date,
+                YValueType = ChartValueType.Int32
+            };
 
-            battVoltagevsTimeSeries.XValueType = ChartValueType.Date;
-            battVoltagevsTimeSeries.YValueType = ChartValueType.Int32;
-
-            var maxDate = _dataset.GPSData.GpsSeries.Max(series => series.StartTimestamp);
-            var minDate = _dataset.GPSData.GpsSeries.Min(series => series.StartTimestamp);
-            dateIntervalPicker1.SetDateInterval(minDate, maxDate);
-
-            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries)
+            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartDate && dp.StartTimestamp <= dateIntervalPicker1.EndDate))
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.BatteryVoltageFix);
             }
@@ -186,7 +185,7 @@ namespace fieldtool.View
         }
         private void ShowBatteryVoltageVsTime()
         {
-            chart2.Titles[0].Text = String.Format("Batteriespannung vs. Zeit - Tag-ID {0}", _dataset.TagId);
+            chart2.Titles[0].Text = $"Batteriespannung vs. Zeit - Tag-ID {_dataset.TagId}";
 
             chart2.ChartAreas.Clear();
             chart2.ChartAreas.Add(new ChartArea());
@@ -197,51 +196,22 @@ namespace fieldtool.View
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy";
 
             chart2.Series.Clear();
-            Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime");
-            battVoltagevsTimeSeries.ChartType = SeriesChartType.Line;
-            battVoltagevsTimeSeries.XAxisType = AxisType.Primary;
-            battVoltagevsTimeSeries.YAxisType = AxisType.Primary;
-            battVoltagevsTimeSeries.Enabled = true;
+            Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime")
+            {
+                ChartType = SeriesChartType.Line,
+                XAxisType = AxisType.Primary,
+                YAxisType = AxisType.Primary,
+                Enabled = true,
+                XValueType = ChartValueType.Date,
+                YValueType = ChartValueType.Int32
+            };
 
-            battVoltagevsTimeSeries.XValueType = ChartValueType.Date;
-            battVoltagevsTimeSeries.YValueType = ChartValueType.Int32;
-
-            var maxDate = _dataset.GPSData.GpsSeries.Max(series => series.StartTimestamp);
-            var minDate = _dataset.GPSData.GpsSeries.Min(series => series.StartTimestamp);
-            dateIntervalPicker1.SetDateInterval(minDate, maxDate);
-
-            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries)
+            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartDate && dp.StartTimestamp <= dateIntervalPicker1.EndDate))
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.BatteryVoltage);
             }
 
             chart2.Series.Add(battVoltagevsTimeSeries);           
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var comboboxItem = comboBox1.SelectedItem as ComboBoxItem;
-            if(comboboxItem == null)
-                return;
-
-            switch ((EGraphType)comboboxItem.Tag)
-            {
-                case EGraphType.BatteryVoltageVsTime:
-                    ShowBatteryVoltageVsTime();
-                    break;
-                case EGraphType.FixBatteryVoltageVsTime:
-                    ShowFixBatteryVoltageVsTime();
-                    break;
-                case EGraphType.UsedTimeToGetFixVsTime:
-                    ShowFixtimeVsDate();
-                    break;
-                case EGraphType.FixBatteryVoltageAndTempVsTime:
-                    ShowFixBatteryVoltageTemperatureVsTime();
-                    break;
-                default:
-                    return;
-
-            }
         }
 
         private void FrmGraph_KeyDown(object sender, KeyEventArgs e)
@@ -264,6 +234,46 @@ namespace fieldtool.View
 
             var bitmap = new Bitmap(memStream);
             Clipboard.SetImage(bitmap);
+        }
+
+        private void dateIntervalPicker1_IntervalChanged(object sender, EventArgs e)
+        {
+            UpdateVisu();
+        }
+
+        private EGraphType? GetGraphType()
+        {
+            var comboboxItem = comboBox1.SelectedItem as ComboBoxItem;
+            return (EGraphType?) comboboxItem?.Tag;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateVisu();
+        }
+
+        private void UpdateVisu()
+        {
+            var graphType = GetGraphType();
+
+            switch (graphType)
+            {
+                case EGraphType.BatteryVoltageVsTime:
+                    ShowBatteryVoltageVsTime();
+                    break;
+                case EGraphType.FixBatteryVoltageVsTime:
+                    ShowFixBatteryVoltageVsTime();
+                    break;
+                case EGraphType.UsedTimeToGetFixVsTime:
+                    ShowFixtimeVsDate();
+                    break;
+                case EGraphType.FixBatteryVoltageAndTempVsTime:
+                    ShowFixBatteryVoltageTemperatureVsTime();
+                    break;
+                default:
+                    return;
+
+            }
         }
     }
 }
