@@ -90,7 +90,7 @@
             this.Controls.Add(this.panel1);
             this.KeyPreview = true;
             this.Name = "FrmBurstActivityVisu";
-            this.Text = "Aktivitätsdiagramm zu Tag {0}";
+            this.Text = "Aktivitätsplot zu Tag {0}";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmBurstActivityVisu_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
