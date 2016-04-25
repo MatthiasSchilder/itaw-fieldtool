@@ -170,7 +170,9 @@ namespace fieldtool
                 MessageBox.Show("Bitte schließen Sie zunächst das geöffnete Projekt.");
                 return;
             }
-            OpenProject(e.FullFilePath);
+            if (!OpenProject(e.FullFilePath))
+                MessageBox.Show(
+                    $"Die Datei {Path.GetFileName(e.FullFilePath)} existiert an der angegebenen Stelle nicht.");
         }
 
         private void View_ShowTagGraphs(object sender, EventArgs e)
@@ -355,8 +357,11 @@ namespace fieldtool
             OpenProject(dialog.FileName);
         }
 
-        private void OpenProject(String fullFilePath)
+        private bool OpenProject(String fullFilePath)
         {
+            if (!File.Exists(fullFilePath))
+                return false;
+
             Project = FtProject.Open(fullFilePath);
 
             ProjectionManager.SetSourceProjection(Project.EPSGSourceProjection);
@@ -364,6 +369,8 @@ namespace fieldtool
 
             InvokeMapChanged(new MapChangedArgs(Map));
             InvokeProjectStateChanged(new ProjectStateArgs(Project.ProjectFilePath, Project.ProjectName, true));
+
+            return true;
         }
 
         public bool IsProjectLoaded()
