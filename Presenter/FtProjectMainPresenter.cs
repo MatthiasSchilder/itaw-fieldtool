@@ -308,6 +308,8 @@ namespace fieldtool
 
             Project = new FtProject(dialog.FileName);
             Project.Save();
+            ProjectionManager.SetSourceProjection(Project.EPSGSourceProjection);
+            ProjectionManager.SetTargetProjection(Project.EPSGTargetProjection);
             InvokeProjectStateChanged(new ProjectStateArgs(Project.ProjectFilePath, Project.ProjectName, true));
         }
 
