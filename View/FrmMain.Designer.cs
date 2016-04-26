@@ -58,6 +58,9 @@
             this.gPSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.überToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.auswertungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.streifgebieteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mCPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabelCoords = new System.Windows.Forms.ToolStripStatusLabel();
             this.lviDatasets = new System.Windows.Forms.ListView();
@@ -107,7 +110,8 @@
             this.dateiToolStripMenuItem,
             this.bearbeitenToolStripMenuItem,
             this.tagToolStripMenuItem,
-            this.überToolStripMenuItem});
+            this.überToolStripMenuItem,
+            this.auswertungToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -321,6 +325,29 @@
             this.infoToolStripMenuItem.Text = "Info";
             this.infoToolStripMenuItem.Click += new System.EventHandler(this.infoToolStripMenuItem_Click);
             // 
+            // auswertungToolStripMenuItem
+            // 
+            this.auswertungToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.streifgebieteToolStripMenuItem});
+            this.auswertungToolStripMenuItem.Name = "auswertungToolStripMenuItem";
+            this.auswertungToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
+            this.auswertungToolStripMenuItem.Text = "Auswertung";
+            // 
+            // streifgebieteToolStripMenuItem
+            // 
+            this.streifgebieteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mCPToolStripMenuItem});
+            this.streifgebieteToolStripMenuItem.Name = "streifgebieteToolStripMenuItem";
+            this.streifgebieteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.streifgebieteToolStripMenuItem.Text = "Streifgebiete";
+            // 
+            // mCPToolStripMenuItem
+            // 
+            this.mCPToolStripMenuItem.Name = "mCPToolStripMenuItem";
+            this.mCPToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mCPToolStripMenuItem.Text = "MCP";
+            this.mCPToolStripMenuItem.Click += new System.EventHandler(this.mCPToolStripMenuItem_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -440,6 +467,7 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.mapBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(112, 3);
             this.panel1.Name = "panel1";
             this.tableLayoutPanel1.SetRowSpan(this.panel1, 2);
@@ -539,6 +567,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStripMenuItem movebankEinzelsetsToolStripMenuItem;
         private SharpMap.Forms.ToolBar.MapZoomToolStrip mapZoomToolStrip1;
+        private System.Windows.Forms.ToolStripMenuItem auswertungToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem streifgebieteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mCPToolStripMenuItem;
     }
 }
 

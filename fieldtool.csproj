@@ -102,7 +102,8 @@
     <Compile Include="DateIntervalPicker.Designer.cs">
       <DependentUpon>DateIntervalPicker.cs</DependentUpon>
     </Compile>
-    <Compile Include="NumericPointSymbolizer.cs" />
+    <None Include="NumericPointSymbolizer.cs" />
+    <Compile Include="Symbolizers\PolygonWithAlphaSymbolizer.cs" />
     <Compile Include="View\FrmBurstActivityVisu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -712,6 +713,9 @@
       <Project>{83d95194-4aa0-46b0-832d-4cf9d3ea5a28}</Project>
       <Name>fieldtool.FrameworkExt</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Provider\" />
   </ItemGroup>
   <Target Name="AfterBuild">
     <Copy DestinationFolder="$(OutputPath)" SourceFiles="@(RootContent)" SkipUnchangedFiles="true" />

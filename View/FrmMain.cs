@@ -440,6 +440,16 @@ namespace fieldtool
             }
         }
 
+        public event EventHandler CreateMCPs;
+        public void InvokeCreateMCPs(EventArgs e)
+        {
+            EventHandler handler = CreateMCPs;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
         public event EventHandler<CurrentDatasetChangedEventArgs> CurrentDatasetChanged;
         public void InvokeCurrentDatasetChanged(CurrentDatasetChangedEventArgs e)
         {
@@ -576,6 +586,11 @@ namespace fieldtool
         private void exportToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void mCPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeCreateMCPs(new EventArgs());
         }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs

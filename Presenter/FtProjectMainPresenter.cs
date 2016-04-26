@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using fieldtool.Data;
 using fieldtool.View;
+using GeoAPI.Geometries;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using SharpmapGDAL;
 
@@ -150,6 +151,21 @@ namespace fieldtool
             View.ShowActivityDiagram += View_ShowActivityDiagram;
             View.ShowTagGraphs += View_ShowTagGraphs;
             View.DatasetCheckedChanged += View_DatasetCheckedChanged;
+            View.CreateMCPs += View_CreateMCPs;
+        }
+
+        private void View_CreateMCPs(object sender, EventArgs e)
+        {
+            if (!CurrentDatasetAvailable)
+                return;
+
+            FtMultipoint multipoint = new FtMultipoint(CurrentDataset.GPSData.
+                GpsSeries.Where(gps => gps.IsValid()).Select(gps => new Coordinate(gps.Rechtswert.Value, gps.Hochwert.Value)).ToList());
+            var mcp = multipoint.MinimumConvexPolygon();
+            mcp.Vertices.Add(mcp.Vertices[0]);
+            Map.AddPolygonalData("MCP",mcp);
+
+            InvokeMapChanged(new MapChangedArgs(Map));
         }
 
         private void View_ShowEinstellungen(object sender, EventArgs e)
@@ -160,7 +176,6 @@ namespace fieldtool
         private void View_DatasetCheckedChanged(object sender, DatasetCheckedEventArgs e)
         {
             Project.SetDatasetState(e.TagId, e.Checked);
-            //MessageBox.Show(e.TagId.ToString());
         }
 
         private void View_OpenMRUProject(object sender, MRUProjectOpenEventArgs e)

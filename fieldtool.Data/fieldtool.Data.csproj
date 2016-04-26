@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="FtFileset.cs" />
     <Compile Include="FtHelper.cs" />
+    <Compile Include="FtMultipoint.cs" />
+    <Compile Include="FtPolygon.cs" />
     <Compile Include="FTTransmitterAccelData.cs" />
     <Compile Include="FtTransmitterAccelDataSeries.cs" />
     <Compile Include="FTTransmitterData.cs" />

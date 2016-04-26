@@ -7,6 +7,8 @@ using System.Net.Configuration;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using fieldtool.Data;
+using fieldtool.Symbolizers;
 using GeoAPI.Geometries;
 using SharpMap.Data.Providers;
 using SharpMap.Layers.Symbolizer;
@@ -18,12 +20,17 @@ namespace fieldtool
     public class FtMap : SharpMap.Map
     {
         private FtProject _project;
+
+        private List<PolygonalVectorLayer> PolygonalVectorLayers;
+
         public FtMap(FtProject project) : base()
         {
             _project = project;
             this.BackColor = System.Drawing.Color.White;
             Init(project);
             project.DataChangedEventHandler += DataChangedEventHandler;
+
+            PolygonalVectorLayers = new List<PolygonalVectorLayer>();
         }
 
         private void DataChangedEventHandler(object sender, EventArgs eventArgs)
@@ -31,15 +38,18 @@ namespace fieldtool
             foreach (var datasets in _project.Datasets.Where(d => d.Active))
             {
                 var geometryProvider = new GeometryProvider(GpsDataToCoordinates(datasets.GPSData));
-                //var symbolizer = new CharacterPointSymbolizer();
-                //{
-                //    Font = new Font("Arial", 24, FontStyle.Bold, GraphicsUnit.Pixel),
-                //    CharacterIndex = 65,
-                //    Foreground = new SolidBrush(Color.Violet),
-                //    Halo = 2,
-                //    HaloBrush = new SolidBrush(Color.Silver)
-                //};
-                var symbolizer = new NumericPointSymbolizer();
+                var symbolizer = new CharacterPointSymbolizer()
+                {
+                    Font = new Font("Arial", 24, FontStyle.Bold, GraphicsUnit.Pixel),
+                    CharacterIndex = (int)'x',
+                    Foreground = new SolidBrush(Color.Violet),
+                    Halo = 0,
+                    HaloBrush = new SolidBrush(Color.Silver)
+                };
+                //var symbolizer = new NumericPointSymbolizer();
+
+                //var symbolizer = new ListPointSymboli
+                //symbolizer.
 
 
 
@@ -57,17 +67,19 @@ namespace fieldtool
                     yield return this.Factory.CreatePoint(new Coordinate(gps.Rechtswert.Value, gps.Hochwert.Value));
                 }
             }
-
         }
 
+        public void AddPolygonalData(String name, FtPolygon polygon)
+        {
+            var poly = this.Factory.CreatePolygon(polygon.Vertices.ToArray());
 
+            var layer2 = new PolygonalVectorLayer(name, new GeometryProvider(poly))
+            {
+                Symbolizer = new PolygonWithAlphaSymbolizer()
+            };
 
-        //public void AddBLALayer()
-        //{
-        //    this.Layers.Add(new PuntalVectorLayer("Puntal with CharacterPointSymbolizer",
-        //            new GeometryProvider(this.Factory.CreatePoint(new Coordinate(0, 0))),
-                    
-        //}
+            this.Layers.Add(layer2);
+        }
 
         private  void Init(FtProject project)
         {
@@ -136,31 +148,5 @@ namespace fieldtool
             shapeLayer.Style.Enabled = true;
             this.Layers.Add(shapeLayer);
         }
-
-
-
-
-        //public void AddTiffLayer2(float angle)
-        //{
-
-
-        //    //    //System.Drawing.Drawing2D.Matrix mat = new System.Drawing.Drawing2D.Matrix();
-        //    //    //mat.RotateAt(angle, map.WorldToImage(map.Center));
-        //    //    //map.MapTransform = mat;
-        //    //}
-        //    //catch (System.TypeInitializationException ex)
-        //    //{
-        //    //    if (ex.Message == "The type initializer for 'OSGeo.GDAL.GdalPINVOKE' threw an exception.")
-        //    //    {
-        //    //        throw new System.Exception(
-        //    //            string.Format(
-        //    //                "The application threw a PINVOKE exception. You probably need to copy the unmanaged dll's to your bin directory. They are a part of fwtools {0}. You can download it from: http://home.gdal.org/fwtools/",
-        //    //                SharpMap.Layers.GdalRasterLayer.FWToolsVersion));
-        //    //    }
-        //    //    throw;
-        //    //}
-
-        //}
-
     }
 }
