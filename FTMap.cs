@@ -21,7 +21,8 @@ namespace fieldtool
     {
         private FtProject _project;
 
-        private List<PolygonalVectorLayer> PolygonalVectorLayers;
+        private Dictionary<int, PolygonalVectorLayer> PolygonalVectorLayers;
+        private Dictionary<int, PuntalVectorLayer> PuntalVectorLayers;
 
         public FtMap(FtProject project) : base()
         {
@@ -30,30 +31,34 @@ namespace fieldtool
             Init(project);
             project.DataChangedEventHandler += DataChangedEventHandler;
 
-            PolygonalVectorLayers = new List<PolygonalVectorLayer>();
+            PolygonalVectorLayers = new Dictionary<int, PolygonalVectorLayer>();
+            PuntalVectorLayers = new Dictionary<int, PuntalVectorLayer>();
         }
 
         private void DataChangedEventHandler(object sender, EventArgs eventArgs)
         {
-            foreach (var datasets in _project.Datasets.Where(d => d.Active))
+            foreach (var dataset in _project.Datasets)
             {
-                var geometryProvider = new GeometryProvider(GpsDataToCoordinates(datasets.GPSData));
+                if (PuntalVectorLayers.ContainsKey(dataset.TagId))
+                {
+                    this.Layers.Remove(PuntalVectorLayers[dataset.TagId]);
+                    PuntalVectorLayers.Remove(dataset.TagId);
+                }
+
+                if (!dataset.Active)
+                    continue;
+
+                var geometryProvider = new GeometryProvider(GpsDataToCoordinates(dataset.GPSData));
                 var symbolizer = new CharacterPointSymbolizer()
                 {
                     Font = new Font("Arial", 24, FontStyle.Bold, GraphicsUnit.Pixel),
                     CharacterIndex = (int)'x',
                     Foreground = new SolidBrush(Color.Violet),
-                    Halo = 0,
-                    HaloBrush = new SolidBrush(Color.Silver)
                 };
-                //var symbolizer = new NumericPointSymbolizer();
 
-                //var symbolizer = new ListPointSymboli
-                //symbolizer.
-
-
-
-                this.Layers.Add(new PuntalVectorLayer(datasets.TagId.ToString(), geometryProvider, symbolizer));
+                var puntalVectorLayers = new PuntalVectorLayer(dataset.TagId.ToString(), geometryProvider, symbolizer);
+                this.Layers.Add(puntalVectorLayers);
+                PuntalVectorLayers.Add(dataset.TagId, puntalVectorLayers);
             }
             
         }
@@ -72,13 +77,13 @@ namespace fieldtool
         public void AddPolygonalData(String name, FtPolygon polygon)
         {
             var poly = this.Factory.CreatePolygon(polygon.Vertices.ToArray());
-
-            var layer2 = new PolygonalVectorLayer(name, new GeometryProvider(poly))
+            var polygonalVectorLayer = new PolygonalVectorLayer(name, new GeometryProvider(poly))
             {
                 Symbolizer = new PolygonWithAlphaSymbolizer()
             };
 
-            this.Layers.Add(layer2);
+            this.Layers.Add(polygonalVectorLayer);
+            //PolygonalVectorLayers.Add(polygonalVectorLayer);
         }
 
         private  void Init(FtProject project)
