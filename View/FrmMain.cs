@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using GeoAPI.Geometries;
 using System.IO;
 using System.Windows.Media.Imaging;
+using SharpMap.Forms;
 
 namespace fieldtool
 {
@@ -285,31 +286,6 @@ namespace fieldtool
             InvokeSaveProject(new EventArgs());
         }
 
-
-
-        private void kartenansichtAlsBildToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //if (FtManager.Instance().Projekt.ExportToClipboard)
-            //{
-            //    Clipboard.SetImage(mapBox1.Image);
-            //    MessageBox.Show("Die Kartenansicht wurde in die Zwischenablage kopiert.");
-            //}
-            //else
-            //{
-            //    SaveFileDialog dialog = new SaveFileDialog();
-            //    dialog.Filter = "PNG-Grafik|*.png";
-            //    DialogResult dr = dialog.ShowDialog();
-
-
-            //    if (dr != DialogResult.OK)
-            //        return;
-
-
-            //    mapBox1.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
-            //}
-
-        }
-
         private void toolStripButtonSave_Click(object sender, EventArgs e)
         {
             InvokeSaveProject(new EventArgs());
@@ -567,6 +543,39 @@ namespace fieldtool
         {
             InvokeDatasetCheckedChanged(new DatasetCheckedEventArgs((int)e.Item.Tag, e.Item.Checked));
             mapBox1.Refresh();
+        }
+
+        private void kartenansichtAlsBildToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "PNG-Grafik|*.png";
+            dialog.FileName = "Untersuchungsgebiet_" + MapExportFilenameWithEnvelopeString(mapBox1.Map.Envelope);
+            DialogResult dr = dialog.ShowDialog();
+
+            if (dr != DialogResult.OK)
+                return;
+
+            var width = mapBox1.Image.Width;
+            var height = mapBox1.Image.Height;
+
+            Bitmap bmp = new Bitmap(width, height);
+            Graphics g = Graphics.FromImage(bmp);
+
+            mapBox1.Map.RenderMap(g);
+
+            bmp.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+        }
+
+        private String MapExportFilenameWithEnvelopeString(Envelope env)
+        {
+            string fmt = "Extents({0};{1})({2};{3})";
+            return String.Format(fmt, Math.Round(env.MinX, 2), Math.Round(env.MinY, 2), Math.Round(env.MaxX, 2),
+                Math.Round(env.MaxY, 2));
+        }
+
+        private void exportToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs
