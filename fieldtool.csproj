@@ -277,6 +277,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="data\images\folder_Open_16xLG.png" />
     <Content Include="data\images\itaw.ico" />
     <Content Include="data\images\MyNonMovingDeco - Copy.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -284,6 +285,7 @@
     <Content Include="data\images\MyNonMovingDeco.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="data\images\Save_16x.png" />
     <Content Include="data\testdata\GeoData\GeoTiff\airport.tif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -468,6 +470,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="dep\SharpMap.Extensions\de\Npgsql.resources.dll" />
+    <None Include="Resources\ToolStripNewButton.png" />
     <None Include="Resources\IconITAW.ico" />
     <RootContent Include="dep\SharpMap.Extensions\DotSpatial.Projections.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
