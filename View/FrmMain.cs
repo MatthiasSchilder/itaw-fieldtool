@@ -32,6 +32,40 @@ namespace fieldtool
 
             mapBox1.MouseMove += MouseMovedOnMap;
             AddRecentlyUsedProjects();
+            InitDGV();
+        }
+
+        private void InitDGV()
+        {
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
+
+
+            //dataGridView1.Columns[0].
+
+            dataGridView1.CellFormatting += DataGridView1_CellFormatting;
+            dataGridView1.CellMouseClick += DataGridView1_CellMouseClick;
+            //var row = new DataGridViewRow();
+            //row.Cells.
+            //dataGridView1.Rows.Add()
+        }
+
+        private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == this.dataGridView1.Columns["Farbe"].Index
+                && e.RowIndex != this.dataGridView1.NewRowIndex)
+            {
+                ColorDialog dlg = new ColorDialog();
+                dlg.ShowDialog();
+            }
+        }
+
+        private void DataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == this.dataGridView1.Columns["Farbe"].Index
+                && e.RowIndex != this.dataGridView1.NewRowIndex)
+            {
+                e.CellStyle.BackColor = (Color)e.Value;
+            }
         }
 
         private void AddRecentlyUsedProjects()
@@ -135,6 +169,7 @@ namespace fieldtool
         private void MovebankImported(object sender, MovebankImportedArgs movebankImportedArgs)
         {
             PopulateDatasetListview(movebankImportedArgs.Datasets);
+            PopulateDatagridView(movebankImportedArgs.Datasets);
         }
 
         private void PopulateDatasetListview(List<FtTransmitterDataset> datasets)
@@ -146,6 +181,24 @@ namespace fieldtool
                 listViewItem.Tag = dataset.TagId;
                 lviDatasets.Items.Add(listViewItem);
             }
+        }
+
+        private void PopulateDatagridView(List<FtTransmitterDataset> datasets)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add(" ", typeof(bool));
+            dt.Columns.Add("Tag", typeof(string));
+            dt.Columns.Add("Farbe", typeof(Color));
+
+            foreach (var dataset in datasets)
+            {
+                dt.Rows.Add(dataset.Active, dataset.TagId, Color.Red);
+            }
+            dataGridView1.DataSource = dt;
+            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            
         }
 
         private void ProjectStateChanged(object sender, ProjectStateArgs projectStateArgs)
@@ -631,3 +684,4 @@ namespace fieldtool
         }
     }
 }
+

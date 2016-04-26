@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.mapBox1 = new SharpMap.Forms.MapBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -67,13 +68,13 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.mapZoomToolStrip1 = new SharpMap.Forms.ToolBar.MapZoomToolStrip(this.components);
+            this.dateIntervalPicker1 = new fieldtool.DateIntervalPicker();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -81,6 +82,7 @@
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // mapBox1
@@ -99,7 +101,7 @@
             this.mapBox1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.mapBox1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.mapBox1.ShowProgressUpdate = false;
-            this.mapBox1.Size = new System.Drawing.Size(1126, 404);
+            this.mapBox1.Size = new System.Drawing.Size(1031, 404);
             this.mapBox1.TabIndex = 0;
             this.mapBox1.Text = "mapBox1";
             this.mapBox1.WheelZoomMagnitude = -2D;
@@ -338,13 +340,13 @@
             this.streifgebieteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mCPToolStripMenuItem});
             this.streifgebieteToolStripMenuItem.Name = "streifgebieteToolStripMenuItem";
-            this.streifgebieteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.streifgebieteToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.streifgebieteToolStripMenuItem.Text = "Streifgebiete";
             // 
             // mCPToolStripMenuItem
             // 
             this.mCPToolStripMenuItem.Name = "mCPToolStripMenuItem";
-            this.mCPToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mCPToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.mCPToolStripMenuItem.Text = "MCP";
             this.mCPToolStripMenuItem.Click += new System.EventHandler(this.mCPToolStripMenuItem_Click);
             // 
@@ -370,11 +372,10 @@
             // 
             this.lviDatasets.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lviDatasets.CheckBoxes = true;
-            this.lviDatasets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lviDatasets.Location = new System.Drawing.Point(0, 0);
+            this.lviDatasets.Location = new System.Drawing.Point(8, 245);
             this.lviDatasets.MultiSelect = false;
             this.lviDatasets.Name = "lviDatasets";
-            this.lviDatasets.Size = new System.Drawing.Size(101, 379);
+            this.lviDatasets.Size = new System.Drawing.Size(75, 93);
             this.lviDatasets.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lviDatasets.TabIndex = 4;
             this.lviDatasets.UseCompatibleStateImageBehavior = false;
@@ -385,8 +386,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.837971F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 91.16203F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.41191F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.5881F));
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
@@ -419,8 +420,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dateTimePicker2);
-            this.tabPage1.Controls.Add(this.dateTimePicker1);
+            this.tabPage1.Controls.Add(this.dateIntervalPicker1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -428,20 +428,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "GPS";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(318, 17);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 2;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(71, 17);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 1;
             // 
             // tabPage2
             // 
@@ -460,7 +446,7 @@
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(103, 20);
+            this.textBox1.Size = new System.Drawing.Size(198, 20);
             this.textBox1.TabIndex = 6;
             // 
             // panel1
@@ -468,21 +454,44 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.mapBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(112, 3);
+            this.panel1.Location = new System.Drawing.Point(207, 3);
             this.panel1.Name = "panel1";
             this.tableLayoutPanel1.SetRowSpan(this.panel1, 2);
-            this.panel1.Size = new System.Drawing.Size(1128, 406);
+            this.panel1.Size = new System.Drawing.Size(1033, 406);
             this.panel1.TabIndex = 7;
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.lviDatasets);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 28);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(103, 381);
+            this.panel2.Size = new System.Drawing.Size(198, 381);
             this.panel2.TabIndex = 8;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(170, 150);
+            this.dataGridView1.TabIndex = 5;
             // 
             // mapZoomToolStrip1
             // 
@@ -495,6 +504,14 @@
             this.mapZoomToolStrip1.Size = new System.Drawing.Size(1243, 25);
             this.mapZoomToolStrip1.TabIndex = 7;
             this.mapZoomToolStrip1.Text = "mapZoomToolStrip1";
+            // 
+            // dateIntervalPicker1
+            // 
+            this.dateIntervalPicker1.Location = new System.Drawing.Point(40, 15);
+            this.dateIntervalPicker1.Margin = new System.Windows.Forms.Padding(0);
+            this.dateIntervalPicker1.Name = "dateIntervalPicker1";
+            this.dateIntervalPicker1.Size = new System.Drawing.Size(439, 21);
+            this.dateIntervalPicker1.TabIndex = 0;
             // 
             // FrmMain
             // 
@@ -519,6 +536,7 @@
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -562,14 +580,14 @@
         private System.Windows.Forms.ToolStripMenuItem movebankLadenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem kartenansichtAlsBildToolStripMenuItem;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStripMenuItem movebankEinzelsetsToolStripMenuItem;
         private SharpMap.Forms.ToolBar.MapZoomToolStrip mapZoomToolStrip1;
         private System.Windows.Forms.ToolStripMenuItem auswertungToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem streifgebieteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mCPToolStripMenuItem;
+        private DateIntervalPicker dateIntervalPicker1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
