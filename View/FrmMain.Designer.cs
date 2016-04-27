@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.mapBox1 = new SharpMap.Forms.MapBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -72,7 +71,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.treeViewTagList = new System.Windows.Forms.TreeView();
+            this.imageListColorKeys = new System.Windows.Forms.ImageList(this.components);
             this.mapZoomToolStrip1 = new SharpMap.Forms.ToolBar.MapZoomToolStrip(this.components);
             this.dateIntervalPicker1 = new fieldtool.DateIntervalPicker();
             this.menuStrip1.SuspendLayout();
@@ -82,7 +82,6 @@
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // mapBox1
@@ -101,7 +100,7 @@
             this.mapBox1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.mapBox1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.mapBox1.ShowProgressUpdate = false;
-            this.mapBox1.Size = new System.Drawing.Size(1031, 404);
+            this.mapBox1.Size = new System.Drawing.Size(1127, 546);
             this.mapBox1.TabIndex = 0;
             this.mapBox1.Text = "mapBox1";
             this.mapBox1.WheelZoomMagnitude = -2D;
@@ -380,14 +379,15 @@
             this.lviDatasets.TabIndex = 4;
             this.lviDatasets.UseCompatibleStateImageBehavior = false;
             this.lviDatasets.View = System.Windows.Forms.View.List;
+            this.lviDatasets.Visible = false;
             this.lviDatasets.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.lviDatasets_ItemChecked);
             this.lviDatasets.SelectedIndexChanged += new System.EventHandler(this.lviDatasets_SelectedIndexChanged);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.41191F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.5881F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.769106F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 91.2309F));
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
@@ -397,10 +397,8 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.53846F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.46154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1243, 654);
             this.tableLayoutPanel1.TabIndex = 6;
             this.tableLayoutPanel1.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.TableLayoutPanel_CellPaint);
@@ -412,10 +410,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(3, 415);
+            this.tabControl1.Location = new System.Drawing.Point(3, 557);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1237, 236);
+            this.tabControl1.Size = new System.Drawing.Size(1237, 94);
             this.tabControl1.TabIndex = 5;
             // 
             // tabPage1
@@ -424,7 +422,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1229, 210);
+            this.tabPage1.Size = new System.Drawing.Size(1229, 68);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "GPS";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -435,7 +433,7 @@
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPage2.Size = new System.Drawing.Size(1229, 210);
+            this.tabPage2.Size = new System.Drawing.Size(1229, 68);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "GPS + Aktivität";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -446,7 +444,7 @@
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(198, 20);
+            this.textBox1.Size = new System.Drawing.Size(102, 20);
             this.textBox1.TabIndex = 6;
             // 
             // panel1
@@ -454,44 +452,47 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.mapBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(207, 3);
+            this.panel1.Location = new System.Drawing.Point(111, 3);
             this.panel1.Name = "panel1";
             this.tableLayoutPanel1.SetRowSpan(this.panel1, 2);
-            this.panel1.Size = new System.Drawing.Size(1033, 406);
+            this.panel1.Size = new System.Drawing.Size(1129, 548);
             this.panel1.TabIndex = 7;
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.treeViewTagList);
             this.panel2.Controls.Add(this.lviDatasets);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 28);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(198, 381);
+            this.panel2.Size = new System.Drawing.Size(102, 523);
             this.panel2.TabIndex = 8;
             // 
-            // dataGridView1
+            // treeViewTagList
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(170, 150);
-            this.dataGridView1.TabIndex = 5;
+            this.treeViewTagList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeViewTagList.CheckBoxes = true;
+            this.treeViewTagList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewTagList.ImageIndex = 0;
+            this.treeViewTagList.ImageList = this.imageListColorKeys;
+            this.treeViewTagList.ItemHeight = 16;
+            this.treeViewTagList.Location = new System.Drawing.Point(0, 0);
+            this.treeViewTagList.Name = "treeViewTagList";
+            this.treeViewTagList.SelectedImageIndex = 0;
+            this.treeViewTagList.ShowLines = false;
+            this.treeViewTagList.ShowPlusMinus = false;
+            this.treeViewTagList.ShowRootLines = false;
+            this.treeViewTagList.Size = new System.Drawing.Size(100, 521);
+            this.treeViewTagList.TabIndex = 5;
+            this.treeViewTagList.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.lviDatasets_ItemChecked);
+            this.treeViewTagList.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewTagList_AfterSelect);
+            // 
+            // imageListColorKeys
+            // 
+            this.imageListColorKeys.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageListColorKeys.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageListColorKeys.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // mapZoomToolStrip1
             // 
@@ -536,7 +537,6 @@
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -587,7 +587,8 @@
         private System.Windows.Forms.ToolStripMenuItem streifgebieteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mCPToolStripMenuItem;
         private DateIntervalPicker dateIntervalPicker1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TreeView treeViewTagList;
+        private System.Windows.Forms.ImageList imageListColorKeys;
     }
 }
 

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GeoAPI.Geometries;
 using System.IO;
+using System.Runtime.Remoting.Messaging;
 using System.Windows.Media.Imaging;
 using SharpMap.Forms;
 
@@ -32,41 +33,9 @@ namespace fieldtool
 
             mapBox1.MouseMove += MouseMovedOnMap;
             AddRecentlyUsedProjects();
-            InitDGV();
         }
 
-        private void InitDGV()
-        {
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
 
-
-            //dataGridView1.Columns[0].
-
-            dataGridView1.CellFormatting += DataGridView1_CellFormatting;
-            dataGridView1.CellMouseClick += DataGridView1_CellMouseClick;
-            //var row = new DataGridViewRow();
-            //row.Cells.
-            //dataGridView1.Rows.Add()
-        }
-
-        private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.ColumnIndex == this.dataGridView1.Columns["Farbe"].Index
-                && e.RowIndex != this.dataGridView1.NewRowIndex)
-            {
-                ColorDialog dlg = new ColorDialog();
-                dlg.ShowDialog();
-            }
-        }
-
-        private void DataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex == this.dataGridView1.Columns["Farbe"].Index
-                && e.RowIndex != this.dataGridView1.NewRowIndex)
-            {
-                e.CellStyle.BackColor = (Color)e.Value;
-            }
-        }
 
         private void AddRecentlyUsedProjects()
         {
@@ -169,7 +138,7 @@ namespace fieldtool
         private void MovebankImported(object sender, MovebankImportedArgs movebankImportedArgs)
         {
             PopulateDatasetListview(movebankImportedArgs.Datasets);
-            PopulateDatagridView(movebankImportedArgs.Datasets);
+            PopulateTreeView(movebankImportedArgs.Datasets);
         }
 
         private void PopulateDatasetListview(List<FtTransmitterDataset> datasets)
@@ -183,22 +152,43 @@ namespace fieldtool
             }
         }
 
-        private void PopulateDatagridView(List<FtTransmitterDataset> datasets)
+        private void PopulateTreeView(List<FtTransmitterDataset> datasets)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add(" ", typeof(bool));
-            dt.Columns.Add("Tag", typeof(string));
-            dt.Columns.Add("Farbe", typeof(Color));
+            PopulateImageList(datasets);
 
+            int i = 0;
             foreach (var dataset in datasets)
             {
-                dt.Rows.Add(dataset.Active, dataset.TagId, Color.Red);
+                var tn = treeViewTagList.Nodes.Add(dataset.TagId.ToString());
+                tn.Tag = dataset.TagId;
+                tn.Checked = dataset.Active;
+                tn.ImageIndex = i;
+                tn.SelectedImageIndex = i++;
+                
+            }           
+        }
+
+        private void PopulateImageList(List<FtTransmitterDataset> datasets)
+        {
+            foreach (var dataset in datasets)
+            {
+                var img = CreateMonochromaticImage(dataset.VisulizationColor);
+                imageListColorKeys.Images.Add(img);
             }
-            dataGridView1.DataSource = dt;
-            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             
+        }
+
+        private Image CreateMonochromaticImage(Color color)
+        {
+            Bitmap bmp = new Bitmap(16, 16);
+            for (int i = 2; i < 13; i++)
+            {
+                for (int j = 2; j < 13; j++)
+                {
+                    bmp.SetPixel(i, j, color);
+                }
+            }
+            return bmp;
         }
 
         private void ProjectStateChanged(object sender, ProjectStateArgs projectStateArgs)
@@ -644,6 +634,28 @@ namespace fieldtool
         private void mCPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InvokeCreateMCPs(new EventArgs());
+        }
+
+        private void lviDatasets_ItemChecked(object sender, TreeViewEventArgs e)
+        {
+            InvokeDatasetCheckedChanged(new DatasetCheckedEventArgs((int)e.Node.Tag, e.Node.Checked));
+            mapBox1.Refresh();
+        }
+
+        private void treeViewTagList_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            //var selectedItems = lviDatasets.SelectedItems;
+            //if (selectedItems.Count == 0)
+            //    return;
+
+            
+
+            //if (selectedItems[0] == null)
+            //{
+            //    InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs(null));
+            //    return;
+            //}
+            InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs((int)e.Node.Tag));
         }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs

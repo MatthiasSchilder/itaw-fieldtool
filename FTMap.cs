@@ -53,7 +53,7 @@ namespace fieldtool
                 {
                     Font = new Font("Arial", 24, FontStyle.Bold, GraphicsUnit.Pixel),
                     CharacterIndex = (int)'x',
-                    Foreground = new SolidBrush(Color.Violet),
+                    Foreground = new SolidBrush(dataset.VisulizationColor)
                 };
 
                 var puntalVectorLayers = new PuntalVectorLayer(dataset.TagId.ToString(), geometryProvider, symbolizer);
@@ -74,12 +74,12 @@ namespace fieldtool
             }
         }
 
-        public void AddPolygonalData(String name, FtPolygon polygon)
+        public void AddPolygonalData(FtTransmitterDataset dataset, FtPolygon polygon)
         {
             var poly = this.Factory.CreatePolygon(polygon.Vertices.ToArray());
-            var polygonalVectorLayer = new PolygonalVectorLayer(name, new GeometryProvider(poly))
+            var polygonalVectorLayer = new PolygonalVectorLayer(dataset.TagId.ToString() + "MCP", new GeometryProvider(poly))
             {
-                Symbolizer = new PolygonWithAlphaSymbolizer()
+                Symbolizer = new PolygonWithAlphaSymbolizer(dataset.VisulizationColor)
             };
 
             this.Layers.Add(polygonalVectorLayer);

@@ -22,12 +22,13 @@ namespace fieldtool.Symbolizers
             set;
         }
 
+        public Color VisulizationColor { get; set; }
+
         /// <summary>
         /// Creates an instance of this class
         /// </summary>
-        public PolygonWithAlphaSymbolizer()
+        public PolygonWithAlphaSymbolizer(Color color)
         {
-            var color = Utility.RandomKnownColor();
             this.Outline = new Pen(color, 1f);
 
             var fillColor = Color.FromArgb(127, color.R, color.G, color.B);
@@ -57,7 +58,7 @@ namespace fieldtool.Symbolizers
         /// <filterpriority>2</filterpriority>
         public override object Clone()
         {
-            return new PolygonWithAlphaSymbolizer
+            return new PolygonWithAlphaSymbolizer(VisulizationColor)
             {
                 Fill = (Brush)base.Fill.Clone(),
                 Outline = (Pen)this.Outline.Clone(),

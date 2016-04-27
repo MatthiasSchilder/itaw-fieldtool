@@ -162,7 +162,7 @@ namespace fieldtool
                     GpsSeries.Where(gps => gps.IsValid()).Select(gps => new Coordinate(gps.Rechtswert.Value, gps.Hochwert.Value)).ToList());
                 var mcp = multipoint.MinimumConvexPolygon();
                 mcp.Vertices.Add(mcp.Vertices[0]);
-                Map.AddPolygonalData("MCP" + dataset.TagId, mcp);
+                Map.AddPolygonalData(dataset, mcp);
             }
 
             InvokeMapChanged(new MapChangedArgs(Map));

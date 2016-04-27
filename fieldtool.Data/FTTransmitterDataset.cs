@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace fieldtool
 
         public bool Active { get; set; }
 
+        public Color VisulizationColor;
+
         public FtTransmitterTagInfoData TagInfoData { get; private set; }
         public FtTransmitterAccelData   AccelData { get; private set; }
         public FtTransmitterGpsData     GPSData { get; private set; }
@@ -22,6 +25,9 @@ namespace fieldtool
         {
             TagId = id;
             Fileset = fileset;
+
+            Random rnd = new Random();
+            VisulizationColor = Color.FromArgb(rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255));
         }
 
         public void AddTagInfoData(FtTransmitterTagInfoData tagInfoData)
