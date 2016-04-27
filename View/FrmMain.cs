@@ -12,6 +12,7 @@ using GeoAPI.Geometries;
 using System.IO;
 using System.Runtime.Remoting.Messaging;
 using System.Windows.Media.Imaging;
+using fieldtool.View;
 using SharpMap.Forms;
 
 namespace fieldtool
@@ -667,6 +668,22 @@ namespace fieldtool
         private void treeViewTagList_AfterSelect(object sender, TreeViewEventArgs e)
         {
             InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs((int)e.Node.Tag));
+        }
+
+        private int i = 0;
+        private void mapBox1_MouseDrag(Coordinate worldPos, MouseEventArgs imagePos)
+        {
+            //Debug.WriteLine("im dragging " + i++);
+        }
+
+        private void konfigurationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FtFormFactory.ShowDialog(new FrmTagConfig());
+        }
+
+        private void tabelleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs

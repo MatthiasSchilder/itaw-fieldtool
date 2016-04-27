@@ -102,6 +102,9 @@
     <Compile Include="DateIntervalPicker.Designer.cs">
       <DependentUpon>DateIntervalPicker.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\FrmTagConfig.resx">
+      <DependentUpon>FrmTagConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="NumericPointSymbolizer.cs" />
     <Compile Include="Symbolizers\PolygonWithAlphaSymbolizer.cs" />
     <Compile Include="View\FrmBurstActivityVisu.cs">
@@ -220,6 +223,12 @@
     <None Include="dep\SharpMap.Extensions\gdal\share\nzgd2kgrid0005.gsb" />
     <None Include="dep\SharpMap.Extensions\gdal\share\other.extra" />
     <None Include="dep\SharpMap.Extensions\gdal\share\proj_def.dat" />
+    <Compile Include="View\FrmTagConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmTagConfig.Designer.cs">
+      <DependentUpon>FrmTagConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\IFtProjcetMainView.cs" />
     <Compile Include="View\IFtProjectPropertiesView.cs" />
     <Compile Include="View\IView.cs" />

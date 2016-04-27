@@ -258,3 +258,4 @@ C:\Users\ma\Desktop\itaw\itaw-fieldtool\obj\Debug\fieldtool.FrmProjectProperties
 C:\Users\ma\Desktop\itaw\itaw-fieldtool\obj\Debug\fieldtool.FrmMain.resources
 C:\Users\ma\Desktop\itaw\itaw-fieldtool\obj\Debug\fieldtool.Properties.Resources.resources
 C:\Users\ma\Desktop\itaw\itaw-fieldtool\obj\Debug\fieldtool.csproj.GenerateResource.Cache
+F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.View.FrmTagConfig.resources

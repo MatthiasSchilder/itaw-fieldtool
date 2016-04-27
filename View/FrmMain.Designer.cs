@@ -67,7 +67,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dateIntervalPicker1 = new fieldtool.DateIntervalPicker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -75,6 +74,10 @@
             this.treeViewTagList = new System.Windows.Forms.TreeView();
             this.imageListColorKeys = new System.Windows.Forms.ImageList(this.components);
             this.mapZoomToolStrip1 = new SharpMap.Forms.ToolBar.MapZoomToolStrip(this.components);
+            this.tagContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.konfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateIntervalPicker1 = new fieldtool.DateIntervalPicker();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -82,6 +85,7 @@
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tagContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // mapBox1
@@ -104,6 +108,7 @@
             this.mapBox1.TabIndex = 0;
             this.mapBox1.Text = "mapBox1";
             this.mapBox1.WheelZoomMagnitude = -2D;
+            this.mapBox1.MouseDrag += new SharpMap.Forms.MapBox.MouseEventHandler(this.mapBox1_MouseDrag);
             // 
             // menuStrip1
             // 
@@ -428,14 +433,6 @@
             this.tabPage1.Text = "GPS";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dateIntervalPicker1
-            // 
-            this.dateIntervalPicker1.Location = new System.Drawing.Point(40, 15);
-            this.dateIntervalPicker1.Margin = new System.Windows.Forms.Padding(0);
-            this.dateIntervalPicker1.Name = "dateIntervalPicker1";
-            this.dateIntervalPicker1.Size = new System.Drawing.Size(439, 21);
-            this.dateIntervalPicker1.TabIndex = 0;
-            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -481,6 +478,7 @@
             // 
             this.treeViewTagList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeViewTagList.CheckBoxes = true;
+            this.treeViewTagList.ContextMenuStrip = this.tagContextMenu;
             this.treeViewTagList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewTagList.ImageIndex = 0;
             this.treeViewTagList.ImageList = this.imageListColorKeys;
@@ -514,6 +512,36 @@
             this.mapZoomToolStrip1.TabIndex = 7;
             this.mapZoomToolStrip1.Text = "mapZoomToolStrip1";
             // 
+            // tagContextMenu
+            // 
+            this.tagContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.konfigurationToolStripMenuItem,
+            this.tabelleToolStripMenuItem});
+            this.tagContextMenu.Name = "contextMenuStrip1";
+            this.tagContextMenu.Size = new System.Drawing.Size(153, 70);
+            // 
+            // konfigurationToolStripMenuItem
+            // 
+            this.konfigurationToolStripMenuItem.Name = "konfigurationToolStripMenuItem";
+            this.konfigurationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.konfigurationToolStripMenuItem.Text = "Konfiguration";
+            this.konfigurationToolStripMenuItem.Click += new System.EventHandler(this.konfigurationToolStripMenuItem_Click);
+            // 
+            // tabelleToolStripMenuItem
+            // 
+            this.tabelleToolStripMenuItem.Name = "tabelleToolStripMenuItem";
+            this.tabelleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tabelleToolStripMenuItem.Text = "Tabelle";
+            this.tabelleToolStripMenuItem.Click += new System.EventHandler(this.tabelleToolStripMenuItem_Click);
+            // 
+            // dateIntervalPicker1
+            // 
+            this.dateIntervalPicker1.Location = new System.Drawing.Point(40, 15);
+            this.dateIntervalPicker1.Margin = new System.Windows.Forms.Padding(0);
+            this.dateIntervalPicker1.Name = "dateIntervalPicker1";
+            this.dateIntervalPicker1.Size = new System.Drawing.Size(439, 21);
+            this.dateIntervalPicker1.TabIndex = 0;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -537,6 +565,7 @@
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.tagContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -589,6 +618,9 @@
         private DateIntervalPicker dateIntervalPicker1;
         private System.Windows.Forms.TreeView treeViewTagList;
         private System.Windows.Forms.ImageList imageListColorKeys;
+        private System.Windows.Forms.ContextMenuStrip tagContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem konfigurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tabelleToolStripMenuItem;
     }
 }
 

@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using Microsoft.WindowsAPICodePack.Dialogs.Controls;
 
 namespace fieldtool.View
 {
@@ -84,7 +83,6 @@ namespace fieldtool.View
             chart2.ChartAreas.Add(new ChartArea());
             chart2.ChartAreas[0].AxisX.Title = "Datum [TT.MM.JJ]";
             chart2.ChartAreas[0].AxisY.Title = "Zeit bis GPS-Fix [s]";
-
             chart2.ChartAreas[0].AxisX.LabelStyle.Angle = -65;
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy";
 
@@ -119,7 +117,7 @@ namespace fieldtool.View
 
             chart2.ChartAreas[0].AxisX.LabelStyle.Angle = -65;
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy";
-
+            chart2.ChartAreas[0].AxisY.IntervalOffset = 2600;
             chart2.Series.Clear();
             Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime")
             {
@@ -164,6 +162,7 @@ namespace fieldtool.View
 
             chart2.ChartAreas[0].AxisX.LabelStyle.Angle = -65;
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy";
+            chart2.ChartAreas[0].AxisY.IntervalOffset = 2600;
 
             chart2.Series.Clear();
             Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime")
@@ -194,6 +193,7 @@ namespace fieldtool.View
 
             chart2.ChartAreas[0].AxisX.LabelStyle.Angle = -65;
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy";
+            chart2.ChartAreas[0].AxisY.Minimum = 2600;
 
             chart2.Series.Clear();
             Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime")
