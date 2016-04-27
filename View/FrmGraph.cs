@@ -272,7 +272,6 @@ namespace fieldtool.View
                     break;
                 default:
                     return;
-
             }
         }
 
