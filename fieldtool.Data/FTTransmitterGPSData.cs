@@ -34,12 +34,26 @@ namespace fieldtool
 
         public IEnumerator<FtTransmitterGpsDataSeries> GetEnumerator()
         {
+            if (dateTimestop.HasValue && dateTimestart.HasValue)
+            {
+                return GpsSeries.Where(gps => gps.StartTimestamp >= dateTimestart && gps.StartTimestamp <= dateTimestop)
+                    .GetEnumerator();
+            }
             return GpsSeries.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+
+        private DateTime? dateTimestart;
+        private DateTime? dateTimestop;
+        public void SetIntervalFilter(DateTime start, DateTime stop)
+        {
+            dateTimestart = start;
+            dateTimestop = stop;
         }
     }
 }

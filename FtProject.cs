@@ -67,6 +67,14 @@ namespace fieldtool
             DataChangedEventHandler(this, new EventArgs());
         }
 
+        public void SetIntervalFilter(DateTime start, DateTime stop)
+        {
+            foreach(var dataset in Datasets)
+                dataset.GPSData.SetIntervalFilter(start, stop);
+
+            DataChangedEventHandler(this, new EventArgs());
+        }
+
         public void LoadDatasets()
         {
             Datasets = FtTransmitterDatasetFactory.LoadFilesets(MovebankFilesets, TagBlacklist);

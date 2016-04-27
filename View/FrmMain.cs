@@ -32,10 +32,14 @@ namespace fieldtool
             SetWindowTitle(false, null);
 
             mapBox1.MouseMove += MouseMovedOnMap;
+            dateIntervalPicker1.IntervalChanged += DateIntervalPicker1_IntervalChanged;
             AddRecentlyUsedProjects();
         }
 
-
+        private void DateIntervalPicker1_IntervalChanged(object sender, EventArgs e)
+        {
+            InvokeMapDisplayIntervalChanged(new MapDisplayIntervalChangedEventArgs(dateIntervalPicker1.StartDate, dateIntervalPicker1.EndDate));
+        }
 
         private void AddRecentlyUsedProjects()
         {
@@ -133,6 +137,14 @@ namespace fieldtool
             Presenter.MapChanged += MapChanged;
             Presenter.ProjectStateChanged += ProjectStateChanged;
             Presenter.MovebankImported += MovebankImported;
+            Presenter.rMapDisplayIntervalChanged += rrMapDisplayIntervalChanged;
+        }
+
+        private void rrMapDisplayIntervalChanged(object sender, MapDisplayIntervalChangedEventArgs movebankImportedArgs)
+        {
+            var maxDate = movebankImportedArgs.IntervalEnd;
+            var minDate = movebankImportedArgs.IntervalStart;
+            dateIntervalPicker1.SetDateInterval(minDate, maxDate);
         }
 
         private void MovebankImported(object sender, MovebankImportedArgs movebankImportedArgs)
@@ -513,6 +525,16 @@ namespace fieldtool
             }
         }
 
+        public event EventHandler<MapDisplayIntervalChangedEventArgs> MapDisplayIntervalChanged;
+        public void InvokeMapDisplayIntervalChanged(MapDisplayIntervalChangedEventArgs e)
+        {
+            EventHandler<MapDisplayIntervalChangedEventArgs> handler = MapDisplayIntervalChanged;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
 
         public event SharpMap.Forms.MapBox.MouseEventHandler MouseMovedOnMap;
 
@@ -644,17 +666,6 @@ namespace fieldtool
 
         private void treeViewTagList_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            //var selectedItems = lviDatasets.SelectedItems;
-            //if (selectedItems.Count == 0)
-            //    return;
-
-            
-
-            //if (selectedItems[0] == null)
-            //{
-            //    InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs(null));
-            //    return;
-            //}
             InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs((int)e.Node.Tag));
         }
     }
@@ -694,6 +705,19 @@ namespace fieldtool
         {
             EinzelImport = einzelImport;
         }
+    }
+
+    public class MapDisplayIntervalChangedEventArgs : EventArgs
+    {
+        public DateTime IntervalStart;
+        public DateTime IntervalEnd;
+
+        public MapDisplayIntervalChangedEventArgs(DateTime start, DateTime end)
+        {
+            IntervalStart = start;
+            IntervalEnd = end;
+        }
+
     }
 }
 

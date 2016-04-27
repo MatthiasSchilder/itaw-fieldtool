@@ -56,17 +56,18 @@
             this.tagInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beschleunigungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gPSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.überToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.auswertungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.streifgebieteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mCPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.überToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabelCoords = new System.Windows.Forms.ToolStripStatusLabel();
             this.lviDatasets = new System.Windows.Forms.ListView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dateIntervalPicker1 = new fieldtool.DateIntervalPicker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -74,7 +75,6 @@
             this.treeViewTagList = new System.Windows.Forms.TreeView();
             this.imageListColorKeys = new System.Windows.Forms.ImageList(this.components);
             this.mapZoomToolStrip1 = new SharpMap.Forms.ToolBar.MapZoomToolStrip(this.components);
-            this.dateIntervalPicker1 = new fieldtool.DateIntervalPicker();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -311,6 +311,29 @@
             this.gPSToolStripMenuItem.Text = "GPS";
             this.gPSToolStripMenuItem.Click += new System.EventHandler(this.gPSToolStripMenuItem_Click);
             // 
+            // auswertungToolStripMenuItem
+            // 
+            this.auswertungToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.streifgebieteToolStripMenuItem});
+            this.auswertungToolStripMenuItem.Name = "auswertungToolStripMenuItem";
+            this.auswertungToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
+            this.auswertungToolStripMenuItem.Text = "Auswertung";
+            // 
+            // streifgebieteToolStripMenuItem
+            // 
+            this.streifgebieteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mCPToolStripMenuItem});
+            this.streifgebieteToolStripMenuItem.Name = "streifgebieteToolStripMenuItem";
+            this.streifgebieteToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.streifgebieteToolStripMenuItem.Text = "Streifgebiete";
+            // 
+            // mCPToolStripMenuItem
+            // 
+            this.mCPToolStripMenuItem.Name = "mCPToolStripMenuItem";
+            this.mCPToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.mCPToolStripMenuItem.Text = "MCP";
+            this.mCPToolStripMenuItem.Click += new System.EventHandler(this.mCPToolStripMenuItem_Click);
+            // 
             // überToolStripMenuItem
             // 
             this.überToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -325,29 +348,6 @@
             this.infoToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
             this.infoToolStripMenuItem.Text = "Info";
             this.infoToolStripMenuItem.Click += new System.EventHandler(this.infoToolStripMenuItem_Click);
-            // 
-            // auswertungToolStripMenuItem
-            // 
-            this.auswertungToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.streifgebieteToolStripMenuItem});
-            this.auswertungToolStripMenuItem.Name = "auswertungToolStripMenuItem";
-            this.auswertungToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
-            this.auswertungToolStripMenuItem.Text = "Auswertung";
-            // 
-            // streifgebieteToolStripMenuItem
-            // 
-            this.streifgebieteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mCPToolStripMenuItem});
-            this.streifgebieteToolStripMenuItem.Name = "streifgebieteToolStripMenuItem";
-            this.streifgebieteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.streifgebieteToolStripMenuItem.Text = "Streifgebiete";
-            // 
-            // mCPToolStripMenuItem
-            // 
-            this.mCPToolStripMenuItem.Name = "mCPToolStripMenuItem";
-            this.mCPToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.mCPToolStripMenuItem.Text = "MCP";
-            this.mCPToolStripMenuItem.Click += new System.EventHandler(this.mCPToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -428,6 +428,14 @@
             this.tabPage1.Text = "GPS";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // dateIntervalPicker1
+            // 
+            this.dateIntervalPicker1.Location = new System.Drawing.Point(40, 15);
+            this.dateIntervalPicker1.Margin = new System.Windows.Forms.Padding(0);
+            this.dateIntervalPicker1.Name = "dateIntervalPicker1";
+            this.dateIntervalPicker1.Size = new System.Drawing.Size(439, 21);
+            this.dateIntervalPicker1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -505,14 +513,6 @@
             this.mapZoomToolStrip1.Size = new System.Drawing.Size(1243, 25);
             this.mapZoomToolStrip1.TabIndex = 7;
             this.mapZoomToolStrip1.Text = "mapZoomToolStrip1";
-            // 
-            // dateIntervalPicker1
-            // 
-            this.dateIntervalPicker1.Location = new System.Drawing.Point(40, 15);
-            this.dateIntervalPicker1.Margin = new System.Windows.Forms.Padding(0);
-            this.dateIntervalPicker1.Name = "dateIntervalPicker1";
-            this.dateIntervalPicker1.Size = new System.Drawing.Size(439, 21);
-            this.dateIntervalPicker1.TabIndex = 0;
             // 
             // FrmMain
             // 

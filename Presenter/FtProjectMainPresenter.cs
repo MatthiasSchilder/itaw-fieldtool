@@ -59,6 +59,16 @@ namespace fieldtool
 
     class FtProjectMainPresenter : Presenter<IFtProjectMainView>
     {
+        public EventHandler<MapDisplayIntervalChangedEventArgs> rMapDisplayIntervalChanged;
+        public void InvokeMapDisplayIntervalChanged(MapDisplayIntervalChangedEventArgs e)
+        {
+            var handler = rMapDisplayIntervalChanged;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
         public EventHandler<CursorCoordsChangedArgs> CursorCoordinatesChanged;
         public void InvokeCursorCoordinatesChanged(CursorCoordsChangedArgs e)
         {
@@ -102,6 +112,8 @@ namespace fieldtool
 
 
         private FtProject Project { get; set; }
+
+
 
         private FtMap _map;
         private bool MapNeedsRefresh { get; set; }
@@ -151,7 +163,14 @@ namespace fieldtool
             View.ShowActivityDiagram += View_ShowActivityDiagram;
             View.ShowTagGraphs += View_ShowTagGraphs;
             View.DatasetCheckedChanged += View_DatasetCheckedChanged;
+            View.MapDisplayIntervalChanged += View_MapDisplayIntervalChanged;
             View.CreateMCPs += View_CreateMCPs;
+        }
+
+        private void View_MapDisplayIntervalChanged(object sender, MapDisplayIntervalChangedEventArgs e)
+        {
+            Project.SetIntervalFilter(e.IntervalStart, e.IntervalEnd);
+            InvokeMapChanged(new MapChangedArgs(Map));
         }
 
         private void View_CreateMCPs(object sender, EventArgs e)
@@ -176,6 +195,7 @@ namespace fieldtool
         private void View_DatasetCheckedChanged(object sender, DatasetCheckedEventArgs e)
         {
             Project.SetDatasetState(e.TagId, e.Checked);
+            InvokeMapChanged(new MapChangedArgs(Map));
         }
 
         private void View_OpenMRUProject(object sender, MRUProjectOpenEventArgs e)
@@ -216,6 +236,11 @@ namespace fieldtool
         private void View_CurrentDatasetChanged(object sender, CurrentDatasetChangedEventArgs e)
         {
             CurrentDataset = !e.CurrentTagId.HasValue ? null : Project.GetTransmitterDataset(e.CurrentTagId.Value);
+            if (CurrentDataset == null)
+                return;
+            var maxDate = CurrentDataset.GPSData.GpsSeries.Max(series => series.StartTimestamp);
+            var minDate = CurrentDataset.GPSData.GpsSeries.Min(series => series.StartTimestamp);
+            InvokeMapDisplayIntervalChanged(new MapDisplayIntervalChangedEventArgs(minDate, maxDate));
         }
 
         private void View_ShowRawGPS(object sender, EventArgs e)

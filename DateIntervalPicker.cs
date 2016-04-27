@@ -65,10 +65,10 @@ namespace fieldtool
                 dateTimePicker1.Value = MinIntervalDate;
         }
 
-        private void btn30d_Click(object sender, EventArgs e)
+        private void btn14d_Click(object sender, EventArgs e)
         {
             dateTimePicker2.Value = MaxIntervalDate;
-            var startDate = MaxIntervalDate.Subtract(new TimeSpan(30, 0, 0, 0));
+            var startDate = MaxIntervalDate.Subtract(new TimeSpan(14, 0, 0, 0));
 
             if (startDate > MinIntervalDate)
                 dateTimePicker1.Value = startDate;
@@ -76,10 +76,10 @@ namespace fieldtool
                 dateTimePicker1.Value = MinIntervalDate;
         }
 
-        private void btn90d_Click(object sender, EventArgs e)
+        private void btn30d_Click(object sender, EventArgs e)
         {
             dateTimePicker2.Value = MaxIntervalDate;
-            var startDate = MaxIntervalDate.Subtract(new TimeSpan(90, 0, 0, 0));
+            var startDate = MaxIntervalDate.Subtract(new TimeSpan(30, 0, 0, 0));
 
             if (startDate > MinIntervalDate)
                 dateTimePicker1.Value = startDate;

@@ -60,7 +60,7 @@ namespace fieldtool
                 this.Layers.Add(puntalVectorLayers);
                 PuntalVectorLayers.Add(dataset.TagId, puntalVectorLayers);
             }
-            
+
         }
 
         private IEnumerable<IPoint> GpsDataToCoordinates(IEnumerable<FtTransmitterGpsDataSeries> gpsSeries)
