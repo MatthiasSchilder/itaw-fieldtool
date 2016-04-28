@@ -156,5 +156,15 @@ namespace fieldtool
         {
 
         }
+
+        private void numEPSGSource_ValueChanged(object sender, EventArgs e)
+        {
+            _project.EPSGSourceProjection = (int)numEPSGSource.Value;
+        }
+
+        private void numEPSGTarget_ValueChanged(object sender, EventArgs e)
+        {
+            _project.EPSGTargetProjection = (int)numEPSGTarget.Value;
+        }
     }
 }

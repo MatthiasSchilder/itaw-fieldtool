@@ -128,6 +128,7 @@
             this.numEPSGTarget.Name = "numEPSGTarget";
             this.numEPSGTarget.Size = new System.Drawing.Size(71, 20);
             this.numEPSGTarget.TabIndex = 3;
+            this.numEPSGTarget.ValueChanged += new System.EventHandler(this.numEPSGTarget_ValueChanged);
             // 
             // numEPSGSource
             // 
@@ -140,6 +141,7 @@
             this.numEPSGSource.Name = "numEPSGSource";
             this.numEPSGSource.Size = new System.Drawing.Size(71, 20);
             this.numEPSGSource.TabIndex = 2;
+            this.numEPSGSource.ValueChanged += new System.EventHandler(this.numEPSGSource_ValueChanged);
             // 
             // label5
             // 
