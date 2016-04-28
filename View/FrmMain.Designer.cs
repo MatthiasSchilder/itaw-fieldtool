@@ -66,17 +66,17 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dateIntervalPicker1 = new fieldtool.DateIntervalPicker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.treeViewTagList = new System.Windows.Forms.TreeView();
             this.tagContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.konfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListColorKeys = new System.Windows.Forms.ImageList(this.components);
             this.mapZoomToolStrip1 = new SharpMap.Forms.ToolBar.MapZoomToolStrip(this.components);
+            this.treeViewTagList = new System.Windows.Forms.TreeView();
+            this.dateIntervalPicker1 = new fieldtool.DateIntervalPicker();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -411,14 +411,6 @@
             this.tabPage1.Text = "GPS";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dateIntervalPicker1
-            // 
-            this.dateIntervalPicker1.Location = new System.Drawing.Point(40, 15);
-            this.dateIntervalPicker1.Margin = new System.Windows.Forms.Padding(0);
-            this.dateIntervalPicker1.Name = "dateIntervalPicker1";
-            this.dateIntervalPicker1.Size = new System.Drawing.Size(439, 21);
-            this.dateIntervalPicker1.TabIndex = 0;
-            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -459,26 +451,6 @@
             this.panel2.Size = new System.Drawing.Size(102, 523);
             this.panel2.TabIndex = 8;
             // 
-            // treeViewTagList
-            // 
-            this.treeViewTagList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeViewTagList.CheckBoxes = true;
-            this.treeViewTagList.ContextMenuStrip = this.tagContextMenu;
-            this.treeViewTagList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewTagList.ImageIndex = 0;
-            this.treeViewTagList.ImageList = this.imageListColorKeys;
-            this.treeViewTagList.ItemHeight = 16;
-            this.treeViewTagList.Location = new System.Drawing.Point(0, 0);
-            this.treeViewTagList.Name = "treeViewTagList";
-            this.treeViewTagList.SelectedImageIndex = 0;
-            this.treeViewTagList.ShowLines = false;
-            this.treeViewTagList.ShowPlusMinus = false;
-            this.treeViewTagList.ShowRootLines = false;
-            this.treeViewTagList.Size = new System.Drawing.Size(100, 521);
-            this.treeViewTagList.TabIndex = 5;
-            this.treeViewTagList.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.lviDatasets_ItemChecked);
-            this.treeViewTagList.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewTagList_AfterSelect);
-            // 
             // tagContextMenu
             // 
             this.tagContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -518,6 +490,34 @@
             this.mapZoomToolStrip1.Size = new System.Drawing.Size(1243, 25);
             this.mapZoomToolStrip1.TabIndex = 7;
             this.mapZoomToolStrip1.Text = "mapZoomToolStrip1";
+            // 
+            // treeViewTagList
+            // 
+            this.treeViewTagList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeViewTagList.CheckBoxes = true;
+            this.treeViewTagList.ContextMenuStrip = this.tagContextMenu;
+            this.treeViewTagList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewTagList.ImageIndex = 0;
+            this.treeViewTagList.ImageList = this.imageListColorKeys;
+            this.treeViewTagList.ItemHeight = 16;
+            this.treeViewTagList.Location = new System.Drawing.Point(0, 0);
+            this.treeViewTagList.Name = "treeViewTagList";
+            this.treeViewTagList.SelectedImageIndex = 0;
+            this.treeViewTagList.ShowLines = false;
+            this.treeViewTagList.ShowPlusMinus = false;
+            this.treeViewTagList.ShowRootLines = false;
+            this.treeViewTagList.Size = new System.Drawing.Size(100, 521);
+            this.treeViewTagList.TabIndex = 5;
+            this.treeViewTagList.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.lviDatasets_ItemChecked);
+            this.treeViewTagList.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewTagList_AfterSelect);
+            // 
+            // dateIntervalPicker1
+            // 
+            this.dateIntervalPicker1.Location = new System.Drawing.Point(40, 15);
+            this.dateIntervalPicker1.Margin = new System.Windows.Forms.Padding(0);
+            this.dateIntervalPicker1.Name = "dateIntervalPicker1";
+            this.dateIntervalPicker1.Size = new System.Drawing.Size(439, 21);
+            this.dateIntervalPicker1.TabIndex = 0;
             // 
             // FrmMain
             // 
@@ -592,11 +592,11 @@
         private System.Windows.Forms.ToolStripMenuItem streifgebieteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mCPToolStripMenuItem;
         private DateIntervalPicker dateIntervalPicker1;
-        private System.Windows.Forms.TreeView treeViewTagList;
         private System.Windows.Forms.ImageList imageListColorKeys;
         private System.Windows.Forms.ContextMenuStrip tagContextMenu;
         private System.Windows.Forms.ToolStripMenuItem konfigurationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tabelleToolStripMenuItem;
+        private System.Windows.Forms.TreeView treeViewTagList;
     }
 }
 

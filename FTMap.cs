@@ -13,6 +13,7 @@ using fieldtool.Symbolizers;
 using GeoAPI.Geometries;
 using SharpMap.Data.Providers;
 using SharpMap.Layers.Symbolizer;
+using SharpMap.Rendering.Decoration;
 using SharpMap.Rendering.Decoration.ScaleBar;
 using SharpMap.Rendering.Symbolizer;
 
@@ -24,6 +25,7 @@ namespace fieldtool
 
         private Dictionary<int, PolygonalVectorLayer> PolygonalVectorLayers;
         private Dictionary<int, PuntalVectorLayer> PuntalVectorLayers;
+        private List<MapDecoration> CustomDecorations;
 
         public FtMap(FtProject project) : base()
         {
@@ -34,10 +36,12 @@ namespace fieldtool
 
             PolygonalVectorLayers = new Dictionary<int, PolygonalVectorLayer>();
             PuntalVectorLayers = new Dictionary<int, PuntalVectorLayer>();
+            CustomDecorations = new List<MapDecoration>();
         }
 
         private void DataChangedEventHandler(object sender, EventArgs eventArgs)
         {
+            RemoveCustomDecorations();
             foreach (var dataset in _project.Datasets)
             {
                 if (PuntalVectorLayers.ContainsKey(dataset.TagId))
@@ -61,7 +65,8 @@ namespace fieldtool
                 this.Layers.Add(puntalVectorLayers);
                 PuntalVectorLayers.Add(dataset.TagId, puntalVectorLayers);
             }
-            AddLegend(_project.Datasets);
+
+            AddLegendDecoration(_project.Datasets);
 
         }
 
@@ -98,7 +103,7 @@ namespace fieldtool
                 if (vektorLayer.Active)
                     this.AddShapeLayer(Path.GetFileNameWithoutExtension(vektorLayer.FilePath), vektorLayer.FilePath);
 
-            if(Properties.Settings.Default.ShowMapMasssstab)
+            if(Properties.Settings.Default.MapScalebarActive)
                 AddScaleBar();
             //map.AddDecoLayer();
             //map.AddBLALayer();
@@ -136,10 +141,23 @@ namespace fieldtool
 
         }
 
-        public void AddLegend(List<FtTransmitterDataset> datasets)
+        public void AddLegendDecoration(List<FtTransmitterDataset> datasets)
         {
-            LegendDecoration legend = new LegendDecoration(datasets);
+            var activeDatasets = datasets.Where(d => d.Active).ToList();
+            if (!activeDatasets.Any())
+                return;
+            LegendDecoration legend = new LegendDecoration(activeDatasets);
             this.Decorations.Add(legend);
+            CustomDecorations.Add(legend);
+        }
+
+        public void RemoveCustomDecorations()
+        {
+            foreach (var decoration in CustomDecorations)
+            {
+                this.Decorations.Remove(decoration);
+            }
+            CustomDecorations.Clear();
         }
 
         public void AddDecoLayer()

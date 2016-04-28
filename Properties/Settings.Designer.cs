@@ -61,7 +61,7 @@ namespace fieldtool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Plum")]
         public global::System.Drawing.Color AccPlotNoDataColor {
             get {
                 return ((global::System.Drawing.Color)(this["AccPlotNoDataColor"]));
@@ -74,12 +74,108 @@ namespace fieldtool.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ShowMapMasssstab {
+        public bool MapScalebarActive {
             get {
-                return ((bool)(this["ShowMapMasssstab"]));
+                return ((bool)(this["MapScalebarActive"]));
             }
             set {
-                this["ShowMapMasssstab"] = value;
+                this["MapScalebarActive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("RightTop")]
+        public global::SharpMap.Rendering.Decoration.MapDecorationAnchor MapLegendAnchor {
+            get {
+                return ((global::SharpMap.Rendering.Decoration.MapDecorationAnchor)(this["MapLegendAnchor"]));
+            }
+            set {
+                this["MapLegendAnchor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Courier New, 8.25pt")]
+        public global::System.Drawing.Font MapLegendFont {
+            get {
+                return ((global::System.Drawing.Font)(this["MapLegendFont"]));
+            }
+            set {
+                this["MapLegendFont"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color MapLegendTextColor {
+            get {
+                return ((global::System.Drawing.Color)(this["MapLegendTextColor"]));
+            }
+            set {
+                this["MapLegendTextColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color MapLegendBackgroundColor {
+            get {
+                return ((global::System.Drawing.Color)(this["MapLegendBackgroundColor"]));
+            }
+            set {
+                this["MapLegendBackgroundColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color MapLegendBorderColor {
+            get {
+                return ((global::System.Drawing.Color)(this["MapLegendBorderColor"]));
+            }
+            set {
+                this["MapLegendBorderColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MapLegendActive {
+            get {
+                return ((bool)(this["MapLegendActive"]));
+            }
+            set {
+                this["MapLegendActive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MapLegendBorderRoundEdges {
+            get {
+                return ((bool)(this["MapLegendBorderRoundEdges"]));
+            }
+            set {
+                this["MapLegendBorderRoundEdges"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.3")]
+        public double MapLegendBackgroundAlpha {
+            get {
+                return ((double)(this["MapLegendBackgroundAlpha"]));
+            }
+            set {
+                this["MapLegendBackgroundAlpha"] = value;
             }
         }
     }

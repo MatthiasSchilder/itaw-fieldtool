@@ -16,7 +16,7 @@ namespace fieldtool.Decorations
         /// <summary>
         /// Gets or sets the disclaimer text
         /// </summary>
-        public List<string> Texts
+        public List<FtTransmitterDataset> Datasets
         {
             get;
             set;
@@ -40,70 +40,63 @@ namespace fieldtool.Decorations
             set;
         }
 
+        public SolidBrush ForeGroundBrush;
+
         /// <summary>
         /// Creates an instance of this class
         /// </summary>
         public LegendDecoration(List<FtTransmitterDataset> datasets)
         {
-            this.Font = SystemFonts.DefaultFont;
-            this.ForeColor = Color.Black;
-            Texts = new List<string>();
-            foreach (var dataset in datasets)
-            {
-                Texts.Add(dataset.TagId.ToString());
-            }
-            base.Anchor = MapDecorationAnchor.CenterBottom;
-            this.Font = new Font("Arial", 8f, FontStyle.Italic);
-            base.BorderMargin = new Size(3, 3);
-            base.BorderColor = Color.Black;
-            base.BorderWidth = 1;
-            base.RoundedEdges = false;
+            this.Font = Properties.Settings.Default.MapLegendFont;
+            this.ForeColor = Properties.Settings.Default.MapLegendTextColor;
+            this.Opacity = 0.25f;
+            ForeGroundBrush = new SolidBrush(this.ForeColor);
+            Datasets = datasets;
 
-            base.Anchor = MapDecorationAnchor.LeftTop;
+            base.Anchor = Properties.Settings.Default.MapLegendAnchor;
+            base.BorderMargin = new Size(3, 3);
+            base.BorderColor = Properties.Settings.Default.MapLegendBorderColor;
+            base.BackgroundColor = base.OpacityColor(Properties.Settings.Default.MapLegendBackgroundColor);
+            base.RoundedEdges = Properties.Settings.Default.MapLegendBorderRoundEdges;
         }
 
-
-        /// <summary>
-        /// Function to compute the required size for rendering the map decoration object
-        /// <para>This is just the size of the decoration object, border settings are excluded</para>
-        /// </summary>
-        /// <param name="g"></param>
-        /// <param name="map"></param>
-        /// <returns>The</returns>
+        private const String FormatString = "{0} ({1})";
         protected override Size InternalSize(Graphics g, Map map)
         {
             double cumulHeight = 0;
-            double width = 0;
-            foreach (var text in Texts)
+            double maxWidth = double.MinValue;
+
+            foreach (var dataset in Datasets)
             {
-                SizeF s = g.MeasureString(text, this.Font);
+                SizeF s = g.MeasureString(String.Format(FormatString, dataset.TagId, dataset.GPSData.GpsSeries[0].StartTimestamp), this.Font);
                 cumulHeight += s.Height;
-                width = s.Width;
+                maxWidth = Math.Max(s.Width, maxWidth);
             }
             
-
-            return new Size((int)System.Math.Ceiling(width), (int)System.Math.Ceiling(cumulHeight));
+            return new Size((int)System.Math.Ceiling(maxWidth), (int)System.Math.Ceiling(cumulHeight));
         }
 
-        /// <summary>
-        /// Function to render the actual map decoration
-        /// </summary>
-        /// <param name="g"></param>
-        /// <param name="map"></param>
         protected override void OnRender(Graphics g, Map map)
         {
             RectangleF layoutRectangle = g.ClipBounds;
-            SolidBrush b = new SolidBrush(base.OpacityColor(this.ForeColor));
+            var rowHeight = CalcRowHeight(layoutRectangle);
 
-            var pxPerRow = layoutRectangle.Size.Height / Texts.Count;
-
-
-            //g.DrawString(this.Text, this.Font, b, layoutRectangle);
             int i = 0;
-            foreach (var text in Texts)
+            foreach (var dataset in Datasets)
             {
-                g.DrawString(text, Font, b, layoutRectangle.X, layoutRectangle.Y + pxPerRow * i++);
+                CreateLegendRow(dataset, g, layoutRectangle.X, layoutRectangle.Y + rowHeight * i++);
             }
+        }
+
+        private void CreateLegendRow(FtTransmitterDataset dataset, Graphics g, float x, float y)
+        {
+            
+            g.DrawString(String.Format(FormatString, dataset.TagId, dataset.GPSData.GpsSeries[0].StartTimestamp), Font, ForeGroundBrush, x, y);
+        }
+
+        private float CalcRowHeight(RectangleF layoutRectangle)
+        {
+           return layoutRectangle.Size.Height / Datasets.Count;
         }
     }
 }

@@ -12,10 +12,34 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="AccPlotNoDataColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">Red</Value>
+      <Value Profile="(Default)">Plum</Value>
     </Setting>
-    <Setting Name="ShowMapMasssstab" Type="System.Boolean" Scope="User">
+    <Setting Name="MapScalebarActive" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MapLegendAnchor" Type="SharpMap.Rendering.Decoration.MapDecorationAnchor" Scope="User">
+      <Value Profile="(Default)">RightTop</Value>
+    </Setting>
+    <Setting Name="MapLegendFont" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Courier New, 8.25pt</Value>
+    </Setting>
+    <Setting Name="MapLegendTextColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="MapLegendBackgroundColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="MapLegendBorderColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="MapLegendActive" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MapLegendBorderRoundEdges" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MapLegendBackgroundAlpha" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.3</Value>
     </Setting>
   </Settings>
 </SettingsFile>
