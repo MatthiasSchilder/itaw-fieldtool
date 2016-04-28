@@ -17,14 +17,14 @@ namespace SharpmapGDAL
 
         public static FtTransmitterDataset LoadFileset(FtFileset fileset, List<int> tagBlacklist)
         {
-            if (tagBlacklist.Contains(fileset.Id))
+            if (tagBlacklist.Contains(fileset.TagId))
                 return null;
 
             FtTransmitterDataset transmitterDataset =
-                new FtTransmitterDataset(fileset.Id, fileset);
+                new FtTransmitterDataset(fileset.TagId, fileset);
 
             if (!fileset.IsFunctionAvailable(FtFileFunction.TagInfo))
-                throw new Exception($"TagInfo not available for Tag {fileset.Id}. Skipping.");
+                throw new Exception($"TagInfo not available for Tag {fileset.TagId}. Skipping.");
 
             transmitterDataset.AddTagInfoData(
                 new FtTransmitterTagInfoData(fileset.GetFilepathForFunction(FtFileFunction.TagInfo)));

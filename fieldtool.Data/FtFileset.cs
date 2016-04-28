@@ -20,11 +20,11 @@ namespace SharpmapGDAL
     /// </summary>
     public class FtFileset : Dictionary<FtFileFunction, String>
     {
-        public int Id { get; set; }
+        public int TagId { get; set; }
 
         public FtFileset(int id)
         {
-            Id = id;
+            TagId = id;
         }
 
         public void AddFile(FtFileFunction function, String filePath)
@@ -48,11 +48,15 @@ namespace SharpmapGDAL
 
         public static List<FtFileset> FileSetFromMultiselect(List<String> filenames)
         {
-            HashSet<string> tagIDs = new HashSet<string>();
-            foreach (string id in filenames.Select(GetTagId))
+            HashSet<int> tagIDs = new HashSet<int>();
+            foreach(var filename in filenames)
             {
+                int id;
+                if (!GetTagIdFromFilename(filename, out id))
+                    continue;
                 tagIDs.Add(id);
             }
+
             var basePath = Path.GetDirectoryName(filenames[0]);
 
             var allFileSetsInDirectory = FileSetFromDirectory(basePath);
@@ -60,7 +64,7 @@ namespace SharpmapGDAL
             List<FtFileset> resultingFileSets = new List<FtFileset>();
             foreach (var fileset in allFileSetsInDirectory)
             {
-                if(tagIDs.Contains(fileset.Id.ToString()))
+                if(tagIDs.Contains(fileset.TagId))
                     resultingFileSets.Add(fileset);
             }
             return resultingFileSets;
@@ -68,48 +72,56 @@ namespace SharpmapGDAL
 
         public static List<FtFileset> FileSetFromDirectory(string directoryPath)
         {
-            var files = Directory.EnumerateFiles(directoryPath);
+            var files = Directory.EnumerateFiles(directoryPath,"*.txt",SearchOption.TopDirectoryOnly);
             var dict = new Dictionary<int, FtFileset>();
 
             foreach (var fileFullpath in files)
             {
                 var fileName = Path.GetFileName(fileFullpath);
-                string id = GetTagId(fileName);
                 var fileFunction = GetFunction(fileName);
 
-                int numid = int.Parse(id);
-                if (dict.ContainsKey(numid))
+                if (!fileFunction.HasValue)
+                    continue;
+
+                int id;
+                if (!GetTagIdFromFilename(fileName, out id))
+                    continue;
+                if (dict.ContainsKey(id))
                 {
-                    var fs = dict[numid];
-                    if (fs.IsFunctionAvailable(fileFunction))
+                    var fs = dict[id];
+                    if (fs.IsFunctionAvailable(fileFunction.Value))
                         Debug.Assert(false);
-                    fs.AddFile(fileFunction, fileFullpath);
+                    fs.AddFile(fileFunction.Value, fileFullpath);
                 }
                 else
                 {
-                    var fileset = new FtFileset(numid);
-                    if (fileset.IsFunctionAvailable(fileFunction))
+                    var fileset = new FtFileset(id);
+                    if (fileset.IsFunctionAvailable(fileFunction.Value))
                         Debug.Assert(false);
-                    fileset.AddFile(fileFunction, fileFullpath);
-                    dict.Add(numid, fileset);
+                    fileset.AddFile(fileFunction.Value, fileFullpath);
+                    dict.Add(id, fileset);
                 }
             }
 
             return dict.Values.ToList();
         }
 
-        private static String GetTagId(String filename)
+        private static bool GetTagIdFromFilename(String filename, out int id)
         {
-            return filename.Where(c => Char.IsDigit(c)).Aggregate("", (current, c) => current + c.ToString());
+            var result =  filename.Where(c => Char.IsDigit(c)).Aggregate("", (current, c) => current + c.ToString());
+            return int.TryParse(result, out id);
         }
 
-        private static FtFileFunction GetFunction(String name)
+        private static FtFileFunction? GetFunction(String name)
         {
             if (name.StartsWith("info"))
                 return FtFileFunction.TagInfo;
             if (Path.GetFileNameWithoutExtension(name).EndsWith("acc"))
                 return FtFileFunction.AccelData;
-            return FtFileFunction.GPSData;
+            if(Path.GetFileNameWithoutExtension(name).EndsWith("gps"))
+                return FtFileFunction.GPSData;
+
+            return null;
         }
 
     }
