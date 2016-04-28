@@ -142,6 +142,12 @@ namespace fieldtool
             Properties.Settings.Default.MapLegendBackgroundAlpha = (float)numAlpha.Value;
             Properties.Settings.Default.Save();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.MapLegendAnchor = (MapDecorationAnchor)comboBox1.SelectedItem;
+            Properties.Settings.Default.Save();
+        }
     }
 }
 

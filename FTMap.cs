@@ -136,6 +136,8 @@ namespace fieldtool
         {
             SharpMap.Rendering.Decoration.ScaleBar.ScaleBar scaleBar =
                 new SharpMap.Rendering.Decoration.ScaleBar.ScaleBar();
+            scaleBar.BarColor1 = Color.Black;
+            scaleBar.BarColor2 = Color.White;
             this.Decorations.Add(scaleBar);
 
 

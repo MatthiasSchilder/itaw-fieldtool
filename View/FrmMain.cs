@@ -165,46 +165,6 @@ namespace fieldtool
             bmp.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
         }
 
-        private Bitmap CreateInfoOverlay(int width, int height, MapEnvelopeExportRequestedArgs args)
-        {
-            Bitmap overlay = new Bitmap(width, height);
-            Graphics drawingOverlay = Graphics.FromImage(overlay);
-
-
-
-            return overlay;
-        }
-
-
-        //private Bitmap DrawText(String text, Font font, Color textColor)
-        //{
-        //    Bitmap img = new Bitmap(1, 1);
-        //    Graphics drawing = Graphics.FromImage(img);
-        //    SizeF textSize = drawing.MeasureString(text, font);
-
-        //    img.Dispose();
-        //    drawing.Dispose();
-
-        //    img = new Bitmap((int)textSize.Width, (int)LineHeightPx);
-
-        //    drawing = Graphics.FromImage(img);
-
-        //    drawing.Clear(Color.White);
-
-        //    Brush textBrush = new SolidBrush(textColor);
-
-        //    drawing.DrawString(text, font, textBrush, 0, (LineHeightPx - (int)textSize.Height) / 2);
-
-        //    drawing.Save();
-
-        //    textBrush.Dispose();
-        //    drawing.Dispose();
-
-        //    return img;
-
-        //}
-
-
         private void rrMapDisplayIntervalChanged(object sender, MapDisplayIntervalChangedEventArgs movebankImportedArgs)
         {
             var maxDate = movebankImportedArgs.IntervalEnd;
@@ -224,13 +184,23 @@ namespace fieldtool
             int i = 0;
             foreach (var dataset in datasets)
             {
-                var tn = treeViewTagList.Nodes.Add(dataset.TagId.ToString());
+                var tn = treeViewTagList.Nodes.Add(CreateTreeViewNodeDescriptor(dataset));
                 tn.Tag = dataset.TagId;
                 tn.Checked = dataset.Active;
                 tn.ImageIndex = i;
                 tn.SelectedImageIndex = i++;
-                
+               
             }           
+        }
+
+        private String CreateTreeViewNodeDescriptor(FtTransmitterDataset dataset)
+        {
+            string fmt = "{0} (DL: {1})";
+            if (dataset.TagInfoData.LastDownloadTimeAvailable)
+            {
+                return String.Format(fmt, dataset.TagId, dataset.TagInfoData.LastDownload.Value.ToShortDateString());
+            }
+            return String.Format(fmt, dataset.TagId, "unbekannt");
         }
 
         private void PopulateImageList(List<FtTransmitterDataset> datasets)

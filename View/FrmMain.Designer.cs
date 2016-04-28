@@ -66,17 +66,17 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dateIntervalPicker1 = new fieldtool.DateIntervalPicker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.treeViewTagList = new System.Windows.Forms.TreeView();
             this.tagContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.konfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListColorKeys = new System.Windows.Forms.ImageList(this.components);
             this.mapZoomToolStrip1 = new SharpMap.Forms.ToolBar.MapZoomToolStrip(this.components);
-            this.treeViewTagList = new System.Windows.Forms.TreeView();
-            this.dateIntervalPicker1 = new fieldtool.DateIntervalPicker();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -103,7 +103,7 @@
             this.mapBox1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.mapBox1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.mapBox1.ShowProgressUpdate = false;
-            this.mapBox1.Size = new System.Drawing.Size(1127, 521);
+            this.mapBox1.Size = new System.Drawing.Size(1080, 521);
             this.mapBox1.TabIndex = 0;
             this.mapBox1.Text = "mapBox1";
             this.mapBox1.WheelZoomMagnitude = -2D;
@@ -371,8 +371,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.769106F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 91.2309F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.55028F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.44971F));
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
@@ -411,6 +411,14 @@
             this.tabPage1.Text = "GPS";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // dateIntervalPicker1
+            // 
+            this.dateIntervalPicker1.Location = new System.Drawing.Point(40, 15);
+            this.dateIntervalPicker1.Margin = new System.Windows.Forms.Padding(0);
+            this.dateIntervalPicker1.Name = "dateIntervalPicker1";
+            this.dateIntervalPicker1.Size = new System.Drawing.Size(439, 21);
+            this.dateIntervalPicker1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -428,7 +436,7 @@
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(102, 20);
+            this.textBox1.Size = new System.Drawing.Size(149, 20);
             this.textBox1.TabIndex = 6;
             // 
             // panel1
@@ -436,9 +444,9 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.mapBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(111, 28);
+            this.panel1.Location = new System.Drawing.Point(158, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1129, 523);
+            this.panel1.Size = new System.Drawing.Size(1082, 523);
             this.panel1.TabIndex = 7;
             // 
             // panel2
@@ -448,8 +456,28 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 28);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(102, 523);
+            this.panel2.Size = new System.Drawing.Size(149, 523);
             this.panel2.TabIndex = 8;
+            // 
+            // treeViewTagList
+            // 
+            this.treeViewTagList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeViewTagList.CheckBoxes = true;
+            this.treeViewTagList.ContextMenuStrip = this.tagContextMenu;
+            this.treeViewTagList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewTagList.ImageIndex = 0;
+            this.treeViewTagList.ImageList = this.imageListColorKeys;
+            this.treeViewTagList.ItemHeight = 16;
+            this.treeViewTagList.Location = new System.Drawing.Point(0, 0);
+            this.treeViewTagList.Name = "treeViewTagList";
+            this.treeViewTagList.SelectedImageIndex = 0;
+            this.treeViewTagList.ShowLines = false;
+            this.treeViewTagList.ShowPlusMinus = false;
+            this.treeViewTagList.ShowRootLines = false;
+            this.treeViewTagList.Size = new System.Drawing.Size(147, 521);
+            this.treeViewTagList.TabIndex = 5;
+            this.treeViewTagList.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.lviDatasets_ItemChecked);
+            this.treeViewTagList.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewTagList_AfterSelect);
             // 
             // tagContextMenu
             // 
@@ -490,34 +518,6 @@
             this.mapZoomToolStrip1.Size = new System.Drawing.Size(1243, 25);
             this.mapZoomToolStrip1.TabIndex = 7;
             this.mapZoomToolStrip1.Text = "mapZoomToolStrip1";
-            // 
-            // treeViewTagList
-            // 
-            this.treeViewTagList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeViewTagList.CheckBoxes = true;
-            this.treeViewTagList.ContextMenuStrip = this.tagContextMenu;
-            this.treeViewTagList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewTagList.ImageIndex = 0;
-            this.treeViewTagList.ImageList = this.imageListColorKeys;
-            this.treeViewTagList.ItemHeight = 16;
-            this.treeViewTagList.Location = new System.Drawing.Point(0, 0);
-            this.treeViewTagList.Name = "treeViewTagList";
-            this.treeViewTagList.SelectedImageIndex = 0;
-            this.treeViewTagList.ShowLines = false;
-            this.treeViewTagList.ShowPlusMinus = false;
-            this.treeViewTagList.ShowRootLines = false;
-            this.treeViewTagList.Size = new System.Drawing.Size(100, 521);
-            this.treeViewTagList.TabIndex = 5;
-            this.treeViewTagList.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.lviDatasets_ItemChecked);
-            this.treeViewTagList.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewTagList_AfterSelect);
-            // 
-            // dateIntervalPicker1
-            // 
-            this.dateIntervalPicker1.Location = new System.Drawing.Point(40, 15);
-            this.dateIntervalPicker1.Margin = new System.Windows.Forms.Padding(0);
-            this.dateIntervalPicker1.Name = "dateIntervalPicker1";
-            this.dateIntervalPicker1.Size = new System.Drawing.Size(439, 21);
-            this.dateIntervalPicker1.TabIndex = 0;
             // 
             // FrmMain
             // 
