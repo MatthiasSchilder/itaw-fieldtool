@@ -37,7 +37,6 @@ namespace fieldtool
             picBoxBackground.BackColor = Properties.Settings.Default.MapLegendBackgroundColor;
             picBoxBorderColor.BackColor = Properties.Settings.Default.MapLegendBorderColor;
             comboBox1.SelectedItem = Properties.Settings.Default.MapLegendAnchor;
-            chkRoundEdges.Checked = Properties.Settings.Default.MapLegendBorderRoundEdges;
         }
 
         private void InitAnchorCombobox()
@@ -135,12 +134,6 @@ namespace fieldtool
         private void chkLegendActive_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.MapLegendActive = chkLegendActive.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void chkRoundEdges_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.MapLegendBorderRoundEdges = chkRoundEdges.Checked;
             Properties.Settings.Default.Save();
         }
 

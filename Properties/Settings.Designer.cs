@@ -169,10 +169,10 @@ namespace fieldtool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.3")]
-        public double MapLegendBackgroundAlpha {
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public float MapLegendBackgroundAlpha {
             get {
-                return ((double)(this["MapLegendBackgroundAlpha"]));
+                return ((float)(this["MapLegendBackgroundAlpha"]));
             }
             set {
                 this["MapLegendBackgroundAlpha"] = value;

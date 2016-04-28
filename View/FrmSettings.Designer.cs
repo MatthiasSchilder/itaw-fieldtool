@@ -55,8 +55,6 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.lblLegendActive = new System.Windows.Forms.Label();
             this.chkLegendActive = new System.Windows.Forms.CheckBox();
-            this.chkRoundEdges = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.numAlpha = new System.Windows.Forms.NumericUpDown();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -101,8 +99,6 @@
             // 
             this.groupBox1.Controls.Add(this.numAlpha);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.chkRoundEdges);
             this.groupBox1.Controls.Add(this.chkLegendActive);
             this.groupBox1.Controls.Add(this.lblLegendActive);
             this.groupBox1.Controls.Add(this.btnFontPicker);
@@ -126,7 +122,7 @@
             // 
             // btnFontPicker
             // 
-            this.btnFontPicker.Location = new System.Drawing.Point(356, 70);
+            this.btnFontPicker.Location = new System.Drawing.Point(358, 70);
             this.btnFontPicker.Name = "btnFontPicker";
             this.btnFontPicker.Size = new System.Drawing.Size(86, 24);
             this.btnFontPicker.TabIndex = 14;
@@ -136,7 +132,7 @@
             // 
             // tbFont
             // 
-            this.tbFont.Location = new System.Drawing.Point(168, 73);
+            this.tbFont.Location = new System.Drawing.Point(170, 73);
             this.tbFont.Name = "tbFont";
             this.tbFont.ReadOnly = true;
             this.tbFont.Size = new System.Drawing.Size(182, 20);
@@ -154,7 +150,7 @@
             // picBoxBorderColor
             // 
             this.picBoxBorderColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBoxBorderColor.Location = new System.Drawing.Point(170, 177);
+            this.picBoxBorderColor.Location = new System.Drawing.Point(170, 183);
             this.picBoxBorderColor.Name = "picBoxBorderColor";
             this.picBoxBorderColor.Size = new System.Drawing.Size(20, 20);
             this.picBoxBorderColor.TabIndex = 11;
@@ -193,7 +189,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(168, 47);
+            this.comboBox1.Location = new System.Drawing.Point(170, 46);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(182, 21);
             this.comboBox1.TabIndex = 5;
@@ -326,31 +322,12 @@
             // chkLegendActive
             // 
             this.chkLegendActive.AutoSize = true;
-            this.chkLegendActive.Location = new System.Drawing.Point(168, 22);
+            this.chkLegendActive.Location = new System.Drawing.Point(170, 27);
             this.chkLegendActive.Name = "chkLegendActive";
             this.chkLegendActive.Size = new System.Drawing.Size(15, 14);
             this.chkLegendActive.TabIndex = 16;
             this.chkLegendActive.UseVisualStyleBackColor = true;
             this.chkLegendActive.CheckedChanged += new System.EventHandler(this.chkLegendActive_CheckedChanged);
-            // 
-            // chkRoundEdges
-            // 
-            this.chkRoundEdges.AutoSize = true;
-            this.chkRoundEdges.Location = new System.Drawing.Point(168, 211);
-            this.chkRoundEdges.Name = "chkRoundEdges";
-            this.chkRoundEdges.Size = new System.Drawing.Size(15, 14);
-            this.chkRoundEdges.TabIndex = 17;
-            this.chkRoundEdges.UseVisualStyleBackColor = true;
-            this.chkRoundEdges.CheckedChanged += new System.EventHandler(this.chkRoundEdges_CheckedChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(27, 211);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 13);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Ecken abrunden";
             // 
             // label7
             // 
@@ -447,8 +424,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkLegendActive;
         private System.Windows.Forms.Label lblLegendActive;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox chkRoundEdges;
         private System.Windows.Forms.NumericUpDown numAlpha;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox4;

@@ -49,7 +49,7 @@ namespace fieldtool.Decorations
         {
             this.Font = Properties.Settings.Default.MapLegendFont;
             this.ForeColor = Properties.Settings.Default.MapLegendTextColor;
-            this.Opacity = 0.25f;
+            this.Opacity =Properties.Settings.Default.MapLegendBackgroundAlpha;
             ForeGroundBrush = new SolidBrush(this.ForeColor);
             Datasets = datasets;
 
@@ -61,6 +61,7 @@ namespace fieldtool.Decorations
         }
 
         private const String FormatString = "{0} ({1})";
+        private const int colorFieldOffs = 20; // px
         protected override Size InternalSize(Graphics g, Map map)
         {
             double cumulHeight = 0;
@@ -72,6 +73,8 @@ namespace fieldtool.Decorations
                 cumulHeight += s.Height;
                 maxWidth = Math.Max(s.Width, maxWidth);
             }
+
+            maxWidth += colorFieldOffs;
             
             return new Size((int)System.Math.Ceiling(maxWidth), (int)System.Math.Ceiling(cumulHeight));
         }
@@ -84,14 +87,17 @@ namespace fieldtool.Decorations
             int i = 0;
             foreach (var dataset in Datasets)
             {
-                CreateLegendRow(dataset, g, layoutRectangle.X, layoutRectangle.Y + rowHeight * i++);
+                CreateLegendRow(dataset, g, layoutRectangle.X, layoutRectangle.Y + rowHeight * i++, rowHeight);
             }
         }
 
-        private void CreateLegendRow(FtTransmitterDataset dataset, Graphics g, float x, float y)
+        private void CreateLegendRow(FtTransmitterDataset dataset, Graphics g, float x, float y, float rowHeight)
         {
-            
-            g.DrawString(String.Format(FormatString, dataset.TagId, dataset.GPSData.GpsSeries[0].StartTimestamp), Font, ForeGroundBrush, x, y);
+            var spacingOffs = rowHeight*0.15;
+
+            //g.DrawRectangle(new Pen(dataset.VisulizationColor), x, (float) (y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
+            g.FillRectangle(new SolidBrush(dataset.VisulizationColor), x, (float)(y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
+            g.DrawString(String.Format(FormatString, dataset.TagId, dataset.GPSData.GpsSeries[0].StartTimestamp), Font, ForeGroundBrush, x + colorFieldOffs, y);
         }
 
         private float CalcRowHeight(RectangleF layoutRectangle)
