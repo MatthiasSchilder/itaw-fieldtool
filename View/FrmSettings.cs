@@ -90,7 +90,7 @@ namespace fieldtool
         private void UpdateFontTextbox()
         {
             var font = Properties.Settings.Default.MapLegendFont;
-            tbFont.Text = String.Format("{0} {1} ({2} pt)", font.Name, font.Style, font.SizeInPoints);
+            tbFont.Text = $"{font.Name} {font.Style} ({font.SizeInPoints} pt)";
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
