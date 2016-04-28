@@ -63,7 +63,6 @@
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabelCoords = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lviDatasets = new System.Windows.Forms.ListView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -142,7 +141,6 @@
             this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
             this.dateiToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.dateiToolStripMenuItem.Text = "Projekt";
-            this.dateiToolStripMenuItem.Click += new System.EventHandler(this.dateiToolStripMenuItem_Click);
             // 
             // neuToolStripMenuItem
             // 
@@ -190,7 +188,6 @@
             this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
             this.exportToolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
             this.exportToolStripMenuItem1.Text = "Export";
-            this.exportToolStripMenuItem1.Click += new System.EventHandler(this.exportToolStripMenuItem1_Click);
             // 
             // kartenansichtAlsBildToolStripMenuItem
             // 
@@ -252,7 +249,6 @@
             this.bearbeitenToolStripMenuItem.Name = "bearbeitenToolStripMenuItem";
             this.bearbeitenToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.bearbeitenToolStripMenuItem.Text = "Bearbeiten";
-            this.bearbeitenToolStripMenuItem.Click += new System.EventHandler(this.bearbeitenToolStripMenuItem_Click);
             // 
             // einstellungenToolStripMenuItem
             // 
@@ -372,22 +368,6 @@
             this.statusLabelCoords.Tag = "Koordinaten: {0} / {1}";
             this.statusLabelCoords.Text = "Koordinaten: {0} / {1}";
             // 
-            // lviDatasets
-            // 
-            this.lviDatasets.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lviDatasets.CheckBoxes = true;
-            this.lviDatasets.Location = new System.Drawing.Point(8, 245);
-            this.lviDatasets.MultiSelect = false;
-            this.lviDatasets.Name = "lviDatasets";
-            this.lviDatasets.Size = new System.Drawing.Size(75, 93);
-            this.lviDatasets.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.lviDatasets.TabIndex = 4;
-            this.lviDatasets.UseCompatibleStateImageBehavior = false;
-            this.lviDatasets.View = System.Windows.Forms.View.List;
-            this.lviDatasets.Visible = false;
-            this.lviDatasets.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.lviDatasets_ItemChecked);
-            this.lviDatasets.SelectedIndexChanged += new System.EventHandler(this.lviDatasets_SelectedIndexChanged);
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
@@ -407,8 +387,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1243, 654);
             this.tableLayoutPanel1.TabIndex = 6;
-            this.tableLayoutPanel1.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.TableLayoutPanel_CellPaint);
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // tabControl1
             // 
@@ -475,7 +453,6 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.treeViewTagList);
-            this.panel2.Controls.Add(this.lviDatasets);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 28);
             this.panel2.Name = "panel2";
@@ -579,7 +556,6 @@
         private System.Windows.Forms.ToolStripMenuItem bearbeitenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem überToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ListView lviDatasets;
         private System.Windows.Forms.ToolStripStatusLabel statusLabelCoords;
         private System.Windows.Forms.ToolStripMenuItem neuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem öffnenToolStripMenuItem;

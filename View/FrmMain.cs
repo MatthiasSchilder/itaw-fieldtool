@@ -139,7 +139,71 @@ namespace fieldtool
             Presenter.ProjectStateChanged += ProjectStateChanged;
             Presenter.MovebankImported += MovebankImported;
             Presenter.rMapDisplayIntervalChanged += rrMapDisplayIntervalChanged;
+            Presenter.MapEnvelopeExportRequested += MapEnvelopeExportRequested;
         }
+
+        private void MapEnvelopeExportRequested(object sender, MapEnvelopeExportRequestedArgs args)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "PNG-Grafik|*.png";
+            dialog.FileName = "Untersuchungsgebiet_" + MapExportFilenameWithEnvelopeString(mapBox1.Map.Envelope);
+            DialogResult dr = dialog.ShowDialog();
+
+            if (dr != DialogResult.OK)
+                return;
+
+            var width = mapBox1.Image.Width;
+            var height = mapBox1.Image.Height;
+
+            Bitmap bmp = new Bitmap(width, height);
+            Graphics g = Graphics.FromImage(bmp);
+
+            
+
+            mapBox1.Map.RenderMap(g);
+
+            bmp.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+        }
+
+        private Bitmap CreateInfoOverlay(int width, int height, MapEnvelopeExportRequestedArgs args)
+        {
+            Bitmap overlay = new Bitmap(width, height);
+            Graphics drawingOverlay = Graphics.FromImage(overlay);
+
+
+
+            return overlay;
+        }
+
+
+        //private Bitmap DrawText(String text, Font font, Color textColor)
+        //{
+        //    Bitmap img = new Bitmap(1, 1);
+        //    Graphics drawing = Graphics.FromImage(img);
+        //    SizeF textSize = drawing.MeasureString(text, font);
+
+        //    img.Dispose();
+        //    drawing.Dispose();
+
+        //    img = new Bitmap((int)textSize.Width, (int)LineHeightPx);
+
+        //    drawing = Graphics.FromImage(img);
+
+        //    drawing.Clear(Color.White);
+
+        //    Brush textBrush = new SolidBrush(textColor);
+
+        //    drawing.DrawString(text, font, textBrush, 0, (LineHeightPx - (int)textSize.Height) / 2);
+
+        //    drawing.Save();
+
+        //    textBrush.Dispose();
+        //    drawing.Dispose();
+
+        //    return img;
+
+        //}
+
 
         private void rrMapDisplayIntervalChanged(object sender, MapDisplayIntervalChangedEventArgs movebankImportedArgs)
         {
@@ -150,19 +214,7 @@ namespace fieldtool
 
         private void MovebankImported(object sender, MovebankImportedArgs movebankImportedArgs)
         {
-            PopulateDatasetListview(movebankImportedArgs.Datasets);
             PopulateTreeView(movebankImportedArgs.Datasets);
-        }
-
-        private void PopulateDatasetListview(List<FtTransmitterDataset> datasets)
-        {
-            lviDatasets.Items.Clear();
-            foreach (var dataset in datasets)
-            {
-                var listViewItem = new ListViewItem(dataset.TagId.ToString());
-                listViewItem.Tag = dataset.TagId;
-                lviDatasets.Items.Add(listViewItem);
-            }
         }
 
         private void PopulateTreeView(List<FtTransmitterDataset> datasets)
@@ -275,31 +327,9 @@ namespace fieldtool
                 
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            SetActiveTool(SharpMap.Forms.MapBox.Tools.ZoomIn);
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-            SetActiveTool(SharpMap.Forms.MapBox.Tools.ZoomWindow);
-        }
-
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-            mapBox1.Map?.ZoomToExtents();
-            mapBox1.Refresh();
-        }
-
-
         private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void bearbeitenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void eigenschaftenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -496,6 +526,16 @@ namespace fieldtool
             }
         }
 
+        public event EventHandler ExportCurrentMapEnvelope;
+        public void InvokeExportCurrentMapEnvelope(EventArgs e)
+        {
+            EventHandler handler = ExportCurrentMapEnvelope;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
         public event EventHandler CreateMCPs;
         public void InvokeCreateMCPs(EventArgs e)
         {
@@ -554,23 +594,6 @@ namespace fieldtool
             InvokeShowInfo(new EventArgs());
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void TableLayoutPanel_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
-        {
-            //if ((e.Column == 1 && e.Row == 0) || e.Column == 1 && e.Row == 1)
-            //{
-            //    var rectangle = e.CellBounds;
-            //    rectangle.Inflate(-2, -2);
-
-            //    ControlPaint.DrawBorder(e.Graphics, rectangle, SystemColors.ControlDark, ButtonBorderStyle.Solid); // 3D border
-                
-            //}
-        }
-
         private void tagInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InvokeShowRawTagInfo(new EventArgs());
@@ -586,20 +609,6 @@ namespace fieldtool
             InvokeShowRawGPS(new EventArgs());
         }
 
-        private void lviDatasets_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var selectedItems = lviDatasets.SelectedItems;
-            if (selectedItems.Count == 0)
-                return;
-
-            if (selectedItems[0] == null)
-            {
-                InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs(null));
-                return;
-            }
-            InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs((int)selectedItems[0].Tag));
-        }
-
         private void aktivitätsdiagrammToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InvokeShowActivityDiagram(new EventArgs());
@@ -610,36 +619,9 @@ namespace fieldtool
             InvokeShowTagGraphs(new EventArgs());
         }
 
-        private void dateiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lviDatasets_ItemChecked(object sender, ItemCheckedEventArgs e)
-        {
-            InvokeDatasetCheckedChanged(new DatasetCheckedEventArgs((int)e.Item.Tag, e.Item.Checked));
-            mapBox1.Refresh();
-        }
-
         private void kartenansichtAlsBildToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Filter = "PNG-Grafik|*.png";
-            dialog.FileName = "Untersuchungsgebiet_" + MapExportFilenameWithEnvelopeString(mapBox1.Map.Envelope);
-            DialogResult dr = dialog.ShowDialog();
-
-            if (dr != DialogResult.OK)
-                return;
-
-            var width = mapBox1.Image.Width;
-            var height = mapBox1.Image.Height;
-
-            Bitmap bmp = new Bitmap(width, height);
-            Graphics g = Graphics.FromImage(bmp);
-
-            mapBox1.Map.RenderMap(g);
-
-            bmp.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+            InvokeExportCurrentMapEnvelope(new EventArgs());
         }
 
         private String MapExportFilenameWithEnvelopeString(Envelope env)
@@ -647,11 +629,6 @@ namespace fieldtool
             string fmt = "Extents({0};{1})({2};{3})";
             return String.Format(fmt, Math.Round(env.MinX, 2), Math.Round(env.MinY, 2), Math.Round(env.MaxX, 2),
                 Math.Round(env.MaxY, 2));
-        }
-
-        private void exportToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void mCPToolStripMenuItem_Click(object sender, EventArgs e)

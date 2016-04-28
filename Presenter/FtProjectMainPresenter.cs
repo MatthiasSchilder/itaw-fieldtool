@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DotSpatial.Projections;
 using fieldtool.Data;
 using fieldtool.View;
 using GeoAPI.Geometries;
@@ -57,12 +58,31 @@ namespace fieldtool
         }
     }
 
+    class MapEnvelopeExportRequestedArgs : EventArgs
+    {
+        public List<FtTransmitterDataset> ActiveDatasets { get; private set; }
+        public MapEnvelopeExportRequestedArgs(List<FtTransmitterDataset> activeDatasets)
+        {
+            ActiveDatasets = activeDatasets;
+        }
+    }
+
     class FtProjectMainPresenter : Presenter<IFtProjectMainView>
     {
         public EventHandler<MapDisplayIntervalChangedEventArgs> rMapDisplayIntervalChanged;
         public void InvokeMapDisplayIntervalChanged(MapDisplayIntervalChangedEventArgs e)
         {
             var handler = rMapDisplayIntervalChanged;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public EventHandler<MapEnvelopeExportRequestedArgs> MapEnvelopeExportRequested;
+        public void InvokeMapEnvelopeExportRequested(MapEnvelopeExportRequestedArgs e)
+        {
+            var handler = MapEnvelopeExportRequested;
             if (handler != null)
             {
                 handler(this, e);
@@ -165,6 +185,13 @@ namespace fieldtool
             View.DatasetCheckedChanged += View_DatasetCheckedChanged;
             View.MapDisplayIntervalChanged += View_MapDisplayIntervalChanged;
             View.CreateMCPs += View_CreateMCPs;
+            View.ExportCurrentMapEnvelope += View_ExportCurrentMapEnvelope;
+        }
+
+        private void View_ExportCurrentMapEnvelope(object sender, EventArgs e)
+        {
+            var activeTags = Project.Datasets.Where(dataset => dataset.Active).ToList();
+            InvokeMapEnvelopeExportRequested(new MapEnvelopeExportRequestedArgs(activeTags));
         }
 
         private void View_MapDisplayIntervalChanged(object sender, MapDisplayIntervalChangedEventArgs e)

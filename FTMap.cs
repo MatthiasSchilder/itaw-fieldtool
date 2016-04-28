@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using fieldtool.Data;
+using fieldtool.Decorations;
 using fieldtool.Symbolizers;
 using GeoAPI.Geometries;
 using SharpMap.Data.Providers;
@@ -60,6 +61,7 @@ namespace fieldtool
                 this.Layers.Add(puntalVectorLayers);
                 PuntalVectorLayers.Add(dataset.TagId, puntalVectorLayers);
             }
+            AddLegend(_project.Datasets);
 
         }
 
@@ -129,7 +131,15 @@ namespace fieldtool
         {
             SharpMap.Rendering.Decoration.ScaleBar.ScaleBar scaleBar =
                 new SharpMap.Rendering.Decoration.ScaleBar.ScaleBar();
-            this.Decorations.Add(scaleBar);   
+            this.Decorations.Add(scaleBar);
+
+
+        }
+
+        public void AddLegend(List<FtTransmitterDataset> datasets)
+        {
+            LegendDecoration legend = new LegendDecoration(datasets);
+            this.Decorations.Add(legend);
         }
 
         public void AddDecoLayer()

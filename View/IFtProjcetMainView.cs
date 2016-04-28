@@ -26,6 +26,7 @@ namespace fieldtool
         event EventHandler ShowRawGPS;
         event EventHandler ShowActivityDiagram;
         event EventHandler ShowTagGraphs;
+        event EventHandler ExportCurrentMapEnvelope;
 
         event EventHandler<CurrentDatasetChangedEventArgs> CurrentDatasetChanged;
         event SharpMap.Forms.MapBox.MouseEventHandler MouseMovedOnMap;
