@@ -96,7 +96,7 @@ namespace fieldtool
                 if (vektorLayer.Active)
                     this.AddShapeLayer(Path.GetFileNameWithoutExtension(vektorLayer.FilePath), vektorLayer.FilePath);
 
-            if(project.MapConfig.ScaleBarDarstellen)
+            if(Properties.Settings.Default.ShowMapMasssstab)
                 AddScaleBar();
             //map.AddDecoLayer();
             //map.AddBLALayer();

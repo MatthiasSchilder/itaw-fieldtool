@@ -34,6 +34,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.btnSchließen = new System.Windows.Forms.Button();
+            this.lblMassstab = new System.Windows.Forms.Label();
+            this.chkShowMassstab = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picColor)).BeginInit();
@@ -50,6 +52,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.chkShowMassstab);
+            this.tabPage1.Controls.Add(this.lblMassstab);
             this.tabPage1.Controls.Add(this.picColor);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -90,6 +94,25 @@
             this.btnSchließen.UseVisualStyleBackColor = true;
             this.btnSchließen.Click += new System.EventHandler(this.btnSchließen_Click);
             // 
+            // lblMassstab
+            // 
+            this.lblMassstab.AutoSize = true;
+            this.lblMassstab.Location = new System.Drawing.Point(15, 59);
+            this.lblMassstab.Name = "lblMassstab";
+            this.lblMassstab.Size = new System.Drawing.Size(119, 26);
+            this.lblMassstab.TabIndex = 3;
+            this.lblMassstab.Text = "Maßstabsleiste in Karte \r\nzeigen";
+            // 
+            // chkShowMassstab
+            // 
+            this.chkShowMassstab.AutoSize = true;
+            this.chkShowMassstab.Location = new System.Drawing.Point(142, 59);
+            this.chkShowMassstab.Name = "chkShowMassstab";
+            this.chkShowMassstab.Size = new System.Drawing.Size(15, 14);
+            this.chkShowMassstab.TabIndex = 4;
+            this.chkShowMassstab.UseVisualStyleBackColor = true;
+            this.chkShowMassstab.CheckedChanged += new System.EventHandler(this.chkShowMassstab_CheckedChanged);
+            // 
             // FrmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,5 +142,7 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.PictureBox picColor;
         private System.Windows.Forms.Button btnSchließen;
+        private System.Windows.Forms.CheckBox chkShowMassstab;
+        private System.Windows.Forms.Label lblMassstab;
     }
 }

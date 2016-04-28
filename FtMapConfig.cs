@@ -36,8 +36,6 @@ namespace fieldtool
         public List<FtLayer> RasterLayer { get; set; }
         public List<FtLayer> VektorLayer { get; set; }
 
-        public bool ScaleBarDarstellen { get; set; }
-
         public FtMapConfig()
         {
             RasterLayer = new List<FtLayer>();

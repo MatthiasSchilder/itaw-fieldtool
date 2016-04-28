@@ -70,5 +70,17 @@ namespace fieldtool.Properties {
                 this["AccPlotNoDataColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowMapMasssstab {
+            get {
+                return ((bool)(this["ShowMapMasssstab"]));
+            }
+            set {
+                this["ShowMapMasssstab"] = value;
+            }
+        }
     }
 }

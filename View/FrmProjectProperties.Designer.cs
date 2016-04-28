@@ -49,8 +49,6 @@
             this.tbDefaultLookupPath = new System.Windows.Forms.TextBox();
             this.lblProjName = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chkScaleBarDarstellen = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvVektorkarten = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -75,7 +73,6 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).BeginInit();
@@ -281,7 +278,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -292,33 +288,12 @@
             this.tabPage2.Text = "Karten";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.chkScaleBarDarstellen);
-            this.groupBox3.Location = new System.Drawing.Point(6, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(462, 68);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Allgemein";
-            // 
-            // chkScaleBarDarstellen
-            // 
-            this.chkScaleBarDarstellen.AutoSize = true;
-            this.chkScaleBarDarstellen.Location = new System.Drawing.Point(22, 19);
-            this.chkScaleBarDarstellen.Name = "chkScaleBarDarstellen";
-            this.chkScaleBarDarstellen.Size = new System.Drawing.Size(144, 17);
-            this.chkScaleBarDarstellen.TabIndex = 0;
-            this.chkScaleBarDarstellen.Text = "Maßstabsleiste darstellen";
-            this.chkScaleBarDarstellen.UseVisualStyleBackColor = true;
-            this.chkScaleBarDarstellen.CheckedChanged += new System.EventHandler(this.chkScaleBarDarstellen_CheckedChanged);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lvVektorkarten);
             this.groupBox2.Controls.Add(this.btnDeleteVektor);
             this.groupBox2.Controls.Add(this.btnAddVektor);
-            this.groupBox2.Location = new System.Drawing.Point(6, 225);
+            this.groupBox2.Location = new System.Drawing.Point(9, 151);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(462, 144);
             this.groupBox2.TabIndex = 1;
@@ -380,7 +355,7 @@
             this.groupBox1.Controls.Add(this.lvRasterkarten);
             this.groupBox1.Controls.Add(this.btnDeleteRaster);
             this.groupBox1.Controls.Add(this.btnAddRaster);
-            this.groupBox1.Location = new System.Drawing.Point(6, 80);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(462, 139);
             this.groupBox1.TabIndex = 0;
@@ -471,8 +446,6 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ftProjectBindingSource)).EndInit();
@@ -504,8 +477,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox chkScaleBarDarstellen;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnChooseDefaultPath;

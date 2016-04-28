@@ -21,6 +21,7 @@ namespace fieldtool
         private void Init()
         {
             picColor.BackColor = Properties.Settings.Default.AccPlotNoDataColor;
+            chkShowMassstab.Checked = Properties.Settings.Default.ShowMapMasssstab;
         }
 
         private void picColor_Click(object sender, EventArgs e)
@@ -36,6 +37,12 @@ namespace fieldtool
         private void btnSchließen_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void chkShowMassstab_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ShowMapMasssstab = chkShowMassstab.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }

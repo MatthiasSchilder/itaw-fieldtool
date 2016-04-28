@@ -37,8 +37,6 @@ namespace fieldtool
             this.lblProjName.Text = _project.ProjectName;
             this.lblProjPath.Text = _project.ProjectFilePath;
 
-            chkScaleBarDarstellen.Checked = _project.MapConfig.ScaleBarDarstellen;
-
             numEPSGSource.Value = _project.EPSGSourceProjection;
             numEPSGTarget.Value = _project.EPSGTargetProjection;
 
@@ -121,11 +119,6 @@ namespace fieldtool
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void chkScaleBarDarstellen_CheckedChanged(object sender, EventArgs e)
-        {
-            _project.MapConfig.ScaleBarDarstellen = (sender as CheckBox).Checked;
         }
 
         private void btnChooseDefaultPath_Click(object sender, EventArgs e)
