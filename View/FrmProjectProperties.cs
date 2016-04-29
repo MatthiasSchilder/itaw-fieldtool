@@ -68,10 +68,7 @@ namespace fieldtool
         private ListViewItem CreateLayerListViewItem(FtLayer layer)
         {
             string[] subItemsArr = { "", Path.GetFileNameWithoutExtension(layer.FilePath), layer.FilePath };
-            ListViewItem lvi = new ListViewItem(subItemsArr);
-            lvi.Checked = layer.Active;
-
-            return lvi;
+            return new ListViewItem(subItemsArr) {Checked = layer.Active};
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -95,8 +92,16 @@ namespace fieldtool
 
         private void btnDeleteRaster_Click(object sender, EventArgs e)
         {
-            UpdateLayerListViews();
+            if (lvRasterkarten.SelectedItems.Count == 0)
+                return;
 
+            foreach (ListViewItem selItem in lvRasterkarten.SelectedItems)
+            {
+                var lviFilePath = selItem.SubItems[2].Text;
+                _project.MapConfig.DeleteLayer(FtLayerType.FtRasterLayer, lviFilePath);
+            }
+                
+            UpdateLayerListViews();
         }
 
         private void btnAddVektor_Click(object sender, EventArgs e)
