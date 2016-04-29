@@ -632,6 +632,25 @@ namespace fieldtool
         {
 
         }
+        Stopwatch sw1 = new Stopwatch();
+        private void mapBox1_MapRefreshed(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Map refreshed." + sw1.ElapsedMilliseconds);
+            sw1.Stop();
+            sw1.Reset();
+        }
+
+        private void mapBox1_MapChanging(object sender, CancelEventArgs e)
+        {
+            sw1.Start();
+            Debug.WriteLine("Map changing starts.");
+        }
+
+        private void mapBox1_GeometryDefined(IGeometry geometry)
+        {
+            sw1.Start();
+            Debug.WriteLine("Geometry defined");
+        }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs
     {

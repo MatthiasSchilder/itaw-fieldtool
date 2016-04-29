@@ -108,6 +108,9 @@
             this.mapBox1.Text = "mapBox1";
             this.mapBox1.WheelZoomMagnitude = -2D;
             this.mapBox1.MouseDrag += new SharpMap.Forms.MapBox.MouseEventHandler(this.mapBox1_MouseDrag);
+            this.mapBox1.MapRefreshed += new System.EventHandler(this.mapBox1_MapRefreshed);
+            this.mapBox1.MapChanging += new System.ComponentModel.CancelEventHandler(this.mapBox1_MapChanging);
+            this.mapBox1.GeometryDefined += new SharpMap.Forms.MapBox.GeometryDefinedHandler(this.mapBox1_GeometryDefined);
             // 
             // menuStrip1
             // 
