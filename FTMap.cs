@@ -191,10 +191,9 @@ namespace fieldtool
 
         public void AddTiffLayer(string name, string path)
         {
-            //var layer = new SharpMap.Layers.GdalRasterLayer(name, path);
             var layer = new SharpMap.Layers.GdalRasterLayerCachingProxy(name, path);
+            layer.ColorCorrect = false;
             this.BackgroundLayer.Add(layer);
-            //this.Layers.Add(layer);
         }
 
         public void AddShapeLayer(string name, string shapefilePath)
