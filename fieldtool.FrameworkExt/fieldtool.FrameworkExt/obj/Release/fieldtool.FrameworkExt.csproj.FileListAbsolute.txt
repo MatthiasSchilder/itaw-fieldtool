@@ -8,3 +8,13 @@ F:\fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\bin\Re
 F:\fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\obj\Release\fieldtool.FrameworkExt.csprojResolveAssemblyReference.cache
 F:\fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\obj\Release\fieldtool.FrameworkExt.dll
 F:\fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\obj\Release\fieldtool.FrameworkExt.pdb
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\bin\Release\fieldtool.FrameworkExt.dll
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\bin\Release\fieldtool.FrameworkExt.pdb
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\bin\Release\fieldtool.Data.dll
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\bin\Release\GeoAPI.dll
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\bin\Release\DotSpatial.Projections.dll
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\bin\Release\fieldtool.Data.pdb
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\bin\Release\DotSpatial.Projections.xml
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\obj\Release\fieldtool.FrameworkExt.csprojResolveAssemblyReference.cache
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\obj\Release\fieldtool.FrameworkExt.dll
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.FrameworkExt\fieldtool.FrameworkExt\obj\Release\fieldtool.FrameworkExt.pdb

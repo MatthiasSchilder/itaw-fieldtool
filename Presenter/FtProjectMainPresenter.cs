@@ -30,9 +30,11 @@ namespace fieldtool
     class MapChangedArgs : EventArgs
     {
         public FtMap Map { get; private set; }
-        public MapChangedArgs(FtMap map)
+        public bool ZoomToFit { get; private set; }
+        public MapChangedArgs(FtMap map, bool zoomToFit = false)
         {
             Map = map;
+            ZoomToFit = zoomToFit;
         }
     }
 
@@ -129,11 +131,7 @@ namespace fieldtool
             }
         }
 
-
-
         private FtProject Project { get; set; }
-
-
 
         private FtMap _map;
         private bool MapNeedsRefresh { get; set; }
@@ -196,7 +194,9 @@ namespace fieldtool
 
         private void View_MapDisplayIntervalChanged(object sender, MapDisplayIntervalChangedEventArgs e)
         {
-            Project.SetIntervalFilter(e.IntervalStart, e.IntervalEnd);
+            
+            Project.SetIntervalFilter(CurrentDataset, e.IntervalStart, e.IntervalEnd);
+            //DataChangedEventHandler(this, new EventArgs());
             InvokeMapChanged(new MapChangedArgs(Map));
         }
 
@@ -265,6 +265,9 @@ namespace fieldtool
             CurrentDataset = !e.CurrentTagId.HasValue ? null : Project.GetTransmitterDataset(e.CurrentTagId.Value);
             if (CurrentDataset == null)
                 return;
+            if (CurrentDataset.GPSData.GpsSeries.Count == 0)
+                return;
+
             var maxDate = CurrentDataset.GPSData.GpsSeries.Max(series => series.StartTimestamp);
             var minDate = CurrentDataset.GPSData.GpsSeries.Min(series => series.StartTimestamp);
             InvokeMapDisplayIntervalChanged(new MapDisplayIntervalChangedEventArgs(minDate, maxDate));
@@ -293,6 +296,8 @@ namespace fieldtool
 
         private void View_ShowMovebankImport(object sender, EventArgs e)
         {
+            if (Project == null)
+                return;
             var args = (MovebankImportStartArgs) e;
             if (args.EinzelImport)
             {
@@ -355,7 +360,7 @@ namespace fieldtool
             FtFormFactory.ShowDialog(frm);
 
             MapNeedsRefresh = true;
-            InvokeMapChanged(new MapChangedArgs(Map));
+            InvokeMapChanged(new MapChangedArgs(Map, true));
         }
 
         private void View_NewProject(object sender, EventArgs e)
@@ -436,7 +441,7 @@ namespace fieldtool
             ProjectionManager.SetSourceProjection(Project.EPSGSourceProjection);
             ProjectionManager.SetTargetProjection(Project.EPSGTargetProjection);
 
-            InvokeMapChanged(new MapChangedArgs(Map));
+            InvokeMapChanged(new MapChangedArgs(Map, true));
             InvokeProjectStateChanged(new ProjectStateArgs(Project.ProjectFilePath, Project.ProjectName, true));
 
             return true;

@@ -53,7 +53,7 @@ namespace fieldtool
             ProjectName = Path.GetFileNameWithoutExtension(filepath);
             ProjectFilePath = filepath;
 
-            EPSGSourceProjection = 4314;
+            EPSGSourceProjection = 4326;
             EPSGTargetProjection = 31467;
         }
 
@@ -67,11 +67,9 @@ namespace fieldtool
             DataChangedEventHandler(this, new EventArgs());
         }
 
-        public void SetIntervalFilter(DateTime start, DateTime stop)
+        public void SetIntervalFilter(FtTransmitterDataset dataset, DateTime start, DateTime stop)
         {
-            foreach(var dataset in Datasets)
-                dataset.GPSData.SetIntervalFilter(start, stop);
-
+            dataset.GPSData.SetIntervalFilter(start, stop);
             DataChangedEventHandler(this, new EventArgs());
         }
 

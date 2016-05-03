@@ -34,30 +34,9 @@ namespace fieldtool
             this.BackColor = System.Drawing.Color.White;
             Init(project);
             project.DataChangedEventHandler += DataChangedEventHandler;
-            this.LayerRendering += FtMap_LayerRendering;
-            this.LayerRenderedEx += FtMap_LayerRenderedEx;
-            base.RefreshNeeded += FtMap_RefreshNeeded;
             PolygonalVectorLayers = new Dictionary<int, PolygonalVectorLayer>();
             PuntalVectorLayers = new Dictionary<int, PuntalVectorLayer>();
             CustomDecorations = new List<MapDecoration>();
-        }
-
-        private void FtMap_RefreshNeeded(object sender, EventArgs e)
-        {
-            Debug.WriteLine("Refresh needed");
-        }
-
-        Stopwatch sw1 = new Stopwatch();
-        private void FtMap_LayerRenderedEx(object sender, SharpMap.LayerRenderingEventArgs e)
-        {
-            sw1.Stop();
-            Debug.WriteLine(String.Format("Rendering Layer {0} took {1} ms.", e.Layer, sw1.ElapsedMilliseconds));
-            sw1.Reset();
-        }
-
-        private void FtMap_LayerRendering(object sender, SharpMap.LayerRenderingEventArgs e)
-        {
-            sw1.Start();
         }
 
         private void DataChangedEventHandler(object sender, EventArgs eventArgs)
@@ -74,13 +53,26 @@ namespace fieldtool
                 if (!dataset.Active)
                     continue;
 
-                var geometryProvider = new GeometryProvider(GpsDataToCoordinates(dataset.GPSData));
-                var symbolizer = new CharacterPointSymbolizer()
+                var geometryProvider = new GeometryFeatureProvider(GpsDataToCoordinates(dataset.GPSData));
+                //geometryProvider.FilterDelegate = new FilterProvider.FilterMethod()
+                //SharpMap.Data.FeatureDataRow fdr; fdr.
+                var charsymbolizer = new CharacterPointSymbolizer()
                 {
                     Font = new Font("Arial", 24, FontStyle.Bold, GraphicsUnit.Pixel),
                     CharacterIndex = (int)'x',
                     Foreground = new SolidBrush(dataset.VisulizationColor)
                 };
+
+                ISymbolizer<IPuntal> symbolizer;
+                Random rnd = new Random();
+                var rndnum = rnd.Next(0, 2);
+
+                //if(rndnum == 0)
+                //    symbolizer = new FtTriangleePointSymbolizer(dataset.VisulizationColor);
+                //if (rndnum == 1)
+                    symbolizer = new FtTriangleePointSymbolizer(dataset.VisulizationColor);
+                //else
+                //    symbolizer = new FtRectanglePointSymbolizer(dataset.VisulizationColor, 45);
 
                 var puntalVectorLayers = new PuntalVectorLayer(dataset.TagId.ToString(), geometryProvider, symbolizer);
                 this.VariableLayers.Add(puntalVectorLayers);

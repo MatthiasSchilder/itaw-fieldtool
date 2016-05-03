@@ -257,13 +257,17 @@ namespace fieldtool
             if (mapBox1.Map == null)
                 return;
 
-            try
+            if(eventArgs.ZoomToFit)
             {
-                mapBox1.Map.ZoomToExtents();
+                try
+                {
+                    mapBox1.Map.ZoomToExtents();
+                }
+                catch (Exception)
+                {
+                }
             }
-            catch (Exception)
-            {
-            }
+
             mapBox1.Refresh();
         }
 
@@ -609,6 +613,7 @@ namespace fieldtool
         private void lviDatasets_ItemChecked(object sender, TreeViewEventArgs e)
         {
             InvokeDatasetCheckedChanged(new DatasetCheckedEventArgs((int)e.Node.Tag, e.Node.Checked));
+            InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs((int)e.Node.Tag));
             mapBox1.Refresh();
         }
 
@@ -631,25 +636,6 @@ namespace fieldtool
         private void tabelleToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-        }
-        Stopwatch sw1 = new Stopwatch();
-        private void mapBox1_MapRefreshed(object sender, EventArgs e)
-        {
-            Debug.WriteLine("Map refreshed." + sw1.ElapsedMilliseconds);
-            sw1.Stop();
-            sw1.Reset();
-        }
-
-        private void mapBox1_MapChanging(object sender, CancelEventArgs e)
-        {
-            sw1.Start();
-            Debug.WriteLine("Map changing starts.");
-        }
-
-        private void mapBox1_GeometryDefined(IGeometry geometry)
-        {
-            sw1.Start();
-            Debug.WriteLine("Geometry defined");
         }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs

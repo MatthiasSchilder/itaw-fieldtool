@@ -366,3 +366,5 @@ C:\Users\ma\Desktop\itaw\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\
 C:\Users\ma\Desktop\itaw\itaw-fieldtool\fieldtool.Test\fieldtool.Test\obj\Debug\fieldtool.Test.csprojResolveAssemblyReference.cache
 C:\Users\ma\Desktop\itaw\itaw-fieldtool\fieldtool.Test\fieldtool.Test\obj\Debug\fieldtool.Test.dll
 C:\Users\ma\Desktop\itaw\itaw-fieldtool\fieldtool.Test\fieldtool.Test\obj\Debug\fieldtool.Test.pdb
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\DotSpatial.Projections.dll
+C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\DotSpatial.Projections.xml
