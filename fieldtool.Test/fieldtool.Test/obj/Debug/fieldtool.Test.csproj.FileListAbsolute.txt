@@ -368,3 +368,5 @@ C:\Users\ma\Desktop\itaw\itaw-fieldtool\fieldtool.Test\fieldtool.Test\obj\Debug\
 C:\Users\ma\Desktop\itaw\itaw-fieldtool\fieldtool.Test\fieldtool.Test\obj\Debug\fieldtool.Test.pdb
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\DotSpatial.Projections.dll
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\DotSpatial.Projections.xml
+F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.Controls.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.Controls.pdb

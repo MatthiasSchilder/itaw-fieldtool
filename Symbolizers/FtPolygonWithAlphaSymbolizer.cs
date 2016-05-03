@@ -11,7 +11,7 @@ using SharpMap.Rendering.Symbolizer;
 
 namespace fieldtool.Symbolizers
 {
-    class PolygonWithAlphaSymbolizer : PolygonSymbolizer
+    class FtPolygonWithAlphaSymbolizer : PolygonSymbolizer
     {
         /// <summary>
         /// Gets or sets the pen to render the outline of the polygon
@@ -27,7 +27,7 @@ namespace fieldtool.Symbolizers
         /// <summary>
         /// Creates an instance of this class
         /// </summary>
-        public PolygonWithAlphaSymbolizer(Color color)
+        public FtPolygonWithAlphaSymbolizer(Color color)
         {
             this.Outline = new Pen(color, 1f);
 
@@ -58,7 +58,7 @@ namespace fieldtool.Symbolizers
         /// <filterpriority>2</filterpriority>
         public override object Clone()
         {
-            return new PolygonWithAlphaSymbolizer(VisulizationColor)
+            return new FtPolygonWithAlphaSymbolizer(VisulizationColor)
             {
                 Fill = (Brush)base.Fill.Clone(),
                 Outline = (Pen)this.Outline.Clone(),

@@ -99,7 +99,7 @@ namespace fieldtool
             var poly = this.Factory.CreatePolygon(polygon.Vertices.ToArray());
             var polygonalVectorLayer = new PolygonalVectorLayer(dataset.TagId.ToString() + "MCP", new GeometryProvider(poly))
             {
-                Symbolizer = new PolygonWithAlphaSymbolizer(dataset.VisulizationColor)
+                Symbolizer = new FtPolygonWithAlphaSymbolizer(dataset.VisulizationColor)
             };
 
             this.VariableLayers.Add(polygonalVectorLayer);
@@ -139,9 +139,6 @@ namespace fieldtool
             foreach(var kvp in namePathDict)
                 map.AddTiffLayer(kvp.Key, kvp.Value);
 
-            //map.AddShapeLayer("", relativePath + "outline.shp");
-            map.AddDecoLayer();
-            //map.AddBLALayer();
             map.ZoomToExtents();
         }
 
@@ -173,12 +170,6 @@ namespace fieldtool
                 this.Decorations.Remove(decoration);
             }
             CustomDecorations.Clear();
-        }
-
-        public void AddDecoLayer()
-        {
-            var deco = new MyNonMovingDeco();
-            this.Decorations.Add(deco);
         }
 
         public void AddTiffLayer(string name, string path)

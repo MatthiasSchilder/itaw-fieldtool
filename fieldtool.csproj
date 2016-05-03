@@ -96,12 +96,6 @@
   <ItemGroup>
     <Compile Include="AccelBurstActivityCalculator.cs" />
     <Compile Include="AccelVisualizer.cs" />
-    <Compile Include="DateIntervalPicker.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DateIntervalPicker.Designer.cs">
-      <DependentUpon>DateIntervalPicker.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="View\FrmTagConfig.resx">
       <DependentUpon>FrmTagConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,7 +104,7 @@
     <Compile Include="Decorations\LegendDecoration.cs" />
     <Compile Include="Symbolizers\FtBasePointSymbolizer.cs" />
     <Compile Include="Symbolizers\FtTrianglePointSymbolizer.cs" />
-    <Compile Include="Symbolizers\PolygonWithAlphaSymbolizer.cs" />
+    <Compile Include="Symbolizers\FtPolygonWithAlphaSymbolizer.cs" />
     <Compile Include="View\FrmBurstActivityVisu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,7 +146,6 @@
     <Compile Include="FtProject.cs" />
     <Compile Include="Presenter\FtProjectMainPresenter.cs" />
     <Compile Include="Presenter\FtProjectPropertiesPresenter.cs" />
-    <Compile Include="FtTransmitterTagInfoData.cs" />
     <Compile Include="View\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,19 +226,14 @@
     <Compile Include="View\FrmTagConfig.Designer.cs">
       <DependentUpon>FrmTagConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\IFtProjcetMainView.cs" />
+    <Compile Include="View\IFtProjectMainView.cs" />
     <Compile Include="View\IFtProjectPropertiesView.cs" />
     <Compile Include="View\IView.cs" />
-    <Compile Include="MyNonMovingDeco - Copy.cs" />
-    <Compile Include="MyNonMovingDeco.cs" />
     <Compile Include="Presenter\Presenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FtMap.cs" />
-    <EmbeddedResource Include="DateIntervalPicker.resx">
-      <DependentUpon>DateIntervalPicker.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmBurstActivityVisu.resx">
       <DependentUpon>FrmBurstActivityVisu.cs</DependentUpon>
     </EmbeddedResource>
@@ -718,6 +706,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\fieldtool.Controls\fieldtool.Controls.csproj">
+      <Project>{fc726910-8bda-4a61-9008-99ed285520cd}</Project>
+      <Name>fieldtool.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="fieldtool.Data\fieldtool.Data.csproj">
       <Project>{61fcef23-c5e8-4e24-9002-63d87bfdacdd}</Project>
       <Name>fieldtool.Data</Name>

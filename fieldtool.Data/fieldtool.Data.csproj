@@ -51,18 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FtFileset.cs" />
+    <Compile Include="Movebank\FtFileset.cs" />
     <Compile Include="FtHelper.cs" />
-    <Compile Include="FtMultipoint.cs" />
-    <Compile Include="FtPolygon.cs" />
-    <Compile Include="FTTransmitterAccelData.cs" />
-    <Compile Include="FtTransmitterAccelDataSeries.cs" />
-    <Compile Include="FTTransmitterData.cs" />
-    <Compile Include="FTTransmitterDataset.cs" />
-    <Compile Include="FtTransmitterDatasetFactory.cs" />
-    <Compile Include="FTTransmitterGPSDataSeries.cs" />
-    <Compile Include="FTTransmitterGPSData.cs" />
-    <Compile Include="FTTransmitterTagInfoData.cs" />
+    <Compile Include="Geometry\FtMultipoint.cs" />
+    <Compile Include="Geometry\FtPolygon.cs" />
+    <Compile Include="Movebank\FTTransmitterAccelData.cs" />
+    <Compile Include="Movebank\FtTransmitterAccelDataSeries.cs" />
+    <Compile Include="Movebank\FTTransmitterData.cs" />
+    <Compile Include="Movebank\FTTransmitterDataset.cs" />
+    <Compile Include="Movebank\FtTransmitterDatasetFactory.cs" />
+    <Compile Include="Movebank\FTTransmitterGPSDataSeries.cs" />
+    <Compile Include="Movebank\FTTransmitterGPSData.cs" />
+    <Compile Include="Movebank\FTTransmitterTagInfoData.cs" />
     <Compile Include="ProjectionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
