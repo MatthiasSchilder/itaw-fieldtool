@@ -1,18 +1,9 @@
-﻿using Microsoft.WindowsAPICodePack.Dialogs;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using fieldtool.Data;
-using fieldtool.View;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
-namespace fieldtool
+namespace fieldtool.View
 {
     public partial class FrmProjectProperties : Form, IFtProjectPropertiesView
     {
@@ -23,11 +14,10 @@ namespace fieldtool
 
         public FrmProjectProperties(FtProject project)
         {
+            _project = project;
             Presenter = new FtProjectPropertiesPresenter(this);
 
             InitializeComponent();
-            _project = project;
-
             Init();
         }
 

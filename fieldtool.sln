@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieldtool.Data", "fieldtool
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieldtool.Test", "fieldtool.Test\fieldtool.Test\fieldtool.Test.csproj", "{EA3A7122-7FCB-496C-80F6-80600C80F581}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieldtool.Controls", "..\fieldtool.Controls\fieldtool.Controls.csproj", "{FC726910-8BDA-4A61-9008-99ED285520CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieldtool.Controls", "fieldtool.Controls\fieldtool.Controls.csproj", "{FC726910-8BDA-4A61-9008-99ED285520CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

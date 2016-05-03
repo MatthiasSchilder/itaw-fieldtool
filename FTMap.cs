@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Net.Configuration;
@@ -54,6 +55,7 @@ namespace fieldtool
                     continue;
 
                 var geometryProvider = new GeometryFeatureProvider(GpsDataToCoordinates(dataset.GPSData));
+                //geometryProvider.Features = new fe
                 //geometryProvider.FilterDelegate = new FilterProvider.FilterMethod()
                 //SharpMap.Data.FeatureDataRow fdr; fdr.
 
@@ -68,12 +70,16 @@ namespace fieldtool
                     symbolizer = new FtTriangleePointSymbolizer(dataset.Visulization.VisulizationColor);
                 //else
                 //    symbolizer = new FtRectanglePointSymbolizer(dataset.VisulizationColor, 45);
-
+                symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
                 var puntalVectorLayers = new PuntalVectorLayer(dataset.TagId.ToString(), geometryProvider, symbolizer);
+                
                 this.VariableLayers.Add(puntalVectorLayers);
                 PuntalVectorLayers.Add(dataset.TagId, puntalVectorLayers);
-            }
 
+
+                //var labelLayer = new SharpMap.Layers.LabelLayer("blabla");
+                //labelLayer.
+            }
             AddLegendDecoration(_project.Datasets);
 
         }

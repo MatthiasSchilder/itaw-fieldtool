@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculation\AccelBurstActivityCalculator.cs" />
+    <Compile Include="Calculation\AccBurstActivityCalculator.cs" />
     <Compile Include="DatetimeExt.cs" />
     <Compile Include="FtTimeSpan.cs" />
     <Compile Include="Movebank\FtFileset.cs" />

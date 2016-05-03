@@ -11,13 +11,13 @@ namespace fieldtool
     {
         public static DialogResult ShowDialog(Form form)
         {
-            form.Icon = Properties.Resources.itaw;
+            form.Icon = Properties.Resources.MainIcon;
             return form.ShowDialog();
         }
 
         public static void Show(Form form)
         {
-            form.Icon = Properties.Resources.itaw;
+            form.Icon = Properties.Resources.MainIcon;
             form.Show();
         }
     }

@@ -14,6 +14,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Windows.Media.Imaging;
 using fieldtool.Presenter;
 using fieldtool.View;
+using SharpMap.Data;
 using SharpMap.Forms;
 
 namespace fieldtool
@@ -642,6 +643,26 @@ namespace fieldtool
         private void tabelleToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void mapBox1_MouseUp(Coordinate worldPos, MouseEventArgs e)
+        {
+            var p = mapBox1.Map.ImageToWorld(e.Location);
+            FeatureDataSet ds = new FeatureDataSet();
+            
+            foreach (var layer in mapBox1.Map.VariableLayers)
+            {
+                //Test if the layer is queryable?
+                var queryLayer = layer as SharpMap.Layers.ICanQueryLayer;
+                if (queryLayer != null)
+                {
+                    var env = new Envelope(new Coordinate(p.X-1, p.Y-1), new Coordinate(p.X+1 , p.Y+1));
+                    queryLayer.ExecuteIntersectionQuery(env, ds);
+                }
+                    
+                    //queryLayer.ExecuteIntersectionQuery(p, ds);
+            }
+            MessageBox.Show(ds.DataSetName);
         }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs

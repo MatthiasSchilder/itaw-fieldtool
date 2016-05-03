@@ -117,4 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBoxDescription.Text" xml:space="preserve">
+    <value>ITAW FieldTool wird entwickelt von Matthias Schilder unter fachlicher Anleitung von Ulrich Voigt (ITAW TiHo Hannover) sowie Denise Neubauer (ITAW TiHo Hannover).
+
+ITAW FieldTool verwendet folgende Komponenten:
+- SharpMap 1.1 (LGPL 2.1)
+- DotSpatial.Projections 1.0 (LGPL 2.1)
+- GDAL 1.9 (MIT/X)
+
+Die jeweiligen Lizenztexte können im Programmverzeichnis im Unterverzeichnis "LicenseTexts" eingesehen werden.</value>
+  </data>
 </root>

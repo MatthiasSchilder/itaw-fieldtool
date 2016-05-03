@@ -94,7 +94,7 @@ namespace fieldtool
                 }            
             }
             if(!result.Any())
-                Debug.WriteLine(String.Format("Timeslot starting at {0} no value found", timeSlot.StartsAt.ToString()));
+                Debug.WriteLine($"Timeslot starting at {timeSlot.StartsAt} no value found");
             return result;
         }
     }

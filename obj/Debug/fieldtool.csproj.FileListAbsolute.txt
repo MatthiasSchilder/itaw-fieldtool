@@ -115,8 +115,6 @@ F:\fieldtool\itaw-fieldtool\bin\Debug\ja\Npgsql.resources.dll
 F:\fieldtool\itaw-fieldtool\bin\Debug\zh-CN\Npgsql.resources.dll
 F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.csprojResolveAssemblyReference.cache
 F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.View.FrmGraph.resources
-F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmInfo.resources
-F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmProjectProperties.resources
 F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.FrmMain.resources
 F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.Properties.Resources.resources
 F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.csproj.GenerateResource.Cache
@@ -390,3 +388,8 @@ C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\bin\Debug\zh-CN\Npgsql.resourc
 F:\fieldtool\itaw-fieldtool\bin\Debug\fieldtool.Controls.dll
 F:\fieldtool\itaw-fieldtool\bin\Debug\fieldtool.Controls.pdb
 F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.View.FrmBurstActivityVisu.resources
+F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.View.FrmProjectProperties.resources
+F:\fieldtool\itaw-fieldtool\bin\Debug\LicenseTexts\License_Dotspatial-Projections.txt
+F:\fieldtool\itaw-fieldtool\bin\Debug\LicenseTexts\License_SharpMap.txt
+F:\fieldtool\itaw-fieldtool\bin\Debug\LicenseTexts\License_GDAL.txt
+F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.View.FrmInfo.resources

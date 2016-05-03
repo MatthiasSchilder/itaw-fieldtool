@@ -97,6 +97,7 @@
     <EmbeddedResource Include="View\FrmTagConfig.resx">
       <DependentUpon>FrmTagConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="Symbolizers\FtLabeledCrossPointSymbolizer.cs" />
     <Compile Include="Symbolizers\FtCrossPointSymbolizer.cs" />
     <Compile Include="Symbolizers\FtRectanglePointSymbolizer.cs" />
     <Compile Include="Decorations\LegendDecoration.cs" />
@@ -277,6 +278,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LicenseTexts\License_Dotspatial-Projections.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LicenseTexts\License_SharpMap.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LicenseTexts\License_GDAL.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\MainIcon.ico" />
     <None Include="data\images\folder_Open_16xLG.png" />
     <Content Include="data\images\itaw.ico" />
     <Content Include="data\images\MyNonMovingDeco - Copy.PNG">
@@ -704,7 +715,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\fieldtool.Controls\fieldtool.Controls.csproj">
+    <ProjectReference Include="fieldtool.Controls\fieldtool.Controls.csproj">
       <Project>{fc726910-8bda-4a61-9008-99ed285520cd}</Project>
       <Name>fieldtool.Controls</Name>
     </ProjectReference>

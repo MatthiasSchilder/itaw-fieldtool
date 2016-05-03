@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("itaw FieldTool")]
+[assembly: AssemblyTitle("ITAW FieldTool")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("itaw FieldTool")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyProduct("ITAW FieldTool")]
+[assembly: AssemblyCopyright("Copyright ©  2016 Matthias Schilder")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

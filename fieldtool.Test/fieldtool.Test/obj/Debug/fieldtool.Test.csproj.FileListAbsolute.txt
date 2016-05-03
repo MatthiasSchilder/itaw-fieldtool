@@ -368,3 +368,6 @@ C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\DotSpatial.Projections.xml
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.Controls.dll
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.Controls.pdb
+F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\LicenseTexts\License_Dotspatial-Projections.txt
+F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\LicenseTexts\License_SharpMap.txt
+F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\LicenseTexts\License_GDAL.txt

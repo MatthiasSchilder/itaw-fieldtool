@@ -1,4 +1,4 @@
-﻿namespace fieldtool
+﻿namespace fieldtool.View
 {
     partial class FrmProjectProperties
     {
