@@ -146,7 +146,7 @@ namespace fieldtool
         {
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.Filter = "PNG-Grafik|*.png";
-            dialog.FileName = "Untersuchungsgebiet_" + MapExportFilenameWithEnvelopeString(mapBox1.Map.Envelope);
+            dialog.FileName = "Karte" + GetMapExportFilename(args.ActiveDatasets);
             DialogResult dr = dialog.ShowDialog();
 
             if (dr != DialogResult.OK)
@@ -207,7 +207,7 @@ namespace fieldtool
         {
             foreach (var dataset in datasets)
             {
-                var img = CreateMonochromaticImage(dataset.VisulizationColor);
+                var img = CreateMonochromaticImage(dataset.Visulization.VisulizationColor);
                 imageListColorKeys.Images.Add(img);
             }
             
@@ -598,11 +598,16 @@ namespace fieldtool
             InvokeExportCurrentMapEnvelope(new EventArgs());
         }
 
-        private String MapExportFilenameWithEnvelopeString(Envelope env)
+        private String GetMapExportFilename(List<FtTransmitterDataset> datasets)
         {
-            string fmt = "Extents({0};{1})({2};{3})";
-            return String.Format(fmt, Math.Round(env.MinX, 2), Math.Round(env.MinY, 2), Math.Round(env.MaxX, 2),
-                Math.Round(env.MaxY, 2));
+            StringBuilder sb = new StringBuilder();
+            foreach (var dataset in datasets)
+            {
+                sb.Append("_");
+                sb.Append($"Tag{dataset.TagId}");
+            }
+
+            return sb.ToString();
         }
 
         private void mCPToolStripMenuItem_Click(object sender, EventArgs e)

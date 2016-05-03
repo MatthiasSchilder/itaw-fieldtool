@@ -56,12 +56,7 @@ namespace fieldtool
                 var geometryProvider = new GeometryFeatureProvider(GpsDataToCoordinates(dataset.GPSData));
                 //geometryProvider.FilterDelegate = new FilterProvider.FilterMethod()
                 //SharpMap.Data.FeatureDataRow fdr; fdr.
-                var charsymbolizer = new CharacterPointSymbolizer()
-                {
-                    Font = new Font("Arial", 24, FontStyle.Bold, GraphicsUnit.Pixel),
-                    CharacterIndex = (int)'x',
-                    Foreground = new SolidBrush(dataset.VisulizationColor)
-                };
+
 
                 ISymbolizer<IPuntal> symbolizer;
                 Random rnd = new Random();
@@ -70,7 +65,7 @@ namespace fieldtool
                 //if(rndnum == 0)
                 //    symbolizer = new FtTriangleePointSymbolizer(dataset.VisulizationColor);
                 //if (rndnum == 1)
-                    symbolizer = new FtTriangleePointSymbolizer(dataset.VisulizationColor);
+                    symbolizer = new FtTriangleePointSymbolizer(dataset.Visulization.VisulizationColor);
                 //else
                 //    symbolizer = new FtRectanglePointSymbolizer(dataset.VisulizationColor, 45);
 
@@ -99,7 +94,7 @@ namespace fieldtool
             var poly = this.Factory.CreatePolygon(polygon.Vertices.ToArray());
             var polygonalVectorLayer = new PolygonalVectorLayer(dataset.TagId.ToString() + "MCP", new GeometryProvider(poly))
             {
-                Symbolizer = new FtPolygonWithAlphaSymbolizer(dataset.VisulizationColor)
+                Symbolizer = new FtPolygonWithAlphaSymbolizer(dataset.Visulization.VisulizationColor)
             };
 
             this.VariableLayers.Add(polygonalVectorLayer);

@@ -55,6 +55,7 @@
     <Compile Include="FtHelper.cs" />
     <Compile Include="Geometry\FtMultipoint.cs" />
     <Compile Include="Geometry\FtPolygon.cs" />
+    <Compile Include="Movebank\FtTagVisulization.cs" />
     <Compile Include="Movebank\FTTransmitterAccelData.cs" />
     <Compile Include="Movebank\FtTransmitterAccelDataSeries.cs" />
     <Compile Include="Movebank\FTTransmitterData.cs" />

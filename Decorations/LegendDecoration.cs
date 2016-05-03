@@ -101,7 +101,7 @@ namespace fieldtool.Decorations
             if (dataset.GPSData.DateTimestart.HasValue && dataset.GPSData.DateTimestop.HasValue)
                 str = dataset.GPSData.DateTimestart.Value.ToShortDateString() + " - " + dataset.GPSData.DateTimestop.Value.ToShortDateString();
             //g.DrawRectangle(new Pen(dataset.VisulizationColor), x, (float) (y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
-            g.FillRectangle(new SolidBrush(dataset.VisulizationColor), x, (float)(y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
+            g.FillRectangle(new SolidBrush(dataset.Visulization.VisulizationColor), x, (float)(y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
             g.DrawString(String.Format(FormatString, dataset.TagId, str), Font, ForeGroundBrush, x + colorFieldOffs, y);
         }
 

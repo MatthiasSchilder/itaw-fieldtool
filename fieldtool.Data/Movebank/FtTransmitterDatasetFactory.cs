@@ -45,6 +45,21 @@ namespace SharpmapGDAL
             List<FtTransmitterDataset> transmitterDatasets = 
                 new List<FtTransmitterDataset>(filesets.Count);
 
+            //foreach (var fileSet in filesets)
+            //{
+            //    var loadedFS = LoadFileset(fileSet, tagBlacklist);
+            //    if(loadedFS != null)
+            //        transmitterDatasets.Add(loadedFS);
+            //}
+
+            //Parallel.ForEach(filesets, fileset =>
+            //{
+            //    var loadedFS = LoadFileset(fileset, tagBlacklist);
+            //    if (loadedFS != null)
+            //        transmitterDatasets.Add(loadedFS);
+            //});
+
+
             transmitterDatasets.AddRange(filesets.Select(
                 fileset => LoadFileset(fileset, tagBlacklist)).Where(result => result != null));
 
