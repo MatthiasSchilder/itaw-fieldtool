@@ -20,7 +20,9 @@ namespace fieldtool
         //};
 
         public List<FtTransmitterAccelDataSeries> AccelerationSeries = new 
-            List<FtTransmitterAccelDataSeries>(); 
+            List<FtTransmitterAccelDataSeries>();
+
+        public Dictionary<DateTime, double[]> CalculatedActivities;
 
         public FtTransmitterAccelData(string filePath)
         {
@@ -33,6 +35,11 @@ namespace fieldtool
                 if(series.IsValid)
                     AccelerationSeries.Add(series);               
             }
+
+            AccelBurstActivityCalculator accCalculator = new AccelBurstActivityCalculator(this, 
+                                                        GetFirstBurstDate(),
+                                                        GetLastBurstDate());
+            CalculatedActivities = accCalculator.Process();
         }
 
         public DateTime GetFirstBurstTimestamp()

@@ -12,6 +12,7 @@ using GeoAPI.Geometries;
 using System.IO;
 using System.Runtime.Remoting.Messaging;
 using System.Windows.Media.Imaging;
+using fieldtool.Presenter;
 using fieldtool.View;
 using SharpMap.Forms;
 

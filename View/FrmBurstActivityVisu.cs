@@ -1,29 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace fieldtool
+namespace fieldtool.View
 {
     public partial class FrmBurstActivityVisu : Form
     {
-        public FrmBurstActivityVisu(int tagId, Image bmp)
+        public FrmBurstActivityVisu(FtTransmitterDataset dataset, Color noDataColor)
         {
             InitializeComponent();
-            this.Text = String.Format(this.Text, tagId);
-            pictureBox1.Image = bmp;
+            this.Text = String.Format(this.Text, dataset.TagId);
+            accVisualizer1.Setdata(noDataColor, dataset.AccelData.CalculatedActivities);
         }
 
         private void FrmBurstActivityVisu_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.C)
             {
-                Clipboard.SetImage(pictureBox1.Image);
+                Clipboard.SetImage(accVisualizer1.Image);
             }
         }
 
@@ -34,7 +28,7 @@ namespace fieldtool
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Clipboard.SetImage(pictureBox1.Image);
+            Clipboard.SetImage(accVisualizer1.Image);
         }
     }
 }

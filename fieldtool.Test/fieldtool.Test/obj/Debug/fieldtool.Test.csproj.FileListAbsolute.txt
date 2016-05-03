@@ -192,7 +192,6 @@ F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\data\testdat
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.Test.dll
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.Test.pdb
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.Data.dll
-F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.FrameworkExt.dll
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\ITAW-FieldTool.exe
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\SharpMap.dll
@@ -220,7 +219,6 @@ F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\PowerCollect
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\Mono.Security.dll
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\ITAW-FieldTool.pdb
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.Data.pdb
-F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.FrameworkExt.pdb
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\SharpMap.pdb
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\SharpMap.xml

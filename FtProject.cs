@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 using fieldtool.Annotations;
+using fieldtool.Data.Movebank;
 using SharpmapGDAL;
 
 namespace fieldtool

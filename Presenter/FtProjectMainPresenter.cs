@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DotSpatial.Projections;
 using fieldtool.Data;
 using fieldtool.View;
 using GeoAPI.Geometries;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using SharpmapGDAL;
 
-namespace fieldtool
+namespace fieldtool.Presenter
 {
     class CursorCoordsChangedArgs : EventArgs
     {
@@ -250,14 +246,9 @@ namespace fieldtool
             if (!CurrentDatasetAvailable)
                 return;
 
-            AccelBurstActivityCalculator calculator = new AccelBurstActivityCalculator(CurrentDataset.AccelData, CurrentDataset.AccelData.GetFirstBurstDate(),
-                CurrentDataset.AccelData.GetLastBurstDate());
-            var result = calculator.Process();
-
-            AccelVisualizer visu = new AccelVisualizer();
-            var resu = visu.RenderBurstActivitiesToBitmap(result);
-
-            FtFormFactory.Show(new FrmBurstActivityVisu(CurrentDataset.TagId, resu));
+            var frmAccPlot = new FrmBurstActivityVisu(CurrentDataset,
+                Properties.Settings.Default.AccPlotNoDataColor);
+            FtFormFactory.Show(frmAccPlot);
         }
         
         private void View_CurrentDatasetChanged(object sender, CurrentDatasetChangedEventArgs e)

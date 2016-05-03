@@ -1,4 +1,4 @@
-﻿namespace fieldtool
+﻿namespace fieldtool.View
 {
     partial class FrmBurstActivityVisu
     {
@@ -28,22 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnChancel = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.accVisualizer1 = new fieldtool.Controls.AccVisualizer();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.accVisualizer1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(545, 245);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // panel1
             // 
@@ -52,7 +43,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoScroll = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.accVisualizer1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(415, 568);
@@ -82,6 +73,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // accVisualizer1
+            // 
+            this.accVisualizer1.Location = new System.Drawing.Point(3, 3);
+            this.accVisualizer1.Name = "accVisualizer1";
+            this.accVisualizer1.Size = new System.Drawing.Size(383, 117);
+            this.accVisualizer1.TabIndex = 0;
+            this.accVisualizer1.TabStop = false;
+            // 
             // FrmBurstActivityVisu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -95,18 +94,16 @@
             this.Name = "FrmBurstActivityVisu";
             this.Text = "Aktivitätsplot zu Tag {0}";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmBurstActivityVisu_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.accVisualizer1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnChancel;
         private System.Windows.Forms.Button button1;
+        private Controls.AccVisualizer accVisualizer1;
     }
 }
