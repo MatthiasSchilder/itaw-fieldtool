@@ -662,7 +662,14 @@ namespace fieldtool
                     
                     //queryLayer.ExecuteIntersectionQuery(p, ds);
             }
-            MessageBox.Show(ds.DataSetName);
+
+            foreach (var tab in ds.Tables)
+            {
+                foreach (FeatureDataRow row in tab.Rows)
+                {
+                    MessageBox.Show(row.ItemArray[0].ToString());
+                }
+            }
         }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -13,6 +14,7 @@ using fieldtool.Data;
 using fieldtool.Decorations;
 using fieldtool.Symbolizers;
 using GeoAPI.Geometries;
+using SharpMap.Data;
 using SharpMap.Data.Providers;
 using SharpMap.Layers.Symbolizer;
 using SharpMap.Rendering.Decoration;
@@ -54,7 +56,30 @@ namespace fieldtool
                 if (!dataset.Active)
                     continue;
 
-                var geometryProvider = new GeometryFeatureProvider(GpsDataToCoordinates(dataset.GPSData));
+                //var geometryProvider = new GeometryFeatureProvider(GpsDataToCoordinates(dataset.GPSData));
+
+
+                FeatureDataTable fdt = new FeatureDataTable();
+                
+                fdt.Columns.Add("Name", typeof (string));
+                fdt.Columns.Add("bla", typeof(string));
+                fdt.Columns.Add("blub", typeof(string));
+
+                foreach (var bla in GpsDataToCoordinates(dataset.GPSData))
+                {
+                    //var fdr = fdt.NewRow();
+                    //fdr.Geometry = bla;
+                    //fdr.ItemArray[1] = "2";
+                    //fdr.ItemArray[2] = "3;";
+                    
+                    //fdt.AddRow(fdr);
+
+                    var fdr = (FeatureDataRow) fdt.Rows.Add("bla", "bluirr", "blirr");
+                    fdr.Geometry = bla;
+                }
+                var geometryProvider = new GeometryFeatureProvider(fdt);
+
+                //var blabla = new GeometryFeatureProvider();
                 //geometryProvider.Features = new fe
                 //geometryProvider.FilterDelegate = new FilterProvider.FilterMethod()
                 //SharpMap.Data.FeatureDataRow fdr; fdr.
