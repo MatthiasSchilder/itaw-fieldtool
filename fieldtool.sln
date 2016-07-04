@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieldtool.Test", "fieldtool
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieldtool.Controls", "fieldtool.Controls\fieldtool.Controls.csproj", "{FC726910-8BDA-4A61-9008-99ED285520CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieldtool.SharpmapExt", "fieldtool.SharpmapExt\fieldtool.SharpmapExt.csproj", "{138F4921-E05E-4161-89F7-08F23B73A836}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FC726910-8BDA-4A61-9008-99ED285520CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC726910-8BDA-4A61-9008-99ED285520CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC726910-8BDA-4A61-9008-99ED285520CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{138F4921-E05E-4161-89F7-08F23B73A836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{138F4921-E05E-4161-89F7-08F23B73A836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{138F4921-E05E-4161-89F7-08F23B73A836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{138F4921-E05E-4161-89F7-08F23B73A836}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

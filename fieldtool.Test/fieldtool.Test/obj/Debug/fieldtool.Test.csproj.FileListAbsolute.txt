@@ -371,3 +371,5 @@ F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.Co
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\LicenseTexts\License_Dotspatial-Projections.txt
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\LicenseTexts\License_SharpMap.txt
 F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\LicenseTexts\License_GDAL.txt
+F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.SharpmapExt.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.Test\fieldtool.Test\bin\Debug\fieldtool.SharpmapExt.pdb

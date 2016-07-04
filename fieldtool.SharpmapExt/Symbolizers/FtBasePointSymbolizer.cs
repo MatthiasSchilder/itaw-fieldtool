@@ -1,14 +1,20 @@
-﻿using GeoAPI.Geometries;
+﻿using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using SharpMap;
 using SharpMap.Rendering.Symbolizer;
 using SharpMap.Utilities;
-using System.Drawing;
-using System.Drawing.Drawing2D;
+using GeoAPI.Geometries;
 
-namespace fieldtool.Symbolizers
+namespace fieldtool.SharpmapExt.Symbolizers
 {
     public abstract class FtBasePointSymbolizer : BaseSymbolizer, IPointSymbolizer, ISymbolizer<IPuntal>, ISymbolizer, System.ICloneable
     {
+        protected FtBasePointSymbolizer()
+        {
+            this.SmoothingMode = SmoothingMode.HighSpeed;
+        }
+
         private float _scale = 1f;
 
         /// <summary>
@@ -143,6 +149,27 @@ namespace fieldtool.Symbolizers
                 return;
             }
             this.RenderPoint(map, ((IPoint)geometry).Coordinate, graphics);
+        }
+
+
+        public static Func<Color, FtBasePointSymbolizer> GetRandomPointSymbolizer()
+        {
+            Random rnd = new Random();
+            switch (rnd.Next(0, 4))
+            {
+                case 0:
+                    return delegate(Color color) { return new FtCrossPointSymbolizer(color); };
+                case 1:
+                    return delegate (Color color) { return new FtDotPointSymbolizer(color); };
+                case 2:
+                    return color => new FtLabeledCrossPointSymbolizer(color);
+                case 3:
+                    return color => new FtRectanglePointSymbolizer(color);
+                case 4:
+                    return delegate (Color color) { return new FtTriangleePointSymbolizer(color); };
+                default:
+                    return delegate (Color color) { return new FtCrossPointSymbolizer(color); };
+            }
         }
     }
 }

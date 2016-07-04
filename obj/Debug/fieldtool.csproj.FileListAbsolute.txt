@@ -393,3 +393,5 @@ F:\fieldtool\itaw-fieldtool\bin\Debug\LicenseTexts\License_Dotspatial-Projection
 F:\fieldtool\itaw-fieldtool\bin\Debug\LicenseTexts\License_SharpMap.txt
 F:\fieldtool\itaw-fieldtool\bin\Debug\LicenseTexts\License_GDAL.txt
 F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.View.FrmInfo.resources
+F:\fieldtool\itaw-fieldtool\bin\Debug\fieldtool.SharpmapExt.dll
+F:\fieldtool\itaw-fieldtool\bin\Debug\fieldtool.SharpmapExt.pdb

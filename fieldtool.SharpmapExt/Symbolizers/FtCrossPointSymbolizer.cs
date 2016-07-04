@@ -1,27 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SharpMap.Rendering.Symbolizer;
 
-namespace fieldtool.Symbolizers
+namespace fieldtool.SharpmapExt.Symbolizers
 {
     [Serializable]
-    public class FtLabeledCrossPointSymbolizer : FtBasePointSymbolizer
+    public class FtCrossPointSymbolizer : FtBasePointSymbolizer
     {
         public Pen OutlinePen { get; set; }
 
-        public FtLabeledCrossPointSymbolizer( Color visuColor) : base()
+        public FtCrossPointSymbolizer(Color visuColor) : base()
         {
             OutlinePen = new Pen(visuColor);
-            Size = new Size(16, 16);
+            Size = new Size(8, 8);
         }
         public override object Clone()
         {
-            var res = (FtRectanglePointSymbolizer)MemberwiseClone();
+            var res = (FtCrossPointSymbolizer)MemberwiseClone();
             res.OutlinePen = OutlinePen;
             return res;
         }

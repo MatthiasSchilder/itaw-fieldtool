@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using fieldtool.Data;
+using fieldtool.Data.Movebank;
 using fieldtool.View;
 using GeoAPI.Geometries;
 using Microsoft.WindowsAPICodePack.Dialogs;

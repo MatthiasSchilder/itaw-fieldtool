@@ -60,3 +60,5 @@ C:\Users\ma\Desktop\itaw\itaw-fieldtool\fieldtool.Data\obj\Debug\fieldtool.Data.
 C:\Users\ma\Desktop\itaw\itaw-fieldtool\fieldtool.Data\obj\Debug\fieldtool.Data.pdb
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Data\bin\Debug\DotSpatial.Projections.dll
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Data\bin\Debug\DotSpatial.Projections.xml
+F:\fieldtool\itaw-fieldtool\fieldtool.Data\bin\Debug\fieldtool.SharpmapExt.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.Data\bin\Debug\fieldtool.SharpmapExt.pdb

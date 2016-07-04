@@ -97,13 +97,7 @@
     <EmbeddedResource Include="View\FrmTagConfig.resx">
       <DependentUpon>FrmTagConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="Symbolizers\FtLabeledCrossPointSymbolizer.cs" />
-    <Compile Include="Symbolizers\FtCrossPointSymbolizer.cs" />
-    <Compile Include="Symbolizers\FtRectanglePointSymbolizer.cs" />
     <Compile Include="Decorations\LegendDecoration.cs" />
-    <Compile Include="Symbolizers\FtBasePointSymbolizer.cs" />
-    <Compile Include="Symbolizers\FtTrianglePointSymbolizer.cs" />
-    <Compile Include="Symbolizers\FtPolygonWithAlphaSymbolizer.cs" />
     <Compile Include="View\FrmBurstActivityVisu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -716,12 +710,16 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="fieldtool.Controls\fieldtool.Controls.csproj">
-      <Project>{fc726910-8bda-4a61-9008-99ed285520cd}</Project>
+      <Project>{FC726910-8BDA-4A61-9008-99ED285520CD}</Project>
       <Name>fieldtool.Controls</Name>
     </ProjectReference>
     <ProjectReference Include="fieldtool.Data\fieldtool.Data.csproj">
       <Project>{61fcef23-c5e8-4e24-9002-63d87bfdacdd}</Project>
       <Name>fieldtool.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="fieldtool.SharpmapExt\fieldtool.SharpmapExt.csproj">
+      <Project>{138f4921-e05e-4161-89f7-08f23b73a836}</Project>
+      <Name>fieldtool.SharpmapExt</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -11,8 +11,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using fieldtool.Data;
+using fieldtool.Data.Movebank;
 using fieldtool.Decorations;
-using fieldtool.Symbolizers;
+using fieldtool.SharpmapExt.Symbolizers;
 using GeoAPI.Geometries;
 using SharpMap.Data;
 using SharpMap.Data.Providers;
@@ -79,24 +80,9 @@ namespace fieldtool
                 }
                 var geometryProvider = new GeometryFeatureProvider(fdt);
 
-                //var blabla = new GeometryFeatureProvider();
-                //geometryProvider.Features = new fe
-                //geometryProvider.FilterDelegate = new FilterProvider.FilterMethod()
-                //SharpMap.Data.FeatureDataRow fdr; fdr.
-
-
-                ISymbolizer<IPuntal> symbolizer;
-                Random rnd = new Random();
-                var rndnum = rnd.Next(0, 2);
-
-                //if(rndnum == 0)
-                //    symbolizer = new FtTriangleePointSymbolizer(dataset.VisulizationColor);
-                //if (rndnum == 1)
-                    symbolizer = new FtTriangleePointSymbolizer(dataset.Visulization.VisulizationColor);
-                //else
-                //    symbolizer = new FtRectanglePointSymbolizer(dataset.VisulizationColor, 45);
-                symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
-                var puntalVectorLayers = new PuntalVectorLayer(dataset.TagId.ToString(), geometryProvider, symbolizer);
+  
+                
+                var puntalVectorLayers = new PuntalVectorLayer(dataset.TagId.ToString(), geometryProvider, dataset.Visulization.Symbolizer);
                 
                 this.VariableLayers.Add(puntalVectorLayers);
                 PuntalVectorLayers.Add(dataset.TagId, puntalVectorLayers);

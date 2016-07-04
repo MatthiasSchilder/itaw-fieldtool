@@ -1,4 +1,6 @@
-﻿namespace fieldtool.View
+﻿using fieldtool;
+
+namespace fieldtool.View
 {
     partial class FrmGraph
     {

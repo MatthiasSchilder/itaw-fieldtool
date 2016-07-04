@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using fieldtool.Data.Movebank;
+using fieldtool.SharpmapExt.Symbolizers;
 using SharpmapGDAL;
 
-namespace fieldtool
+namespace fieldtool.Data.Movebank
 {
     public class FtTransmitterDataset
     {
@@ -27,11 +23,15 @@ namespace fieldtool
             TagId = id;
             Fileset = fileset;
 
+            
             Random rnd = new Random();
             Visulization = new FtTagVisulization
             {
-                VisulizationColor = Color.FromArgb(rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255))
+                VisulizationColor = Color.FromArgb(rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255)),
+                
             };
+            Visulization.Symbolizer =
+                FtBasePointSymbolizer.GetRandomPointSymbolizer().Invoke(this.Visulization.VisulizationColor);
 
         }
 

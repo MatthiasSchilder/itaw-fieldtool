@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SharpMap.Rendering.Symbolizer;
 
-namespace fieldtool.Symbolizers
+namespace fieldtool.SharpmapExt.Symbolizers
 {
     [Serializable]
     public class FtRectanglePointSymbolizer : FtBasePointSymbolizer
@@ -15,11 +10,10 @@ namespace fieldtool.Symbolizers
         public Pen OutlinePen { get; set; }
         public float Angle { get; set; }
 
-        public FtRectanglePointSymbolizer(Color visuColor, float angle) : base()
+        public FtRectanglePointSymbolizer(Color visuColor) : base()
         {
             OutlinePen = new Pen(visuColor);
-            Size = new Size(16, 16);
-            Angle = angle;
+            Size = new Size(8, 8);
         }
         public override object Clone()
         {

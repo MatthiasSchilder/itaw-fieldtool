@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GeoAPI.Geometries;
-using SharpMap;
-using SharpMap.Rendering;
+﻿using SharpMap;
 using SharpMap.Rendering.Symbolizer;
+using System.Drawing;
+using GeoAPI.Geometries;
 
-namespace fieldtool.Symbolizers
+namespace fieldtool.SharpmapExt.Symbolizers
 {
-    class FtPolygonWithAlphaSymbolizer : PolygonSymbolizer
+    public class FtPolygonWithAlphaSymbolizer : PolygonSymbolizer
     {
         /// <summary>
         /// Gets or sets the pen to render the outline of the polygon
@@ -48,6 +42,7 @@ namespace fieldtool.Symbolizers
             }
             base.ReleaseManagedResources();
         }
+
 
         /// <summary>
         /// Creates a new object that is a copy of the current instance.

@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SharpMap.Rendering.Symbolizer;
 
-namespace fieldtool.Symbolizers
+namespace fieldtool.SharpmapExt.Symbolizers
 {
     [Serializable]
     public class FtTriangleePointSymbolizer : FtBasePointSymbolizer
@@ -17,7 +11,7 @@ namespace fieldtool.Symbolizers
         public FtTriangleePointSymbolizer(Color visuColor) : base()
         {
             OutlinePen = new Pen(visuColor, 2);
-            Size = new Size(16, 16);
+            Size = new Size(8, 8);
         }
         public override object Clone()
         {
