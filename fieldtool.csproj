@@ -48,6 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C1.Win.C1Input.2, Version=2.0.20151.38, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
     <Reference Include="DotSpatial.Projections, Version=0.11.9.6, Culture=neutral, PublicKeyToken=272632bddd08a38b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dep\SharpMap.Extensions\DotSpatial.Projections.dll</HintPath>
@@ -94,10 +95,20 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="View\FrmAccAxisView.resx">
+      <DependentUpon>FrmAccAxisView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmTagConfig.resx">
       <DependentUpon>FrmTagConfig.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Decorations\LegendDecoration.cs" />
+    <Compile Include="View\FrmAccAxisView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmAccAxisView.Designer.cs">
+      <DependentUpon>FrmAccAxisView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmBurstActivityVisu.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -672,6 +672,23 @@ namespace fieldtool
                 }
             }
         }
+
+        private void aktivitätsverlaufToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeShowActivityVerlauf(new EventArgs());
+        }
+
+        public event EventHandler ShowActivityVerlauf;
+        private void InvokeShowActivityVerlauf(EventArgs eventArgs)
+        {
+            EventHandler handler = ShowActivityVerlauf;
+            if (handler != null)
+            {
+                handler(this, eventArgs);
+            }
+        }
+
+        
     }
     public class CurrentDatasetChangedEventArgs : EventArgs
     {

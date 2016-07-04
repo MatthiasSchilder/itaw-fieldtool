@@ -25,6 +25,7 @@ namespace fieldtool
         event EventHandler ShowRawAccel;
         event EventHandler ShowRawGPS;
         event EventHandler ShowActivityDiagram;
+        event EventHandler ShowActivityVerlauf;
         event EventHandler ShowTagGraphs;
         event EventHandler ExportCurrentMapEnvelope;
 

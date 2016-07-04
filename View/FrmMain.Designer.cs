@@ -51,6 +51,7 @@
             this.einstellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aktivitätsdiagrammToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aktivitätsverlaufToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rohdatenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tagInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -262,6 +263,7 @@
             // 
             this.tagToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aktivitätsdiagrammToolStripMenuItem,
+            this.aktivitätsverlaufToolStripMenuItem,
             this.graphToolStripMenuItem,
             this.rohdatenToolStripMenuItem});
             this.tagToolStripMenuItem.Name = "tagToolStripMenuItem";
@@ -271,14 +273,21 @@
             // aktivitätsdiagrammToolStripMenuItem
             // 
             this.aktivitätsdiagrammToolStripMenuItem.Name = "aktivitätsdiagrammToolStripMenuItem";
-            this.aktivitätsdiagrammToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.aktivitätsdiagrammToolStripMenuItem.Text = "Aktivitätsdiagramm";
+            this.aktivitätsdiagrammToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.aktivitätsdiagrammToolStripMenuItem.Text = "Aktivitätsplot";
             this.aktivitätsdiagrammToolStripMenuItem.Click += new System.EventHandler(this.aktivitätsdiagrammToolStripMenuItem_Click);
+            // 
+            // aktivitätsverlaufToolStripMenuItem
+            // 
+            this.aktivitätsverlaufToolStripMenuItem.Name = "aktivitätsverlaufToolStripMenuItem";
+            this.aktivitätsverlaufToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.aktivitätsverlaufToolStripMenuItem.Text = "Aktivitätsverlauf";
+            this.aktivitätsverlaufToolStripMenuItem.Click += new System.EventHandler(this.aktivitätsverlaufToolStripMenuItem_Click);
             // 
             // graphToolStripMenuItem
             // 
             this.graphToolStripMenuItem.Name = "graphToolStripMenuItem";
-            this.graphToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.graphToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.graphToolStripMenuItem.Text = "Graph";
             this.graphToolStripMenuItem.Click += new System.EventHandler(this.graphToolStripMenuItem_Click);
             // 
@@ -289,7 +298,7 @@
             this.beschleunigungToolStripMenuItem,
             this.gPSToolStripMenuItem});
             this.rohdatenToolStripMenuItem.Name = "rohdatenToolStripMenuItem";
-            this.rohdatenToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.rohdatenToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.rohdatenToolStripMenuItem.Text = "Rohdaten";
             // 
             // tagInfoToolStripMenuItem
@@ -598,6 +607,7 @@
         private System.Windows.Forms.ToolStripMenuItem tabelleToolStripMenuItem;
         private System.Windows.Forms.TreeView treeViewTagList;
         private DateIntervalPicker dateIntervalPicker1;
+        private System.Windows.Forms.ToolStripMenuItem aktivitätsverlaufToolStripMenuItem;
     }
 }
 

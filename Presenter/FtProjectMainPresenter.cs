@@ -176,11 +176,22 @@ namespace fieldtool.Presenter
             View.ShowRawGPS += View_ShowRawGPS;
             View.CurrentDatasetChanged += View_CurrentDatasetChanged;
             View.ShowActivityDiagram += View_ShowActivityDiagram;
+            View.ShowActivityVerlauf += View_ShowActivityVerlauf;
             View.ShowTagGraphs += View_ShowTagGraphs;
             View.DatasetCheckedChanged += View_DatasetCheckedChanged;
             View.MapDisplayIntervalChanged += View_MapDisplayIntervalChanged;
             View.CreateMCPs += View_CreateMCPs;
             View.ExportCurrentMapEnvelope += View_ExportCurrentMapEnvelope;
+        }
+
+        private void View_ShowActivityVerlauf(object sender, EventArgs e)
+        {
+            if (!CurrentDatasetAvailable)
+                return;
+            
+            FrmAccAxisView frm = new FrmAccAxisView(CurrentDataset.AccelData);
+            frm.Show();
+
         }
 
         private void View_ExportCurrentMapEnvelope(object sender, EventArgs e)
