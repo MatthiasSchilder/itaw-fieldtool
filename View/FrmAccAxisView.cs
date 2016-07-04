@@ -90,9 +90,6 @@ namespace fieldtool.View
             chart1.ChartAreas[0].AxisX.ScaleView.SizeType = DateTimeIntervalType.Minutes;
             chart1.ChartAreas[0].AxisX.ScaleView.MinSize = 1;
 
-
-            int i = 0;
-
             double minY_SeriesX;
             double minY_SeriesY;
             double minY_SeriesZ;

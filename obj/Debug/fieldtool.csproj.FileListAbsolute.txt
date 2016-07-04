@@ -396,6 +396,3 @@ F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.View.FrmInfo.resources
 F:\fieldtool\itaw-fieldtool\bin\Debug\fieldtool.SharpmapExt.dll
 F:\fieldtool\itaw-fieldtool\bin\Debug\fieldtool.SharpmapExt.pdb
 F:\fieldtool\itaw-fieldtool\obj\Debug\fieldtool.View.FrmAccAxisView.resources
-F:\fieldtool\itaw-fieldtool\bin\Debug\C1.Win.C1Input.2.dll
-F:\fieldtool\itaw-fieldtool\bin\Debug\C1.Win.C1Input.2.xml
-F:\fieldtool\itaw-fieldtool\obj\Debug\ITAW-FieldTool.exe.licenses
