@@ -4,33 +4,105 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Media;
+using fieldtool.Data.Movebank;
+using fieldtool.Util;
 
 namespace fieldtool.View
 {
     public partial class FrmAccAxisView : Form
     {
+        private enum EAggregateFunction
+        {
+            AVG,
+            MIN,
+            MAX,
+            MEDIAN
+        }
+
+        private enum EDataDisplayMode
+        {
+            AGGREGATEDRAW,
+            PROCESSEDACCS
+        }
+
+        private EDataDisplayMode GetDataDisplayMode()
+        {
+            if((string) comboBox1.SelectedItem == "aggregierte Burstwerte")
+                return EDataDisplayMode.AGGREGATEDRAW;
+            else
+                return EDataDisplayMode.PROCESSEDACCS;
+        }
+
+        private EAggregateFunction GetAggregateFunction()
+        {
+            string aggregateFunctionAsString = (string) cmboAggregate.SelectedItem;
+            switch (aggregateFunctionAsString)
+            {
+                case "avg":
+                    return EAggregateFunction.AVG;
+                case "min":
+                    return EAggregateFunction.MIN;
+                case "max":
+                    return EAggregateFunction.MAX;
+                case "median":
+                    return EAggregateFunction.MEDIAN;
+                default:
+                    return EAggregateFunction.AVG;
+            }
+        }
+
         private DateTime DataStartTimestamp;
         private DateTime DataStopTimestamp;
 
         private double DataStartTimestampOA;
         private double DataStopTimestampOA;
 
+        private FtTransmitterDataset dataset;
 
-        public FrmAccAxisView(FtTransmitterAccelData accelData)
+
+        public FrmAccAxisView(FtTransmitterDataset transmitterData)
         {
             InitializeComponent();
+            dataset = transmitterData;
+            this.Text = $"Beschleunigungswerte für Tag {dataset.TagId} im zeitlichen Verlauf";
+            cmboAggregate.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 0;
+            RegenChart();
+            cmboAggregate.SelectedIndexChanged += cmboAggregate_SelectedIndexChanged;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            chart1.MouseWheel += Chart1OnMouseWheel;
 
-            
+            DataStartTimestamp = dataset.AccelData.GetFirstBurstTimestamp();
+            DataStopTimestamp = dataset.AccelData.GetLastBurstTimestamp();
+            //dateIntervalPicker1.
+
+            DataStartTimestampOA = DataStartTimestamp.ToOADate();
+            DataStopTimestampOA = DataStopTimestamp.ToOADate();
+            //chart1.CursorPositionChanged += Chart1OnCursorPositionChanged;
+        }
+
+        private void DateIntervalPicker1OnIntervalChanged(object sender, EventArgs eventArgs)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void RegenChart()
+        {
+            chart1.ChartAreas.Clear();
 
             chart1.ChartAreas.Add(new ChartArea());
-            chart1.ChartAreas[0].AxisX.Title = "Datum";
+            chart1.ChartAreas[0].AxisX.Title = "t [TT.MM.JJ HH:MM]";
             chart1.ChartAreas[0].AxisY.Title = "ACC";
+
+            chart1.ChartAreas[0].AxisX.IntervalAutoMode = IntervalAutoMode.VariableCount;
 
             chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
 
@@ -38,19 +110,56 @@ namespace fieldtool.View
             chart1.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
             chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
 
+            chart1.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy hh:mm";
 
-            //chart1.ChartAreas[0].AxisX.Interval = 5.0;
-            chart1.ChartAreas[0].CursorX.IsUserEnabled = true;
-            //chart1.ChartAreas[0].CursorX.IntervalType = DateTimeIntervalType.Minutes
-            //chart1./*ChartAreas*/[0].CursorX.
+            chart1.ChartAreas[0].AxisX.ScaleView = new AxisScaleView();
+            chart1.ChartAreas[0].AxisX.ScaleView.SmallScrollSize = 0;
+            chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chart1.ChartAreas[0].AxisX.ScaleView.MinSizeType = DateTimeIntervalType.Auto;
+            chart1.ChartAreas[0].AxisX.ScaleView.SizeType = DateTimeIntervalType.Auto;
+            //chart1.ChartAreas[0].AxisX.ScaleView.MinSize = 1;
 
-                chart1.ChartAreas[0].CursorX.Interval = 0.01;
+            chart1.Series.Clear();
+            if (GetDataDisplayMode() == EDataDisplayMode.AGGREGATEDRAW)
+            {
+                foreach (Series ser in CreateRawValueSeries())
+                    chart1.Series.Add(ser);
+            }
+            else if (GetDataDisplayMode() == EDataDisplayMode.PROCESSEDACCS)
+            {
+                chart1.Series.Add(CreateProcessedDACCSSeries());
+            }
 
+        }
 
-            chart1.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
+        private Series CreateProcessedDACCSSeries()
+        {
+            Series series = new Series("berechnete Aktivitäten");
+            series.ChartType = SeriesChartType.FastLine;
+            series.XAxisType = AxisType.Primary;
+            series.YAxisType = AxisType.Primary;
+            series.XValueType = ChartValueType.Date;
+            series.YValueType = ChartValueType.Double;
+            series.Color = System.Drawing.Color.Green;
 
+            foreach (var acc in dataset.AccelData.CalculatedActivities)
+            {
+                int i = 0;
+                foreach (var value in acc.Value)
+                {
+                    var newval = value;
+                    if (value == double.MinValue)
+                        newval = 0;
+                    series.Points.AddXY(acc.Key.AddMinutes(6*i++).ToOADate(), newval);
+                }
+            }
 
+            return series;
 
+        }
+
+        private List<Series> CreateRawValueSeries()
+        {
             Series SeriesX = new Series("X");
             SeriesX.ChartType = SeriesChartType.FastLine;
             SeriesX.XAxisType = AxisType.Primary;
@@ -58,7 +167,6 @@ namespace fieldtool.View
             SeriesX.XValueType = ChartValueType.Date;
             SeriesX.YValueType = ChartValueType.Int32;
             SeriesX.Color = System.Drawing.Color.Green;
-            
 
             Series SeriesY = new Series("Y");
             SeriesY.ChartType = SeriesChartType.FastLine;
@@ -73,22 +181,9 @@ namespace fieldtool.View
             SeriesZ.XAxisType = AxisType.Primary;
             SeriesZ.YAxisType = AxisType.Primary;
             SeriesZ.XValueType = ChartValueType.Date;
-            
             SeriesZ.YValueType = ChartValueType.Int32;
             SeriesZ.Color = System.Drawing.Color.Red;
 
-            DataStartTimestamp = accelData.GetFirstBurstTimestamp();
-            DataStopTimestamp = accelData.GetLastBurstTimestamp();
-
-            DataStartTimestampOA = DataStartTimestamp.ToOADate();
-            DataStopTimestampOA = DataStopTimestamp.ToOADate();
-
-            chart1.ChartAreas[0].AxisX.ScaleView = new AxisScaleView();
-            chart1.ChartAreas[0].AxisX.ScaleView.SmallScrollSize = 0;
-            chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
-            chart1.ChartAreas[0].AxisX.ScaleView.MinSizeType = DateTimeIntervalType.Minutes;
-            chart1.ChartAreas[0].AxisX.ScaleView.SizeType = DateTimeIntervalType.Minutes;
-            chart1.ChartAreas[0].AxisX.ScaleView.MinSize = 1;
 
             double minY_SeriesX;
             double minY_SeriesY;
@@ -102,16 +197,15 @@ namespace fieldtool.View
             maxY_SeriesZ = maxY_SeriesX = maxY_SeriesY = Double.MinValue;
 
             double minY_X = double.MaxValue, maxY = double.MinValue;
-            foreach (var acc in accelData.AccelerationSeries)
+            foreach (var acc in dataset.AccelData.AccelerationSeries)
             {
                 var xArr = acc.GetXArr();
                 var yArr = acc.GetYArr();
                 var zArr = acc.GetZArr();
 
-                var avgX = xArr.ToList().Average();
-
-                var avgY = yArr.ToList().Average();
-                var avgZ = zArr.ToList().Average();
+                var avgX = ProcessWithAggregateFunction(xArr);
+                var avgY = ProcessWithAggregateFunction(yArr);
+                var avgZ = ProcessWithAggregateFunction(zArr);
 
                 minY_SeriesX = Math.Min(minY_SeriesX, avgX);
                 minY_SeriesY = Math.Min(minY_SeriesY, avgY);
@@ -130,16 +224,28 @@ namespace fieldtool.View
             chart1.ChartAreas[0].AxisY.Minimum = Math.Min(minY_SeriesX, Math.Min(minY_SeriesY, minY_SeriesZ));
             chart1.ChartAreas[0].AxisY.Maximum = Math.Max(maxY_SeriesX, Math.Max(maxY_SeriesY, maxY_SeriesZ));
 
-            //MessageBox.Show(SeriesX.Points.Count.ToString());
-
-            chart1.Series.Clear();
-            chart1.Series.Add(SeriesX);
-            chart1.Series.Add(SeriesY);
-            chart1.Series.Add(SeriesZ);
-
-            chart1.MouseWheel += Chart1OnMouseWheel;
+            return new List<Series> {SeriesX, SeriesY, SeriesZ};
+        }
 
 
+
+        private double ProcessWithAggregateFunction(int[] arr)
+        {
+            var aggregateFunction = GetAggregateFunction();
+            switch (aggregateFunction)
+            {
+                case EAggregateFunction.AVG:
+                    return arr.ToList().Average();
+                case EAggregateFunction.MIN:
+                    return arr.ToList().Min();
+                case EAggregateFunction.MAX:
+                    return arr.ToList().Max();
+                case EAggregateFunction.MEDIAN:
+                    return MathHelper.Median(arr.ToList());
+                default:
+                    return arr.ToList().Average();
+
+            }
         }
 
 
@@ -184,17 +290,91 @@ namespace fieldtool.View
 
         private void chkX_CheckedChanged(object sender, EventArgs e)
         {
+            if (GetDataDisplayMode() == EDataDisplayMode.PROCESSEDACCS)
+                return;
             chart1.Series["X"].Enabled = ((CheckBox) sender).Checked;
         }
 
         private void chkY_CheckedChanged(object sender, EventArgs e)
         {
+            if (GetDataDisplayMode() == EDataDisplayMode.PROCESSEDACCS)
+                return;
             chart1.Series["Y"].Enabled = ((CheckBox)sender).Checked;
         }
 
         private void chkZ_CheckedChanged(object sender, EventArgs e)
         {
+            if (GetDataDisplayMode() == EDataDisplayMode.PROCESSEDACCS)
+                return;
             chart1.Series["Z"].Enabled = ((CheckBox)sender).Checked;
+        }
+
+        private void cmboAggregate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (GetDataDisplayMode() == EDataDisplayMode.PROCESSEDACCS)
+                return;
+            RegenChart();
+        }
+
+        private void chart1_MouseEnter(object sender, EventArgs e)
+        {
+            chart1.Focus();
+        }
+
+        //private void comboBox1_CursorChanged(object sender, EventArgs e)
+        //{
+            
+           
+        //}
+
+        private void Chart1OnCursorPositionChanged(object sender, CursorEventArgs cursorEventArgs)
+        {
+            if (double.IsNaN(cursorEventArgs.NewPosition))
+            {
+                Debug.WriteLine("nan");
+                return;
+            }
+                
+            Debug.WriteLine(DateTime.FromOADate(cursorEventArgs.NewPosition));
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (GetDataDisplayMode() == EDataDisplayMode.PROCESSEDACCS)
+            {
+                chkX.Enabled = false;
+                chkY.Enabled = false;
+                chkZ.Enabled = false;
+                cmboAggregate.Enabled = false;
+            }
+            else if (GetDataDisplayMode() == EDataDisplayMode.AGGREGATEDRAW)
+            {
+                chkX.Enabled = true;
+                chkY.Enabled = true;
+                chkZ.Enabled = true;
+                cmboAggregate.Enabled = true;
+            }
+            RegenChart();
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            GraphImageToClipboard();
+        }
+
+        private void GraphImageToClipboard()
+        {
+            var memStream = new MemoryStream();
+            chart1.SaveImage(memStream, ImageFormat.Bmp);
+
+            var bitmap = new Bitmap(memStream);
+            Clipboard.SetImage(bitmap);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

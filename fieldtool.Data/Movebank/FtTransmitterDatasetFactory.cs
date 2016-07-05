@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SharpmapGDAL;
+using fieldtool.Util;
 
 namespace fieldtool.Data.Movebank
 {
@@ -41,23 +42,22 @@ namespace fieldtool.Data.Movebank
             List<FtTransmitterDataset> transmitterDatasets = 
                 new List<FtTransmitterDataset>(filesets.Count);
 
-            //foreach (var fileSet in filesets)
-            //{
-            //    var loadedFS = LoadFileset(fileSet, tagBlacklist);
-            //    if(loadedFS != null)
-            //        transmitterDatasets.Add(loadedFS);
-            //}
 
-            //Parallel.ForEach(filesets, fileset =>
-            //{
-            //    var loadedFS = LoadFileset(fileset, tagBlacklist);
-            //    if (loadedFS != null)
-            //        transmitterDatasets.Add(loadedFS);
-            //});
+            foreach (var fileset in filesets)
+            {
+                try
+                {
+                    var ftTransmitterDataset = LoadFileset(fileset, tagBlacklist);
+                    if(ftTransmitterDataset != null)
+                        transmitterDatasets.Add(ftTransmitterDataset);
+                }
+                catch (Exception ex) 
+                {
+                    
 
-
-            transmitterDatasets.AddRange(filesets.Select(
-                fileset => LoadFileset(fileset, tagBlacklist)).Where(result => result != null));
+                }
+                
+            }
 
             return transmitterDatasets;
         }

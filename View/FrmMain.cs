@@ -638,7 +638,7 @@ namespace fieldtool
 
         private void konfigurationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FtFormFactory.ShowDialog(new FrmTagConfig());
+            InvokeShowTagConfig(e);
         }
 
         private void tabelleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -688,7 +688,17 @@ namespace fieldtool
             }
         }
 
-        
+        public event EventHandler ShowTagConfig;
+        private void InvokeShowTagConfig(EventArgs eventArgs)
+        {
+            EventHandler handler = ShowTagConfig;
+            if (handler != null)
+            {
+                handler(this, eventArgs);
+            }
+        }
+
+
     }
     public class CurrentDatasetChangedEventArgs : EventArgs
     {

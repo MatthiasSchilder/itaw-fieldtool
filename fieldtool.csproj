@@ -730,6 +730,10 @@
       <Project>{138f4921-e05e-4161-89f7-08f23b73a836}</Project>
       <Name>fieldtool.SharpmapExt</Name>
     </ProjectReference>
+    <ProjectReference Include="fieldtool.Util\fieldtool.Util.csproj">
+      <Project>{28d50b52-e934-4657-bc6b-95b8d4cb4d35}</Project>
+      <Name>fieldtool.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Provider\" />

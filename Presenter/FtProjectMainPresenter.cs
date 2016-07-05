@@ -177,6 +177,7 @@ namespace fieldtool.Presenter
             View.CurrentDatasetChanged += View_CurrentDatasetChanged;
             View.ShowActivityDiagram += View_ShowActivityDiagram;
             View.ShowActivityVerlauf += View_ShowActivityVerlauf;
+            View.ShowTagConfig += ViewOnShowTagConfig;
             View.ShowTagGraphs += View_ShowTagGraphs;
             View.DatasetCheckedChanged += View_DatasetCheckedChanged;
             View.MapDisplayIntervalChanged += View_MapDisplayIntervalChanged;
@@ -184,12 +185,17 @@ namespace fieldtool.Presenter
             View.ExportCurrentMapEnvelope += View_ExportCurrentMapEnvelope;
         }
 
+        private void ViewOnShowTagConfig(object sender, EventArgs eventArgs)
+        {
+            
+        }
+
         private void View_ShowActivityVerlauf(object sender, EventArgs e)
         {
             if (!CurrentDatasetAvailable)
                 return;
             
-            FrmAccAxisView frm = new FrmAccAxisView(CurrentDataset.AccelData);
+            FrmAccAxisView frm = new FrmAccAxisView(CurrentDataset);
             frm.Show();
 
         }
@@ -300,7 +306,11 @@ namespace fieldtool.Presenter
         private void View_ShowMovebankImport(object sender, EventArgs e)
         {
             if (Project == null)
+            {
+                MessageBox.Show("Bitte zunächst ein Projekt erstellen oder öffnen.");
                 return;
+            }
+                
             var args = (MovebankImportStartArgs) e;
             if (args.EinzelImport)
             {

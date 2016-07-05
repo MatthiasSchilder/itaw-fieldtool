@@ -1,0 +1,17 @@
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\fieldtool.SharpmapExt.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\fieldtool.SharpmapExt.pdb
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\GeoAPI.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\SharpMap.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\Newtonsoft.Json.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\Common.Logging.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\BruTile.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\BruTile.Desktop.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\ProjNet.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\NetTopologySuite.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\PowerCollections.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\SharpMap.pdb
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\SharpMap.xml
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\bin\Release\Newtonsoft.Json.xml
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\obj\Release\fieldtool.SharpmapExt.csprojResolveAssemblyReference.cache
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\obj\Release\fieldtool.SharpmapExt.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.SharpmapExt\obj\Release\fieldtool.SharpmapExt.pdb

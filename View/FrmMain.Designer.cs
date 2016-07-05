@@ -1,4 +1,6 @@
-﻿namespace fieldtool
+﻿using fieldtool.Controls;
+
+namespace fieldtool
 {
     partial class FrmMain
     {
@@ -67,7 +69,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dateIntervalPicker1 = new fieldtool.DateIntervalPicker();
+            this.dateIntervalPicker1 = new DateIntervalPicker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();

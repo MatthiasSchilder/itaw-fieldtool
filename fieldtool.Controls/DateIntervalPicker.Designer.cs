@@ -1,4 +1,4 @@
-﻿namespace fieldtool
+﻿namespace fieldtool.Controls
 {
     partial class DateIntervalPicker
     {

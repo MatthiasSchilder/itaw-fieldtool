@@ -36,3 +36,7 @@ C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Data\bin\Release\New
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Data\obj\Release\fieldtool.Data.csprojResolveAssemblyReference.cache
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Data\obj\Release\fieldtool.Data.dll
 C:\Users\ma\Desktop\itaw-fieldtool\itaw-fieldtool\fieldtool.Data\obj\Release\fieldtool.Data.pdb
+F:\fieldtool\itaw-fieldtool\fieldtool.Data\bin\Release\fieldtool.SharpmapExt.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.Data\bin\Release\fieldtool.Util.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.Data\bin\Release\fieldtool.SharpmapExt.pdb
+F:\fieldtool\itaw-fieldtool\fieldtool.Data\bin\Release\fieldtool.Util.pdb

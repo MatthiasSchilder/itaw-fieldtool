@@ -1,4 +1,5 @@
 ﻿using fieldtool;
+using fieldtool.Controls;
 
 namespace fieldtool.View
 {
@@ -38,7 +39,7 @@ namespace fieldtool.View
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
-            this.dateIntervalPicker1 = new fieldtool.DateIntervalPicker();
+            this.dateIntervalPicker1 = new DateIntervalPicker();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();

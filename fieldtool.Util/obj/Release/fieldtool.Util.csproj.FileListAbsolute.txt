@@ -1,0 +1,5 @@
+F:\fieldtool\itaw-fieldtool\fieldtool.Util\bin\Release\fieldtool.Util.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.Util\bin\Release\fieldtool.Util.pdb
+F:\fieldtool\itaw-fieldtool\fieldtool.Util\obj\Release\fieldtool.Util.csprojResolveAssemblyReference.cache
+F:\fieldtool\itaw-fieldtool\fieldtool.Util\obj\Release\fieldtool.Util.dll
+F:\fieldtool\itaw-fieldtool\fieldtool.Util\obj\Release\fieldtool.Util.pdb

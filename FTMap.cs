@@ -57,32 +57,23 @@ namespace fieldtool
                 if (!dataset.Active)
                     continue;
 
-                //var geometryProvider = new GeometryFeatureProvider(GpsDataToCoordinates(dataset.GPSData));
-
-
                 FeatureDataTable fdt = new FeatureDataTable();
                 
                 fdt.Columns.Add("Name", typeof (string));
                 fdt.Columns.Add("bla", typeof(string));
                 fdt.Columns.Add("blub", typeof(string));
 
-                foreach (var bla in GpsDataToCoordinates(dataset.GPSData))
+                foreach (var coordinate in GpsDataToCoordinates(dataset.GPSData))
                 {
-                    //var fdr = fdt.NewRow();
-                    //fdr.Geometry = bla;
-                    //fdr.ItemArray[1] = "2";
-                    //fdr.ItemArray[2] = "3;";
-                    
-                    //fdt.AddRow(fdr);
-
                     var fdr = (FeatureDataRow) fdt.Rows.Add("bla", "bluirr", "blirr");
-                    fdr.Geometry = bla;
+                    fdr.Geometry = coordinate;
                 }
                 var geometryProvider = new GeometryFeatureProvider(fdt);
 
-  
-                
-                var puntalVectorLayers = new PuntalVectorLayer(dataset.TagId.ToString(), geometryProvider, dataset.Visulization.Symbolizer);
+
+                var symbolizer = dataset.Visulization.Symbolizer;
+                symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
+                var puntalVectorLayers = new PuntalVectorLayer(dataset.TagId.ToString(), geometryProvider, symbolizer);
                 
                 this.VariableLayers.Add(puntalVectorLayers);
                 PuntalVectorLayers.Add(dataset.TagId, puntalVectorLayers);
