@@ -11,7 +11,6 @@ namespace fieldtool.SharpmapExt.Symbolizers
         public FtTriangleePointSymbolizer(Color visuColor) : base()
         {
             OutlinePen = new Pen(visuColor, 2);
-            Size = new Size(8, 8);
         }
         public override object Clone()
         {

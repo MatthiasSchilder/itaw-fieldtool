@@ -40,6 +40,9 @@
     <Reference Include="SharpMap">
       <HintPath>..\dep\SharpMap\SharpMap.dll</HintPath>
     </Reference>
+    <Reference Include="SharpMap.Extensions">
+      <HintPath>..\dep\SharpMap.Extensions\SharpMap.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />

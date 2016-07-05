@@ -14,7 +14,6 @@ namespace fieldtool.SharpmapExt.Symbolizers
         public FtDotPointSymbolizer(Color visuColor) : base()
         {
             OutlinePen = new Pen(new SolidBrush(visuColor));
-            Size = new Size(8, 8);
             FillBrush = new SolidBrush(ControlPaint.Light(visuColor, 0.2f));
         }
         public override object Clone()

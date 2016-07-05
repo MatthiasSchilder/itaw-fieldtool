@@ -638,7 +638,10 @@ namespace fieldtool
 
         private void konfigurationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InvokeShowTagConfig(e);
+            ToolStripItem menuItem = sender as ToolStripItem;
+            var parent = menuItem.GetCurrentParent();
+            var args = new CurrentDatasetChangedEventArgs((int)parent.Tag);
+            InvokeShowTagConfig(args);
         }
 
         private void tabelleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -688,17 +691,24 @@ namespace fieldtool
             }
         }
 
-        public event EventHandler ShowTagConfig;
-        private void InvokeShowTagConfig(EventArgs eventArgs)
+        public event EventHandler<CurrentDatasetChangedEventArgs> ShowTagConfig;
+        private void InvokeShowTagConfig(CurrentDatasetChangedEventArgs eventArgs)
         {
-            EventHandler handler = ShowTagConfig;
+            EventHandler<CurrentDatasetChangedEventArgs> handler = ShowTagConfig;
             if (handler != null)
             {
                 handler(this, eventArgs);
             }
         }
 
+        private void treeViewTagList_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right)
+                return;
 
+            tagContextMenu.Tag = e.Node.Tag;
+            tagContextMenu.Show(e.Location);
+        }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs
     {

@@ -37,6 +37,8 @@ namespace fieldtool
             picBoxBackground.BackColor = Properties.Settings.Default.MapLegendBackgroundColor;
             picBoxBorderColor.BackColor = Properties.Settings.Default.MapLegendBorderColor;
             comboBox1.SelectedItem = Properties.Settings.Default.MapLegendAnchor;
+            numSymbolgroesse.Value = Properties.Settings.Default.VisualizerMarkersize;
+            numTextgroesse.Value = Properties.Settings.Default.VisualizerTextsize;
         }
 
         private void InitAnchorCombobox()
@@ -146,6 +148,18 @@ namespace fieldtool
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.MapLegendAnchor = (MapDecorationAnchor)comboBox1.SelectedItem;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numSymbolgroesse_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.VisualizerMarkersize = (int) numSymbolgroesse.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void numTextgroesse_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.VisualizerTextsize = (int)numTextgroesse.Value;
             Properties.Settings.Default.Save();
         }
     }

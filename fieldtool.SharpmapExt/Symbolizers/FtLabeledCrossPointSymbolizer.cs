@@ -12,11 +12,10 @@ namespace fieldtool.SharpmapExt.Symbolizers
         public FtLabeledCrossPointSymbolizer( Color visuColor) : base()
         {
             OutlinePen = new Pen(visuColor);
-            Size = new Size(8, 8);
         }
         public override object Clone()
         {
-            var res = (FtRectanglePointSymbolizer)MemberwiseClone();
+            var res = (FtLabeledCrossPointSymbolizer)MemberwiseClone();
             res.OutlinePen = OutlinePen;
             return res;
         }

@@ -69,7 +69,7 @@ namespace fieldtool
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dateIntervalPicker1 = new DateIntervalPicker();
+            this.dateIntervalPicker1 = new fieldtool.Controls.DateIntervalPicker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -490,6 +490,7 @@ namespace fieldtool
             this.treeViewTagList.TabIndex = 5;
             this.treeViewTagList.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.lviDatasets_ItemChecked);
             this.treeViewTagList.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewTagList_AfterSelect);
+            this.treeViewTagList.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewTagList_NodeMouseClick);
             // 
             // tagContextMenu
             // 

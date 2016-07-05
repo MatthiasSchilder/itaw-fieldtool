@@ -185,9 +185,14 @@ namespace fieldtool.Presenter
             View.ExportCurrentMapEnvelope += View_ExportCurrentMapEnvelope;
         }
 
-        private void ViewOnShowTagConfig(object sender, EventArgs eventArgs)
+        private void ViewOnShowTagConfig(object sender, CurrentDatasetChangedEventArgs eventArgs)
         {
-            
+            var dataset = Project.Datasets.FirstOrDefault(ds => ds.TagId == eventArgs.CurrentTagId);
+            if (dataset == null)
+                return;
+
+            FrmTagConfig frm = new FrmTagConfig(dataset);
+            frm.ShowDialog();
         }
 
         private void View_ShowActivityVerlauf(object sender, EventArgs e)

@@ -178,5 +178,29 @@ namespace fieldtool.Properties {
                 this["MapLegendBackgroundAlpha"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("14")]
+        public int VisualizerTextsize {
+            get {
+                return ((int)(this["VisualizerTextsize"]));
+            }
+            set {
+                this["VisualizerTextsize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("12")]
+        public int VisualizerMarkersize {
+            get {
+                return ((int)(this["VisualizerMarkersize"]));
+            }
+            set {
+                this["VisualizerMarkersize"] = value;
+            }
+        }
     }
 }

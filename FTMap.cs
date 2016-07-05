@@ -17,6 +17,7 @@ using fieldtool.SharpmapExt.Symbolizers;
 using GeoAPI.Geometries;
 using SharpMap.Data;
 using SharpMap.Data.Providers;
+using SharpMap.Layers;
 using SharpMap.Layers.Symbolizer;
 using SharpMap.Rendering.Decoration;
 using SharpMap.Rendering.Decoration.ScaleBar;
@@ -29,7 +30,7 @@ namespace fieldtool
         private FtProject _project;
 
         private Dictionary<int, PolygonalVectorLayer> PolygonalVectorLayers;
-        private Dictionary<int, PuntalVectorLayer> PuntalVectorLayers;
+        //private Dictionary<int, Layer> Layers;
         private List<MapDecoration> CustomDecorations;
 
         public FtMap(FtProject project) : base()
@@ -39,48 +40,100 @@ namespace fieldtool
             Init(project);
             project.DataChangedEventHandler += DataChangedEventHandler;
             PolygonalVectorLayers = new Dictionary<int, PolygonalVectorLayer>();
-            PuntalVectorLayers = new Dictionary<int, PuntalVectorLayer>();
+            //Layers = new Dictionary<int, Layer>();
             CustomDecorations = new List<MapDecoration>();
         }
 
         private void DataChangedEventHandler(object sender, EventArgs eventArgs)
         {
             RemoveCustomDecorations();
+
+            this.VariableLayers.Clear();
+
+
             foreach (var dataset in _project.Datasets)
             {
-                if (PuntalVectorLayers.ContainsKey(dataset.TagId))
-                {
-                    this.VariableLayers.Remove(PuntalVectorLayers[dataset.TagId]);
-                    PuntalVectorLayers.Remove(dataset.TagId);
-                }
+                //if (PuntalVectorLayers.ContainsKey(dataset.TagId))
+                //{
+                //    this.VariableLayers.Remove(PuntalVectorLayers[dataset.TagId]);
+                //    PuntalVectorLayers.Remove(dataset.TagId);
+                //}
 
                 if (!dataset.Active)
                     continue;
 
-                FeatureDataTable fdt = new FeatureDataTable();
-                
-                fdt.Columns.Add("Name", typeof (string));
-                fdt.Columns.Add("bla", typeof(string));
-                fdt.Columns.Add("blub", typeof(string));
+                var dtPoint = dataset.GPSData.AsDataTablePoint();
 
-                foreach (var coordinate in GpsDataToCoordinates(dataset.GPSData))
+                if (dtPoint.Table.Rows.Count == 15)
                 {
-                    var fdr = (FeatureDataRow) fdt.Rows.Add("bla", "bluirr", "blirr");
-                    fdr.Geometry = coordinate;
+                    for (int i = 0; i < 15; i++)
+                    {
+                        var row = dtPoint.Table.Rows[i];
+                        Debug.WriteLine(row.ItemArray[2] + " " + row.ItemArray[3]);
+                    }
+
                 }
-                var geometryProvider = new GeometryFeatureProvider(fdt);
 
-
+                var symbolizerLayer = new PuntalVectorLayer(dataset.TagId.ToString(), dtPoint);
                 var symbolizer = dataset.Visulization.Symbolizer;
                 symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
-                var puntalVectorLayers = new PuntalVectorLayer(dataset.TagId.ToString(), geometryProvider, symbolizer);
-                
-                this.VariableLayers.Add(puntalVectorLayers);
-                PuntalVectorLayers.Add(dataset.TagId, puntalVectorLayers);
+                symbolizerLayer.Symbolizer = symbolizer;
+
+                LabelLayer labelLayer = null;
+                if (symbolizer is FtLabeledCrossPointSymbolizer)
+                {
+                    labelLayer = new LabelLayer($"Label{dataset.TagId}")
+                    {
+                        DataSource = dtPoint,
+                        LabelColumn = "num",
+                        Style = { Font = new Font("Arial", Properties.Settings.Default.VisualizerTextsize), ForeColor = dataset.Visulization.VisulizationColor}
+                    };
+
+                    symbolizerLayer.LabelLayer = labelLayer;
+                }
+
+                this.VariableLayers.Add(symbolizerLayer);
+                //Layers.Add(dataset.TagId, symbolizerLayer);
+
+                if (labelLayer != null)
+                {
+                    this.VariableLayers.Add(labelLayer);
+                    //Layers.Add(dataset.TagId, labelLayer);
+                }
+                    
+
+
+
+                //symbolizerLayer.Style.
+                //symbolizerLayer.Style.
+
+
+
+
+                //FeatureDataTable fdt = new FeatureDataTable();
+
+                //fdt.Columns.Add("Name", typeof (string));
+                //fdt.Columns.Add("bla", typeof(string));
+                //fdt.Columns.Add("blub", typeof(string));
+
+                //foreach (var coordinate in GpsDataToCoordinates(dataset.GPSData))
+                //{
+                //    var fdr = (FeatureDataRow) fdt.Rows.Add("bla", "bluirr", "blirr");
+                //    fdr.Geometry = coordinate;
+                //}
+                //var geometryProvider = new GeometryFeatureProvider(fdt);
+
+
+                //var symbolizer = dataset.Visulization.Symbolizer;
+                //symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
+                //var puntalVectorLayers = new PuntalVectorLayer(dataset.TagId.ToString(), geometryProvider, symbolizer);
+
+                //this.VariableLayers.Add(puntalVectorLayers);
+                //PuntalVectorLayers.Add(dataset.TagId, puntalVectorLayers);
 
 
                 //var labelLayer = new SharpMap.Layers.LabelLayer("blabla");
-                //labelLayer.
+                //labelLayer.LabelColumn =;
             }
             AddLegendDecoration(_project.Datasets);
 

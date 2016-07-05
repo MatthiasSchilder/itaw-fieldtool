@@ -13,6 +13,7 @@ namespace fieldtool.SharpmapExt.Symbolizers
         protected FtBasePointSymbolizer()
         {
             this.SmoothingMode = SmoothingMode.HighSpeed;
+            Size = new Size(12, 12);
         }
 
         private float _scale = 1f;

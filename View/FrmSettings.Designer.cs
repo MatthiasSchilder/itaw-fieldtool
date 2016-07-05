@@ -30,7 +30,16 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblMassstab = new System.Windows.Forms.Label();
+            this.chkShowMassstab = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numAlpha = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.chkLegendActive = new System.Windows.Forms.CheckBox();
+            this.lblLegendActive = new System.Windows.Forms.Label();
             this.btnFontPicker = new System.Windows.Forms.Button();
             this.tbFont = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,34 +51,31 @@
             this.lblPosition = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkShowMassstab = new System.Windows.Forms.CheckBox();
-            this.lblMassstab = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.picColor = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.btnSchließen = new System.Windows.Forms.Button();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.picColor = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.lblLegendActive = new System.Windows.Forms.Label();
-            this.chkLegendActive = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numAlpha = new System.Windows.Forms.NumericUpDown();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.numSymbolgroesse = new System.Windows.Forms.NumericUpDown();
+            this.numTextgroesse = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numAlpha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxBorderColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxTextfarbe)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picColor)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numAlpha)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picColor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSymbolgroesse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTextgroesse)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -95,6 +101,58 @@
             this.tabPage1.Text = "Karte";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.checkedListBox1);
+            this.groupBox3.Location = new System.Drawing.Point(6, 258);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(559, 109);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Legende - Inhalte";
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(30, 19);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(523, 79);
+            this.checkedListBox1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.numTextgroesse);
+            this.groupBox2.Controls.Add(this.numSymbolgroesse);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.lblMassstab);
+            this.groupBox2.Controls.Add(this.chkShowMassstab);
+            this.groupBox2.Location = new System.Drawing.Point(6, 373);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(559, 80);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Verschiedenes";
+            // 
+            // lblMassstab
+            // 
+            this.lblMassstab.AutoSize = true;
+            this.lblMassstab.Location = new System.Drawing.Point(27, 27);
+            this.lblMassstab.Name = "lblMassstab";
+            this.lblMassstab.Size = new System.Drawing.Size(119, 26);
+            this.lblMassstab.TabIndex = 3;
+            this.lblMassstab.Text = "Maßstabsleiste in Karte \r\nzeigen";
+            // 
+            // chkShowMassstab
+            // 
+            this.chkShowMassstab.AutoSize = true;
+            this.chkShowMassstab.Location = new System.Drawing.Point(170, 27);
+            this.chkShowMassstab.Name = "chkShowMassstab";
+            this.chkShowMassstab.Size = new System.Drawing.Size(15, 14);
+            this.chkShowMassstab.TabIndex = 4;
+            this.chkShowMassstab.UseVisualStyleBackColor = true;
+            this.chkShowMassstab.CheckedChanged += new System.EventHandler(this.chkShowMassstab_CheckedChanged);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.numAlpha);
@@ -119,6 +177,48 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Legende - Darstellung";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // numAlpha
+            // 
+            this.numAlpha.DecimalPlaces = 2;
+            this.numAlpha.Location = new System.Drawing.Point(170, 156);
+            this.numAlpha.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAlpha.Name = "numAlpha";
+            this.numAlpha.Size = new System.Drawing.Size(52, 20);
+            this.numAlpha.TabIndex = 20;
+            this.numAlpha.ValueChanged += new System.EventHandler(this.numAlpha_ValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(27, 158);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(124, 13);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Transparenz Hintergrund";
+            // 
+            // chkLegendActive
+            // 
+            this.chkLegendActive.AutoSize = true;
+            this.chkLegendActive.Location = new System.Drawing.Point(170, 27);
+            this.chkLegendActive.Name = "chkLegendActive";
+            this.chkLegendActive.Size = new System.Drawing.Size(15, 14);
+            this.chkLegendActive.TabIndex = 16;
+            this.chkLegendActive.UseVisualStyleBackColor = true;
+            this.chkLegendActive.CheckedChanged += new System.EventHandler(this.chkLegendActive_CheckedChanged);
+            // 
+            // lblLegendActive
+            // 
+            this.lblLegendActive.AutoSize = true;
+            this.lblLegendActive.Location = new System.Drawing.Point(27, 22);
+            this.lblLegendActive.Name = "lblLegendActive";
+            this.lblLegendActive.Size = new System.Drawing.Size(95, 13);
+            this.lblLegendActive.TabIndex = 15;
+            this.lblLegendActive.Text = "Legende anzeigen";
             // 
             // btnFontPicker
             // 
@@ -222,24 +322,45 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Textfarbe";
             // 
-            // chkShowMassstab
+            // tabPage2
             // 
-            this.chkShowMassstab.AutoSize = true;
-            this.chkShowMassstab.Location = new System.Drawing.Point(170, 27);
-            this.chkShowMassstab.Name = "chkShowMassstab";
-            this.chkShowMassstab.Size = new System.Drawing.Size(15, 14);
-            this.chkShowMassstab.TabIndex = 4;
-            this.chkShowMassstab.UseVisualStyleBackColor = true;
-            this.chkShowMassstab.CheckedChanged += new System.EventHandler(this.chkShowMassstab_CheckedChanged);
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(571, 459);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Aktivitätsplot";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // lblMassstab
+            // groupBox4
             // 
-            this.lblMassstab.AutoSize = true;
-            this.lblMassstab.Location = new System.Drawing.Point(27, 27);
-            this.lblMassstab.Name = "lblMassstab";
-            this.lblMassstab.Size = new System.Drawing.Size(119, 26);
-            this.lblMassstab.TabIndex = 3;
-            this.lblMassstab.Text = "Maßstabsleiste in Karte \r\nzeigen";
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.picColor);
+            this.groupBox4.Location = new System.Drawing.Point(3, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(565, 100);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Darstellung";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 26);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Farbe \"NoData\" im \r\nAktivitätsplot";
+            // 
+            // picColor
+            // 
+            this.picColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picColor.Location = new System.Drawing.Point(144, 26);
+            this.picColor.Name = "picColor";
+            this.picColor.Size = new System.Drawing.Size(26, 26);
+            this.picColor.TabIndex = 4;
+            this.picColor.TabStop = false;
+            this.picColor.Click += new System.EventHandler(this.picColor_Click);
             // 
             // btnSchließen
             // 
@@ -253,116 +374,39 @@
             this.btnSchließen.UseVisualStyleBackColor = true;
             this.btnSchließen.Click += new System.EventHandler(this.btnSchließen_Click);
             // 
-            // tabPage2
+            // label5
             // 
-            this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(571, 459);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Aktivitätsplot";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(220, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Symbolgröße";
             // 
-            // picColor
+            // label8
             // 
-            this.picColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picColor.Location = new System.Drawing.Point(144, 26);
-            this.picColor.Name = "picColor";
-            this.picColor.Size = new System.Drawing.Size(26, 26);
-            this.picColor.TabIndex = 4;
-            this.picColor.TabStop = false;
-            this.picColor.Click += new System.EventHandler(this.picColor_Click);
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(389, 27);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Textgröße";
             // 
-            // label1
+            // numSymbolgroesse
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 26);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Farbe \"NoData\" im \r\nAktivitätsplot";
+            this.numSymbolgroesse.Location = new System.Drawing.Point(318, 25);
+            this.numSymbolgroesse.Name = "numSymbolgroesse";
+            this.numSymbolgroesse.Size = new System.Drawing.Size(53, 20);
+            this.numSymbolgroesse.TabIndex = 7;
+            this.numSymbolgroesse.ValueChanged += new System.EventHandler(this.numSymbolgroesse_ValueChanged);
             // 
-            // groupBox2
+            // numTextgroesse
             // 
-            this.groupBox2.Controls.Add(this.lblMassstab);
-            this.groupBox2.Controls.Add(this.chkShowMassstab);
-            this.groupBox2.Location = new System.Drawing.Point(6, 373);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(559, 80);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Verschiedenes";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.checkedListBox1);
-            this.groupBox3.Location = new System.Drawing.Point(6, 258);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(559, 109);
-            this.groupBox3.TabIndex = 7;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Legende - Inhalte";
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(30, 19);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(523, 79);
-            this.checkedListBox1.TabIndex = 0;
-            // 
-            // lblLegendActive
-            // 
-            this.lblLegendActive.AutoSize = true;
-            this.lblLegendActive.Location = new System.Drawing.Point(27, 22);
-            this.lblLegendActive.Name = "lblLegendActive";
-            this.lblLegendActive.Size = new System.Drawing.Size(95, 13);
-            this.lblLegendActive.TabIndex = 15;
-            this.lblLegendActive.Text = "Legende anzeigen";
-            // 
-            // chkLegendActive
-            // 
-            this.chkLegendActive.AutoSize = true;
-            this.chkLegendActive.Location = new System.Drawing.Point(170, 27);
-            this.chkLegendActive.Name = "chkLegendActive";
-            this.chkLegendActive.Size = new System.Drawing.Size(15, 14);
-            this.chkLegendActive.TabIndex = 16;
-            this.chkLegendActive.UseVisualStyleBackColor = true;
-            this.chkLegendActive.CheckedChanged += new System.EventHandler(this.chkLegendActive_CheckedChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(27, 158);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(124, 13);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Transparenz Hintergrund";
-            // 
-            // numAlpha
-            // 
-            this.numAlpha.DecimalPlaces = 2;
-            this.numAlpha.Location = new System.Drawing.Point(170, 156);
-            this.numAlpha.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numAlpha.Name = "numAlpha";
-            this.numAlpha.Size = new System.Drawing.Size(52, 20);
-            this.numAlpha.TabIndex = 20;
-            this.numAlpha.ValueChanged += new System.EventHandler(this.numAlpha_ValueChanged);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.picColor);
-            this.groupBox4.Location = new System.Drawing.Point(3, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(565, 100);
-            this.groupBox4.TabIndex = 5;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Darstellung";
+            this.numTextgroesse.Location = new System.Drawing.Point(450, 25);
+            this.numTextgroesse.Name = "numTextgroesse";
+            this.numTextgroesse.Size = new System.Drawing.Size(53, 20);
+            this.numTextgroesse.TabIndex = 8;
+            this.numTextgroesse.ValueChanged += new System.EventHandler(this.numTextgroesse_ValueChanged);
             // 
             // FrmSettings
             // 
@@ -379,19 +423,21 @@
             this.Text = "Einstellungen";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numAlpha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxBorderColor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxTextfarbe)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picColor)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numAlpha)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picColor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSymbolgroesse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTextgroesse)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -428,5 +474,9 @@
         private System.Windows.Forms.NumericUpDown numAlpha;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.NumericUpDown numTextgroesse;
+        private System.Windows.Forms.NumericUpDown numSymbolgroesse;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label5;
     }
 }

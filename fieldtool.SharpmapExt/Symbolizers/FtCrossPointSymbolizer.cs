@@ -17,7 +17,6 @@ namespace fieldtool.SharpmapExt.Symbolizers
         public override object Clone()
         {
             var res = (FtCrossPointSymbolizer)MemberwiseClone();
-            res.OutlinePen = OutlinePen;
             return res;
         }
 

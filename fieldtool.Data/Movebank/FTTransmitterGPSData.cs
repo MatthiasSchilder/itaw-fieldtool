@@ -1,10 +1,13 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SharpMap.Data.Providers;
 
 namespace fieldtool
 {
@@ -45,6 +48,26 @@ namespace fieldtool
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public DataTablePoint AsDataTablePoint()
+        {
+            var dataProvider = new DataTable();
+
+            dataProvider.Columns.Add("id", typeof(int));
+            dataProvider.Columns.Add("num", typeof (int));
+            dataProvider.Columns.Add("x", typeof (double));
+            dataProvider.Columns.Add("y", typeof (double));
+
+            int i = 0;
+            int gesCount = this.Count();
+            foreach (var gpsPoint in this)
+            {
+                dataProvider.Rows.Add(i, gesCount - i, gpsPoint.Rechtswert, gpsPoint.Hochwert);
+                i++;
+            }
+
+            return new DataTablePoint(dataProvider, "id", "x", "y");
         }
 
 

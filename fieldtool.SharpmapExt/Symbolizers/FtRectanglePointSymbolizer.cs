@@ -13,7 +13,6 @@ namespace fieldtool.SharpmapExt.Symbolizers
         public FtRectanglePointSymbolizer(Color visuColor) : base()
         {
             OutlinePen = new Pen(visuColor);
-            Size = new Size(8, 8);
         }
         public override object Clone()
         {
