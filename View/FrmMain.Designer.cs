@@ -74,7 +74,7 @@ namespace fieldtool
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.treeViewTagList = new System.Windows.Forms.TreeView();
+            this.treeViewTagList = new WorkaroundTreeView();
             this.tagContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.konfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -608,7 +608,7 @@ namespace fieldtool
         private System.Windows.Forms.ContextMenuStrip tagContextMenu;
         private System.Windows.Forms.ToolStripMenuItem konfigurationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tabelleToolStripMenuItem;
-        private System.Windows.Forms.TreeView treeViewTagList;
+        private WorkaroundTreeView treeViewTagList;
         private DateIntervalPicker dateIntervalPicker1;
         private System.Windows.Forms.ToolStripMenuItem aktivitätsverlaufToolStripMenuItem;
     }

@@ -13,11 +13,13 @@ namespace fieldtool
 {
     public class FtTransmitterGpsData : FtTransmitterData, IEnumerable<FtTransmitterGpsDataSeries>
     {
+        private int _tagID;
         public List<FtTransmitterGpsDataSeries> GpsSeries = new
             List<FtTransmitterGpsDataSeries>();
 
-        public FtTransmitterGpsData(string filePath)
+        public FtTransmitterGpsData(int tagID, string filePath)
         {
+            _tagID = tagID;
             TextReader accelDataReader = File.OpenText(filePath);
             String line;
             accelDataReader.ReadLine(); // skip first line with fileheader
@@ -55,21 +57,22 @@ namespace fieldtool
             var dataProvider = new DataTable();
 
             dataProvider.Columns.Add("id", typeof(int));
+            dataProvider.Columns.Add("tagID", typeof (int));
             dataProvider.Columns.Add("num", typeof (int));
             dataProvider.Columns.Add("x", typeof (double));
             dataProvider.Columns.Add("y", typeof (double));
-
+            dataProvider.Columns.Add("timestamp", typeof (DateTime));
+            
             int i = 0;
             int gesCount = this.Count();
             foreach (var gpsPoint in this)
             {
-                dataProvider.Rows.Add(i, gesCount - i, gpsPoint.Rechtswert, gpsPoint.Hochwert);
+                dataProvider.Rows.Add(i, _tagID , gesCount - i, gpsPoint.Rechtswert, gpsPoint.Hochwert, gpsPoint.StartTimestamp);
                 i++;
             }
 
             return new DataTablePoint(dataProvider, "id", "x", "y");
         }
-
 
         public DateTime? DateTimestart;
         public DateTime? DateTimestop;

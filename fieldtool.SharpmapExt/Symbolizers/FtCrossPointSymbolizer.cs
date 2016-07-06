@@ -9,7 +9,7 @@ namespace fieldtool.SharpmapExt.Symbolizers
     {
         public Pen OutlinePen { get; set; }
 
-        public FtCrossPointSymbolizer(Color visuColor) : base()
+        public FtCrossPointSymbolizer(Color visuColor, bool labeled = false) : base(labeled)
         {
             OutlinePen = new Pen(visuColor);
             Size = new Size(8, 8);

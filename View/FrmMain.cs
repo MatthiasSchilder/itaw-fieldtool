@@ -183,7 +183,7 @@ namespace fieldtool
         private void PopulateTreeView(List<FtTransmitterDataset> datasets)
         {
             PopulateImageList(datasets);
-
+            treeViewTagList.Nodes.Clear();
             int i = 0;
             foreach (var dataset in datasets)
             {
@@ -208,6 +208,7 @@ namespace fieldtool
 
         private void PopulateImageList(List<FtTransmitterDataset> datasets)
         {
+            imageListColorKeys.Images.Clear();
             foreach (var dataset in datasets)
             {
                 var img = CreateMonochromaticImage(dataset.Visulization.VisulizationColor);
@@ -620,6 +621,7 @@ namespace fieldtool
 
         private void lviDatasets_ItemChecked(object sender, TreeViewEventArgs e)
         {
+            Debug.WriteLine("Entering lvi checked handler" + DateTime.Now);
             InvokeDatasetCheckedChanged(new DatasetCheckedEventArgs((int)e.Node.Tag, e.Node.Checked));
             InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs((int)e.Node.Tag));
             mapBox1.Refresh();
@@ -660,20 +662,23 @@ namespace fieldtool
                 var queryLayer = layer as SharpMap.Layers.ICanQueryLayer;
                 if (queryLayer != null)
                 {
-                    var env = new Envelope(new Coordinate(p.X-1, p.Y-1), new Coordinate(p.X+1 , p.Y+1));
+                    var env = new Envelope(new Coordinate(p.X-10, p.Y-10), new Coordinate(p.X+10 , p.Y+10));
                     queryLayer.ExecuteIntersectionQuery(env, ds);
                 }
                     
                     //queryLayer.ExecuteIntersectionQuery(p, ds);
             }
 
+            List<FeatureDataTable> foundTabs = new List<FeatureDataTable>();
             foreach (var tab in ds.Tables)
             {
-                foreach (FeatureDataRow row in tab.Rows)
-                {
-                    MessageBox.Show(row.ItemArray[0].ToString());
-                }
+                foundTabs.Add(tab);
             }
+
+            if (!foundTabs.Any(tab => tab.Rows.Count > 0)) return;
+
+            FrmQueriedTags frm = new FrmQueriedTags(foundTabs);
+            frm.Show();
         }
 
         private void aktivitätsverlaufToolStripMenuItem_Click(object sender, EventArgs e)

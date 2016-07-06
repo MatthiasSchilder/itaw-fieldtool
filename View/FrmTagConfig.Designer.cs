@@ -35,19 +35,23 @@
             this.lblFarbe = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.lblWithLabel = new System.Windows.Forms.Label();
+            this.chkLabeled = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkLabeled);
+            this.groupBox1.Controls.Add(this.lblWithLabel);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.cmboVisualizer);
             this.groupBox1.Controls.Add(this.lblVisualizer);
             this.groupBox1.Controls.Add(this.lblFarbe);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(287, 98);
+            this.groupBox1.Size = new System.Drawing.Size(287, 130);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Visualisierung in der Karte";
@@ -93,19 +97,38 @@
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(224, 116);
+            this.btnClose.Location = new System.Drawing.Point(224, 148);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Schließen";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
+            // lblWithLabel
+            // 
+            this.lblWithLabel.AutoSize = true;
+            this.lblWithLabel.Location = new System.Drawing.Point(35, 96);
+            this.lblWithLabel.Name = "lblWithLabel";
+            this.lblWithLabel.Size = new System.Drawing.Size(49, 13);
+            this.lblWithLabel.TabIndex = 5;
+            this.lblWithLabel.Text = "mit Label";
+            // 
+            // chkLabeled
+            // 
+            this.chkLabeled.AutoSize = true;
+            this.chkLabeled.Location = new System.Drawing.Point(120, 96);
+            this.chkLabeled.Name = "chkLabeled";
+            this.chkLabeled.Size = new System.Drawing.Size(15, 14);
+            this.chkLabeled.TabIndex = 6;
+            this.chkLabeled.UseVisualStyleBackColor = true;
+            this.chkLabeled.CheckedChanged += new System.EventHandler(this.chkLabeled_CheckedChanged);
+            // 
             // FrmTagConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(311, 148);
+            this.ClientSize = new System.Drawing.Size(311, 180);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
@@ -129,5 +152,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox chkLabeled;
+        private System.Windows.Forms.Label lblWithLabel;
     }
 }

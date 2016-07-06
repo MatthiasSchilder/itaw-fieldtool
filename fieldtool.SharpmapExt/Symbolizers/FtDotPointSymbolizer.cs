@@ -11,7 +11,7 @@ namespace fieldtool.SharpmapExt.Symbolizers
         public Pen OutlinePen { get; set; }
         public Brush FillBrush { get; set; }
 
-        public FtDotPointSymbolizer(Color visuColor) : base()
+        public FtDotPointSymbolizer(Color visuColor, bool labeled = false) : base(labeled)
         {
             OutlinePen = new Pen(new SolidBrush(visuColor));
             FillBrush = new SolidBrush(ControlPaint.Light(visuColor, 0.2f));

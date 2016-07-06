@@ -193,6 +193,8 @@ namespace fieldtool.Presenter
 
             FrmTagConfig frm = new FrmTagConfig(dataset);
             frm.ShowDialog();
+
+            InvokeMovebankImported(new MovebankImportedArgs(Project.Datasets));
         }
 
         private void View_ShowActivityVerlauf(object sender, EventArgs e)

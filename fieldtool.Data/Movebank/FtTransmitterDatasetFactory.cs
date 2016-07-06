@@ -28,11 +28,11 @@ namespace fieldtool.Data.Movebank
 
             if(fileset.IsFunctionAvailable(FtFileFunction.AccelData))
                 transmitterDataset.AddAccelData(
-                    new FtTransmitterAccelData(fileset.GetFilepathForFunction(FtFileFunction.AccelData)));
+                    new FtTransmitterAccelData(fileset.TagId, fileset.GetFilepathForFunction(FtFileFunction.AccelData)));
 
             if (fileset.IsFunctionAvailable(FtFileFunction.GPSData))
                 transmitterDataset.AddGPSData(
-                    new FtTransmitterGpsData(fileset.GetFilepathForFunction(FtFileFunction.GPSData)));
+                    new FtTransmitterGpsData(fileset.TagId, fileset.GetFilepathForFunction(FtFileFunction.GPSData)));
 
             return transmitterDataset;
         }

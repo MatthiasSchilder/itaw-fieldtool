@@ -13,5 +13,6 @@ namespace fieldtool.Data.Movebank
     {
         public Color VisulizationColor;
         public ISymbolizer<IPuntal> Symbolizer;
+        public bool SymbolizerWithLabel;
     }
 }

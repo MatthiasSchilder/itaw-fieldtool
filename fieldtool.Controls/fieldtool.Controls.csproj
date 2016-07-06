@@ -55,6 +55,9 @@
       <DependentUpon>DateIntervalPicker.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkaroundTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DateIntervalPicker.resx">

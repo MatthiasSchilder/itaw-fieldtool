@@ -10,7 +10,7 @@ namespace fieldtool.SharpmapExt.Symbolizers
         public Pen OutlinePen { get; set; }
         public float Angle { get; set; }
 
-        public FtRectanglePointSymbolizer(Color visuColor) : base()
+        public FtRectanglePointSymbolizer(Color visuColor, bool labeled = false) : base(labeled)
         {
             OutlinePen = new Pen(visuColor);
         }

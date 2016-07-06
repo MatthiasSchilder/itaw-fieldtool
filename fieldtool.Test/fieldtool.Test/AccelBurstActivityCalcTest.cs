@@ -18,7 +18,7 @@ namespace fieldtool.Test
         {
             var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), 
                 PathAccelTestData);
-            var tagAccelData = new FtTransmitterAccelData(path);
+            var tagAccelData = new FtTransmitterAccelData(1704, path);
             
             Calculator = new AccelBurstActivityCalculator(tagAccelData, 
                 new DateTime(2015, 3, 15), 

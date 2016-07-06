@@ -97,6 +97,9 @@
     <EmbeddedResource Include="View\FrmAccAxisView.resx">
       <DependentUpon>FrmAccAxisView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmQueriedTags.resx">
+      <DependentUpon>FrmQueriedTags.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmTagConfig.resx">
       <DependentUpon>FrmTagConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +139,12 @@
     </Compile>
     <Compile Include="View\FrmProjectProperties.Designer.cs">
       <DependentUpon>FrmProjectProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmQueriedTags.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmQueriedTags.Designer.cs">
+      <DependentUpon>FrmQueriedTags.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmSettings.cs">
       <SubType>Form</SubType>

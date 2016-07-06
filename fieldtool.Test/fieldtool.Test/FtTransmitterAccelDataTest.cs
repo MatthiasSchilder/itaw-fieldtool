@@ -18,7 +18,7 @@ namespace fieldtool.Test
         {
             var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), 
                 PathAccelTestData);
-            AccelData = new FtTransmitterAccelData(path);
+            AccelData = new FtTransmitterAccelData(1704, path);
             
         }
         [TestMethod]
@@ -30,11 +30,5 @@ namespace fieldtool.Test
             Assert.AreEqual(AccelData.GetFirstBurstTimestamp(), expectedValueStart);
             Assert.AreEqual(AccelData.GetLastBurstTimestamp(), expectedValueEnd);
         }
-
-        
-
-
-
-
     }
 }

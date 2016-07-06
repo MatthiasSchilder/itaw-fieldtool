@@ -110,7 +110,7 @@ namespace fieldtool.View
             chart1.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
             chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
 
-            chart1.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy hh:mm";
+            chart1.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy HH:mm";
 
             chart1.ChartAreas[0].AxisX.ScaleView = new AxisScaleView();
             chart1.ChartAreas[0].AxisX.ScaleView.SmallScrollSize = 0;

@@ -10,8 +10,11 @@ namespace fieldtool.SharpmapExt.Symbolizers
 {
     public abstract class FtBasePointSymbolizer : BaseSymbolizer, IPointSymbolizer, ISymbolizer<IPuntal>, ISymbolizer, System.ICloneable
     {
-        protected FtBasePointSymbolizer()
+        public bool Labeled { get; }
+
+        protected FtBasePointSymbolizer(bool labeled)
         {
+            Labeled = labeled;
             this.SmoothingMode = SmoothingMode.HighSpeed;
             Size = new Size(12, 12);
         }
@@ -159,17 +162,15 @@ namespace fieldtool.SharpmapExt.Symbolizers
             switch (rnd.Next(0, 4))
             {
                 case 0:
-                    return delegate(Color color) { return new FtCrossPointSymbolizer(color); };
+                    return color => new FtCrossPointSymbolizer(color);
                 case 1:
-                    return delegate (Color color) { return new FtDotPointSymbolizer(color); };
+                    return color => new FtDotPointSymbolizer(color);
                 case 2:
-                    return color => new FtLabeledCrossPointSymbolizer(color);
-                case 3:
                     return color => new FtRectanglePointSymbolizer(color);
-                case 4:
-                    return delegate (Color color) { return new FtTriangleePointSymbolizer(color); };
+                case 3:
+                    return color => new FtTriangleePointSymbolizer(color);
                 default:
-                    return delegate (Color color) { return new FtCrossPointSymbolizer(color); };
+                    return color => new FtCrossPointSymbolizer(color);
             }
         }
     }

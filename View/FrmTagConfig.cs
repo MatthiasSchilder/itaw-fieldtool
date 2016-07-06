@@ -21,6 +21,7 @@ namespace fieldtool.View
 
         private Type NewSymbolizerType;
         private Color NewColor;
+        private bool NewLabelState;
 
         public FrmTagConfig(FtTransmitterDataset dataset)
         {
@@ -33,6 +34,7 @@ namespace fieldtool.View
             InitVisualizersCombobox();
             NewSymbolizerType = dataset.Visulization.Symbolizer.GetType();
             NewColor = dataset.Visulization.VisulizationColor;
+            NewLabelState = dataset.Visulization.SymbolizerWithLabel;
 
             int idx = 0;
             foreach (var item in cmboVisualizer.Items)
@@ -42,6 +44,7 @@ namespace fieldtool.View
                 idx++;
             }
             cmboVisualizer.SelectedIndex = idx;
+            chkLabeled.Checked = NewLabelState;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -77,11 +80,6 @@ namespace fieldtool.View
             item.Tag = typeof(FtTriangleePointSymbolizer);
             cmboVisualizer.Items.Add(item);
 
-            item = new ComboBoxItem();
-            item.Content = "Kreuze + Label";
-            item.Tag = typeof(FtLabeledCrossPointSymbolizer);
-            cmboVisualizer.Items.Add(item);
-
             cmboVisualizer.DisplayMember = "Content";
         }
 
@@ -97,7 +95,13 @@ namespace fieldtool.View
         private void FrmTagConfig_FormClosing(object sender, FormClosingEventArgs e)
         {
             _dataset.Visulization.VisulizationColor = NewColor;
-            _dataset.Visulization.Symbolizer = (ISymbolizer<IPuntal>)Activator.CreateInstance(NewSymbolizerType, NewColor);
+            _dataset.Visulization.Symbolizer = (ISymbolizer<IPuntal>)Activator.CreateInstance(NewSymbolizerType, NewColor, NewLabelState);
+        }
+
+        private void chkLabeled_CheckedChanged(object sender, EventArgs e)
+        {
+            NewLabelState = chkLabeled.Checked;
+            _dataset.Visulization.SymbolizerWithLabel = NewLabelState;
         }
     }
 }

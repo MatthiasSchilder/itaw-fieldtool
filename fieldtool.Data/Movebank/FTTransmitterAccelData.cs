@@ -23,9 +23,11 @@ namespace fieldtool
             List<FtTransmitterAccelDataSeries>();
 
         public Dictionary<DateTime, double[]> CalculatedActivities;
+        private int _tagID;
 
-        public FtTransmitterAccelData(string filePath)
+        public FtTransmitterAccelData(int tagID, string filePath)
         {
+            _tagID = tagID;
             TextReader accelDataReader = File.OpenText(filePath);
             String line;
             accelDataReader.ReadLine(); // skip first line with fileheader

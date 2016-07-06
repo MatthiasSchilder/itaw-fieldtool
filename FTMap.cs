@@ -22,6 +22,7 @@ using SharpMap.Layers.Symbolizer;
 using SharpMap.Rendering.Decoration;
 using SharpMap.Rendering.Decoration.ScaleBar;
 using SharpMap.Rendering.Symbolizer;
+using SharpMap.Styles;
 
 namespace fieldtool
 {
@@ -46,33 +47,17 @@ namespace fieldtool
 
         private void DataChangedEventHandler(object sender, EventArgs eventArgs)
         {
+            Debug.WriteLine("Entering data changed handler" + DateTime.Now);
             RemoveCustomDecorations();
 
             this.VariableLayers.Clear();
 
-
             foreach (var dataset in _project.Datasets)
             {
-                //if (PuntalVectorLayers.ContainsKey(dataset.TagId))
-                //{
-                //    this.VariableLayers.Remove(PuntalVectorLayers[dataset.TagId]);
-                //    PuntalVectorLayers.Remove(dataset.TagId);
-                //}
-
                 if (!dataset.Active)
                     continue;
 
                 var dtPoint = dataset.GPSData.AsDataTablePoint();
-
-                if (dtPoint.Table.Rows.Count == 15)
-                {
-                    for (int i = 0; i < 15; i++)
-                    {
-                        var row = dtPoint.Table.Rows[i];
-                        Debug.WriteLine(row.ItemArray[2] + " " + row.ItemArray[3]);
-                    }
-
-                }
 
                 var symbolizerLayer = new PuntalVectorLayer(dataset.TagId.ToString(), dtPoint);
                 var symbolizer = dataset.Visulization.Symbolizer;
@@ -80,12 +65,13 @@ namespace fieldtool
                 symbolizerLayer.Symbolizer = symbolizer;
 
                 LabelLayer labelLayer = null;
-                if (symbolizer is FtLabeledCrossPointSymbolizer)
+                if (symbolizer is FtBasePointSymbolizer && (symbolizer as FtBasePointSymbolizer).Labeled)
                 {
                     labelLayer = new LabelLayer($"Label{dataset.TagId}")
                     {
                         DataSource = dtPoint,
                         LabelColumn = "num",
+                        //LabelPositionDelegate = LabelPositionDelegate, 
                         Style = { Font = new Font("Arial", Properties.Settings.Default.VisualizerTextsize), ForeColor = dataset.Visulization.VisulizationColor}
                     };
 
@@ -93,50 +79,19 @@ namespace fieldtool
                 }
 
                 this.VariableLayers.Add(symbolizerLayer);
-                //Layers.Add(dataset.TagId, symbolizerLayer);
 
                 if (labelLayer != null)
                 {
                     this.VariableLayers.Add(labelLayer);
-                    //Layers.Add(dataset.TagId, labelLayer);
                 }
-                    
-
-
-
-                //symbolizerLayer.Style.
-                //symbolizerLayer.Style.
-
-
-
-
-                //FeatureDataTable fdt = new FeatureDataTable();
-
-                //fdt.Columns.Add("Name", typeof (string));
-                //fdt.Columns.Add("bla", typeof(string));
-                //fdt.Columns.Add("blub", typeof(string));
-
-                //foreach (var coordinate in GpsDataToCoordinates(dataset.GPSData))
-                //{
-                //    var fdr = (FeatureDataRow) fdt.Rows.Add("bla", "bluirr", "blirr");
-                //    fdr.Geometry = coordinate;
-                //}
-                //var geometryProvider = new GeometryFeatureProvider(fdt);
-
-
-                //var symbolizer = dataset.Visulization.Symbolizer;
-                //symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
-                //var puntalVectorLayers = new PuntalVectorLayer(dataset.TagId.ToString(), geometryProvider, symbolizer);
-
-                //this.VariableLayers.Add(puntalVectorLayers);
-                //PuntalVectorLayers.Add(dataset.TagId, puntalVectorLayers);
-
-
-                //var labelLayer = new SharpMap.Layers.LabelLayer("blabla");
-                //labelLayer.LabelColumn =;
             }
             AddLegendDecoration(_project.Datasets);
 
+        }
+
+        private Coordinate LabelPositionDelegate(FeatureDataRow fdr)
+        {
+            return null;
         }
 
         private IEnumerable<IPoint> GpsDataToCoordinates(IEnumerable<FtTransmitterGpsDataSeries> gpsSeries)

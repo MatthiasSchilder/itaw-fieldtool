@@ -52,7 +52,6 @@
     <Compile Include="Symbolizers\FtBasePointSymbolizer.cs" />
     <Compile Include="Symbolizers\FtCrossPointSymbolizer.cs" />
     <Compile Include="Symbolizers\FtDotPointSymbolizer.cs" />
-    <Compile Include="Symbolizers\FtLabeledCrossPointSymbolizer.cs" />
     <Compile Include="Symbolizers\FtPolygonWithAlphaSymbolizer.cs" />
     <Compile Include="Symbolizers\FtRectanglePointSymbolizer.cs" />
     <Compile Include="Symbolizers\FtTrianglePointSymbolizer.cs" />
