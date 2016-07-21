@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -114,6 +115,23 @@ namespace fieldtool.Test
             Assert.IsTrue(SeriesVollstData.IsValid());
             Assert.IsFalse(SeriesMissingData.IsValid());
         }
+
+        //[TestMethod]
+        //public void TestPerf()
+        //{
+        //    var gpsDataSeries = new FtTransmitterGpsData(3548, @"C:\Users\Matthias\Downloads\schilder\schilder\software");
+            
+        //    Stopwatch sw = new Stopwatch();
+        //    sw.Start();
+        //    var blub = gpsDataSeries.AsDataTablePoint();
+        //    sw.Stop();
+        //    Debug.WriteLine(blub.Table.Rows.Count);
+
+
+        //    Assert.IsTrue(SeriesVollstData.IsValid());
+        //    Assert.IsFalse(SeriesMissingData.IsValid());
+        //}
+
 
 
     }
