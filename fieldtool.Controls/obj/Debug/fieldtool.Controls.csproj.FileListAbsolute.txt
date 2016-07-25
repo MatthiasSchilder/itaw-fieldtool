@@ -5,9 +5,3 @@ F:\fieldtool\fieldtool.Controls\bin\Debug\fieldtool.Controls.pdb
 F:\fieldtool\fieldtool.Controls\obj\Debug\fieldtool.Controls.dll
 F:\fieldtool\fieldtool.Controls\obj\Debug\fieldtool.Controls.pdb
 F:\fieldtool\fieldtool.Controls\obj\Debug\fieldtool.Controls.csprojResolveAssemblyReference.cache
-F:\fieldtool\itaw-fieldtool\fieldtool.Controls\bin\Debug\fieldtool.Controls.dll
-F:\fieldtool\itaw-fieldtool\fieldtool.Controls\bin\Debug\fieldtool.Controls.pdb
-F:\fieldtool\itaw-fieldtool\fieldtool.Controls\obj\Debug\fieldtool.Controls.DateIntervalPicker.resources
-F:\fieldtool\itaw-fieldtool\fieldtool.Controls\obj\Debug\fieldtool.Controls.csproj.GenerateResource.Cache
-F:\fieldtool\itaw-fieldtool\fieldtool.Controls\obj\Debug\fieldtool.Controls.dll
-F:\fieldtool\itaw-fieldtool\fieldtool.Controls\obj\Debug\fieldtool.Controls.pdb

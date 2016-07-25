@@ -1,4 +1,0 @@
-F:\fieldtool\itaw-fieldtool\fieldtool.Util\bin\Debug\fieldtool.Util.dll
-F:\fieldtool\itaw-fieldtool\fieldtool.Util\bin\Debug\fieldtool.Util.pdb
-F:\fieldtool\itaw-fieldtool\fieldtool.Util\obj\Debug\fieldtool.Util.dll
-F:\fieldtool\itaw-fieldtool\fieldtool.Util\obj\Debug\fieldtool.Util.pdb
