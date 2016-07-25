@@ -1,0 +1,1 @@
+key-bin-checksum,tag-serial-number,start-timestamp,longitude,latitude,height-above-ellipsoid,type-of-fix,status,used-time-to-get-fix,timestamp-of-fix,battery-voltage,fix-battery-voltage,temperature,speed-over-ground,heading-degree,speed-accuracy-estimate,horizontal-accuracy-estimate

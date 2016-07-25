@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using fieldtool.View;
 
 namespace fieldtool
 {
@@ -29,6 +30,7 @@ namespace fieldtool
         event EventHandler<CurrentDatasetChangedEventArgs> ShowTagConfig;
         event EventHandler ShowTagGraphs;
         event EventHandler ExportCurrentMapEnvelope;
+        event EventHandler ExportAsShape;
 
         event EventHandler<CurrentDatasetChangedEventArgs> CurrentDatasetChanged;
         event SharpMap.Forms.MapBox.MouseEventHandler MouseMovedOnMap;

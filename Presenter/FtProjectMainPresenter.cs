@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using DotSpatial.Data;
+using DotSpatial.Topology;
 using fieldtool.Data;
 using fieldtool.Data.Movebank;
 using fieldtool.View;
-using GeoAPI.Geometries;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using SharpmapGDAL;
+using SharpMap.Layers;
+using Coordinate = GeoAPI.Geometries.Coordinate;
 
 namespace fieldtool.Presenter
 {
@@ -183,6 +186,13 @@ namespace fieldtool.Presenter
             View.MapDisplayIntervalChanged += View_MapDisplayIntervalChanged;
             View.CreateMCPs += View_CreateMCPs;
             View.ExportCurrentMapEnvelope += View_ExportCurrentMapEnvelope;
+            View.ExportAsShape += ViewOnExportAsShape;
+        }
+
+        private void ViewOnExportAsShape(object sender, EventArgs eventArgs)
+        {
+            FrmExportShape frm = new FrmExportShape(Project);
+            frm.ShowDialog();
         }
 
         private void ViewOnShowTagConfig(object sender, CurrentDatasetChangedEventArgs eventArgs)
@@ -211,6 +221,8 @@ namespace fieldtool.Presenter
         {
             var activeTags = Project.Datasets.Where(dataset => dataset.Active).ToList();
             InvokeMapEnvelopeExportRequested(new MapEnvelopeExportRequestedArgs(activeTags));
+
+            
         }
 
         private void View_MapDisplayIntervalChanged(object sender, MapDisplayIntervalChangedEventArgs e)

@@ -48,9 +48,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotSpatial.Data">
+      <HintPath>dep\DotSpatial.Data.dll</HintPath>
+    </Reference>
     <Reference Include="DotSpatial.Projections, Version=0.11.9.6, Culture=neutral, PublicKeyToken=272632bddd08a38b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>dep\SharpMap.Extensions\DotSpatial.Projections.dll</HintPath>
+      <HintPath>dep\DotSpatial.Projections.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Topology">
+      <HintPath>dep\DotSpatial.Topology.dll</HintPath>
     </Reference>
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -97,6 +103,9 @@
     <EmbeddedResource Include="View\FrmAccAxisView.resx">
       <DependentUpon>FrmAccAxisView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmExportShape.resx">
+      <DependentUpon>FrmExportShape.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmQueriedTags.resx">
       <DependentUpon>FrmQueriedTags.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,6 +130,12 @@
     </Compile>
     <Compile Include="View\FrmEnterTagId.Designer.cs">
       <DependentUpon>FrmEnterTagId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmExportShape.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmExportShape.Designer.cs">
+      <DependentUpon>FrmExportShape.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmGraph.cs">
       <SubType>Form</SubType>
@@ -290,6 +305,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dep\DotSpatial.Data.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dep\DotSpatial.Mono.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dep\DotSpatial.Projections.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dep\DotSpatial.Topology.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="LicenseTexts\License_Dotspatial-Projections.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -495,12 +522,6 @@
     <Content Include="dep\SharpMap.Extensions\de\Npgsql.resources.dll" />
     <None Include="Resources\ToolStripNewButton.png" />
     <None Include="Resources\IconITAW.ico" />
-    <RootContent Include="dep\SharpMap.Extensions\DotSpatial.Projections.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </RootContent>
-    <RootContent Include="dep\SharpMap.Extensions\DotSpatial.Projections.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </RootContent>
     <Content Include="dep\SharpMap.Extensions\es\Npgsql.resources.dll" />
     <Content Include="dep\SharpMap.Extensions\fi\Npgsql.resources.dll" />
     <Content Include="dep\SharpMap.Extensions\fr\Npgsql.resources.dll" />

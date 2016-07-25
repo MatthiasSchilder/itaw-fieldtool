@@ -1,0 +1,2016 @@
+Data decoder version v7.2 compiled Apr 29 2015 16:16:37
+Going through data:
+
+Data download:
+Basestation Id: 8704
+2932,14.3.2015,Sa,12:45:00
+Animal tag has 372992 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data not complete, there were 70656 bytes missing.)
+
+Data download:
+Basestation Id: 8704
+2932,14.3.2015,Sa,12:45:40
+Animal tag has 70784 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data not complete, there were 55680 bytes missing.)
+
+Data download:
+Basestation Id: 8704
+2932,14.3.2015,Sa,12:46:00
+Animal tag has 55744 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+2938,20.3.2015,Fr,11:37:00
+Animal tag has 220544 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data not complete, there were 193152 bytes missing.)
+
+Data download:
+Basestation Id: 8704
+2938,20.3.2015,Fr,11:38:01
+Animal tag has 193216 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+2945,27.3.2015,Fr,11:10:20
+Animal tag has 258688 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+2946,28.3.2015,Sa,18:54:40
+Animal tag has 48960 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+2957,8.4.2015,We,10:49:20
+Animal tag has 395072 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data not complete, there were 252224 bytes missing.)
+
+Data download:
+Basestation Id: 8704
+2957,8.4.2015,We,10:51:40
+Animal tag has 252672 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data not complete, there were 62208 bytes missing.)
+
+Data download:
+Basestation Id: 8704
+2957,8.4.2015,We,10:52:20
+Animal tag has 62528 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+2971,22.4.2015,We,11:33:21
+Animal tag has 519808 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+2977,28.4.2015,Tu,10:09:20
+Animal tag has 220160 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+2984,5.5.2015,Tu,14:14:20
+Animal tag has 265728 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data not complete, there were 248064 bytes missing.)
+
+Data download:
+Basestation Id: 8704
+2984,5.5.2015,Tu,14:16:40
+Animal tag has 248192 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+2984,5.5.2015,Tu,14:38:00
+Animal tag has 512 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+2984,5.5.2015,Tu,19:52:40
+Animal tag has 8128 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+2990,11.5.2015,Mo,10:19:20
+Animal tag has 207488 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data not complete, there were 207488 bytes missing.)
+
+Data download:
+Basestation Id: 8704
+2990,11.5.2015,Mo,10:19:40
+Animal tag has 207488 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+2990,11.5.2015,Mo,10:35:03
+Animal tag has 512 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+2990,11.5.2015,Mo,10:50:05
+Animal tag has 448 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+2998,19.5.2015,Tu,09:59:00
+Animal tag has 295040 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+3005,26.5.2015,Tu,14:31:00
+Animal tag has 266496 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+(data complete)
+
+Data download:
+Basestation Id: 8704
+3012,2.6.2015,Tu,13:09:20
+Animal tag has 171072 Bytes data for download available.
+
+B5:GPS-ACC-Tag Software vers No.:9
+
+Printing tag settings tt5_9, valid at the point in time of the data download:
+
+-------------- ACC-Settings: ------------------
+ACC INTERVAL: 300 seconds == 5 minutes 0 s
+ACC BYTE COUNT: 117 bytes => 78 ACC SAMPLES (for all axes together)
+ACC-AXES: XYZ
+ACC SAMPLERATE CFG:2
+ACC SAMPLERATE per axis in Hertz:10.54 Hz
+ACC ON FROM: 00:00 GPSTIME
+ACC ON UNTIL:23:59 GPSTIME
+ACC LOW SPEED INTERVAL FACTOR:1 (if supported by device)
+
+-------------- GPS-Settings: ------------------
+GPS INTERVAL: 19200 seconds == 320 minutes 0 s
+GPS RETRY INTERVAL FACTOR: 1
+GPS LOW SPEED INTERVAL FACTOR: 1
+GPS LOW SPEED THRESHOLD: 50 cm/s
+GPS ON FROM: 04:00 GPSTIME
+GPS ON UNTIL:20:00 GPSTIME
+GPS TIMEOUT: 150 seconds
+
+-------------- Radio- and other Settings: ------------------
+Ping freq:0x202314 = 867.699646 MHz
+rf_pingpower:8
+PING ON FROM: 11:30 GPSTIME
+PING ON UNTIL:12:00 GPSTIME
+bat_threshold1:2335
+bat_threshold1: 2850 MilliVolt
+bat_threshold2:2335
+bat_threshold2: 2850 MilliVolt
+maccess_voltlimit:2294
+maccess_voltlimit: 2800 MilliVolt
+ACC INVERSE SPEED FACTOR NOT ENABLED (=default)
+access_key:12
+secret_key:13480
+radio_interval:20
+radio_longdelay:900
+longrange_bc_interval:0
+ACC-VARIANCE-AXIS: Z
+burst_length:1
+burst_qperiod:1
+Delayed start:0,4.3.2007,So,00:00:00
+gps_hourshift:0
+gps_daydivisor:1
+ping2_begin_ontime:699
+ping2_end_ontime:700
+###### If this is a tag with the variance feature, following settings apply: ######
+acc_l_threshold:10000
+acc_h_threshold:50000
+acc_param_n1:5
+acc_param_n2:2
+acc_param_n4:4
+gps_low_res_interval:3600
+gps_medium_res_interval:1800
+
+###### If this is a tag with the GSM SMS feature, following settings apply: ######
+1.SMS TIME: 1092:15 GPSTIME
+2.SMS TIME: 1092:15 GPSTIME
+3.SMS TIME: 1092:15 GPSTIME
+4.SMS TIME: 1092:15 GPSTIME
+5.SMS TIME: 1092:15 GPSTIME
+SMS GPS COLLECT INTERVAL: 65535 s
+SMS GPS COLLECT OFFSET: 65535 s
+bat_gsm_threshold: 79998 MilliVolt
+GSM TIMEOUT: 255 seconds (=old tags with max. 255s)
+SMS BIG INTERVAL: 4294967295 s, which is 49710 days and 06:28:15
+Stopping GSM SMS:49710,10.4.2143,We,06:28:15
+
+###### If this is a tag with the dead pinger feature, following settings apply: ######
+acc_dead_threshold:1000
+dead_counter_threshold:20
+acc_alive_threshold:1000
+alive_counter_threshold:5
+Death Ping freq:0x2015CE = 866.299713 MHz
+
+
+Close info:
+
+totalcount up to here: 3252800 Bytes, since last open: 171072 Bytes
+(data complete)
+Now analysing data:
+basestation info:
+Rewrite counter:3263
+e-obs GmbH, The Digital Telemetry company, Germany
+
+LOW BATTERY-Event: Stopped data acquisition. Status:
+3010,31.5.2015,So,05:22:31 RS:0x01 VMON:0xC0
+LOW BATTERY STATUS (=> NO DATA ACQUISITION)
+Battery Voltage: 3010 mV, at gpsfix: 2844 mV
+SWITCH is ON
+
+The last download for tag2604 was a COMPLETE data download.

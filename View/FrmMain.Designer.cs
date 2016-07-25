@@ -1,6 +1,6 @@
 ﻿using fieldtool.Controls;
 
-namespace fieldtool
+namespace fieldtool.View
 {
     partial class FrmMain
     {
@@ -42,6 +42,7 @@ namespace fieldtool
             this.movebankEinzelsetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.kartenansichtAlsBildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alsShapefilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.schließenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -74,7 +75,7 @@ namespace fieldtool
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.treeViewTagList = new WorkaroundTreeView();
+            this.treeViewTagList = new fieldtool.Controls.WorkaroundTreeView();
             this.tagContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.konfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -188,7 +189,8 @@ namespace fieldtool
             // exportToolStripMenuItem1
             // 
             this.exportToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kartenansichtAlsBildToolStripMenuItem});
+            this.kartenansichtAlsBildToolStripMenuItem,
+            this.alsShapefilesToolStripMenuItem});
             this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
             this.exportToolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
             this.exportToolStripMenuItem1.Text = "Export";
@@ -199,6 +201,13 @@ namespace fieldtool
             this.kartenansichtAlsBildToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.kartenansichtAlsBildToolStripMenuItem.Text = "Kartenansicht als Bild";
             this.kartenansichtAlsBildToolStripMenuItem.Click += new System.EventHandler(this.kartenansichtAlsBildToolStripMenuItem_Click_1);
+            // 
+            // alsShapefilesToolStripMenuItem
+            // 
+            this.alsShapefilesToolStripMenuItem.Name = "alsShapefilesToolStripMenuItem";
+            this.alsShapefilesToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.alsShapefilesToolStripMenuItem.Text = "Als Shapefile(s)";
+            this.alsShapefilesToolStripMenuItem.Click += new System.EventHandler(this.alsShapefilesToolStripMenuItem_Click);
             // 
             // speichernToolStripMenuItem
             // 
@@ -611,6 +620,7 @@ namespace fieldtool
         private WorkaroundTreeView treeViewTagList;
         private DateIntervalPicker dateIntervalPicker1;
         private System.Windows.Forms.ToolStripMenuItem aktivitätsverlaufToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alsShapefilesToolStripMenuItem;
     }
 }
 
