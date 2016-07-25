@@ -317,6 +317,7 @@
     <Content Include="dep\DotSpatial.Topology.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <RootContent Include="dep\exttools\decoder_v7_2.exe" />
     <Content Include="LicenseTexts\License_Dotspatial-Projections.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

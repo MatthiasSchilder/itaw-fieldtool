@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using GeoAPI.Geometries;
 
-namespace fieldtool.Data
+namespace fieldtool.Data.Geometry
 {
     public class FtMultipoint : IEnumerable<Coordinate>
     {

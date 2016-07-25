@@ -421,6 +421,18 @@ namespace fieldtool.View
                 handler(this, e);
             }
         }
+
+       
+        public event EventHandler ShowLoggerBinImport;
+        public void InvokeShowLoggerBinImport(EventArgs e)
+        {
+            EventHandler handler = ShowLoggerBinImport;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
         public event EventHandler ShowEinstellungen;
         
 
@@ -720,6 +732,11 @@ namespace fieldtool.View
         private void alsShapefilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InvokeExportAsShape(new EventArgs());
+        }
+
+        private void loggerbinalleSetsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeShowLoggerBinImport(new EventArgs());
         }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs

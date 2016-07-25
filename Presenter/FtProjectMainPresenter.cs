@@ -1,11 +1,16 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using DotSpatial.Data;
 using DotSpatial.Topology;
 using fieldtool.Data;
+using fieldtool.Data.Geometry;
 using fieldtool.Data.Movebank;
 using fieldtool.View;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -174,6 +179,7 @@ namespace fieldtool.Presenter
             View.MouseMovedOnMap += View_MouseMovedOnMap;
             View.ShowInfo += View_ShowInfo;
             View.ShowMovebankImport += View_ShowMovebankImport;
+            View.ShowLoggerBinImport += ViewOnShowLoggerBinImport;
             View.ShowRawTagInfo += View_ShowRawTagInfo;
             View.ShowRawAccel += View_ShowRawAccel;
             View.ShowRawGPS += View_ShowRawGPS;
@@ -187,6 +193,57 @@ namespace fieldtool.Presenter
             View.CreateMCPs += View_CreateMCPs;
             View.ExportCurrentMapEnvelope += View_ExportCurrentMapEnvelope;
             View.ExportAsShape += ViewOnExportAsShape;
+        }
+
+        private void ViewOnShowLoggerBinImport(object sender, EventArgs eventArgs)
+        {
+            if (Project == null)
+            {
+                MessageBox.Show("Bitte zunächst ein Projekt erstellen oder öffnen.");
+                return;
+            }
+
+            CommonOpenFileDialog loggerBinOpenFileDialog = new CommonOpenFileDialog { Multiselect = false };
+            loggerBinOpenFileDialog.Filters.Add(
+                new CommonFileDialogFilter("e-obs Binärdatei v7.2", "*.bin"
+                ));
+
+            CommonFileDialogResult dr = loggerBinOpenFileDialog.ShowDialog();
+            if (dr != CommonFileDialogResult.Ok)
+                return;
+
+            const string DecoderBinaryFilename = "decoder_v7_2.exe";
+            
+            Process proc = new Process();
+            proc.StartInfo = new ProcessStartInfo(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), DecoderBinaryFilename), 
+                String.Format("-f {0} -c m", loggerBinOpenFileDialog.FileName));
+            proc.StartInfo.CreateNoWindow = false;
+            proc.StartInfo.UseShellExecute = true;
+            proc.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+            proc.StartInfo.WorkingDirectory = Path.GetDirectoryName(loggerBinOpenFileDialog.FileName);
+            proc.EnableRaisingEvents = true;
+            proc.Exited += ProcOnExited;
+            AsyncOp = AsyncOperationManager.CreateOperation(null);
+            proc.Start();       
+        }
+
+        private AsyncOperation AsyncOp = null;
+        private void ProcOnExited(object sender, EventArgs eventArgs)
+        {
+
+
+            
+            var startInfo = ((Process) sender).StartInfo;
+            AsyncOp.Post(bla, startInfo);
+
+        }
+
+        private void bla(object o)
+        {
+            var startInfo = (ProcessStartInfo) o;
+            Project.MovebankFilesets = FtFileset.FileSetFromDirectory(startInfo.WorkingDirectory);
+
+            ImportMovebank();
         }
 
         private void ViewOnExportAsShape(object sender, EventArgs eventArgs)

@@ -40,6 +40,7 @@ namespace fieldtool.View
             this.importToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.movebankLadenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movebankEinzelsetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loggerbinalleSetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.kartenansichtAlsBildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alsShapefilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -167,7 +168,8 @@ namespace fieldtool.View
             // 
             this.importToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.movebankLadenToolStripMenuItem,
-            this.movebankEinzelsetsToolStripMenuItem});
+            this.movebankEinzelsetsToolStripMenuItem,
+            this.loggerbinalleSetsToolStripMenuItem});
             this.importToolStripMenuItem1.Name = "importToolStripMenuItem1";
             this.importToolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
             this.importToolStripMenuItem1.Text = "Import";
@@ -185,6 +187,13 @@ namespace fieldtool.View
             this.movebankEinzelsetsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.movebankEinzelsetsToolStripMenuItem.Text = "Movebank (Einzelsets)";
             this.movebankEinzelsetsToolStripMenuItem.Click += new System.EventHandler(this.movebankEinzelsetsToolStripMenuItem_Click);
+            // 
+            // loggerbinalleSetsToolStripMenuItem
+            // 
+            this.loggerbinalleSetsToolStripMenuItem.Name = "loggerbinalleSetsToolStripMenuItem";
+            this.loggerbinalleSetsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.loggerbinalleSetsToolStripMenuItem.Text = "logger.bin (alle Sets)";
+            this.loggerbinalleSetsToolStripMenuItem.Click += new System.EventHandler(this.loggerbinalleSetsToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem1
             // 
@@ -621,6 +630,7 @@ namespace fieldtool.View
         private DateIntervalPicker dateIntervalPicker1;
         private System.Windows.Forms.ToolStripMenuItem aktivitätsverlaufToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alsShapefilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loggerbinalleSetsToolStripMenuItem;
     }
 }
 
