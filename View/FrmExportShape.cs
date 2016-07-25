@@ -65,8 +65,18 @@ namespace fieldtool.View
         private FeatureSet CreateFeatureSet()
         {
             FeatureSet fs = new FeatureSet(FeatureType.Point);
-            fs.DataTable.Columns.Add("tagID", typeof(string));
-            fs.DataTable.Columns.Add("timestamp", typeof(DateTime));
+            fs.DataTable.Columns.Add("TagID", typeof(string));
+            fs.DataTable.Columns.Add("Timestamp", typeof(DateTime));
+            fs.DataTable.Columns.Add("TimestampOfFix", typeof(DateTime));
+
+            fs.DataTable.Columns.Add("UsedTimeToGetFix", typeof(short));
+            fs.DataTable.Columns.Add("HeightAboveEllipsoid", typeof(double));
+            fs.DataTable.Columns.Add("HeadingDegree", typeof(double));
+            fs.DataTable.Columns.Add("SpeedOverGround", typeof(double));
+            fs.DataTable.Columns.Add("Status", typeof(string));
+            fs.DataTable.Columns.Add("BatteryVoltage", typeof(short));
+            fs.DataTable.Columns.Add("BatteryVoltageAtFix", typeof(short));
+            fs.DataTable.Columns.Add("Temperature", typeof(short));
             return fs;
 
         }
@@ -112,8 +122,21 @@ namespace fieldtool.View
             var feature = fs.AddFeature(point);
 
             feature.DataRow.BeginEdit();
-            feature.DataRow["tagID"] = tagID;
-            feature.DataRow["timestamp"] = gpsPoint.StartTimestamp;
+            feature.DataRow["TagID"] = tagID;
+            feature.DataRow["Timestamp"] = gpsPoint.StartTimestamp;
+            feature.DataRow["TimestampOfFix"] = gpsPoint.TimestampOfFix;
+            feature.DataRow["UsedTimeToGetFix"] = gpsPoint.UsedTimeToGetFix;
+            if(gpsPoint.HeightAboveEllipsoid.HasValue)
+                feature.DataRow["HeightAboveEllipsoid"] = gpsPoint.HeightAboveEllipsoid.Value;
+            if (gpsPoint.HeadingDegree.HasValue)
+                feature.DataRow["HeadingDegree"] = gpsPoint.HeadingDegree.Value;
+            if (gpsPoint.SpeedOverGround.HasValue)
+                feature.DataRow["SpeedOverGround"] = gpsPoint.SpeedOverGround.Value;
+            feature.DataRow["Status"] = gpsPoint.Status;
+            feature.DataRow["BatteryVoltage"] = gpsPoint.BatteryVoltage;
+            feature.DataRow["BatteryVoltageAtFix"] = gpsPoint.BatteryVoltageFix;
+            feature.DataRow["Temperature"] = gpsPoint.Temperature;
+
             feature.DataRow.EndEdit();
         }
 
