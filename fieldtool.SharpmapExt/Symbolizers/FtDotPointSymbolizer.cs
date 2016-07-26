@@ -20,20 +20,17 @@ namespace fieldtool.SharpmapExt.Symbolizers
         {
             var res = (FtDotPointSymbolizer)MemberwiseClone();
             res.OutlinePen = OutlinePen;
+            res.FillBrush = FillBrush;
             return res;
         }
 
         public override void OnRenderInternal(PointF pt, Graphics g)
         {
-            using (Matrix m = new Matrix())
-            {
-                m.RotateAt(45, pt);
-                g.Transform = m;
-                g.DrawEllipse(OutlinePen, new RectangleF(new PointF(pt.X, pt.Y), new SizeF(Size.Width, Size.Height)));
-                g.FillEllipse(FillBrush, new RectangleF(new PointF(pt.X, pt.Y), new SizeF(Size.Width, Size.Height)));
-                g.ResetTransform();
-            }
+            var rect = new RectangleF(new PointF(pt.X - Size.Width/2f, pt.Y - Size.Height/2f),
+                new SizeF(Size.Width, Size.Height));
 
+            g.DrawEllipse(OutlinePen, rect);
+            g.FillEllipse(FillBrush, rect);
         }
 
         public override Size Size

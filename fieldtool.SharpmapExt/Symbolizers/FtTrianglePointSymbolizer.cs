@@ -10,7 +10,7 @@ namespace fieldtool.SharpmapExt.Symbolizers
 
         public FtTriangleePointSymbolizer(Color visuColor, bool labeled = false) : base(labeled)
         {
-            OutlinePen = new Pen(visuColor, 2);
+            OutlinePen = new Pen(visuColor, 1);
         }
         public override object Clone()
         {
