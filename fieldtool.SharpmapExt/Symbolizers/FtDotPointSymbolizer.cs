@@ -29,6 +29,7 @@ namespace fieldtool.SharpmapExt.Symbolizers
             var rect = new RectangleF(new PointF(pt.X - Size.Width/2f, pt.Y - Size.Height/2f),
                 new SizeF(Size.Width, Size.Height));
 
+
             g.DrawEllipse(OutlinePen, rect);
             g.FillEllipse(FillBrush, rect);
         }

@@ -29,6 +29,7 @@ namespace fieldtool.View
             mapBox1.MouseMove += MouseMovedOnMap;
             dateIntervalPicker1.IntervalChanged += DateIntervalPicker1_IntervalChanged;
             AddRecentlyUsedProjects();
+            mapBox1.ShowProgressUpdate = true;
         }
 
         private void DateIntervalPicker1_IntervalChanged(object sender, EventArgs e)

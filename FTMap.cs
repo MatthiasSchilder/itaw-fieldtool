@@ -4,12 +4,14 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Net.Configuration;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using fieldtool.Data;
 using fieldtool.Data.Movebank;
 using fieldtool.Decorations;
@@ -45,13 +47,14 @@ namespace fieldtool
             CustomDecorations = new List<MapDecoration>();
         }
 
+        private Font MapFont;
         private void DataChangedEventHandler(object sender, EventArgs eventArgs)
         {
             Debug.WriteLine("Entering data changed handler" + DateTime.Now);
             RemoveCustomDecorations();
-
+            
             this.VariableLayers.Clear();
-
+            MapFont = new Font("Arial", Properties.Settings.Default.VisualizerTextsize);
             foreach (var dataset in _project.Datasets)
             {
                 if (!dataset.Active)
@@ -63,6 +66,7 @@ namespace fieldtool
                 var symbolizer = dataset.Visulization.Symbolizer;
                 symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
                 symbolizerLayer.Symbolizer = symbolizer;
+                
 
                 LabelLayer labelLayer = null;
                 if (symbolizer is FtBasePointSymbolizer && (symbolizer as FtBasePointSymbolizer).Labeled)
@@ -70,28 +74,41 @@ namespace fieldtool
                     labelLayer = new LabelLayer($"Label{dataset.TagId}")
                     {
                         DataSource = dtPoint,
+
                         LabelColumn = "num",
-                        //LabelPositionDelegate = LabelPositionDelegate, 
-                        Style = { Font = new Font("Arial", Properties.Settings.Default.VisualizerTextsize), ForeColor = dataset.Visulization.VisulizationColor}
+                        LabelPositionDelegate = LabelPositionDelegate, 
+                        SmoothingMode = SmoothingMode.HighSpeed,
+                        Style = { Font = MapFont, VerticalAlignment = LabelStyle.VerticalAlignmentEnum.Top, HorizontalAlignment = LabelStyle.HorizontalAlignmentEnum.Left, CollisionDetection = false, ForeColor = dataset.Visulization.VisulizationColor}
+                        
                     };
 
-                    symbolizerLayer.LabelLayer = labelLayer;
+                symbolizerLayer.LabelLayer = labelLayer;
                 }
-
-                this.VariableLayers.Add(symbolizerLayer);
-
                 if (labelLayer != null)
                 {
                     this.VariableLayers.Add(labelLayer);
                 }
+                this.VariableLayers.Add(symbolizerLayer);
+
+
             }
             AddLegendDecoration(_project.Datasets);
 
         }
 
+        private static Image i = new Bitmap(1,1);
+        private static Graphics g = Graphics.FromImage(i);
+
         private Coordinate LabelPositionDelegate(FeatureDataRow fdr)
         {
-            return null;
+            var screenCoord = this.WorldToImage(fdr.Geometry.Coordinate, false);
+           
+            //var size = TextRenderer.MeasureText(((int)fdr["num"]).ToString(), MapFont,);
+
+            var size = g.MeasureString(((int) fdr["num"]).ToString(), MapFont);
+
+            var lblScreenCoord = new PointF(screenCoord.X - size.Width / 2, screenCoord.Y + 6 + 2);
+            return new Coordinate(this.ImageToWorld(lblScreenCoord));
         }
 
         private IEnumerable<IPoint> GpsDataToCoordinates(IEnumerable<FtTransmitterGpsDataSeries> gpsSeries)
