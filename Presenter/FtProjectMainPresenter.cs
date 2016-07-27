@@ -230,19 +230,14 @@ namespace fieldtool.Presenter
         private AsyncOperation AsyncOp = null;
         private void ProcOnExited(object sender, EventArgs eventArgs)
         {
-
-
-            
             var startInfo = ((Process) sender).StartInfo;
-            AsyncOp.Post(bla, startInfo);
-
+            AsyncOp.Post(ProcOnExited_MainThreadDelegate, startInfo);
         }
 
-        private void bla(object o)
+        private void ProcOnExited_MainThreadDelegate(object o)
         {
             var startInfo = (ProcessStartInfo) o;
             Project.MovebankFilesets = FtFileset.FileSetFromDirectory(startInfo.WorkingDirectory);
-
             ImportMovebank();
         }
 
@@ -271,7 +266,6 @@ namespace fieldtool.Presenter
             
             FrmAccAxisView frm = new FrmAccAxisView(CurrentDataset);
             frm.Show();
-
         }
 
         private void View_ExportCurrentMapEnvelope(object sender, EventArgs e)
