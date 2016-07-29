@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using DotSpatial.Projections;
+using fieldtool.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace fieldtool.Test
@@ -19,6 +21,9 @@ namespace fieldtool.Test
         [TestInitialize]
         public void Init()
         {
+            ProjectionManager.SetSourceProjection(4326);
+            ProjectionManager.SetTargetProjection(31467);
+
             SeriesMissingData = new FtTransmitterGpsDataSeries(TestDataMissingValues);
             SeriesVollstData = new FtTransmitterGpsDataSeries(TestDataVollst);
         }
