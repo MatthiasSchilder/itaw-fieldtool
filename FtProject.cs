@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 using fieldtool.Annotations;
 using fieldtool.Data.Movebank;
+using fieldtool.Presenter;
 using SharpmapGDAL;
 
 namespace fieldtool
@@ -69,8 +70,12 @@ namespace fieldtool
             DataChangedEventHandler(this, new EventArgs());
         }
 
-        public void LoadDatasets()
+        public void LoadDatasets(Action<int> setupAction, Action<string> stepAction, Action finishAction)
         {
+            FtTransmitterDatasetFactory.SetupAction = setupAction;
+            FtTransmitterDatasetFactory.StepAction = stepAction;
+            FtTransmitterDatasetFactory.FinishAction = finishAction;
+
             Datasets = FtTransmitterDatasetFactory.LoadFilesets(MovebankFilesets, TagBlacklist);
         }
 

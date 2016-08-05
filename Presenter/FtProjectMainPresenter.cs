@@ -65,6 +65,24 @@ namespace fieldtool.Presenter
         }
     }
 
+    class SetupProgressArgs : EventArgs
+    {
+        public int NumTags { get; private set; }
+        public SetupProgressArgs(int numTags)
+        {
+            NumTags = numTags;
+        }
+    }
+
+    class StepProgressArgs : EventArgs
+    {
+        public string TagName { get; private set; }
+        public StepProgressArgs(string tagName)
+        {
+            TagName = tagName;
+        }
+    }
+
     class MapEnvelopeExportRequestedArgs : EventArgs
     {
         public List<FtTransmitterDataset> ActiveDatasets { get; private set; }
@@ -133,6 +151,37 @@ namespace fieldtool.Presenter
             if (handler != null)
             {
                 handler(this, e);
+            }
+        }
+
+        public EventHandler<SetupProgressArgs> SetupProgress;
+        public void InvokeSetupProgress(int numTags)
+        {
+            var handler = SetupProgress;
+            if (handler != null)
+            {
+                handler(this, new SetupProgressArgs(numTags));
+            }
+        }
+
+
+        public EventHandler<StepProgressArgs> StepProgress;
+        public void InvokeStepProgress(string tagName)
+        {
+            var handler = StepProgress;
+            if (handler != null)
+            {
+                handler(this, new StepProgressArgs(tagName));
+            }
+        }
+
+        public EventHandler FinishProgress;
+        public void InvokeFinishProgress()
+        {
+            var handler = FinishProgress;
+            if (handler != null)
+            {
+                handler(this, new EventArgs());
             }
         }
 
@@ -417,7 +466,7 @@ namespace fieldtool.Presenter
 
         private void ImportMovebank()
         {
-            Project.LoadDatasets();
+            Project.LoadDatasets(InvokeSetupProgress, InvokeStepProgress, InvokeFinishProgress);
             InvokeMovebankImported(new MovebankImportedArgs(Project.Datasets));
         }
 

@@ -106,6 +106,9 @@
     <EmbeddedResource Include="View\FrmExportShape.resx">
       <DependentUpon>FrmExportShape.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmImportingBusy.resx">
+      <DependentUpon>FrmImportingBusy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmQueriedTags.resx">
       <DependentUpon>FrmQueriedTags.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +145,12 @@
     </Compile>
     <Compile Include="View\FrmGraph.Designer.cs">
       <DependentUpon>FrmGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmImportingBusy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmImportingBusy.Designer.cs">
+      <DependentUpon>FrmImportingBusy.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmInfo.cs">
       <SubType>Form</SubType>
@@ -317,6 +326,9 @@
     <Content Include="dep\DotSpatial.Topology.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\iconJumpingFox.ico" />
+    <None Include="Resources\iconJumpingFox.png" />
+    <None Include="Resources\Icon1.ico" />
     <RootContent Include="dep\exttools\decoder_v7_2.exe" />
     <Content Include="LicenseTexts\License_Dotspatial-Projections.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

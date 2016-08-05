@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,8 @@ namespace fieldtool.View
 
         private const String WindowTitleNoProject = "itaw Fieldtool v{0}";
         private const String WindowTitleProject = "itaw Fieldtool v{0} - {1}";
+
+        private FrmImportingBusy ProgressWindows;
 
         public FrmMain()
         {
@@ -135,6 +138,38 @@ namespace fieldtool.View
             Presenter.MovebankImported += MovebankImported;
             Presenter.rMapDisplayIntervalChanged += rrMapDisplayIntervalChanged;
             Presenter.MapEnvelopeExportRequested += MapEnvelopeExportRequested;
+            Presenter.SetupProgress += SetupProgress;
+            Presenter.StepProgress += StepProgress;
+            Presenter.FinishProgress += FinishProgress;
+        }
+
+        private void FinishProgress(object sender, EventArgs eventArgs)
+        {
+            ProgressWindows.Close();
+        }
+
+        private void StepProgress(object sender, StepProgressArgs stepProgressArgs)
+        {
+            ProgressWindows.Invoke(new MethodInvoker(() => ProgressWindows.Step((stepProgressArgs.TagName))));
+            //ProgressWindows.Step(stepProgressArgs.TagName);
+            //Debug.WriteLine("stepping");
+        }
+
+        private void SetupProgress(object sender, SetupProgressArgs setupProgressArgs)
+        {
+            ProgressWindows = new FrmImportingBusy(setupProgressArgs.NumTags);
+            ProgressWindows.Location = GetProgressbarLocation(this.Location, this.Size, ProgressWindows.Size);
+            ProgressWindows.StartPosition = FormStartPosition.Manual;
+            ProgressWindows.Show(this);
+        }
+
+        private Point GetProgressbarLocation(Point location, Size mainFormSize, Size importFormSize)
+        {
+            Point mainFormCenterPoint = new Point(location.X + mainFormSize.Width / 2, location.Y + mainFormSize.Height / 2);
+            mainFormCenterPoint.X -= importFormSize.Width/2;
+            mainFormCenterPoint.Y -= importFormSize.Height/2;
+
+            return mainFormCenterPoint;
         }
 
         private void MapEnvelopeExportRequested(object sender, MapEnvelopeExportRequestedArgs args)

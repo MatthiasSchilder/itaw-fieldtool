@@ -67,6 +67,7 @@ namespace fieldtool
                 symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
                 symbolizerLayer.Symbolizer = symbolizer;
                 
+                
 
                 LabelLayer labelLayer = null;
                 if (symbolizer is FtBasePointSymbolizer && (symbolizer as FtBasePointSymbolizer).Labeled)
@@ -74,7 +75,6 @@ namespace fieldtool
                     labelLayer = new LabelLayer($"Label{dataset.TagId}")
                     {
                         DataSource = dtPoint,
-
                         LabelColumn = "num",
                         LabelPositionDelegate = LabelPositionDelegate, 
                         SmoothingMode = SmoothingMode.HighSpeed,
@@ -96,16 +96,12 @@ namespace fieldtool
 
         }
 
-        private static Image i = new Bitmap(1,1);
-        private static Graphics g = Graphics.FromImage(i);
-
+        private static readonly Graphics _stringMeasurementGraphicsDummy = 
+            Graphics.FromImage(new Bitmap(1, 1));
         private Coordinate LabelPositionDelegate(FeatureDataRow fdr)
         {
             var screenCoord = this.WorldToImage(fdr.Geometry.Coordinate, false);
-           
-            //var size = TextRenderer.MeasureText(((int)fdr["num"]).ToString(), MapFont,);
-
-            var size = g.MeasureString(((int) fdr["num"]).ToString(), MapFont);
+            var size = _stringMeasurementGraphicsDummy.MeasureString(((int) fdr["num"]).ToString(), MapFont);
 
             var lblScreenCoord = new PointF(screenCoord.X - size.Width / 2, screenCoord.Y + 6 + 2);
             return new Coordinate(this.ImageToWorld(lblScreenCoord));
