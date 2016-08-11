@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using fieldtool.View;
 
-namespace fieldtool
+namespace fieldtool.Presenter
 {
     public class Presenter<TView> where TView : class, IView
     {

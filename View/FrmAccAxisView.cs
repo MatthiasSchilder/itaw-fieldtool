@@ -185,18 +185,12 @@ namespace fieldtool.View
             SeriesZ.Color = System.Drawing.Color.Red;
 
 
-            double minY_SeriesX;
-            double minY_SeriesY;
-            double minY_SeriesZ;
-
-            double maxY_SeriesX;
-            double maxY_SeriesY;
-            double maxY_SeriesZ;
+            double minY_SeriesX, minY_SeriesY, minY_SeriesZ;
+            double maxY_SeriesX, maxY_SeriesY, maxY_SeriesZ;
 
             minY_SeriesX = minY_SeriesZ = minY_SeriesY = Double.MaxValue;
             maxY_SeriesZ = maxY_SeriesX = maxY_SeriesY = Double.MinValue;
 
-            double minY_X = double.MaxValue, maxY = double.MinValue;
             foreach (var acc in dataset.AccelData.AccelerationSeries)
             {
                 var xArr = acc.GetXArr();

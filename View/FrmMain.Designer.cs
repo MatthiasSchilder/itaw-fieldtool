@@ -74,7 +74,7 @@ namespace fieldtool
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.treeViewTagList = new WorkaroundTreeView();
+            this.treeViewTagList = new fieldtool.Controls.WorkaroundTreeView();
             this.tagContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.konfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -420,7 +420,7 @@ namespace fieldtool
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1229, 68);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "GPS";
+            this.tabPage1.Text = "Filter";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // dateIntervalPicker1
@@ -439,7 +439,7 @@ namespace fieldtool
             this.tabPage2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabPage2.Size = new System.Drawing.Size(1229, 68);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "GPS + Aktivität";
+            this.tabPage2.Text = "Statistik";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // textBox1

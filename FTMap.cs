@@ -10,10 +10,12 @@ using System.Net.Configuration;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using fieldtool.Data;
 using fieldtool.Data.Movebank;
 using fieldtool.Decorations;
 using fieldtool.SharpmapExt.Symbolizers;
+using fieldtool.SharpmapExt.Themes;
 using GeoAPI.Geometries;
 using SharpMap.Data;
 using SharpMap.Data.Providers;
@@ -22,6 +24,7 @@ using SharpMap.Layers.Symbolizer;
 using SharpMap.Rendering.Decoration;
 using SharpMap.Rendering.Decoration.ScaleBar;
 using SharpMap.Rendering.Symbolizer;
+using SharpMap.Rendering.Thematics;
 using SharpMap.Styles;
 
 namespace fieldtool
@@ -59,11 +62,28 @@ namespace fieldtool
 
                 var dtPoint = dataset.GPSData.AsDataTablePoint();
 
-                var symbolizerLayer = new PuntalVectorLayer(dataset.TagId.ToString(), dtPoint);
+                //var symbolizerLayer = new VectorLayer(dataset.TagId.ToString(), dtPoint);
+                var symbolizerLayer = new VectorLayer(dataset.TagId.ToString(),dataset.GPSData.AsDataTablePoint() /*dataset.GPSData.AsDataTableLine()*/);
+
+                symbolizerLayer.SmoothingMode = SmoothingMode.HighSpeed;
+
                 var symbolizer = dataset.Visulization.Symbolizer;
                 symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
-                symbolizerLayer.Symbolizer = symbolizer;
 
+                if (symbolizer is IPointSymbolizer)
+                {
+                    symbolizerLayer.Style.PointSymbolizer = (IPointSymbolizer)symbolizer;
+                    //if (symbolizer is FtCrossPointSymbolizer)
+                    //symbolizerLayer.Theme = new VectorThemeSymbolizer(symbolizer);
+                    //symbolizerLayer.Style.LineSymbolizer = new BasicLineSymbolizer();
+                }
+                    
+                else
+                {
+                    symbolizerLayer.Style.LineSymbolizer = null;
+                    //symbolizerLayer.Theme = new CustomTheme(GetStyle); 
+                }
+                
                 LabelLayer labelLayer = null;
                 if (symbolizer is FtBasePointSymbolizer && (symbolizer as FtBasePointSymbolizer).Labeled)
                 {
@@ -75,7 +95,7 @@ namespace fieldtool
                         Style = { Font = new Font("Arial", Properties.Settings.Default.VisualizerTextsize), ForeColor = dataset.Visulization.VisulizationColor}
                     };
 
-                    symbolizerLayer.LabelLayer = labelLayer;
+                    //symbolizerLayer.Style.LabelLayer = labelLayer;
                 }
 
                 this.VariableLayers.Add(symbolizerLayer);

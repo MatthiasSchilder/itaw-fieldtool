@@ -80,6 +80,11 @@ namespace fieldtool.View
             item.Tag = typeof(FtTriangleePointSymbolizer);
             cmboVisualizer.Items.Add(item);
 
+            item = new ComboBoxItem();
+            item.Content = "Pfeile";
+            item.Tag = typeof(FtArrowPointSymbolizer);
+            cmboVisualizer.Items.Add(item);
+
             cmboVisualizer.DisplayMember = "Content";
         }
 

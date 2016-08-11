@@ -632,7 +632,6 @@ namespace fieldtool
             InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs((int)e.Node.Tag));
         }
 
-        private int i = 0;
         private void mapBox1_MouseDrag(Coordinate worldPos, MouseEventArgs imagePos)
         {
             //Debug.WriteLine("im dragging " + i++);
