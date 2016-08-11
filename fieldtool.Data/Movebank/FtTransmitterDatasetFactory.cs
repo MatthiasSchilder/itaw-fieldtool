@@ -12,6 +12,29 @@ namespace fieldtool.Data.Movebank
         public static string SchemeFilenameAccelData = "tag%%%%_acc.txt";
         public static string SchemeFilenameGPSData = "tag%%%%_gps.txt";
 
+        public static Action<int> SetupAction;
+        private static void InvokeSetupAction(int num)
+        {
+            if (SetupAction == null)
+                return;
+            SetupAction(num);
+        }
+
+        public static Action<string> StepAction;
+        private static void InvokeStepAction(string tagName)
+        {
+            if (StepAction == null)
+                return;
+            StepAction(tagName);
+        }
+        public static Action FinishAction;
+        private static void InvokeFinishAction()
+        {
+            if (FinishAction == null)
+                return;
+            FinishAction();
+        }
+
         public static FtTransmitterDataset LoadFileset(FtFileset fileset, List<int> tagBlacklist)
         {
             if (tagBlacklist.Contains(fileset.TagId))
@@ -42,22 +65,24 @@ namespace fieldtool.Data.Movebank
             List<FtTransmitterDataset> transmitterDatasets = 
                 new List<FtTransmitterDataset>(filesets.Count);
 
+            InvokeSetupAction(filesets.Count);
 
             foreach (var fileset in filesets)
             {
                 try
                 {
+                    InvokeStepAction(fileset.TagId.ToString());
                     var ftTransmitterDataset = LoadFileset(fileset, tagBlacklist);
-                    if(ftTransmitterDataset != null)
+                    if (ftTransmitterDataset != null)
                         transmitterDatasets.Add(ftTransmitterDataset);
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
-                    
+
 
                 }
-                
             }
+            InvokeFinishAction();
 
             return transmitterDatasets;
         }

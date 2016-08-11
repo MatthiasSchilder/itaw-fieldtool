@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using DotSpatial.Projections;
+using fieldtool.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace fieldtool.Test
@@ -18,6 +21,9 @@ namespace fieldtool.Test
         [TestInitialize]
         public void Init()
         {
+            ProjectionManager.SetSourceProjection(4326);
+            ProjectionManager.SetTargetProjection(31467);
+
             SeriesMissingData = new FtTransmitterGpsDataSeries(TestDataMissingValues);
             SeriesVollstData = new FtTransmitterGpsDataSeries(TestDataVollst);
         }
@@ -114,6 +120,23 @@ namespace fieldtool.Test
             Assert.IsTrue(SeriesVollstData.IsValid());
             Assert.IsFalse(SeriesMissingData.IsValid());
         }
+
+        //[TestMethod]
+        //public void TestPerf()
+        //{
+        //    var gpsDataSeries = new FtTransmitterGpsData(3548, @"C:\Users\Matthias\Downloads\schilder\schilder\software");
+            
+        //    Stopwatch sw = new Stopwatch();
+        //    sw.Start();
+        //    var blub = gpsDataSeries.AsDataTablePoint();
+        //    sw.Stop();
+        //    Debug.WriteLine(blub.Table.Rows.Count);
+
+
+        //    Assert.IsTrue(SeriesVollstData.IsValid());
+        //    Assert.IsFalse(SeriesMissingData.IsValid());
+        //}
+
 
 
     }

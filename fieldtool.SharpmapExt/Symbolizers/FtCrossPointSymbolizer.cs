@@ -12,7 +12,6 @@ namespace fieldtool.SharpmapExt.Symbolizers
         public FtCrossPointSymbolizer(Color visuColor, bool labeled = false) : base(labeled)
         {
             OutlinePen = new Pen(visuColor);
-            Size = new Size(8, 8);
         }
         public override object Clone()
         {
@@ -22,14 +21,12 @@ namespace fieldtool.SharpmapExt.Symbolizers
 
         public override void OnRenderInternal(PointF pt, Graphics g)
         {
-            using (Matrix m = new Matrix())
-            {
-                m.RotateAt(45, pt);
-                g.Transform = m;
-                g.DrawLine(OutlinePen, new PointF(pt.X - Size.Width / 2, pt.Y), new PointF(pt.X + Size.Width / 2, pt.Y));
-                g.DrawLine(OutlinePen, new PointF(pt.X, pt.Y - Size.Height / 2), new PointF(pt.X, pt.Y + Size.Height / 2));
-                g.ResetTransform();
-            }
+            //g.DrawRectangle();
+
+
+            g.DrawLine(OutlinePen, new PointF(pt.X - Size.Width / 2f, pt.Y), new PointF(pt.X + Size.Width / 2f, pt.Y));
+            g.DrawLine(OutlinePen, new PointF(pt.X, pt.Y - Size.Height / 2f), new PointF(pt.X, pt.Y + Size.Height / 2f));
+
 
         }
 

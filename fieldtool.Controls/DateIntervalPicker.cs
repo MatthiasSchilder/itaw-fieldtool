@@ -20,9 +20,15 @@ namespace fieldtool.Controls
             MinIntervalDate = startDate;
             MaxIntervalDate = endDate;
 
+            dateTimePicker1.MinDate = new DateTime(1900, 1, 1);
+            dateTimePicker1.MaxDate = new DateTime(2100, 12, 31);
+
             dateTimePicker1.MinDate = MinIntervalDate;
             dateTimePicker1.MaxDate = MaxIntervalDate;
             dateTimePicker1.Value = MinIntervalDate;
+
+            dateTimePicker2.MinDate = new DateTime(1900, 1, 1);
+            dateTimePicker2.MaxDate = new DateTime(2100, 12, 31);
 
             dateTimePicker2.MinDate = MinIntervalDate;
             dateTimePicker2.MaxDate = MaxIntervalDate;

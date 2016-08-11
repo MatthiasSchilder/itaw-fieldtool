@@ -24,13 +24,9 @@ namespace fieldtool.SharpmapExt.Symbolizers
 
         public override void OnRenderInternal(PointF pt, Graphics g)
         {
-            using (Matrix m = new Matrix())
-            {
-                m.RotateAt(Angle, pt);
-                g.Transform = m;
-                g.DrawRectangle(OutlinePen, pt.X, pt.Y, Size.Width, Size.Height);
-                g.ResetTransform();
-            }
+            var rect = new RectangleF(new PointF(pt.X - Size.Width / 2f, pt.Y - Size.Height / 2f),
+                new SizeF(Size.Width, Size.Height));
+            g.DrawRectangle(OutlinePen, rect.X, rect.Y, rect.Width, rect.Height);
         }
 
         public override Size Size

@@ -1,24 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using GeoAPI.Geometries;
-using System.IO;
-using System.Runtime.Remoting.Messaging;
-using System.Windows.Media.Imaging;
 using fieldtool.Data.Movebank;
 using fieldtool.Presenter;
-using fieldtool.View;
+using GeoAPI.Geometries;
 using SharpMap.Data;
-using SharpMap.Forms;
 
-namespace fieldtool
+namespace fieldtool.View
 {
     public partial class FrmMain : Form, IFtProjectMainView
     {
@@ -26,6 +18,8 @@ namespace fieldtool
 
         private const String WindowTitleNoProject = "itaw Fieldtool v{0}";
         private const String WindowTitleProject = "itaw Fieldtool v{0} - {1}";
+
+        private FrmImportingBusy ProgressWindows;
 
         public FrmMain()
         {
@@ -38,6 +32,7 @@ namespace fieldtool
             mapBox1.MouseMove += MouseMovedOnMap;
             dateIntervalPicker1.IntervalChanged += DateIntervalPicker1_IntervalChanged;
             AddRecentlyUsedProjects();
+            mapBox1.ShowProgressUpdate = true;
         }
 
         private void DateIntervalPicker1_IntervalChanged(object sender, EventArgs e)
@@ -143,6 +138,38 @@ namespace fieldtool
             Presenter.MovebankImported += MovebankImported;
             Presenter.rMapDisplayIntervalChanged += rrMapDisplayIntervalChanged;
             Presenter.MapEnvelopeExportRequested += MapEnvelopeExportRequested;
+            Presenter.SetupProgress += SetupProgress;
+            Presenter.StepProgress += StepProgress;
+            Presenter.FinishProgress += FinishProgress;
+        }
+
+        private void FinishProgress(object sender, EventArgs eventArgs)
+        {
+            ProgressWindows.Close();
+        }
+
+        private void StepProgress(object sender, StepProgressArgs stepProgressArgs)
+        {
+            ProgressWindows.Invoke(new MethodInvoker(() => ProgressWindows.Step((stepProgressArgs.TagName))));
+            //ProgressWindows.Step(stepProgressArgs.TagName);
+            //Debug.WriteLine("stepping");
+        }
+
+        private void SetupProgress(object sender, SetupProgressArgs setupProgressArgs)
+        {
+            ProgressWindows = new FrmImportingBusy(setupProgressArgs.NumTags);
+            ProgressWindows.Location = GetProgressbarLocation(this.Location, this.Size, ProgressWindows.Size);
+            ProgressWindows.StartPosition = FormStartPosition.Manual;
+            ProgressWindows.Show(this);
+        }
+
+        private Point GetProgressbarLocation(Point location, Size mainFormSize, Size importFormSize)
+        {
+            Point mainFormCenterPoint = new Point(location.X + mainFormSize.Width / 2, location.Y + mainFormSize.Height / 2);
+            mainFormCenterPoint.X -= importFormSize.Width/2;
+            mainFormCenterPoint.Y -= importFormSize.Height/2;
+
+            return mainFormCenterPoint;
         }
 
         private void MapEnvelopeExportRequested(object sender, MapEnvelopeExportRequestedArgs args)
@@ -430,6 +457,18 @@ namespace fieldtool
                 handler(this, e);
             }
         }
+
+       
+        public event EventHandler ShowLoggerBinImport;
+        public void InvokeShowLoggerBinImport(EventArgs e)
+        {
+            EventHandler handler = ShowLoggerBinImport;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
         public event EventHandler ShowEinstellungen;
         
 
@@ -505,9 +544,21 @@ namespace fieldtool
         }
 
         public event EventHandler ExportCurrentMapEnvelope;
+        
+
         public void InvokeExportCurrentMapEnvelope(EventArgs e)
         {
             EventHandler handler = ExportCurrentMapEnvelope;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public event EventHandler ExportAsShape;
+        public void InvokeExportAsShape(EventArgs e)
+        {
+            EventHandler handler = ExportAsShape;
             if (handler != null)
             {
                 handler(this, e);
@@ -621,7 +672,6 @@ namespace fieldtool
 
         private void lviDatasets_ItemChecked(object sender, TreeViewEventArgs e)
         {
-            Debug.WriteLine("Entering lvi checked handler" + DateTime.Now);
             InvokeDatasetCheckedChanged(new DatasetCheckedEventArgs((int)e.Node.Tag, e.Node.Checked));
             InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs((int)e.Node.Tag));
             mapBox1.Refresh();
@@ -712,6 +762,16 @@ namespace fieldtool
 
             tagContextMenu.Tag = e.Node.Tag;
             tagContextMenu.Show(e.Location);
+        }
+
+        private void alsShapefilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeExportAsShape(new EventArgs());
+        }
+
+        private void loggerbinalleSetsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeShowLoggerBinImport(new EventArgs());
         }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs

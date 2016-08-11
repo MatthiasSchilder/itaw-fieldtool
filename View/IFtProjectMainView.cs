@@ -17,6 +17,7 @@ namespace fieldtool
 
         event EventHandler ShowProjectProperties;
         event EventHandler<MovebankImportStartArgs> ShowMovebankImport;
+        event EventHandler ShowLoggerBinImport;
         event EventHandler ShowEinstellungen;
         event EventHandler ShowInfo;
 
@@ -30,6 +31,7 @@ namespace fieldtool
         event EventHandler<CurrentDatasetChangedEventArgs> ShowTagConfig;
         event EventHandler ShowTagGraphs;
         event EventHandler ExportCurrentMapEnvelope;
+        event EventHandler ExportAsShape;
 
         event EventHandler<CurrentDatasetChangedEventArgs> CurrentDatasetChanged;
         event SharpMap.Forms.MapBox.MouseEventHandler MouseMovedOnMap;

@@ -30,9 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotSpatial.Projections, Version=1.7.0.0, Culture=neutral, PublicKeyToken=272632bddd08a38b, processorArchitecture=MSIL">
+    <Reference Include="DotSpatial.Projections, Version=0.11.9.6, Culture=neutral, PublicKeyToken=272632bddd08a38b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\dep\SharpMap.Extensions\DotSpatial.Projections.dll</HintPath>
+      <HintPath>..\dep\DotSpatial.Projections.dll</HintPath>
     </Reference>
     <Reference Include="GeoAPI">
       <HintPath>..\dep\SharpMap\GeoAPI.dll</HintPath>

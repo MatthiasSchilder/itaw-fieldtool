@@ -1,6 +1,6 @@
 ﻿using fieldtool.Controls;
 
-namespace fieldtool
+namespace fieldtool.View
 {
     partial class FrmMain
     {
@@ -40,8 +40,10 @@ namespace fieldtool
             this.importToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.movebankLadenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movebankEinzelsetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loggerbinalleSetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.kartenansichtAlsBildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alsShapefilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.schließenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -166,7 +168,8 @@ namespace fieldtool
             // 
             this.importToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.movebankLadenToolStripMenuItem,
-            this.movebankEinzelsetsToolStripMenuItem});
+            this.movebankEinzelsetsToolStripMenuItem,
+            this.loggerbinalleSetsToolStripMenuItem});
             this.importToolStripMenuItem1.Name = "importToolStripMenuItem1";
             this.importToolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
             this.importToolStripMenuItem1.Text = "Import";
@@ -185,10 +188,18 @@ namespace fieldtool
             this.movebankEinzelsetsToolStripMenuItem.Text = "Movebank (Einzelsets)";
             this.movebankEinzelsetsToolStripMenuItem.Click += new System.EventHandler(this.movebankEinzelsetsToolStripMenuItem_Click);
             // 
+            // loggerbinalleSetsToolStripMenuItem
+            // 
+            this.loggerbinalleSetsToolStripMenuItem.Name = "loggerbinalleSetsToolStripMenuItem";
+            this.loggerbinalleSetsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.loggerbinalleSetsToolStripMenuItem.Text = "logger.bin (alle Sets)";
+            this.loggerbinalleSetsToolStripMenuItem.Click += new System.EventHandler(this.loggerbinalleSetsToolStripMenuItem_Click);
+            // 
             // exportToolStripMenuItem1
             // 
             this.exportToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kartenansichtAlsBildToolStripMenuItem});
+            this.kartenansichtAlsBildToolStripMenuItem,
+            this.alsShapefilesToolStripMenuItem});
             this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
             this.exportToolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
             this.exportToolStripMenuItem1.Text = "Export";
@@ -199,6 +210,13 @@ namespace fieldtool
             this.kartenansichtAlsBildToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.kartenansichtAlsBildToolStripMenuItem.Text = "Kartenansicht als Bild";
             this.kartenansichtAlsBildToolStripMenuItem.Click += new System.EventHandler(this.kartenansichtAlsBildToolStripMenuItem_Click_1);
+            // 
+            // alsShapefilesToolStripMenuItem
+            // 
+            this.alsShapefilesToolStripMenuItem.Name = "alsShapefilesToolStripMenuItem";
+            this.alsShapefilesToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.alsShapefilesToolStripMenuItem.Text = "Als Shapefile(s)";
+            this.alsShapefilesToolStripMenuItem.Click += new System.EventHandler(this.alsShapefilesToolStripMenuItem_Click);
             // 
             // speichernToolStripMenuItem
             // 
@@ -611,6 +629,8 @@ namespace fieldtool
         private WorkaroundTreeView treeViewTagList;
         private DateIntervalPicker dateIntervalPicker1;
         private System.Windows.Forms.ToolStripMenuItem aktivitätsverlaufToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alsShapefilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loggerbinalleSetsToolStripMenuItem;
     }
 }
 

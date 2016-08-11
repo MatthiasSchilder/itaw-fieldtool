@@ -70,13 +70,6 @@ namespace fieldtool.SharpmapExt.Symbolizers
             }
         }
 
-        private SizeF GetOffset()
-        {
-            Size size = this.Size;
-            SizeF result = new SizeF(this.Offset.X - this.Scale * ((float)size.Width * 0.5f), this.Offset.Y - this.Scale * ((float)size.Height * 0.5f));
-            return result;
-        }
-
         /// <summary>
         /// Function to render the symbol
         /// </summary>
@@ -90,7 +83,6 @@ namespace fieldtool.SharpmapExt.Symbolizers
                 return;
             }
             PointF pp = Transform.WorldtoMap(point, map);
-            pp = PointF.Add(pp, this.GetOffset());
             if (this.Rotation != 0f && !float.IsNaN(this.Rotation))
             {
                 Matrix startingTransform = g.Transform.Clone();
