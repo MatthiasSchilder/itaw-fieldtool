@@ -1,15 +1,14 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using fieldtool.SharpmapExt;
+using GeoAPI.Geometries;
 using SharpMap.Data.Providers;
 
-namespace fieldtool
+namespace fieldtool.Data.Movebank
 {
     public class FtTransmitterGpsData : FtTransmitterData, IEnumerable<FtTransmitterGpsDataSeries>
     {
@@ -72,6 +71,46 @@ namespace fieldtool
             }
 
             return new DataTablePoint(dataProvider, "id", "x", "y");
+        }
+
+        public DataTableLine AsDataTableLine()
+        {
+            var dataProvider = new DataTable();
+
+            dataProvider.Columns.Add("id", typeof(uint));
+            dataProvider.Columns.Add("startx", typeof(double));
+            dataProvider.Columns.Add("starty", typeof(double));
+            dataProvider.Columns.Add("endx", typeof(double));
+            dataProvider.Columns.Add("endy", typeof(double));
+
+            var list = this.ToArray();
+            for (int i = 1; i < list.Length; i++)
+            {
+                if (!list[i].IsValid() || !list[i - 1].IsValid())
+                    continue;
+
+                dataProvider.Rows.Add(i - 1, list[i - 1].Rechtswert, list[i - 1].Hochwert, list[i].Rechtswert, list[i].Hochwert);
+            }
+
+            return new DataTableLine(dataProvider, "id", "startx", "starty", "endx", "endy");
+        }
+
+        public Envelope GetEnvelope()
+        {
+            double xmin = double.MaxValue, xmax = double.MinValue;
+            double ymin = double.MaxValue, ymax = double.MinValue;
+
+            foreach (var gpsPoint in this)
+            {
+                if(!gpsPoint.IsValid())
+                    continue;
+               
+                xmin = Math.Min(xmin, gpsPoint.Rechtswert.Value);
+                xmax = Math.Max(xmax, gpsPoint.Rechtswert.Value);
+                ymin = Math.Min(ymin, gpsPoint.Hochwert.Value);
+                ymax = Math.Max(ymax, gpsPoint.Hochwert.Value);
+            }
+            return new Envelope(xmin, xmax, ymin, ymax);
         }
 
         public DateTime? DateTimestart;

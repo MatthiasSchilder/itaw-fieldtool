@@ -17,7 +17,6 @@ using fieldtool.Data;
 using fieldtool.Data.Movebank;
 using fieldtool.Decorations;
 using fieldtool.SharpmapExt.Symbolizers;
-using fieldtool.SharpmapExt.Themes;
 using GeoAPI.Geometries;
 using SharpMap.Data;
 using SharpMap.Data.Providers;
@@ -63,46 +62,41 @@ namespace fieldtool
                 if (!dataset.Active)
                     continue;
 
-                var dtPoint = dataset.GPSData.AsDataTablePoint();
-
-                //var symbolizerLayer = new VectorLayer(dataset.TagId.ToString(), dtPoint);
-                var symbolizerLayer = new VectorLayer(dataset.TagId.ToString(),dataset.GPSData.AsDataTablePoint() /*dataset.GPSData.AsDataTableLine()*/);
-
-                symbolizerLayer.SmoothingMode = SmoothingMode.HighSpeed;
-
+                VectorLayer symbolizerLayer;
+                IProvider dataSource;
                 var symbolizer = dataset.Visulization.Symbolizer;
-                symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
-
-                symbolizerLayer.Symbolizer = symbolizer;
-
+                
                 if (symbolizer is IPointSymbolizer)
                 {
+                    dataSource = dataset.GPSData.AsDataTablePoint();
+                    symbolizerLayer = new VectorLayer(dataset.TagId.ToString(), dataSource);
+
                     symbolizerLayer.Style.PointSymbolizer = (IPointSymbolizer)symbolizer;
-                    //if (symbolizer is FtCrossPointSymbolizer)
-                    //symbolizerLayer.Theme = new VectorThemeSymbolizer(symbolizer);
-                    //symbolizerLayer.Style.LineSymbolizer = new BasicLineSymbolizer();
+
                 }
-                    
                 else
                 {
-                    symbolizerLayer.Style.LineSymbolizer = null;
-                    //symbolizerLayer.Theme = new CustomTheme(GetStyle); 
+                    dataSource = dataset.GPSData.AsDataTableLine();
+                    symbolizerLayer = new VectorLayer(dataset.TagId.ToString(), dataSource);
+                    symbolizerLayer.Style.LineSymbolizer = new BasicLineSymbolizer();
                 }
-                
+
+                symbolizerLayer.SmoothingMode = SmoothingMode.HighSpeed;
+                symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
+
                 LabelLayer labelLayer = null;
-                if (symbolizer is FtBasePointSymbolizer && (symbolizer as FtBasePointSymbolizer).Labeled)
+                // erstmal nur für Pointsymbolizer
+                if ((symbolizer is FtBasePointSymbolizer && (symbolizer as FtBasePointSymbolizer).Labeled) || symbolizer is BasicLineSymbolizer)
                 {
                     labelLayer = new LabelLayer($"Label{dataset.TagId}")
                     {
-                        DataSource = dtPoint,
+                        DataSource = dataset.GPSData.AsDataTablePoint(),
                         LabelColumn = "num",
                         LabelPositionDelegate = LabelPositionDelegate, 
                         SmoothingMode = SmoothingMode.HighSpeed,
                         Style = { Font = MapFont, VerticalAlignment = LabelStyle.VerticalAlignmentEnum.Top, HorizontalAlignment = LabelStyle.HorizontalAlignmentEnum.Left, CollisionDetection = false, ForeColor = dataset.Visulization.VisulizationColor}
                         
                     };
-                    //symbolizerLayer.Style.LabelLayer = labelLayer;
-					symbolizerLayer.LabelLayer = labelLayer;
                 }
                 if (labelLayer != null)
                 {

@@ -80,6 +80,7 @@ namespace fieldtool.View
             this.tagContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.konfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomAufTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListColorKeys = new System.Windows.Forms.ImageList(this.components);
             this.mapZoomToolStrip1 = new SharpMap.Forms.ToolBar.MapZoomToolStrip(this.components);
             this.menuStrip1.SuspendLayout();
@@ -112,6 +113,7 @@ namespace fieldtool.View
             this.mapBox1.TabIndex = 0;
             this.mapBox1.Text = "mapBox1";
             this.mapBox1.WheelZoomMagnitude = -2D;
+            this.mapBox1.MouseDown += new SharpMap.Forms.MapBox.MouseEventHandler(this.mapBox1_MouseDown);
             this.mapBox1.MouseUp += new SharpMap.Forms.MapBox.MouseEventHandler(this.mapBox1_MouseUp);
             this.mapBox1.MouseDrag += new SharpMap.Forms.MapBox.MouseEventHandler(this.mapBox1_MouseDrag);
             // 
@@ -514,23 +516,31 @@ namespace fieldtool.View
             // 
             this.tagContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.konfigurationToolStripMenuItem,
-            this.tabelleToolStripMenuItem});
+            this.tabelleToolStripMenuItem,
+            this.zoomAufTagToolStripMenuItem});
             this.tagContextMenu.Name = "contextMenuStrip1";
-            this.tagContextMenu.Size = new System.Drawing.Size(148, 48);
+            this.tagContextMenu.Size = new System.Drawing.Size(150, 70);
             // 
             // konfigurationToolStripMenuItem
             // 
             this.konfigurationToolStripMenuItem.Name = "konfigurationToolStripMenuItem";
-            this.konfigurationToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.konfigurationToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.konfigurationToolStripMenuItem.Text = "Konfiguration";
             this.konfigurationToolStripMenuItem.Click += new System.EventHandler(this.konfigurationToolStripMenuItem_Click);
             // 
             // tabelleToolStripMenuItem
             // 
             this.tabelleToolStripMenuItem.Name = "tabelleToolStripMenuItem";
-            this.tabelleToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.tabelleToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.tabelleToolStripMenuItem.Text = "Tabelle";
             this.tabelleToolStripMenuItem.Click += new System.EventHandler(this.tabelleToolStripMenuItem_Click);
+            // 
+            // zoomAufTagToolStripMenuItem
+            // 
+            this.zoomAufTagToolStripMenuItem.Name = "zoomAufTagToolStripMenuItem";
+            this.zoomAufTagToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.zoomAufTagToolStripMenuItem.Text = "Zoom auf Tag";
+            this.zoomAufTagToolStripMenuItem.Click += new System.EventHandler(this.zoomAufTagToolStripMenuItem_Click);
             // 
             // imageListColorKeys
             // 
@@ -631,6 +641,7 @@ namespace fieldtool.View
         private System.Windows.Forms.ToolStripMenuItem aktivitätsverlaufToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alsShapefilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loggerbinalleSetsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zoomAufTagToolStripMenuItem;
     }
 }
 

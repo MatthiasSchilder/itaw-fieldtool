@@ -81,8 +81,8 @@ namespace fieldtool.View
             cmboVisualizer.Items.Add(item);
 
             item = new ComboBoxItem();
-            item.Content = "Pfeile";
-            item.Tag = typeof(FtArrowPointSymbolizer);
+            item.Content = "Linien";
+            item.Tag = typeof(BasicLineSymbolizer);
             cmboVisualizer.Items.Add(item);
 
             cmboVisualizer.DisplayMember = "Content";
@@ -100,7 +100,11 @@ namespace fieldtool.View
         private void FrmTagConfig_FormClosing(object sender, FormClosingEventArgs e)
         {
             _dataset.Visulization.VisulizationColor = NewColor;
-            _dataset.Visulization.Symbolizer = (ISymbolizer<IPuntal>)Activator.CreateInstance(NewSymbolizerType, NewColor, NewLabelState);
+
+            if (NewSymbolizerType == typeof (BasicLineSymbolizer))
+                _dataset.Visulization.Symbolizer = (ISymbolizer)Activator.CreateInstance(NewSymbolizerType);
+            else
+                _dataset.Visulization.Symbolizer = (ISymbolizer)Activator.CreateInstance(NewSymbolizerType, NewColor, NewLabelState);
         }
 
         private void chkLabeled_CheckedChanged(object sender, EventArgs e)

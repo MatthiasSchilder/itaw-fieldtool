@@ -29,6 +29,7 @@ namespace fieldtool
         event EventHandler ShowActivityDiagram;
         event EventHandler ShowActivityVerlauf;
         event EventHandler<CurrentDatasetChangedEventArgs> ShowTagConfig;
+        event EventHandler<CurrentDatasetChangedEventArgs> ZoomToTag;
         event EventHandler ShowTagGraphs;
         event EventHandler ExportCurrentMapEnvelope;
         event EventHandler ExportAsShape;

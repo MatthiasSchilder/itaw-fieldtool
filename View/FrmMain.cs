@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -9,6 +10,7 @@ using fieldtool.Data.Movebank;
 using fieldtool.Presenter;
 using GeoAPI.Geometries;
 using SharpMap.Data;
+using SharpMap.Forms;
 
 namespace fieldtool.View
 {
@@ -30,8 +32,13 @@ namespace fieldtool.View
             SetWindowTitle(false, null);
 
             mapBox1.MouseMove += MouseMovedOnMap;
+            mapBox1.MapChanging += MapBox1OnMapChanging;
             dateIntervalPicker1.IntervalChanged += DateIntervalPicker1_IntervalChanged;
             AddRecentlyUsedProjects();
+        }
+
+        private void MapBox1OnMapChanging(object sender, CancelEventArgs cancelEventArgs)
+        {
             mapBox1.ShowProgressUpdate = true;
         }
 
@@ -141,6 +148,13 @@ namespace fieldtool.View
             Presenter.SetupProgress += SetupProgress;
             Presenter.StepProgress += StepProgress;
             Presenter.FinishProgress += FinishProgress;
+            Presenter.MapZoomToEnvelopeRequested += MapZoomToEnvelopeRequested;
+        }
+
+        private void MapZoomToEnvelopeRequested(object sender, MapZoomToEnvelopeArgs mapZoomToEnvelopeArgs)
+        {
+            mapBox1.Map.ZoomToBox(mapZoomToEnvelopeArgs.Env);
+            mapBox1.Refresh();
         }
 
         private void FinishProgress(object sender, EventArgs eventArgs)
@@ -700,8 +714,28 @@ namespace fieldtool.View
 
         }
 
+        private void ToggleMouseWheelPan()
+        {
+            if (this.mapBox1.ActiveTool == MapBox.Tools.Pan)
+                this.mapBox1.ActiveTool = MapBox.Tools.None;
+            else
+            {
+                this.mapBox1.ActiveTool = MapBox.Tools.Pan;
+                this.mapBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            }
+        }
+
         private void mapBox1_MouseUp(Coordinate worldPos, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Middle)
+            {
+                ToggleMouseWheelPan();
+                return;
+            }
+
+            if (!Control.ModifierKeys.HasFlag(Keys.Control))
+                return;
+
             var p = mapBox1.Map.ImageToWorld(e.Location);
             FeatureDataSet ds = new FeatureDataSet();
             
@@ -772,6 +806,32 @@ namespace fieldtool.View
         private void loggerbinalleSetsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InvokeShowLoggerBinImport(new EventArgs());
+        }
+
+        private void mapBox1_MouseDown(Coordinate worldPos, MouseEventArgs eventArgs)
+        {
+            if (eventArgs.Button == MouseButtons.Middle)
+            {
+                ToggleMouseWheelPan();
+            }
+        }
+
+        private void zoomAufTagToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripItem menuItem = sender as ToolStripItem;
+            var parent = menuItem.GetCurrentParent();
+            var args = new CurrentDatasetChangedEventArgs((int)parent.Tag);
+            InvokeZoomToTag(args);
+        }
+
+        public event EventHandler<CurrentDatasetChangedEventArgs> ZoomToTag;
+        private void InvokeZoomToTag(CurrentDatasetChangedEventArgs eventArgs)
+        {
+            EventHandler<CurrentDatasetChangedEventArgs> handler = ZoomToTag;
+            if (handler != null)
+            {
+                handler(this, eventArgs);
+            }
         }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs

@@ -93,8 +93,8 @@ namespace fieldtool
                     result.Add(burst);
                 }            
             }
-            if(!result.Any())
-                Debug.WriteLine($"Timeslot starting at {timeSlot.StartsAt} no value found");
+            //if(!result.Any())
+            //    Debug.WriteLine($"Timeslot starting at {timeSlot.StartsAt} no value found");
             return result;
         }
     }

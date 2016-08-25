@@ -53,6 +53,9 @@ namespace fieldtool.View
             }
 
             Export();
+
+            MessageBox.Show("Export wurde abgeschlossen.");
+            this.Close();
         }
 
         private void Export()
@@ -124,7 +127,8 @@ namespace fieldtool.View
             feature.DataRow.BeginEdit();
             feature.DataRow["TagID"] = tagID;
             feature.DataRow["Timestamp"] = gpsPoint.StartTimestamp;
-            feature.DataRow["TimestampOfFix"] = gpsPoint.TimestampOfFix;
+            if (gpsPoint.TimestampOfFix.HasValue)
+                feature.DataRow["TimestampOfFix"] = gpsPoint.TimestampOfFix;
             feature.DataRow["UsedTimeToGetFix"] = gpsPoint.UsedTimeToGetFix;
             if(gpsPoint.HeightAboveEllipsoid.HasValue)
                 feature.DataRow["HeightAboveEllipsoid"] = gpsPoint.HeightAboveEllipsoid.Value;

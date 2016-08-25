@@ -17,6 +17,7 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using SharpmapGDAL;
 using SharpMap.Layers;
 using Coordinate = GeoAPI.Geometries.Coordinate;
+using Envelope = GeoAPI.Geometries.Envelope;
 
 namespace fieldtool.Presenter
 {
@@ -92,8 +93,27 @@ namespace fieldtool.Presenter
         }
     }
 
+    class MapZoomToEnvelopeArgs : EventArgs
+    {
+        public Envelope Env { get; private set; }
+        public MapZoomToEnvelopeArgs(Envelope env)
+        {
+            Env = env;
+        }
+    }
+
     class FtProjectMainPresenter : Presenter<IFtProjectMainView>
     {
+        public EventHandler<MapZoomToEnvelopeArgs> MapZoomToEnvelopeRequested;
+        public void InvokeMapZoomToEnvelopeRequested(MapZoomToEnvelopeArgs e)
+        {
+            var handler = MapZoomToEnvelopeRequested;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
         public EventHandler<MapDisplayIntervalChangedEventArgs> rMapDisplayIntervalChanged;
         public void InvokeMapDisplayIntervalChanged(MapDisplayIntervalChangedEventArgs e)
         {
@@ -236,6 +256,7 @@ namespace fieldtool.Presenter
             View.ShowActivityDiagram += View_ShowActivityDiagram;
             View.ShowActivityVerlauf += View_ShowActivityVerlauf;
             View.ShowTagConfig += ViewOnShowTagConfig;
+            View.ZoomToTag += ViewOnZoomToTag;
             View.ShowTagGraphs += View_ShowTagGraphs;
             View.DatasetCheckedChanged += View_DatasetCheckedChanged;
             View.MapDisplayIntervalChanged += View_MapDisplayIntervalChanged;
@@ -293,7 +314,8 @@ namespace fieldtool.Presenter
         private void ViewOnExportAsShape(object sender, EventArgs eventArgs)
         {
             FrmExportShape frm = new FrmExportShape(Project);
-            frm.ShowDialog();
+
+            FtFormFactory.ShowDialog(frm);
         }
 
         private void ViewOnShowTagConfig(object sender, CurrentDatasetChangedEventArgs eventArgs)
@@ -306,6 +328,17 @@ namespace fieldtool.Presenter
             frm.ShowDialog();
 
             InvokeMovebankImported(new MovebankImportedArgs(Project.Datasets));
+        }
+
+
+        private void ViewOnZoomToTag(object sender, CurrentDatasetChangedEventArgs currentDatasetChangedEventArgs)
+        {
+            var dataset = Project.Datasets.FirstOrDefault(ds => ds.TagId == currentDatasetChangedEventArgs.CurrentTagId);
+            if (dataset == null)
+                return;
+
+            var envelope = dataset.GPSData.GetEnvelope();
+            InvokeMapZoomToEnvelopeRequested(new MapZoomToEnvelopeArgs(envelope));
         }
 
         private void View_ShowActivityVerlauf(object sender, EventArgs e)
@@ -321,8 +354,6 @@ namespace fieldtool.Presenter
         {
             var activeTags = Project.Datasets.Where(dataset => dataset.Active).ToList();
             InvokeMapEnvelopeExportRequested(new MapEnvelopeExportRequestedArgs(activeTags));
-
-            
         }
 
         private void View_MapDisplayIntervalChanged(object sender, MapDisplayIntervalChangedEventArgs e)
