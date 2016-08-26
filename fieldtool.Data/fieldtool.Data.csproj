@@ -67,8 +67,9 @@
     <Compile Include="Movebank\FTTransmitterData.cs" />
     <Compile Include="Movebank\FTTransmitterDataset.cs" />
     <Compile Include="Movebank\FtTransmitterDatasetFactory.cs" />
-    <Compile Include="Movebank\FTTransmitterGPSDataSeries.cs" />
+    <Compile Include="Movebank\FtTransmitterGpsDataEntry.cs" />
     <Compile Include="Movebank\FTTransmitterGPSData.cs" />
+    <Compile Include="Movebank\FtTransmitterGPSDataSeries.cs" />
     <Compile Include="Movebank\FTTransmitterTagInfoData.cs" />
     <Compile Include="ProjectionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

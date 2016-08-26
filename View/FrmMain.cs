@@ -239,12 +239,8 @@ namespace fieldtool.View
 
         private String CreateTreeViewNodeDescriptor(FtTransmitterDataset dataset)
         {
-            string fmt = "{0} (DL: {1})";
-            if (dataset.TagInfoData.LastDownloadTimeAvailable)
-            {
-                return String.Format(fmt, dataset.TagId, dataset.TagInfoData.LastDownload.Value.ToShortDateString());
-            }
-            return String.Format(fmt, dataset.TagId, "unbekannt");
+            string fmt = "{0} ({1})";
+            return String.Format(fmt, dataset.TagId, dataset.GPSData.GpsSeries.GetLatestGpsDataEntry().StartTimestamp);
         }
 
         private void PopulateImageList(List<FtTransmitterDataset> datasets)

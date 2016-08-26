@@ -42,18 +42,18 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.CustomFormat = " dd.MM.yy";
+            this.dateTimePicker2.CustomFormat = " dd.MM.yy HH:mm";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(181, 0);
+            this.dateTimePicker2.Location = new System.Drawing.Point(214, 0);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(88, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(119, 20);
             this.dateTimePicker2.TabIndex = 13;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(143, 3);
+            this.label2.Location = new System.Drawing.Point(174, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 12;
@@ -70,18 +70,18 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = " dd.MM.yy";
+            this.dateTimePicker1.CustomFormat = " dd.MM.yy HH:mm";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(49, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(88, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(119, 20);
             this.dateTimePicker1.TabIndex = 10;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // btn7d
             // 
             this.btn7d.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn7d.Location = new System.Drawing.Point(275, 0);
+            this.btn7d.Location = new System.Drawing.Point(339, 0);
             this.btn7d.Name = "btn7d";
             this.btn7d.Size = new System.Drawing.Size(35, 21);
             this.btn7d.TabIndex = 14;
@@ -93,7 +93,7 @@
             // btn14d
             // 
             this.btn14d.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn14d.Location = new System.Drawing.Point(316, 0);
+            this.btn14d.Location = new System.Drawing.Point(380, 0);
             this.btn14d.Name = "btn14d";
             this.btn14d.Size = new System.Drawing.Size(35, 21);
             this.btn14d.TabIndex = 15;
@@ -105,7 +105,7 @@
             // btn30d
             // 
             this.btn30d.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn30d.Location = new System.Drawing.Point(357, 0);
+            this.btn30d.Location = new System.Drawing.Point(421, 0);
             this.btn30d.Name = "btn30d";
             this.btn30d.Size = new System.Drawing.Size(35, 21);
             this.btn30d.TabIndex = 16;
@@ -117,7 +117,7 @@
             // btnWholeRange
             // 
             this.btnWholeRange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWholeRange.Location = new System.Drawing.Point(398, 0);
+            this.btnWholeRange.Location = new System.Drawing.Point(462, 0);
             this.btnWholeRange.Name = "btnWholeRange";
             this.btnWholeRange.Size = new System.Drawing.Size(35, 21);
             this.btnWholeRange.TabIndex = 17;
@@ -140,7 +140,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "DateIntervalPicker";
-            this.Size = new System.Drawing.Size(439, 21);
+            this.Size = new System.Drawing.Size(506, 21);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -71,8 +71,8 @@ namespace fieldtool.Decorations
             foreach (var dataset in Datasets)
             {
                 string str = "vollst. Zeitraum";
-                if (dataset.GPSData.DateTimestart.HasValue && dataset.GPSData.DateTimestop.HasValue)
-                    str = dataset.GPSData.DateTimestart.Value.ToShortDateString() + " - " + dataset.GPSData.DateTimestop.Value.ToShortDateString();
+                if (dataset.GPSData.DateTimeFilterStart.HasValue && dataset.GPSData.DateTimeFilterStop.HasValue)
+                    str = dataset.GPSData.DateTimeFilterStart.Value.ToShortDateString() + " - " + dataset.GPSData.DateTimeFilterStop.Value.ToShortDateString();
                 SizeF s = g.MeasureString(String.Format(FormatString, dataset.TagId, str/*dataset.GPSData.GpsSeries[0].StartTimestamp*/), this.Font);
                 cumulHeight += s.Height;
                 maxWidth = Math.Max(s.Width, maxWidth);
@@ -99,8 +99,8 @@ namespace fieldtool.Decorations
         {
             var spacingOffs = rowHeight*0.15;
             string str = "vollst. Zeitraum";
-            if (dataset.GPSData.DateTimestart.HasValue && dataset.GPSData.DateTimestop.HasValue)
-                str = dataset.GPSData.DateTimestart.Value.ToShortDateString() + " - " + dataset.GPSData.DateTimestop.Value.ToShortDateString();
+            if (dataset.GPSData.DateTimeFilterStart.HasValue && dataset.GPSData.DateTimeFilterStop.HasValue)
+                str = dataset.GPSData.DateTimeFilterStart.Value.ToShortDateString() + " - " + dataset.GPSData.DateTimeFilterStop.Value.ToShortDateString();
             //g.DrawRectangle(new Pen(dataset.VisulizationColor), x, (float) (y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
             g.FillRectangle(new SolidBrush(dataset.Visulization.VisulizationColor), x, (float)(y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
             g.DrawString(String.Format(FormatString, dataset.TagId, str), Font, ForeGroundBrush, x + colorFieldOffs, y);

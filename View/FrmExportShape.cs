@@ -115,7 +115,7 @@ namespace fieldtool.View
             }
         }
 
-        private void GpsDataPointToFeatureRow(int tagID, FeatureSet fs, FtTransmitterGpsDataSeries gpsPoint)
+        private void GpsDataPointToFeatureRow(int tagID, FeatureSet fs, FtTransmitterGpsDataEntry gpsPoint)
         {
             DotSpatial.Topology.Point point = null;
             if (!gpsPoint.Rechtswert.HasValue || !gpsPoint.Hochwert.HasValue)

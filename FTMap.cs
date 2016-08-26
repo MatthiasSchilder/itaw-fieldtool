@@ -121,7 +121,7 @@ namespace fieldtool
             return new Coordinate(this.ImageToWorld(lblScreenCoord));
         }
 
-        private IEnumerable<IPoint> GpsDataToCoordinates(IEnumerable<FtTransmitterGpsDataSeries> gpsSeries)
+        private IEnumerable<IPoint> GpsDataToCoordinates(IEnumerable<FtTransmitterGpsDataEntry> gpsSeries)
         {
             foreach (var gps in gpsSeries)
             {

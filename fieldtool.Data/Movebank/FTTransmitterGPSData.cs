@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using fieldtool.SharpmapExt;
@@ -10,11 +11,13 @@ using SharpMap.Data.Providers;
 
 namespace fieldtool.Data.Movebank
 {
-    public class FtTransmitterGpsData : FtTransmitterData, IEnumerable<FtTransmitterGpsDataSeries>
+    public class FtTransmitterGpsData : FtTransmitterData, IEnumerable<FtTransmitterGpsDataEntry>
     {
         private int _tagID;
-        public List<FtTransmitterGpsDataSeries> GpsSeries = new
-            List<FtTransmitterGpsDataSeries>();
+        public FtTransmitterGPSDataSeries GpsSeries = new
+            FtTransmitterGPSDataSeries();
+
+        public int InvalidCount { get; private set; }
 
         public FtTransmitterGpsData(int tagID, string filePath)
         {
@@ -26,21 +29,24 @@ namespace fieldtool.Data.Movebank
             {
                 try
                 {
-                    GpsSeries.Add(new FtTransmitterGpsDataSeries(line));
+                    var entry = new FtTransmitterGpsDataEntry(line);
+                    GpsSeries.Add(entry);
+                    if (!entry.IsValid())
+                        InvalidCount++;
                 }
                 catch (Exception ex)
                 {
 
                 }
-
             }
         }
 
-        public IEnumerator<FtTransmitterGpsDataSeries> GetEnumerator()
+        public IEnumerator<FtTransmitterGpsDataEntry> GetEnumerator()
         {
-            if (DateTimestop.HasValue && DateTimestart.HasValue)
+            if (DateTimeFilterStop.HasValue && DateTimeFilterStart.HasValue)
             {
-                return GpsSeries.Where(gps => gps.StartTimestamp >= DateTimestart && gps.StartTimestamp <= DateTimestop)
+                Debug.WriteLine(String.Format("In GetEnumerator: FilterStart: {0} FilterStop {1}", DateTimeFilterStart, DateTimeFilterStop));
+                return GpsSeries.Where(gps => gps.StartTimestamp >= DateTimeFilterStart && gps.StartTimestamp <= DateTimeFilterStop)
                     .GetEnumerator();
             }
             return GpsSeries.GetEnumerator();
@@ -66,6 +72,9 @@ namespace fieldtool.Data.Movebank
             int gesCount = this.Count();
             foreach (var gpsPoint in this)
             {
+                if (!gpsPoint.IsValid())
+                    continue;
+
                 dataProvider.Rows.Add(i, _tagID , gesCount - i, gpsPoint.Rechtswert, gpsPoint.Hochwert, gpsPoint.StartTimestamp);
                 i++;
             }
@@ -113,12 +122,12 @@ namespace fieldtool.Data.Movebank
             return new Envelope(xmin, xmax, ymin, ymax);
         }
 
-        public DateTime? DateTimestart;
-        public DateTime? DateTimestop;
+        public DateTime? DateTimeFilterStart;
+        public DateTime? DateTimeFilterStop;
         public void SetIntervalFilter(DateTime start, DateTime stop)
         {
-            DateTimestart = start;
-            DateTimestop = stop;
+            DateTimeFilterStart = start;
+            DateTimeFilterStop = stop;
         }
     }
 }

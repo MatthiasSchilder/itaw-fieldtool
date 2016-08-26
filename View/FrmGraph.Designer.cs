@@ -39,7 +39,7 @@ namespace fieldtool.View
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
-            this.dateIntervalPicker1 = new DateIntervalPicker();
+            this.dateIntervalPicker1 = new fieldtool.Controls.DateIntervalPicker();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +54,7 @@ namespace fieldtool.View
             series1.ChartArea = "ChartArea1";
             series1.Name = "Series1";
             this.chart2.Series.Add(series1);
-            this.chart2.Size = new System.Drawing.Size(734, 422);
+            this.chart2.Size = new System.Drawing.Size(821, 422);
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
             title1.Name = "#";
@@ -80,14 +80,14 @@ namespace fieldtool.View
             this.panel1.Controls.Add(this.chart2);
             this.panel1.Location = new System.Drawing.Point(12, 39);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(736, 424);
+            this.panel1.Size = new System.Drawing.Size(823, 424);
             this.panel1.TabIndex = 3;
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(673, 469);
+            this.btnCancel.Location = new System.Drawing.Point(760, 469);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
@@ -98,7 +98,7 @@ namespace fieldtool.View
             // btnCopy
             // 
             this.btnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopy.Location = new System.Drawing.Point(592, 469);
+            this.btnCopy.Location = new System.Drawing.Point(679, 469);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(75, 23);
             this.btnCopy.TabIndex = 5;
@@ -111,7 +111,7 @@ namespace fieldtool.View
             this.dateIntervalPicker1.Location = new System.Drawing.Point(315, 12);
             this.dateIntervalPicker1.Margin = new System.Windows.Forms.Padding(0);
             this.dateIntervalPicker1.Name = "dateIntervalPicker1";
-            this.dateIntervalPicker1.Size = new System.Drawing.Size(447, 21);
+            this.dateIntervalPicker1.Size = new System.Drawing.Size(519, 21);
             this.dateIntervalPicker1.TabIndex = 6;
             this.dateIntervalPicker1.IntervalChanged += new System.EventHandler(this.dateIntervalPicker1_IntervalChanged);
             // 
@@ -120,7 +120,7 @@ namespace fieldtool.View
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(759, 503);
+            this.ClientSize = new System.Drawing.Size(846, 503);
             this.Controls.Add(this.dateIntervalPicker1);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.btnCancel);

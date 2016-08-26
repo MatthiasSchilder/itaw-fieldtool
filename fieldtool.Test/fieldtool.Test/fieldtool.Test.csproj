@@ -39,7 +39,23 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\dep\DotSpatial.Projections.dll</HintPath>
     </Reference>
+    <Reference Include="GeoAPI, Version=1.7.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\dep\SharpMap\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SharpMap, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\dep\SharpMap\SharpMap.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpMap.Extensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\dep\SharpMap.Extensions\SharpMap.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -54,10 +70,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FtMapTest.cs" />
     <Compile Include="FtTransmitterAccelDataTest.cs" />
     <Compile Include="FtTimeSpanTest.cs" />
     <Compile Include="DateTimeExtTest.cs" />
     <Compile Include="AccelBurstActivityCalcTest.cs" />
+    <Compile Include="FtTransmitterGpsDataTest.cs" />
     <Compile Include="FtTransmitterGpsDataSeriesTest.cs" />
     <Compile Include="FtTransmitterAccelDataSeriesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +88,10 @@
     <ProjectReference Include="..\..\fieldtool.Data\fieldtool.Data.csproj">
       <Project>{61fcef23-c5e8-4e24-9002-63d87bfdacdd}</Project>
       <Name>fieldtool.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\fieldtool.SharpmapExt\fieldtool.SharpmapExt.csproj">
+      <Project>{138F4921-E05E-4161-89F7-08F23B73A836}</Project>
+      <Name>fieldtool.SharpmapExt</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
