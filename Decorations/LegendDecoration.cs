@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,10 +71,9 @@ namespace fieldtool.Decorations
 
             foreach (var dataset in Datasets)
             {
-                string str = "vollst. Zeitraum";
-                if (dataset.GPSData.DateTimeFilterStart.HasValue && dataset.GPSData.DateTimeFilterStop.HasValue)
-                    str = dataset.GPSData.DateTimeFilterStart.Value.ToShortDateString() + " - " + dataset.GPSData.DateTimeFilterStop.Value.ToShortDateString();
-                SizeF s = g.MeasureString(String.Format(FormatString, dataset.TagId, str/*dataset.GPSData.GpsSeries[0].StartTimestamp*/), this.Font);
+                string str = CreateLegendString(dataset);
+
+                SizeF s = g.MeasureString(String.Format(FormatString, dataset.TagId, str), this.Font);
                 cumulHeight += s.Height;
                 maxWidth = Math.Max(s.Width, maxWidth);
             }
@@ -81,6 +81,25 @@ namespace fieldtool.Decorations
             maxWidth += colorFieldOffs;
             
             return new Size((int)System.Math.Ceiling(maxWidth), (int)System.Math.Ceiling(cumulHeight));
+        }
+
+        private string CreateLegendString(FtTransmitterDataset dataset)
+        {
+            DateTime start, end;
+            const string format = "g";
+
+            if (dataset.GPSData.DateTimeFilterStart.HasValue && dataset.GPSData.DateTimeFilterStop.HasValue)
+            {
+                start = dataset.GPSData.DateTimeFilterStart.Value;
+                end = dataset.GPSData.DateTimeFilterStop.Value;
+            }
+            else
+            {
+                start = dataset.GPSData.GpsSeries.GetFirstGpsDataEntry().StartTimestamp;
+                end = dataset.GPSData.GpsSeries.GetLatestGpsDataEntry().StartTimestamp;
+            }
+
+            return String.Format("{0} - {1}", start.ToString(format), end.ToString(format));
         }
 
         protected override void OnRender(Graphics g, Map map)
@@ -98,9 +117,8 @@ namespace fieldtool.Decorations
         private void CreateLegendRow(FtTransmitterDataset dataset, Graphics g, float x, float y, float rowHeight)
         {
             var spacingOffs = rowHeight*0.15;
-            string str = "vollst. Zeitraum";
-            if (dataset.GPSData.DateTimeFilterStart.HasValue && dataset.GPSData.DateTimeFilterStop.HasValue)
-                str = dataset.GPSData.DateTimeFilterStart.Value.ToShortDateString() + " - " + dataset.GPSData.DateTimeFilterStop.Value.ToShortDateString();
+            string str = CreateLegendString(dataset);
+            
             //g.DrawRectangle(new Pen(dataset.VisulizationColor), x, (float) (y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
             g.FillRectangle(new SolidBrush(dataset.Visulization.VisulizationColor), x, (float)(y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
             g.DrawString(String.Format(FormatString, dataset.TagId, str), Font, ForeGroundBrush, x + colorFieldOffs, y);

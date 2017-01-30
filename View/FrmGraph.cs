@@ -98,7 +98,7 @@ namespace fieldtool.View
                 YValueType = ChartValueType.Int32
             };
 
-            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartDate && dp.StartTimestamp <= dateIntervalPicker1.EndDate))
+            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartTimpestamp && dp.StartTimestamp <= dateIntervalPicker1.EndTimestamp))
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.UsedTimeToGetFix);
             }
@@ -142,7 +142,7 @@ namespace fieldtool.View
 
 
 
-            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartDate && dp.StartTimestamp <= dateIntervalPicker1.EndDate))
+            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartTimpestamp && dp.StartTimestamp <= dateIntervalPicker1.EndTimestamp))
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.BatteryVoltageFix);
                 tempvsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.Temperature);
@@ -176,7 +176,7 @@ namespace fieldtool.View
                 YValueType = ChartValueType.Int32
             };
 
-            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartDate && dp.StartTimestamp <= dateIntervalPicker1.EndDate))
+            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartTimpestamp && dp.StartTimestamp <= dateIntervalPicker1.EndTimestamp))
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.BatteryVoltageFix);
             }
@@ -207,7 +207,7 @@ namespace fieldtool.View
                 YValueType = ChartValueType.Int32
             };
 
-            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartDate && dp.StartTimestamp <= dateIntervalPicker1.EndDate))
+            foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartTimpestamp && dp.StartTimestamp <= dateIntervalPicker1.EndTimestamp))
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.BatteryVoltage);
             }

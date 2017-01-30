@@ -44,7 +44,7 @@ namespace fieldtool.View
 
         private void DateIntervalPicker1_IntervalChanged(object sender, EventArgs e)
         {
-            InvokeMapDisplayIntervalChanged(new MapDisplayIntervalChangedEventArgs(dateIntervalPicker1.StartDate, dateIntervalPicker1.EndDate));
+            InvokeMapDisplayIntervalChanged(new MapDisplayIntervalChangedEventArgs(dateIntervalPicker1.StartTimpestamp, dateIntervalPicker1.EndTimestamp));
         }
 
         private void AddRecentlyUsedProjects()
