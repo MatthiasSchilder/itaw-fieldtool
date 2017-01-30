@@ -13,7 +13,10 @@ namespace fieldtool.SharpmapExt
 {
     public class DataTableLine : PreparedGeometryProvider, IDisposable
     {
-        private DataTable DataTable;
+        //private DataTable DataTable1;
+
+        private FeatureDataTable FeatureDataTable;
+
         private string OidColumnName;
         private string StartPointXColumnName;
         private string StartPointYColumnName;
@@ -24,7 +27,6 @@ namespace fieldtool.SharpmapExt
         public DataTableLine(DataTable dataTable, string oidColumnName,
             string startPointXColumnName, string startPointYColumnName, string endPointXColumnName, string endPointYColumnName)
         {
-            DataTable = dataTable;
             OidColumnName = oidColumnName;
 
             StartPointXColumnName = startPointXColumnName;
@@ -32,6 +34,22 @@ namespace fieldtool.SharpmapExt
 
             EndPointXColumnName = endPointXColumnName;
             EndPointYColumnName = endPointYColumnName;
+
+            //DataTable1 = dataTable;
+            FeatureDataTable = new FeatureDataTable();
+            foreach (DataColumn col in dataTable.Columns)
+            {
+                FeatureDataTable.Columns.Add(col.ColumnName, col.DataType, col.Expression);
+            }
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                FeatureDataTable.ImportRow(row);
+                FeatureDataRow fdr = FeatureDataTable.Rows[FeatureDataTable.Rows.Count - 1] as FeatureDataRow;
+                fdr.Geometry = Factory.CreateLineString(new[] {
+                    new Coordinate((double) row[StartPointXColumnName], (double) row[StartPointYColumnName]),
+                    new Coordinate((double) row[EndPointXColumnName], (double) row[EndPointYColumnName])});
+            }
         }
 
         public override Collection<IGeometry> GetGeometriesInView(Envelope bbox)
@@ -49,11 +67,12 @@ namespace fieldtool.SharpmapExt
         {
             Collection<uint> result = new Collection<uint>();
 
-            foreach (DataRow row in DataTable.Rows)
+            foreach (FeatureDataRow row in FeatureDataTable.Rows)
             {
                 var oid = (uint)row[OidColumnName];
-                var env = GetExtentsByUid(oid);
-                if(bbox.Contains(env))
+                var entityEnv = GetExtentsByUid(oid);
+                
+                if(bbox.Intersects(entityEnv))
                     result.Add(oid);
             }
             return result;
@@ -62,7 +81,7 @@ namespace fieldtool.SharpmapExt
 
         public override IGeometry GetGeometryByID(uint oid)
         {
-            var featureRows = DataTable.Select($"{OidColumnName} = {oid}");
+            var featureRows = FeatureDataTable.Select($"{OidColumnName} = {oid}");
             var row = featureRows[0];
 
             return Factory.CreateLineString(new[] {
@@ -72,18 +91,38 @@ namespace fieldtool.SharpmapExt
 
         public override void ExecuteIntersectionQuery(Envelope box, FeatureDataSet ds)
         {
-            return;
+            var result = GetObjectIDsInView(box);
+
+            FeatureDataTable fdt = new FeatureDataTable(FeatureDataTable);
+
+            foreach (DataColumn col in FeatureDataTable.Columns)
+            {
+                fdt.Columns.Add(col.ColumnName, col.DataType, col.Expression);
+            }
+
+            foreach (var oid in result)
+            {
+                DataRow dr = GetFeature(oid);
+
+                fdt.ImportRow(dr);
+                FeatureDataRow fdr = fdt.Rows[fdt.Rows.Count - 1] as FeatureDataRow;
+                fdr.Geometry = GetGeometryByID((uint) dr[OidColumnName]);
+            }
+
+            ds.Tables.Add(fdt);
         }
 
         public override int GetFeatureCount()
         {
-            return DataTable.Rows.Count;
+            return FeatureDataTable.Rows.Count;
         }
 
         public override FeatureDataRow GetFeature(uint rowId)
         {
-            var featureRows = DataTable.Select($"{OidColumnName} = {rowId}");
+            var featureRows = FeatureDataTable.Select($"{OidColumnName} = {rowId}");
 
+            
+          
             return (FeatureDataRow) featureRows[0];
         }
 
@@ -94,7 +133,7 @@ namespace fieldtool.SharpmapExt
 
             Envelope wholeEnvelope = new Envelope();
 
-            foreach (DataRow row in DataTable.Rows)
+            foreach (DataRow row in FeatureDataTable.Rows)
             {
                 var oid = (uint) row[OidColumnName];
                 var env = GetExtentsByUid(oid);
@@ -105,7 +144,7 @@ namespace fieldtool.SharpmapExt
 
         private Envelope GetExtentsByUid(uint oid)
         {
-            var featureRows = DataTable.Select($"{OidColumnName} = {oid}");
+            var featureRows = FeatureDataTable.Select($"{OidColumnName} = {oid}");
             if (!featureRows.Any())
                 throw new Exception("Kein Feature für OID gefunden.");
 

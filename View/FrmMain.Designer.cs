@@ -102,7 +102,7 @@ namespace fieldtool.View
             this.mapBox1.FineZoomFactor = 10D;
             this.mapBox1.Location = new System.Drawing.Point(0, 0);
             this.mapBox1.MapQueryMode = SharpMap.Forms.MapBox.MapQueryType.LayerByIndex;
-            this.mapBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mapBox1.Margin = new System.Windows.Forms.Padding(4);
             this.mapBox1.Name = "mapBox1";
             this.mapBox1.PreviewMode = SharpMap.Forms.MapBox.PreviewModes.Fast;
             this.mapBox1.QueryGrowFactor = 5F;
@@ -416,7 +416,7 @@ namespace fieldtool.View
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
@@ -433,7 +433,7 @@ namespace fieldtool.View
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(4, 688);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1649, 115);
@@ -443,9 +443,9 @@ namespace fieldtool.View
             // 
             this.tabPage1.Controls.Add(this.dateIntervalPicker1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(1641, 86);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Filter";
@@ -462,11 +462,11 @@ namespace fieldtool.View
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPage2.Size = new System.Drawing.Size(1641, 87);
+            this.tabPage2.Size = new System.Drawing.Size(1641, 86);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Statistik";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -476,7 +476,7 @@ namespace fieldtool.View
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Location = new System.Drawing.Point(4, 4);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(199, 22);
             this.textBox1.TabIndex = 6;
@@ -487,7 +487,7 @@ namespace fieldtool.View
             this.panel1.Controls.Add(this.mapBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(211, 35);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1442, 645);
             this.panel1.TabIndex = 7;
@@ -498,7 +498,7 @@ namespace fieldtool.View
             this.panel2.Controls.Add(this.treeViewTagList);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(4, 35);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(199, 645);
             this.panel2.TabIndex = 8;
@@ -513,7 +513,7 @@ namespace fieldtool.View
             this.treeViewTagList.ImageList = this.imageListColorKeys;
             this.treeViewTagList.ItemHeight = 16;
             this.treeViewTagList.Location = new System.Drawing.Point(0, 0);
-            this.treeViewTagList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.treeViewTagList.Margin = new System.Windows.Forms.Padding(4);
             this.treeViewTagList.Name = "treeViewTagList";
             this.treeViewTagList.SelectedImageIndex = 0;
             this.treeViewTagList.ShowLines = false;
@@ -586,7 +586,7 @@ namespace fieldtool.View
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.Text = "FieldTool";
             this.menuStrip1.ResumeLayout(false);

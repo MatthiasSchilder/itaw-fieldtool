@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using fieldtool.Data.Movebank;
 using fieldtool.SharpmapExt.Symbolizers;
-using GeoAPI.Geometries;
 using SharpMap.Rendering.Symbolizer;
 
 namespace fieldtool.View
@@ -82,7 +75,7 @@ namespace fieldtool.View
 
             item = new ComboBoxItem();
             item.Content = "Linien";
-            item.Tag = typeof(BasicLineSymbolizer);
+            item.Tag = typeof(FtBasicLineSymbolizer);
             cmboVisualizer.Items.Add(item);
 
             cmboVisualizer.DisplayMember = "Content";

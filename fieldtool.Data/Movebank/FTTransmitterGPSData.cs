@@ -87,18 +87,21 @@ namespace fieldtool.Data.Movebank
             var dataProvider = new DataTable();
 
             dataProvider.Columns.Add("id", typeof(uint));
+            dataProvider.Columns.Add("tagID", typeof(int));
+            dataProvider.Columns.Add("num", typeof(int));
             dataProvider.Columns.Add("startx", typeof(double));
             dataProvider.Columns.Add("starty", typeof(double));
             dataProvider.Columns.Add("endx", typeof(double));
             dataProvider.Columns.Add("endy", typeof(double));
 
             var list = this.ToArray();
+
             for (int i = 1; i < list.Length; i++)
             {
                 if (!list[i].IsValid() || !list[i - 1].IsValid())
                     continue;
 
-                dataProvider.Rows.Add(i - 1, list[i - 1].Rechtswert, list[i - 1].Hochwert, list[i].Rechtswert, list[i].Hochwert);
+                dataProvider.Rows.Add(i - 1, _tagID, list.Length - i, list[i - 1].Rechtswert, list[i - 1].Hochwert, list[i].Rechtswert, list[i].Hochwert);
             }
 
             return new DataTableLine(dataProvider, "id", "startx", "starty", "endx", "endy");

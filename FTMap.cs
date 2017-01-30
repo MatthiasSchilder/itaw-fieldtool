@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Text;
 using System.IO;
 using System.Linq;
-using System.Net.Configuration;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Forms;
 using fieldtool.Data;
 using fieldtool.Data.Movebank;
 using fieldtool.Decorations;
@@ -23,9 +14,7 @@ using SharpMap.Data.Providers;
 using SharpMap.Layers;
 using SharpMap.Layers.Symbolizer;
 using SharpMap.Rendering.Decoration;
-using SharpMap.Rendering.Decoration.ScaleBar;
 using SharpMap.Rendering.Symbolizer;
-using SharpMap.Rendering.Thematics;
 using SharpMap.Styles;
 
 namespace fieldtool
@@ -78,7 +67,8 @@ namespace fieldtool
                 {
                     dataSource = dataset.GPSData.AsDataTableLine();
                     symbolizerLayer = new VectorLayer(dataset.TagId.ToString(), dataSource);
-                    symbolizerLayer.Style.LineSymbolizer = new BasicLineSymbolizer();
+                    symbolizerLayer.Style.LineSymbolizer = (FtBasicLineSymbolizer) symbolizer;
+                    //symbolizerLayer = false;
                 }
 
                 symbolizerLayer.SmoothingMode = SmoothingMode.HighSpeed;
@@ -90,7 +80,7 @@ namespace fieldtool
                 {
                     labelLayer = new LabelLayer($"Label{dataset.TagId}")
                     {
-                        DataSource = dataset.GPSData.AsDataTablePoint(),
+                        DataSource = dataset.GPSData.AsDataTablePoint(), 
                         LabelColumn = "num",
                         LabelPositionDelegate = LabelPositionDelegate, 
                         SmoothingMode = SmoothingMode.HighSpeed,
@@ -104,8 +94,9 @@ namespace fieldtool
                 }
                 this.VariableLayers.Add(symbolizerLayer);
 
-
+                
             }
+            
             AddLegendDecoration(_project.Datasets);
 
         }

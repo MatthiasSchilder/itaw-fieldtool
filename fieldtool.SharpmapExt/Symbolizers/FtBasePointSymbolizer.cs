@@ -8,7 +8,7 @@ using GeoAPI.Geometries;
 
 namespace fieldtool.SharpmapExt.Symbolizers
 {
-    public abstract class FtBasePointSymbolizer : BaseSymbolizer, IPointSymbolizer, ISymbolizer<IPuntal>, ISymbolizer, System.ICloneable
+    public abstract class FtBasePointSymbolizer : BaseSymbolizer, IPointSymbolizer, IFtBaseSymbolizer
     {
         public bool Labeled { get; }
 

@@ -1,21 +1,16 @@
 ﻿using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
-using DotSpatial.Data;
-using DotSpatial.Topology;
 using fieldtool.Data;
 using fieldtool.Data.Geometry;
 using fieldtool.Data.Movebank;
 using fieldtool.View;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using SharpmapGDAL;
-using SharpMap.Layers;
 using Coordinate = GeoAPI.Geometries.Coordinate;
 using Envelope = GeoAPI.Geometries.Envelope;
 
