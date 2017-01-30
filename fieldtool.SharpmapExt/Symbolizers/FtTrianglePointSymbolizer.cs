@@ -27,7 +27,6 @@ namespace fieldtool.SharpmapExt.Symbolizers
             points[1] = new PointF(pt.X + Size.Width / 2, pt.Y - Size.Height / 2);
             points[2] = new PointF(pt.X, pt.Y + Size.Height / 2);
             g.DrawPolygon(OutlinePen, points);
-            //g.DrawRectangle(OutlinePen, pt.X, pt.Y, Size.Width, Size.Height);
         }
 
         public override Size Size

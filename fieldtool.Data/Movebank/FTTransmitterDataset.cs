@@ -30,8 +30,7 @@ namespace fieldtool.Data.Movebank
                 VisulizationColor = Color.FromArgb(rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255)),
                 
             };
-            Visulization.Symbolizer =
-                FtBasePointSymbolizer.GetRandomPointSymbolizer().Invoke(this.Visulization.VisulizationColor);
+            Visulization.Symbolizer = new FtDotPointSymbolizer(this.Visulization.VisulizationColor);
 
         }
 

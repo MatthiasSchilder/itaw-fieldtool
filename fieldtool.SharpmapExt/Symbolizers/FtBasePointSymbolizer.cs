@@ -146,24 +146,5 @@ namespace fieldtool.SharpmapExt.Symbolizers
             }
             this.RenderPoint(map, ((IPoint)geometry).Coordinate, graphics);
         }
-
-
-        public static Func<Color, FtBasePointSymbolizer> GetRandomPointSymbolizer()
-        {
-            Random rnd = new Random();
-            switch (rnd.Next(0, 4))
-            {
-                case 0:
-                    return color => new FtCrossPointSymbolizer(color);
-                case 1:
-                    return color => new FtDotPointSymbolizer(color);
-                case 2:
-                    return color => new FtRectanglePointSymbolizer(color);
-                case 3:
-                    return color => new FtTriangleePointSymbolizer(color);
-                default:
-                    return color => new FtCrossPointSymbolizer(color);
-            }
-        }
     }
 }

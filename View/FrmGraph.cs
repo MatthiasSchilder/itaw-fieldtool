@@ -7,11 +7,22 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using fieldtool.Data.Movebank;
+using System.Collections.Generic;
 
 namespace fieldtool.View
 {
     public partial class FrmGraph : Form
     {
+        private class GraphYScaleSettings
+        {
+            public object MinValue;
+            public object MaxValue;
+        }
+
+        private Dictionary<EGraphType, GraphYScaleSettings> yScaleSettings = 
+            new Dictionary<EGraphType, GraphYScaleSettings>();
+
+
         private enum EGraphType
         {
             BatteryVoltageVsTime,
@@ -37,6 +48,9 @@ namespace fieldtool.View
             }
         }
 
+        private const double AXIS_UNIT_MV_DEFAULT_INTERVAL = 100;
+        private Color GRID_COLOR = Color.LightGray;
+
         private FtTransmitterDataset _dataset;
         public FrmGraph(FtTransmitterDataset dataset)
         {
@@ -47,7 +61,6 @@ namespace fieldtool.View
             this.Text = $"Graphdarstellung für Tag-ID {_dataset.TagId}";
             PopulateComboBox();
             SetMinMaxDate();
-
         }
 
         private void SetMinMaxDate()
@@ -82,6 +95,12 @@ namespace fieldtool.View
             chart2.ChartAreas[0].AxisX.LabelStyle.Angle = -65;
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy";
 
+            chart2.ChartAreas[0].AxisY.LabelStyle.TruncatedLabels = false;
+            chart2.ChartAreas[0].AxisY.Interval = 10;
+            chart2.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
+
+            chart2.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
+
             chart2.Series.Clear();
             Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime")
             {
@@ -96,6 +115,13 @@ namespace fieldtool.View
             foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartTimpestamp && dp.StartTimestamp <= dateIntervalPicker1.EndTimestamp))
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.UsedTimeToGetFix);
+            }
+
+            if (battVoltagevsTimeSeries.Points.Any())
+            {
+                var min = battVoltagevsTimeSeries.Points.Min(dp => dp.YValues[0]);
+                chart2.ChartAreas[0].AxisY.Minimum = Math.Floor(min - min % 5);
+                chart2.ChartAreas[0].AxisY.Maximum = 120;
             }
 
             chart2.Series.Add(battVoltagevsTimeSeries);
@@ -113,7 +139,16 @@ namespace fieldtool.View
 
             chart2.ChartAreas[0].AxisX.LabelStyle.Angle = -65;
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy";
-            chart2.ChartAreas[0].AxisY.IntervalOffset = 2600;
+            chart2.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
+
+            chart2.ChartAreas[0].AxisY.LabelStyle.TruncatedLabels = false;
+            chart2.ChartAreas[0].AxisY.Interval = 100;
+            chart2.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
+
+            chart2.ChartAreas[0].AxisY2.LabelStyle.TruncatedLabels = false;
+            chart2.ChartAreas[0].AxisY2.Interval = 5;
+            chart2.ChartAreas[0].AxisY2.MajorGrid.LineColor = Color.Gray;
+
             chart2.Series.Clear();
             Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime")
             {
@@ -124,7 +159,7 @@ namespace fieldtool.View
                 XValueType = ChartValueType.Date,
                 YValueType = ChartValueType.Int32
             };
-
+            
             Series tempvsTimeSeries = new Series("TempVsTime")
             {
                 ChartType = SeriesChartType.Line,
@@ -134,17 +169,38 @@ namespace fieldtool.View
                 XValueType = ChartValueType.Date,
                 YValueType = ChartValueType.Int32
             };
-
-
-
             foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartTimpestamp && dp.StartTimestamp <= dateIntervalPicker1.EndTimestamp))
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.BatteryVoltageFix);
                 tempvsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.Temperature);
             }
 
+            if (battVoltagevsTimeSeries.Points.Any())
+            {
+                var min = battVoltagevsTimeSeries.Points.Min(dp => dp.YValues[0]);
+                chart2.ChartAreas[0].AxisY.Minimum = Math.Floor(min - min % 100);
+                var max = battVoltagevsTimeSeries.Points.Max(dp => dp.YValues[0]);
+                chart2.ChartAreas[0].AxisY.Maximum = Math.Ceiling(max + (100 - max % 100));
+            }
+
+            if (tempvsTimeSeries.Points.Any())
+            {
+                var min = tempvsTimeSeries.Points.Min(dp => dp.YValues[0]);
+                if (min < 0)
+                    chart2.ChartAreas[0].AxisY2.Minimum = min - (5 + min % 5);
+                else
+                    chart2.ChartAreas[0].AxisY2.Minimum = Math.Floor(min - min % 5);
+
+                var max = tempvsTimeSeries.Points.Max(dp => dp.YValues[0]);
+                chart2.ChartAreas[0].AxisY2.Maximum = Math.Ceiling(max + (5 - max % 5));
+            }
+
             chart2.Series.Add(battVoltagevsTimeSeries);
             chart2.Series.Add(tempvsTimeSeries);
+
+            chart2.ApplyPaletteColors();
+            chart2.ChartAreas[0].AxisY.TitleForeColor = battVoltagevsTimeSeries.Color;
+            chart2.ChartAreas[0].AxisY2.TitleForeColor = tempvsTimeSeries.Color;
         }
 
         private void ShowFixBatteryVoltageVsTime()
@@ -158,7 +214,10 @@ namespace fieldtool.View
 
             chart2.ChartAreas[0].AxisX.LabelStyle.Angle = -65;
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy";
-            chart2.ChartAreas[0].AxisY.IntervalOffset = 2600;
+
+            chart2.ChartAreas[0].AxisY.LabelStyle.TruncatedLabels = false;
+            chart2.ChartAreas[0].AxisY.Interval = 100;
+            chart2.ChartAreas[0].AxisY2.MajorGrid.LineColor = Color.LightGray;
 
             chart2.Series.Clear();
             Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime")
@@ -174,6 +233,14 @@ namespace fieldtool.View
             foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartTimpestamp && dp.StartTimestamp <= dateIntervalPicker1.EndTimestamp))
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.BatteryVoltageFix);
+            }
+
+            if (battVoltagevsTimeSeries.Points.Any())
+            {
+                var min = battVoltagevsTimeSeries.Points.Min(dp => dp.YValues[0]);
+                chart2.ChartAreas[0].AxisY.Minimum = Math.Floor(min - min % 100);
+                var max = battVoltagevsTimeSeries.Points.Max(dp => dp.YValues[0]);
+                chart2.ChartAreas[0].AxisY.Maximum = Math.Ceiling(max + (100 - max % 100));
             }
 
             chart2.Series.Add(battVoltagevsTimeSeries);
@@ -189,7 +256,10 @@ namespace fieldtool.View
 
             chart2.ChartAreas[0].AxisX.LabelStyle.Angle = -65;
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "dd.MM.yy";
-            chart2.ChartAreas[0].AxisY.Minimum = 2600;
+
+            chart2.ChartAreas[0].AxisY.LabelStyle.TruncatedLabels = false;
+            chart2.ChartAreas[0].AxisY.Interval = 100;
+            chart2.ChartAreas[0].AxisY2.MajorGrid.LineColor = Color.LightGray;
 
             chart2.Series.Clear();
             Series battVoltagevsTimeSeries = new Series("BattVoltageVsTime")
@@ -205,6 +275,14 @@ namespace fieldtool.View
             foreach (var gpsDataPoint in _dataset.GPSData.GpsSeries.Where(dp => dp.StartTimestamp >= dateIntervalPicker1.StartTimpestamp && dp.StartTimestamp <= dateIntervalPicker1.EndTimestamp))
             {
                 battVoltagevsTimeSeries.Points.AddXY(gpsDataPoint.StartTimestamp.ToOADate(), gpsDataPoint.BatteryVoltage);
+            }
+
+            if(battVoltagevsTimeSeries.Points.Any())
+            {
+                var min = battVoltagevsTimeSeries.Points.Min(dp => dp.YValues[0]);
+                chart2.ChartAreas[0].AxisY.Minimum = Math.Floor(min - min % 100);
+                var max = battVoltagevsTimeSeries.Points.Max(dp => dp.YValues[0]);
+                chart2.ChartAreas[0].AxisY.Maximum = Math.Ceiling(max + (100 - max % 100));
             }
 
             chart2.Series.Add(battVoltagevsTimeSeries);           
@@ -274,6 +352,11 @@ namespace fieldtool.View
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnScaleAxis_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

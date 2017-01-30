@@ -40,6 +40,7 @@ namespace fieldtool.View
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
             this.dateIntervalPicker1 = new fieldtool.Controls.DateIntervalPicker();
+            this.btnScaleAxis = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -115,12 +116,24 @@ namespace fieldtool.View
             this.dateIntervalPicker1.TabIndex = 6;
             this.dateIntervalPicker1.IntervalChanged += new System.EventHandler(this.dateIntervalPicker1_IntervalChanged);
             // 
+            // btnScaleAxis
+            // 
+            this.btnScaleAxis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnScaleAxis.Location = new System.Drawing.Point(12, 469);
+            this.btnScaleAxis.Name = "btnScaleAxis";
+            this.btnScaleAxis.Size = new System.Drawing.Size(75, 23);
+            this.btnScaleAxis.TabIndex = 7;
+            this.btnScaleAxis.Text = "Skalierung";
+            this.btnScaleAxis.UseVisualStyleBackColor = true;
+            this.btnScaleAxis.Click += new System.EventHandler(this.btnScaleAxis_Click);
+            // 
             // FrmGraph
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(846, 503);
+            this.Controls.Add(this.btnScaleAxis);
             this.Controls.Add(this.dateIntervalPicker1);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.btnCancel);
@@ -144,5 +157,6 @@ namespace fieldtool.View
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnCopy;
         private DateIntervalPicker dateIntervalPicker1;
+        private System.Windows.Forms.Button btnScaleAxis;
     }
 }

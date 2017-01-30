@@ -19,17 +19,23 @@ namespace fieldtool.SharpmapExt.Symbolizers
         public Brush FillBrush { get; set; }
         public bool Labeled { get; }
 
+        public Size Size
+        {
+            get; set;
+        }
+
         private PointF[] ArrowCoords = new[] {new PointF(0, -6), new PointF(9, -24), new PointF(-9, -24)};
 
-        public FtBasicLineSymbolizer(Color visuColor, bool labeled = false)
+        public FtBasicLineSymbolizer(Color visuColor, Size size, bool labeled = false)
         {
             OutlinePen = new Pen(new SolidBrush(visuColor));
             FillBrush = new SolidBrush(ControlPaint.LightLight(visuColor));
             Labeled = labeled;
+            Size = size;
         }
         public override object Clone()
         {
-            return new FtBasicLineSymbolizer(OutlinePen.Color);
+            return new FtBasicLineSymbolizer(OutlinePen.Color, Size);
         }
 
         protected override void OnRenderInternal(Map map, ILineString lineString, Graphics graphics)
@@ -43,13 +49,13 @@ namespace fieldtool.SharpmapExt.Symbolizers
 
                 graphics.DrawLine(OutlinePen, start, end);
 
-                var rect = new RectangleF(new PointF(start.X - 12 / 2f, start.Y - 12 / 2f),
+                var rect = new RectangleF(new PointF(start.X - Size.Width / 2f, start.Y - Size.Height / 2f),
                     new SizeF(12, 12));
 
                 graphics.DrawEllipse(OutlinePen, rect);
                 graphics.FillEllipse(FillBrush, rect);
 
-                var rect2 = new RectangleF(new PointF(end.X - 12 / 2f, end.Y - 12 / 2f),
+                var rect2 = new RectangleF(new PointF(end.X - Size.Width / 2f, end.Y - Size.Height / 2f),
                     new SizeF(12, 12));
 
                 graphics.DrawEllipse(OutlinePen, rect2);
