@@ -95,7 +95,7 @@ namespace fieldtool.View
             _dataset.Visulization.VisulizationColor = NewColor;
 
             if (NewSymbolizerType == typeof (BasicLineSymbolizer))
-                _dataset.Visulization.Symbolizer = (ISymbolizer)Activator.CreateInstance(NewSymbolizerType);
+                _dataset.Visulization.Symbolizer = (ISymbolizer)Activator.CreateInstance(NewSymbolizerType, NewLabelState);
             else
                 _dataset.Visulization.Symbolizer = (ISymbolizer)Activator.CreateInstance(NewSymbolizerType, NewColor, NewLabelState);
         }

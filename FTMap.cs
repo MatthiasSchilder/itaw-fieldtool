@@ -61,22 +61,21 @@ namespace fieldtool
                     symbolizerLayer = new VectorLayer(dataset.TagId.ToString(), dataSource);
 
                     symbolizerLayer.Style.PointSymbolizer = (IPointSymbolizer)symbolizer;
-
                 }
                 else
                 {
                     dataSource = dataset.GPSData.AsDataTableLine();
                     symbolizerLayer = new VectorLayer(dataset.TagId.ToString(), dataSource);
                     symbolizerLayer.Style.LineSymbolizer = (FtBasicLineSymbolizer) symbolizer;
-                    //symbolizerLayer = false;
                 }
 
                 symbolizerLayer.SmoothingMode = SmoothingMode.HighSpeed;
                 symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
 
                 LabelLayer labelLayer = null;
-                // erstmal nur für Pointsymbolizer
-                if ((symbolizer is FtBasePointSymbolizer && (symbolizer as FtBasePointSymbolizer).Labeled) || symbolizer is BasicLineSymbolizer)
+                //if ((symbolizer is FtBasePointSymbolizer && (symbolizer as FtBasePointSymbolizer).Labeled) 
+                //    || symbolizer is BasicLineSymbolizer)
+                if((symbolizer as IFtBaseSymbolizer).Labeled)
                 {
                     labelLayer = new LabelLayer($"Label{dataset.TagId}")
                     {
@@ -85,7 +84,6 @@ namespace fieldtool
                         LabelPositionDelegate = LabelPositionDelegate, 
                         SmoothingMode = SmoothingMode.HighSpeed,
                         Style = { Font = MapFont, VerticalAlignment = LabelStyle.VerticalAlignmentEnum.Top, HorizontalAlignment = LabelStyle.HorizontalAlignmentEnum.Left, CollisionDetection = false, ForeColor = dataset.Visulization.VisulizationColor}
-                        
                     };
                 }
                 if (labelLayer != null)
@@ -93,8 +91,6 @@ namespace fieldtool
                     this.VariableLayers.Add(labelLayer);
                 }
                 this.VariableLayers.Add(symbolizerLayer);
-
-                
             }
             
             AddLegendDecoration(_project.Datasets);
@@ -112,17 +108,6 @@ namespace fieldtool
             return new Coordinate(this.ImageToWorld(lblScreenCoord));
         }
 
-        private IEnumerable<IPoint> GpsDataToCoordinates(IEnumerable<FtTransmitterGpsDataEntry> gpsSeries)
-        {
-            foreach (var gps in gpsSeries)
-            {
-                if (gps.IsValid())
-                {
-                    yield return this.Factory.CreatePoint(new Coordinate(gps.Rechtswert.Value, gps.Hochwert.Value));
-                }
-            }
-        }
-
         public void AddPolygonalData(FtTransmitterDataset dataset, FtPolygon polygon)
         {
             var poly = this.Factory.CreatePolygon(polygon.Vertices.ToArray());
@@ -132,7 +117,6 @@ namespace fieldtool
             };
 
             this.VariableLayers.Add(polygonalVectorLayer);
-            //PolygonalVectorLayers.Add(polygonalVectorLayer);
         }
 
         private  void Init(FtProject project)
@@ -147,28 +131,6 @@ namespace fieldtool
 
             if(Properties.Settings.Default.MapScalebarActive)
                 AddScaleBar();
-            //map.AddDecoLayer();
-            //map.AddBLALayer();
-            //this.ZoomToExtents();
-        }
-
-        public static void InitWithTestData(FtMap map)
-        {
-            var relativePath = "data/testdata/GeoData/GeoTiff/";
-            var namePathDict = new Dictionary<string, string>()
-            {
-                { "GeoTiffA", relativePath + "airport.tif" }
-                //{ "GeoTiffA", relativePath + "format01-image_a.tif" },
-                //{ "GeoTiffB", relativePath + "format01-image_b.tif" },
-                //{ "GeoTiffC", relativePath + "format01-image_c.tif" },
-                //{ "GeoTiffD", relativePath + "format01-image_d.tif" },
-
-            };
-
-            foreach(var kvp in namePathDict)
-                map.AddTiffLayer(kvp.Key, kvp.Value);
-
-            map.ZoomToExtents();
         }
 
         public void AddScaleBar()
@@ -178,8 +140,6 @@ namespace fieldtool
             scaleBar.BarColor1 = Color.Black;
             scaleBar.BarColor2 = Color.White;
             this.Decorations.Add(scaleBar);
-
-
         }
 
         public void AddLegendDecoration(List<FtTransmitterDataset> datasets)
