@@ -110,7 +110,7 @@ namespace fieldtool.View
             this.mapBox1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.mapBox1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.mapBox1.ShowProgressUpdate = false;
-            this.mapBox1.Size = new System.Drawing.Size(1440, 643);
+            this.mapBox1.Size = new System.Drawing.Size(1411, 643);
             this.mapBox1.TabIndex = 0;
             this.mapBox1.Text = "mapBox1";
             this.mapBox1.WheelZoomMagnitude = -2D;
@@ -408,8 +408,8 @@ namespace fieldtool.View
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.55028F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.44971F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.24261F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.75739F));
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
@@ -478,7 +478,7 @@ namespace fieldtool.View
             this.textBox1.Location = new System.Drawing.Point(4, 4);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 22);
+            this.textBox1.Size = new System.Drawing.Size(228, 22);
             this.textBox1.TabIndex = 6;
             // 
             // panel1
@@ -486,10 +486,10 @@ namespace fieldtool.View
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.mapBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(211, 35);
+            this.panel1.Location = new System.Drawing.Point(240, 35);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1442, 645);
+            this.panel1.Size = new System.Drawing.Size(1413, 645);
             this.panel1.TabIndex = 7;
             // 
             // panel2
@@ -500,7 +500,7 @@ namespace fieldtool.View
             this.panel2.Location = new System.Drawing.Point(4, 35);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(199, 645);
+            this.panel2.Size = new System.Drawing.Size(228, 645);
             this.panel2.TabIndex = 8;
             // 
             // treeViewTagList
@@ -516,10 +516,7 @@ namespace fieldtool.View
             this.treeViewTagList.Margin = new System.Windows.Forms.Padding(4);
             this.treeViewTagList.Name = "treeViewTagList";
             this.treeViewTagList.SelectedImageIndex = 0;
-            this.treeViewTagList.ShowLines = false;
-            this.treeViewTagList.ShowPlusMinus = false;
-            this.treeViewTagList.ShowRootLines = false;
-            this.treeViewTagList.Size = new System.Drawing.Size(197, 643);
+            this.treeViewTagList.Size = new System.Drawing.Size(226, 643);
             this.treeViewTagList.TabIndex = 5;
             this.treeViewTagList.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.lviDatasets_ItemChecked);
             this.treeViewTagList.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewTagList_AfterSelect);
@@ -652,12 +649,12 @@ namespace fieldtool.View
         private System.Windows.Forms.ContextMenuStrip tagContextMenu;
         private System.Windows.Forms.ToolStripMenuItem konfigurationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tabelleToolStripMenuItem;
-        private WorkaroundTreeView treeViewTagList;
         private DateIntervalPicker dateIntervalPicker1;
         private System.Windows.Forms.ToolStripMenuItem aktivitätsverlaufToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alsShapefilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loggerbinalleSetsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zoomAufTagToolStripMenuItem;
+        public WorkaroundTreeView treeViewTagList;
     }
 }
 

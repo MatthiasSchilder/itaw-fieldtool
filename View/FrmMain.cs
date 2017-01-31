@@ -227,13 +227,53 @@ namespace fieldtool.View
             int i = 0;
             foreach (var dataset in datasets)
             {
-                var tn = treeViewTagList.Nodes.Add(CreateTreeViewNodeDescriptor(dataset));
-                tn.Tag = dataset.TagId;
-                tn.Checked = dataset.Active;
-                tn.ImageIndex = i;
-                tn.SelectedImageIndex = i++;
-               
+                var parentTn = CreateParentTreeNode(dataset, i++);
+                var punktwolkteTn = CreatePunktwolkeTreeNode(dataset, parentTn.ImageIndex);
+
+                
+                treeViewTagList.Nodes.Add(parentTn);
+                parentTn.Nodes.Add(punktwolkteTn);
             }           
+
+            
+
+            treeViewTagList.ExpandAll();
+        }
+
+        private TreeNode CreateParentTreeNode(FtTransmitterDataset dataset, int i)
+        {
+            //var tn = treeViewTagList.Nodes.Add(CreateTreeViewNodeDescriptor(dataset));
+            var tn = new TreeNode(CreateTreeViewNodeDescriptor(dataset));
+            tn.Tag = dataset.TagId;
+            tn.Checked = dataset.Active;
+            tn.ImageIndex = i;
+            tn.SelectedImageIndex = i;
+
+            return tn;
+        }
+
+        private TreeNode CreatePunktwolkeTreeNode(FtTransmitterDataset dataset, int imageIndex)
+        {
+            var tn = new TreeNode("Punktwolke");
+            tn.Tag = dataset.TagId;
+            tn.Checked = dataset.Active;
+            tn.ImageIndex = imageIndex;
+            tn.SelectedImageIndex = imageIndex;
+
+            return tn;
+        }
+
+        private TreeNode GetParentTreeNodeForTag(FtTransmitterDataset dataset)
+        {
+            if (treeViewTagList.Nodes.Count == 0)
+                return null;
+
+            foreach (TreeNode treeNode in treeViewTagList.Nodes)
+            {
+                if ((int) treeNode.Tag == dataset.TagId)
+                    return treeNode;
+            }
+            return null;
         }
 
         private String CreateTreeViewNodeDescriptor(FtTransmitterDataset dataset)
