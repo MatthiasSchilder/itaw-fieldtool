@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows.Forms;
 using DotSpatial.Data;
 using DotSpatial.Topology;
+using fieldtool.Data.Movebank;
 
 namespace fieldtool.View
 {

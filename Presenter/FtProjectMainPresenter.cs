@@ -251,6 +251,7 @@ namespace fieldtool.Presenter
             View.ShowActivityDiagram += View_ShowActivityDiagram;
             View.ShowActivityVerlauf += View_ShowActivityVerlauf;
             View.ShowTagConfig += ViewOnShowTagConfig;
+            View.ShowTagTabelle += View_ShowTagTabelle;
             View.ZoomToTag += ViewOnZoomToTag;
             View.ShowTagGraphs += View_ShowTagGraphs;
             View.DatasetCheckedChanged += View_DatasetCheckedChanged;
@@ -323,6 +324,16 @@ namespace fieldtool.Presenter
             frm.ShowDialog();
 
             InvokeMovebankImported(new MovebankImportedArgs(Project.Datasets));
+        }
+
+        private void View_ShowTagTabelle(object sender, CurrentDatasetChangedEventArgs e)
+        {
+            var dataset = Project.Datasets.FirstOrDefault(ds => ds.TagId == e.CurrentTagId);
+            if (dataset == null)
+                return;
+
+            FrmTagTabelle frm = new FrmTagTabelle(dataset);
+            frm.Show();
         }
 
 

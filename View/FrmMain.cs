@@ -706,7 +706,10 @@ namespace fieldtool.View
 
         private void tabelleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ToolStripItem menuItem = sender as ToolStripItem;
+            var parent = menuItem.GetCurrentParent();
+            var args = new CurrentDatasetChangedEventArgs((int)parent.Tag);
+            InvokeShowTagTabelle(args);
         }
 
         private void ToggleMouseWheelPan()
@@ -768,6 +771,16 @@ namespace fieldtool.View
         private void InvokeShowActivityVerlauf(EventArgs eventArgs)
         {
             EventHandler handler = ShowActivityVerlauf;
+            if (handler != null)
+            {
+                handler(this, eventArgs);
+            }
+        }
+
+        public event EventHandler<CurrentDatasetChangedEventArgs> ShowTagTabelle;
+        private void InvokeShowTagTabelle(CurrentDatasetChangedEventArgs eventArgs)
+        {
+            EventHandler<CurrentDatasetChangedEventArgs> handler = ShowTagTabelle;
             if (handler != null)
             {
                 handler(this, eventArgs);

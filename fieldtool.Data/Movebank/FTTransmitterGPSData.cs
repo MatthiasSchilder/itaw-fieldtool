@@ -13,6 +13,13 @@ namespace fieldtool.Data.Movebank
 {
     public class FtTransmitterGpsData : FtTransmitterData, IEnumerable<FtTransmitterGpsDataEntry>
     {
+        public event EventHandler FilterChanged;
+
+        public void InvokeFilterChanged()
+        {
+            FilterChanged?.Invoke(this, new EventArgs());
+        }
+
         private int _tagID;
         public FtTransmitterGPSDataSeries GpsSeries = new
             FtTransmitterGPSDataSeries();
@@ -131,6 +138,8 @@ namespace fieldtool.Data.Movebank
         {
             DateTimeFilterStart = start;
             DateTimeFilterStop = stop;
+
+            InvokeFilterChanged();
         }
     }
 }

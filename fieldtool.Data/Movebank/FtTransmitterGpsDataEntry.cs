@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DotSpatial.Projections;
-using fieldtool.Data;
-using GeoAPI.CoordinateSystems;
-using GeoAPI.CoordinateSystems.Transformations;
 using GeoAPI.Geometries;
 
-namespace fieldtool
+namespace fieldtool.Data.Movebank
 {
     public class FtTransmitterGpsDataEntry : FtTransmitterData
     {

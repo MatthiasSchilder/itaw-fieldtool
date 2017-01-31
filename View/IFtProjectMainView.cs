@@ -25,6 +25,7 @@ namespace fieldtool
         event EventHandler ShowActivityDiagram;
         event EventHandler ShowActivityVerlauf;
         event EventHandler<CurrentDatasetChangedEventArgs> ShowTagConfig;
+        event EventHandler<CurrentDatasetChangedEventArgs> ShowTagTabelle;
         event EventHandler<CurrentDatasetChangedEventArgs> ZoomToTag;
         event EventHandler ShowTagGraphs;
         event EventHandler ExportCurrentMapEnvelope;
@@ -34,5 +35,6 @@ namespace fieldtool
         event SharpMap.Forms.MapBox.MouseEventHandler MouseMovedOnMap;
         event EventHandler<DatasetCheckedEventArgs> DatasetCheckedChanged;
         event EventHandler<MapDisplayIntervalChangedEventArgs> MapDisplayIntervalChanged;
+        
     }
 }
