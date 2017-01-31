@@ -109,6 +109,9 @@
     <EmbeddedResource Include="View\FrmImportingBusy.resx">
       <DependentUpon>FrmImportingBusy.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmMCPPercentage.resx">
+      <DependentUpon>FrmMCPPercentage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmQueriedTags.resx">
       <DependentUpon>FrmQueriedTags.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +160,10 @@
     </Compile>
     <Compile Include="View\FrmInfo.Designer.cs">
       <DependentUpon>FrmInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmMCPPercentage.cs" />
+    <Compile Include="View\FrmMCPPercentage.Designer.cs">
+      <DependentUpon>FrmMCPPercentage.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmProjectProperties.cs">
       <SubType>Form</SubType>

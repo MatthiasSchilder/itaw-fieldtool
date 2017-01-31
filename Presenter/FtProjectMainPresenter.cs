@@ -361,11 +361,16 @@ namespace fieldtool.Presenter
 
         private void View_CreateMCPs(object sender, EventArgs e)
         {
+            var frm = new FrmMCPPercentage();
+            if (frm.ShowDialog() == DialogResult.Cancel)
+                return;
+
+
             foreach (var dataset in Project.Datasets.Where(dataset => dataset.Active))
             {
                 FtMultipoint multipoint = new FtMultipoint(dataset.GPSData.
                     GpsSeries.Where(gps => gps.IsValid()).Select(gps => new Coordinate(gps.Rechtswert.Value, gps.Hochwert.Value)).ToList());
-                var mcp = multipoint.MinimumConvexPolygon();
+                var mcp = multipoint.MinimumConvexPolygon(frm.MCPPerc);
                 mcp.Vertices.Add(mcp.Vertices[0]);
                 Map.AddPolygonalData(dataset, mcp);
             }

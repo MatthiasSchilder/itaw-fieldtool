@@ -111,9 +111,10 @@ namespace fieldtool
         public void AddPolygonalData(FtTransmitterDataset dataset, FtPolygon polygon)
         {
             var poly = this.Factory.CreatePolygon(polygon.Vertices.ToArray());
+            var rnd = new Random();
             var polygonalVectorLayer = new PolygonalVectorLayer(dataset.TagId.ToString() + "MCP", new GeometryProvider(poly))
             {
-                Symbolizer = new FtPolygonWithAlphaSymbolizer(dataset.Visulization.VisulizationColor)
+                Symbolizer = new FtPolygonWithAlphaSymbolizer(Color.FromArgb(0, rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255)))
             };
 
             this.VariableLayers.Add(polygonalVectorLayer);
