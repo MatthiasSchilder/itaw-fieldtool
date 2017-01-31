@@ -24,8 +24,7 @@ namespace fieldtool.View
             this.Text =
                 $"GPS-Daten für Tag-ID {_dataset.TagId} von ({_dataset.GPSData.DateTimeFilterStart} - {_dataset.GPSData.DateTimeFilterStop})";
 
-            BindingSource source = new BindingSource();
-            source.DataSource = CreateDataTable();
+            BindingSource source = new BindingSource {DataSource = CreateDataTable()};
 
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = source;
@@ -61,8 +60,8 @@ namespace fieldtool.View
         private DataRow CreateRow(DataTable dt, FtTransmitterGpsDataEntry gpsDataEntry)
         {
             DataRow result = dt.NewRow();
-            result.ItemArray = (object[]) new object[]
-                {gpsDataEntry.StartTimestamp, gpsDataEntry.Rechtswert, gpsDataEntry.Hochwert, gpsDataEntry.Longitude, gpsDataEntry.Latitude};
+            result.ItemArray = (new object[]
+                {gpsDataEntry.StartTimestamp, gpsDataEntry.Rechtswert, gpsDataEntry.Hochwert, gpsDataEntry.Longitude, gpsDataEntry.Latitude});
             return result;
         }
     }
