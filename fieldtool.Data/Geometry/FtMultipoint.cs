@@ -52,11 +52,13 @@ namespace fieldtool.Data.Geometry
             }
             List<Coordinate> result = new List<Coordinate>();
             int j = 0;
-            foreach (KeyValuePair<int, double> item in distancesDict.OrderBy(key => key.Value))
+            var list = distancesDict.OrderBy(key => key.Value);
+            foreach (KeyValuePair<int, double> item in list)
             {
                 if (j == pointCntToKeep)
                     break;
-                result.Add(pointsAsArray[j++]);
+                result.Add(pointsAsArray[item.Key]);
+                j++;
             }
             return result;
 
@@ -66,34 +68,19 @@ namespace fieldtool.Data.Geometry
         {
             var resultPolygonVertices = quickHull(_points);
 
-            //resultPolygonVertices.Reverse();
-
-            double sum = 0;
-            for(int i = 0; i < resultPolygonVertices.Count; i++)
+            List<DotSpatial.Topology.Coordinate> coords = new List<DotSpatial.Topology.Coordinate>();
+            foreach(var p in resultPolygonVertices)
             {
-                sum += _points[i].X * _points[(i + 1) % resultPolygonVertices.Count].Y - _points[(i + 1) % resultPolygonVertices.Count].X * _points[i].Y;
+                coords.Add(new DotSpatial.Topology.Coordinate(p.X, p.Y));
             }
+            DotSpatial.Topology.Polygon poly = new DotSpatial.Topology.Polygon(coords);
 
-            double A = 0.5 * sum;
-
-            double sumXs = 0;
-            for (int i = 0; i < resultPolygonVertices.Count - 1; i++)
-            {
-                sumXs += (_points[i].X + _points[i + 1].X) * (_points[i].X * _points[i + 1].Y - _points[i + 1].X * _points[i].Y);
-            }
-
-            double xs = (1 / (6 * A)) * sumXs;
-
-            double sumYs = 0;
-            for (int i = 0; i < resultPolygonVertices.Count - 1; i++)
-            {
-                sumYs += (_points[i].Y + _points[i + 1].Y) * (_points[i].X * _points[i + 1].Y - _points[i + 1].X * _points[i].Y);
-            }
-
-            double ys = (1 / (6 * A)) * sumYs;
-            Debug.WriteLine(String.Format("x {0} y {1}", xs, ys));
-            return new Coordinate(xs, ys);
+            var centroid = poly.Centroid;
+            Debug.WriteLine(String.Format("x {0} y {1}", centroid.X, centroid.Y));
+            return new Coordinate(centroid.X, centroid.Y);
         }
+
+      
 
         private List<Coordinate> quickHull(List<Coordinate> points)
         {

@@ -34,6 +34,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\dep\DotSpatial.Projections.dll</HintPath>
     </Reference>
+    <Reference Include="DotSpatial.Serialization">
+      <HintPath>..\dep\DotSpatial.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Topology">
+      <HintPath>..\dep\DotSpatial.Topology.dll</HintPath>
+    </Reference>
     <Reference Include="GeoAPI">
       <HintPath>..\dep\SharpMap\GeoAPI.dll</HintPath>
     </Reference>

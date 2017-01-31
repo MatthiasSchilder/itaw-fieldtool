@@ -161,7 +161,9 @@
     <Compile Include="View\FrmInfo.Designer.cs">
       <DependentUpon>FrmInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmMCPPercentage.cs" />
+    <Compile Include="View\FrmMCPPercentage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FrmMCPPercentage.Designer.cs">
       <DependentUpon>FrmMCPPercentage.cs</DependentUpon>
     </Compile>
