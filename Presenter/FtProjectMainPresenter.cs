@@ -335,9 +335,9 @@ namespace fieldtool.Presenter
             FtFormFactory.ShowDialog(frm);
         }
 
-        private void ViewOnShowTagConfig(object sender, CurrentDatasetChangedEventArgs eventArgs)
+        private void ViewOnShowTagConfig(object sender, ContextMenuItemClickedEventArgs eventArgs)
         {
-            var dataset = Project.Datasets.FirstOrDefault(ds => ds.TagId == eventArgs.CurrentTagId);
+            var dataset = Project.Datasets.FirstOrDefault(ds => ds.TagId == eventArgs.TagObject.TagID);
             if (dataset == null)
                 return;
 
@@ -347,9 +347,9 @@ namespace fieldtool.Presenter
             InvokeMovebankImported(new MovebankImportedArgs(Project.Datasets));
         }
 
-        private void View_ShowTagTabelle(object sender, CurrentDatasetChangedEventArgs e)
+        private void View_ShowTagTabelle(object sender, ContextMenuItemClickedEventArgs e)
         {
-            var dataset = Project.Datasets.FirstOrDefault(ds => ds.TagId == e.CurrentTagId);
+            var dataset = Project.Datasets.FirstOrDefault(ds => ds.TagId == e.TagObject.TagID);
             if (dataset == null)
                 return;
 
@@ -358,9 +358,9 @@ namespace fieldtool.Presenter
         }
 
 
-        private void ViewOnZoomToTag(object sender, CurrentDatasetChangedEventArgs currentDatasetChangedEventArgs)
+        private void ViewOnZoomToTag(object sender, ContextMenuItemClickedEventArgs currentDatasetChangedEventArgs)
         {
-            var dataset = Project.Datasets.FirstOrDefault(ds => ds.TagId == currentDatasetChangedEventArgs.CurrentTagId);
+            var dataset = Project.Datasets.FirstOrDefault(ds => ds.TagId == currentDatasetChangedEventArgs.TagObject.TagID);
             if (dataset == null)
                 return;
 
@@ -419,7 +419,7 @@ namespace fieldtool.Presenter
 
         private void View_DatasetCheckedChanged(object sender, DatasetCheckedEventArgs e)
         {
-            Project.SetDatasetState(e.TagId, e.Checked);
+            Project.SetDatasetState(e.TagObject.TagID, e.Checked);
             InvokeMapChanged(new MapChangedArgs(Map));
         }
 

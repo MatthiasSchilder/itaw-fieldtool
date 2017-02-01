@@ -230,6 +230,7 @@ namespace fieldtool.View
             PopulateTreeView(movebankImportedArgs.Datasets);
         }
 
+        #region TreeView
         private void PopulateTreeView(List<FtTransmitterDataset> datasets)
         {
             PopulateImageList(datasets);
@@ -251,34 +252,23 @@ namespace fieldtool.View
 
         private TreeNodeAdv CreateParentTreeNode(FtTransmitterDataset dataset)
         {
-            var tn = new TreeNodeAdv(CreateTreeViewNodeDescriptor(dataset));
-            
-            tn.Tag = dataset.TagId;
-            //tn.Checked = dataset.Active;
-            //tn.ImageIndex = i;
-            //tn.SelectedImageIndex = i;
-            return tn;
-            
+            return new TreeNodeAdv(CreateTreeViewNodeDescriptor(dataset))
+            {
+                Tag = new TreeNodeTagObject(TreeNodeTagObject.TreeViewNodeType.RootNode, dataset.TagId)
+            };            
         }
 
-        private TreeNodeAdv CreateMCPNode(int tagID, int mcpPercentage)
+        private void CreateMCPNode(int tagID, int mcpPercentage)
         {
             var parent = GetParentTreeNodeForTag(tagID);
 
-            var tn = new TreeNodeAdv(String.Format("MCP {0}%", mcpPercentage));
-            tn.ShowCheckBox = true;
-            tn.LeftImageIndices = parent.LeftImageIndices;
+            var tn = new TreeNodeAdv($"MCP {mcpPercentage}%")
+            {
+                ShowCheckBox = true,
+                LeftImageIndices = parent.LeftImageIndices,
+                Tag = new TreeNodeTagObject(TreeNodeTagObject.TreeViewNodeType.RootNode, tagID, mcpPercentage)
+            };
             parent.Nodes.Add(tn);
-
-            return tn;
-
-
-            //tn.Tag = dataset.TagId;
-            //tn.Checked = dataset.Active;
-            //tn.ImageIndex = i;
-            //tn.SelectedImageIndex = i;
-            //return tn;
-
         }
 
         private void SetTreeNodeCheckState(TreeNodeAdv tn, bool state)
@@ -288,13 +278,12 @@ namespace fieldtool.View
         }
         private TreeNodeAdv CreatePunktwolkeTreeNode(FtTransmitterDataset dataset, int imageIndex)
         {
-            var tn = new TreeNodeAdv("Punktwolke");
-            tn.Tag = dataset.TagId;
-            tn.ShowCheckBox = true;
-            
-            tn.LeftImageIndices = new[] { imageIndex};
-
-            return tn;
+            return new TreeNodeAdv("Punktwolke")
+            {
+                Tag = new TreeNodeTagObject(TreeNodeTagObject.TreeViewNodeType.PunktewolkeNode, dataset.TagId),
+                ShowCheckBox = true,
+                LeftImageIndices = new[] {imageIndex}
+            };
         }
 
         private TreeNodeAdv GetParentTreeNodeForTag(int tagID)
@@ -304,7 +293,7 @@ namespace fieldtool.View
 
             foreach (TreeNodeAdv treeNode in treeViewTagList.Nodes)
             {
-                if ((int) treeNode.Tag == tagID)
+                if (((TreeNodeTagObject) treeNode.Tag).TagID == tagID)
                     return treeNode;
             }
             return null;
@@ -339,6 +328,7 @@ namespace fieldtool.View
             }
             return bmp;
         }
+        #endregion
 
         private void ProjectStateChanged(object sender, ProjectStateArgs projectStateArgs)
         {
@@ -470,6 +460,7 @@ namespace fieldtool.View
             InvokeOpenProject(new EventArgs());
         }
 
+        #region EventHandler
         public event EventHandler OpenProject;
         public void InvokeOpenProject(EventArgs e)
         {
@@ -700,6 +691,7 @@ namespace fieldtool.View
                 handler(this, e);
             }
         }
+        #endregion EventHandler
 
         private void infoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -762,7 +754,7 @@ namespace fieldtool.View
         {
             ToolStripItem menuItem = sender as ToolStripItem;
             var parent = menuItem.GetCurrentParent();
-            var args = new CurrentDatasetChangedEventArgs((int)parent.Tag);
+            var args = new ContextMenuItemClickedEventArgs((TreeNodeTagObject)parent.Tag);
             InvokeShowTagConfig(args);
         }
 
@@ -770,7 +762,7 @@ namespace fieldtool.View
         {
             ToolStripItem menuItem = sender as ToolStripItem;
             var parent = menuItem.GetCurrentParent();
-            var args = new CurrentDatasetChangedEventArgs((int)parent.Tag);
+            var args = new ContextMenuItemClickedEventArgs((TreeNodeTagObject)parent.Tag);
             InvokeShowTagTabelle(args);
         }
 
@@ -829,6 +821,7 @@ namespace fieldtool.View
             InvokeShowActivityVerlauf(new EventArgs());
         }
 
+        #region EventHandler2
         public event EventHandler ShowActivityVerlauf;
         private void InvokeShowActivityVerlauf(EventArgs eventArgs)
         {
@@ -839,25 +832,26 @@ namespace fieldtool.View
             }
         }
 
-        public event EventHandler<CurrentDatasetChangedEventArgs> ShowTagTabelle;
-        private void InvokeShowTagTabelle(CurrentDatasetChangedEventArgs eventArgs)
+        public event EventHandler<ContextMenuItemClickedEventArgs> ShowTagTabelle;
+        private void InvokeShowTagTabelle(ContextMenuItemClickedEventArgs eventArgs)
         {
-            EventHandler<CurrentDatasetChangedEventArgs> handler = ShowTagTabelle;
+            EventHandler<ContextMenuItemClickedEventArgs> handler = ShowTagTabelle;
             if (handler != null)
             {
                 handler(this, eventArgs);
             }
         }
 
-        public event EventHandler<CurrentDatasetChangedEventArgs> ShowTagConfig;
-        private void InvokeShowTagConfig(CurrentDatasetChangedEventArgs eventArgs)
+        public event EventHandler<ContextMenuItemClickedEventArgs> ShowTagConfig;
+        private void InvokeShowTagConfig(ContextMenuItemClickedEventArgs eventArgs)
         {
-            EventHandler<CurrentDatasetChangedEventArgs> handler = ShowTagConfig;
+            EventHandler<ContextMenuItemClickedEventArgs> handler = ShowTagConfig;
             if (handler != null)
             {
                 handler(this, eventArgs);
             }
         }
+        #endregion EventHandler2
 
         private void alsShapefilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -881,14 +875,14 @@ namespace fieldtool.View
         {
             ToolStripItem menuItem = sender as ToolStripItem;
             var parent = menuItem.GetCurrentParent();
-            var args = new CurrentDatasetChangedEventArgs((int)parent.Tag);
+            var args = new ContextMenuItemClickedEventArgs((TreeNodeTagObject)parent.Tag);
             InvokeZoomToTag(args);
         }
 
-        public event EventHandler<CurrentDatasetChangedEventArgs> ZoomToTag;
-        private void InvokeZoomToTag(CurrentDatasetChangedEventArgs eventArgs)
+        public event EventHandler<ContextMenuItemClickedEventArgs> ZoomToTag;
+        private void InvokeZoomToTag(ContextMenuItemClickedEventArgs eventArgs)
         {
-            EventHandler<CurrentDatasetChangedEventArgs> handler = ZoomToTag;
+            EventHandler<ContextMenuItemClickedEventArgs> handler = ZoomToTag;
             if (handler != null)
             {
                 handler(this, eventArgs);
@@ -912,8 +906,8 @@ namespace fieldtool.View
 
         private void treeViewTagList_AfterCheck(object sender, TreeNodeAdvEventArgs e)
         {
-            InvokeDatasetCheckedChanged(new DatasetCheckedEventArgs((int)e.Node.Tag, e.Node.Checked));
-            InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs((int)e.Node.Tag));
+            InvokeDatasetCheckedChanged(new DatasetCheckedEventArgs((TreeNodeTagObject)e.Node.Tag, e.Node.Checked));
+            InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs(((TreeNodeTagObject)e.Node.Tag).TagID));
             mapBox1.Refresh();
         }
 
@@ -922,6 +916,38 @@ namespace fieldtool.View
 
         }
     }
+
+    public class TreeNodeTagObject
+    {
+        public enum TreeViewNodeType
+        {
+            RootNode,
+            PunktewolkeNode,
+            MCPNode
+        }
+
+        public TreeViewNodeType NodeType { get; private set; }
+        public int TagID { get; private set; }
+        public object NodeTypeData { get; private set; }
+
+        public TreeNodeTagObject(TreeViewNodeType nodeType, int tagID, object nodeTypeData = null)
+        {
+            NodeType = nodeType;
+            TagID = tagID;
+            NodeTypeData = nodeTypeData;
+        }
+    }
+
+    #region CustomEventArgs
+    public class ContextMenuItemClickedEventArgs : EventArgs
+    {
+        public TreeNodeTagObject TagObject { get; private set; }
+        public ContextMenuItemClickedEventArgs(TreeNodeTagObject tagObject)
+        {
+            TagObject = tagObject;
+        }
+    }
+
     public class CurrentDatasetChangedEventArgs : EventArgs
     {
         public int? CurrentTagId { get; private set; }
@@ -942,11 +968,11 @@ namespace fieldtool.View
 
     public class DatasetCheckedEventArgs : EventArgs
     {
-        public int TagId { get; private set; }
+        public TreeNodeTagObject TagObject { get; private set; }
         public bool Checked { get; private set; }
-        public DatasetCheckedEventArgs(int id, bool check)
+        public DatasetCheckedEventArgs(TreeNodeTagObject tagObject, bool check)
         {
-            TagId = id;
+            TagObject = tagObject;
             Checked = check;
         }
     }
@@ -972,5 +998,6 @@ namespace fieldtool.View
         }
 
     }
+    #endregion CustomEventArgs
 }
 
