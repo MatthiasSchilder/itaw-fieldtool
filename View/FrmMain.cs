@@ -155,11 +155,6 @@ namespace fieldtool.View
             Presenter.MapZoomToEnvelopeRequested += MapZoomToEnvelopeRequested;
         }
 
-        private void MCPAvailable(object sender, MCPAvailableArgs e)
-        {
-            CreateMCPNode(e.tagID, e.mcpPercentage);
-        }
-
         private void MapZoomToEnvelopeRequested(object sender, MapZoomToEnvelopeArgs mapZoomToEnvelopeArgs)
         {
             mapBox1.Map.ZoomToBox(mapZoomToEnvelopeArgs.Env);
@@ -258,17 +253,23 @@ namespace fieldtool.View
             };            
         }
 
-        private void CreateMCPNode(int tagID, int mcpPercentage)
+        private void MCPAvailable(object sender, MCPAvailableArgs e)
         {
-            var parent = GetParentTreeNodeForTag(tagID);
+            CreateMCPNode(e.Dataset, e.PercentageMCP);
+        }
 
-            var tn = new TreeNodeAdv($"MCP {mcpPercentage}%")
+        private void CreateMCPNode(FtTransmitterDataset dataset, int percentageMCP)
+        {
+            var parent = GetParentTreeNodeForTag(dataset.TagId);
+
+            var tn = new TreeNodeAdv($"MCP {percentageMCP}%")
             {
                 ShowCheckBox = true,
                 LeftImageIndices = parent.LeftImageIndices,
-                Tag = new TreeNodeTagObject(TreeNodeTagObject.TreeViewNodeType.RootNode, tagID, mcpPercentage)
+                Tag = new TreeNodeTagObject(TreeNodeTagObject.TreeViewNodeType.MCPNode, dataset.TagId, percentageMCP)
             };
             parent.Nodes.Add(tn);
+            SetTreeNodeCheckState(tn, true);
         }
 
         private void SetTreeNodeCheckState(TreeNodeAdv tn, bool state)

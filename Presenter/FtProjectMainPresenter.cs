@@ -63,12 +63,12 @@ namespace fieldtool.Presenter
 
     class MCPAvailableArgs : EventArgs
     {
-        public int tagID;
-        public int mcpPercentage;
-        public MCPAvailableArgs(int tagID, int mcpPercentage)
+        public FtTransmitterDataset Dataset;
+        public readonly int PercentageMCP;
+        public MCPAvailableArgs(FtTransmitterDataset dataset, int percentageMCP)
         {
-            this.tagID = tagID;
-            this.mcpPercentage = mcpPercentage;
+            this.Dataset = dataset;
+            this.PercentageMCP = percentageMCP;
         }
     }
 
@@ -357,21 +357,15 @@ namespace fieldtool.Presenter
             if (frm.ShowDialog() == DialogResult.Cancel)
                 return;
 
-
             foreach (var dataset in Project.Datasets.Where(dataset => dataset.Active))
             {
-                FtMultipoint multipoint = new FtMultipoint(dataset.GPSData.
-                    GpsSeries.Where(gps => gps.IsValid()).Select(gps => new Coordinate(gps.Rechtswert.Value, gps.Hochwert.Value)).ToList());
-                var mcp = multipoint.MinimumConvexPolygon(frm.MCPPerc);
-                mcp.Vertices.Add(mcp.Vertices[0]);
-                //Map.AddPolygonalData(dataset, mcp);
+                int percentageMCP = frm.PercentageMCP;
 
-                dataset.MCPs.Add(frm.MCPPerc, mcp);
-                InvokeMCPAvailable(new MCPAvailableArgs(dataset.TagId, frm.MCPPerc));
+                dataset.AddMCP(new FtTransmitterMCPDataEntry(dataset, percentageMCP) );
+                InvokeMCPAvailable(new MCPAvailableArgs(dataset, percentageMCP));
             }
 
             InvokeMapChanged(new MapChangedArgs(Map));
-            
         }
 
         private void View_ShowEinstellungen(object sender, EventArgs e)
@@ -382,10 +376,10 @@ namespace fieldtool.Presenter
         private void View_DatasetCheckedChanged(object sender, DatasetCheckedEventArgs e)
         {
             if(e.TagObject.NodeType == TreeNodeTagObject.TreeViewNodeType.PunktewolkeNode)
-                Project.SetDatasetFeatureState(e.TagObject.TagID, e.Checked);
+                Project.SetDatasetFeatureState(e.TagObject.TagID, e.Checked, FtDatasetFeatureType.Puntual);
             else if (e.TagObject.NodeType == TreeNodeTagObject.TreeViewNodeType.MCPNode)
-                ;
-                
+                Project.SetDatasetFeatureState(e.TagObject.TagID, e.Checked, FtDatasetFeatureType.Polygonal);
+
             InvokeMapChanged(new MapChangedArgs(Map));
         }
 

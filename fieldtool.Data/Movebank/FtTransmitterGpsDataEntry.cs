@@ -3,7 +3,7 @@ using GeoAPI.Geometries;
 
 namespace fieldtool.Data.Movebank
 {
-    public class FtTransmitterGpsDataEntry : FtTransmitterData
+    public class FtTransmitterGpsDataEntry
     {
         public DateTime StartTimestamp { get; private set; }
         public double? Rechtswert { get; private set; }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace fieldtool
 {
-    public class FtTransmitterTagInfoData : FtTransmitterData
+    public class FtTransmitterTagInfoData
     {
         public DateTime? LastDownload { get; }
         public bool LastDownloadTimeAvailable => LastDownload.HasValue;

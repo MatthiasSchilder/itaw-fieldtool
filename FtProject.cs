@@ -55,20 +55,20 @@ namespace fieldtool
             EPSGTargetProjection = 31467;
         }
 
-        public void SetDatasetFeatureState(int tagId, bool checkState)
+        public void SetDatasetFeatureState(int tagId, bool checkState, FtDatasetFeatureType featureType)
         {
             if (!Datasets.Any())
                 return;
 
             var dataset = Datasets.Find(d => d.TagId == tagId);
             dataset.Active = checkState;
-            DataChangedEventHandler(this, new DataChangedEventArgs(dataset));
+            DataChangedEventHandler(this, new DataChangedEventArgs(dataset, featureType));
         }
 
         public void SetIntervalFilter(FtTransmitterDataset dataset, DateTime start, DateTime stop)
         {
             dataset.GPSData.SetIntervalFilter(start, stop);
-            DataChangedEventHandler(this, new DataChangedEventArgs(dataset));
+            DataChangedEventHandler(this, new DataChangedEventArgs(dataset, FtDatasetFeatureType.Puntual));
         }
 
         public void LoadDatasets(Action<int> setupAction, Action<string> stepAction, Action finishAction)
@@ -128,9 +128,11 @@ namespace fieldtool
     public class DataChangedEventArgs
     {
         public FtTransmitterDataset Dataset { get; }
-        public DataChangedEventArgs(FtTransmitterDataset dataset)
+        public FtDatasetFeatureType FeatureType { get; }
+        public DataChangedEventArgs(FtTransmitterDataset dataset, FtDatasetFeatureType changedFeatureTypeType)
         {
             Dataset = dataset;
+            FeatureType = changedFeatureTypeType;
         }
     }
 }

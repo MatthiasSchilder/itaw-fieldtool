@@ -70,9 +70,10 @@
     <Compile Include="Movebank\FtTagVisulization.cs" />
     <Compile Include="Movebank\FTTransmitterAccelData.cs" />
     <Compile Include="Movebank\FtTransmitterAccelDataSeries.cs" />
-    <Compile Include="Movebank\FTTransmitterData.cs" />
     <Compile Include="Movebank\FTTransmitterDataset.cs" />
     <Compile Include="Movebank\FtTransmitterDatasetFactory.cs" />
+    <Compile Include="Movebank\FtTransmitterMCPDataEntry.cs" />
+    <Compile Include="Movebank\FTTransmitterMCPData.cs" />
     <Compile Include="Movebank\FtTransmitterGpsDataEntry.cs" />
     <Compile Include="Movebank\FTTransmitterGPSData.cs" />
     <Compile Include="Movebank\FtTransmitterGPSDataSeries.cs" />

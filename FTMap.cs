@@ -22,26 +22,23 @@ namespace fieldtool
 {
     public class FtMap : SharpMap.Map
     {
-        private FtProject _project;
-        private Font MapFont;
-
-        private List<MapDecoration> CustomDecorations;
-
         private Dictionary<FtTransmitterDataset, FtPuntualVectorLayer> ActiveVectorLayers;
+        private Dictionary<FtTransmitterMCPDataEntry, PolygonalVectorLayer> ActivePolygonalVectorLayers;
 
         private PuntualLegendDecoration PuntualLegendDecoration;
+        private PolygonalLegendDecoration PolygonalLegendDecoration;
 
         #region Init
         public FtMap(FtProject project) : base()
         {
-            _project = project;
             this.BackColor = System.Drawing.Color.White;
             Init(project);
             project.DataChangedEventHandler += DataChangedEventHandler;
-            CustomDecorations = new List<MapDecoration>();
             ActiveVectorLayers = new Dictionary<FtTransmitterDataset, FtPuntualVectorLayer>();
+            ActivePolygonalVectorLayers = new Dictionary<FtTransmitterMCPDataEntry, PolygonalVectorLayer>();
 
             PuntualLegendDecoration = new PuntualLegendDecoration();
+            PolygonalLegendDecoration = new PolygonalLegendDecoration();
         }
         private void Init(FtProject project)
         {
@@ -61,9 +58,18 @@ namespace fieldtool
         private void DataChangedEventHandler(object sender, DataChangedEventArgs eventArgs)
         {
             var dataset = eventArgs.Dataset;
+
+            if(eventArgs.FeatureType == FtDatasetFeatureType.Puntual)
+                UpdatePuntualFeature(dataset);
+            else if (eventArgs.FeatureType == FtDatasetFeatureType.Polygonal)
+                UpdatePolygonalFeature(dataset);
+        }
+
+        private void UpdatePuntualFeature(FtTransmitterDataset dataset)
+        {
             if (!dataset.Active)
             {
-                if(ActiveVectorLayers.ContainsKey(dataset))
+                if (ActiveVectorLayers.ContainsKey(dataset))
                     ErasePuntualFeature(dataset);
             }
             else // dataset.Active
@@ -78,9 +84,16 @@ namespace fieldtool
                     DrawPuntualFeature(dataset);
                 }
             }
-           
-            UpdatePuntualLegends(ActiveVectorLayers.Keys.ToList());
-            //AddPolygonalLegendDecoration(drawnPolygonalFeatures);
+
+            UpdatePuntualLegend(ActiveVectorLayers.Keys.ToList());
+        }
+
+        private void UpdatePolygonalFeature(FtTransmitterDataset dataset)
+        {
+            ErasePolygonalFeatures(dataset);
+            DrawPolygonalFeatures(dataset);
+
+            UpdatePolygonalLegend(ActivePolygonalVectorLayers.Keys.ToList());
         }
 
         private void DrawPuntualFeature(FtTransmitterDataset dataset)
@@ -103,16 +116,33 @@ namespace fieldtool
             VariableLayers.Remove(puntualVectorLayer.SymbolizerLayer);
         }
 
-        private void DrawPolygonalFeature(FtTransmitterDataset dataset)
+        private void DrawPolygonalFeatures(FtTransmitterDataset dataset)
         {
-            //var poly = this.Factory.CreatePolygon(polygon.Vertices.ToArray());
-            //var rnd = new Random();
-            //var polygonalVectorLayer = new PolygonalVectorLayer(dataset.TagId.ToString() + "MCP", new GeometryProvider(poly))
-            //{
-            //    Symbolizer = new FtPolygonWithAlphaSymbolizer(Color.FromArgb(0, rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255)))
-            //};
+            foreach (var polygonalFeature in dataset.MCPData)
+            {
+                if (!polygonalFeature.Enabled)
+                    continue;
 
-            //this.VariableLayers.Add(polygonalVectorLayer);
+                var poly = this.Factory.CreatePolygon(polygonalFeature.Polygon.Vertices.ToArray());
+                var polygonalVectorLayer = new PolygonalVectorLayer(dataset.TagId.ToString() + "MCP" + polygonalFeature.PercentageMCP, new GeometryProvider(poly))
+                {
+                    Symbolizer = new FtPolygonWithAlphaSymbolizer(dataset.Visulization.VisulizationColor)
+                };
+
+                ActivePolygonalVectorLayers.Add(polygonalFeature, polygonalVectorLayer);
+                this.VariableLayers.Add(polygonalVectorLayer);
+            }
+        }
+
+        private void ErasePolygonalFeatures(FtTransmitterDataset dataset)
+        {
+            foreach (var polygonalVectorLayer in ActivePolygonalVectorLayers)
+            {
+                this.VariableLayers.Remove(polygonalVectorLayer.Value);
+            }
+            ActivePolygonalVectorLayers.Clear();
+
+            var puntualVectorLayer = ActiveVectorLayers[dataset];
         }
 
         private void AddScaleBar()
@@ -124,7 +154,7 @@ namespace fieldtool
             this.Decorations.Add(scaleBar);
         }
 
-        private void UpdatePuntualLegends(List<FtTransmitterDataset> datasets)
+        private void UpdatePuntualLegend(List<FtTransmitterDataset> datasets)
         {
             if (!datasets.Any())
             {
@@ -143,13 +173,23 @@ namespace fieldtool
             this.Decorations.Add(PuntualLegendDecoration);
         }
 
-        private void AddPolygonalLegendDecoration(List<FtTransmitterDataset> datasets)
+        private void UpdatePolygonalLegend(List<FtTransmitterMCPDataEntry> mcps)
         {
-            if (!datasets.Any())
+            if (!mcps.Any())
+            {
+                if (!this.Decorations.Contains(PolygonalLegendDecoration))
+                {
+                    return;
+                }
+                this.Decorations.Remove(PolygonalLegendDecoration);
                 return;
-            PolygonalLegendDecoration puntualLegend = new PolygonalLegendDecoration(datasets);
-            this.Decorations.Add(puntualLegend);
-            CustomDecorations.Add(puntualLegend);
+            }
+
+            PolygonalLegendDecoration.Update(mcps);
+            // wenn die Legende schon drin ist, einmal entfernen, um Redraw mit neuen Items zu erzwingen
+            if (this.Decorations.Contains(PolygonalLegendDecoration))
+                this.Decorations.Remove(PolygonalLegendDecoration);
+            this.Decorations.Add(PolygonalLegendDecoration);
         }
 
         private void AddTiffLayer(string name, string path)

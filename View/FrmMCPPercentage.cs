@@ -12,7 +12,7 @@ namespace fieldtool.View
 {
     public partial class FrmMCPPercentage : Form
     {
-        public int MCPPerc
+        public int PercentageMCP
         {
             get
             {
@@ -26,7 +26,7 @@ namespace fieldtool.View
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if(MCPPerc == 0)
+            if(PercentageMCP == 0)
             {
                 MessageBox.Show("0% nicht zulässig");
                 this.DialogResult = DialogResult.Cancel;

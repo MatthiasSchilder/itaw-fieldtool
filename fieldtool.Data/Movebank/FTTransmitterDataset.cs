@@ -7,6 +7,12 @@ using fieldtool.Data.Geometry;
 
 namespace fieldtool.Data.Movebank
 {
+    public enum FtDatasetFeatureType
+    {
+        Puntual,
+        Polygonal
+    }
+
     public class FtTransmitterDataset
     {
         public int TagId { get; private set; }
@@ -20,14 +26,13 @@ namespace fieldtool.Data.Movebank
         public FtTransmitterAccelData   AccelData { get; private set; }
         public FtTransmitterGpsData     GPSData { get; private set; }
 
-        public Dictionary<int, FtPolygon> MCPs;
+        public FtTransmitterMCPData MCPData { get; private set; }
 
         public FtTransmitterDataset(int id, FtFileset fileset)
         {
             TagId = id;
             Fileset = fileset;
 
-            
             Random rnd = new Random();
             Visulization = new FtTagVisulization
             {
@@ -36,8 +41,7 @@ namespace fieldtool.Data.Movebank
             };
             Visulization.Symbolizer = new FtDotPointSymbolizer(this.Visulization.VisulizationColor);
 
-            MCPs = new Dictionary<int, FtPolygon>();
-
+            MCPData = new FtTransmitterMCPData();
         }
 
         public void AddTagInfoData(FtTransmitterTagInfoData tagInfoData)
@@ -55,16 +59,11 @@ namespace fieldtool.Data.Movebank
             GPSData = gpsData;
         }
 
-        public bool IsFunctionAvailable(FtFileFunction function)
+        public void AddMCP(FtTransmitterMCPDataEntry mcpEntry)
         {
-            if (function == FtFileFunction.TagInfo)
-                return TagInfoData != null;
-            if (function == FtFileFunction.AccelData)
-                return AccelData != null;
-            return GPSData != null;
+            MCPData.Add(mcpEntry);
         }
-
-        
+       
 
     }
 }

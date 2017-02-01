@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <doc>
     <assembly>
         <name>Npgsql</name>
@@ -3383,7 +3383,7 @@
         </member>
         <member name="T:Npgsql.NpgsqlDataAdapter">
             <summary>
-            This class represents an adapter from many commands: select, update, insert and delete to fill <see cref="T:System.Data.DataSet">Datasets.</see>
+            This class represents an adapter from many commands: select, update, insert and delete to fill <see cref="T:System.Data.DataSet">MCPs.</see>
             </summary>
         </member>
         <member name="T:Npgsql.NpgsqlDataReader">

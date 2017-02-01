@@ -11,7 +11,7 @@ using SharpMap.Data.Providers;
 
 namespace fieldtool.Data.Movebank
 {
-    public class FtTransmitterGpsData : FtTransmitterData, IEnumerable<FtTransmitterGpsDataEntry>
+    public class FtTransmitterGpsData : IEnumerable<FtTransmitterGpsDataEntry>
     {
         private int _tagID;
         public FtTransmitterGPSDataSeries GpsSeries = new
@@ -45,7 +45,7 @@ namespace fieldtool.Data.Movebank
         {
             if (DateTimeFilterStop.HasValue && DateTimeFilterStart.HasValue)
             {
-                Debug.WriteLine(String.Format("In GetEnumerator: FilterStart: {0} FilterStop {1}", DateTimeFilterStart, DateTimeFilterStop));
+                Debug.WriteLine($"In GetEnumerator: FilterStart: {DateTimeFilterStart} FilterStop {DateTimeFilterStop}");
                 return GpsSeries.Where(gps => gps.StartTimestamp >= DateTimeFilterStart && gps.StartTimestamp <= DateTimeFilterStop)
                     .GetEnumerator();
             }

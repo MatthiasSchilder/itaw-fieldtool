@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace fieldtool
 {
-    public class FtTransmitterAccelData : FtTransmitterData
+    public class FtTransmitterAccelData 
     {
         //private List<String> _columns = new List<string>()
         //{
