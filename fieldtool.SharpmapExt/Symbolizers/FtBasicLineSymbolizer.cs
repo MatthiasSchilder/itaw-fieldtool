@@ -24,22 +24,25 @@ namespace fieldtool.SharpmapExt.Symbolizers
             get; set;
         }
 
-        private PointF[] ArrowCoords = new[] {new PointF(0, -6), new PointF(9, -24), new PointF(-9, -24)};
+        private PointF[] ArrowCoords;
 
-        public FtBasicLineSymbolizer(Color visuColor, Size size, bool labeled = false)
+        public FtBasicLineSymbolizer(Color visuColor, bool labeled = false)
         {
             OutlinePen = new Pen(new SolidBrush(visuColor));
             FillBrush = new SolidBrush(ControlPaint.LightLight(visuColor));
             Labeled = labeled;
-            Size = size;
         }
         public override object Clone()
         {
-            return new FtBasicLineSymbolizer(OutlinePen.Color, Size);
+            return new FtBasicLineSymbolizer(OutlinePen.Color);
         }
 
         protected override void OnRenderInternal(Map map, ILineString lineString, Graphics graphics)
         {
+            ArrowCoords = new[] { new PointF(0, -Size.Width / 2f),
+                new PointF(Size.Width / 2f, -(Size.Height + Size.Height / 2f)),
+                new PointF(-Size.Width / 2f, -(Size.Height + Size.Height / 2f)) };
+
             var points = lineString.TransformToImage(map);
 
             for (int i = 1; i < points.Length; i++)
@@ -50,13 +53,13 @@ namespace fieldtool.SharpmapExt.Symbolizers
                 graphics.DrawLine(OutlinePen, start, end);
 
                 var rect = new RectangleF(new PointF(start.X - Size.Width / 2f, start.Y - Size.Height / 2f),
-                    new SizeF(12, 12));
+                    new SizeF(Size.Width, Size.Height));
 
                 graphics.DrawEllipse(OutlinePen, rect);
                 graphics.FillEllipse(FillBrush, rect);
 
                 var rect2 = new RectangleF(new PointF(end.X - Size.Width / 2f, end.Y - Size.Height / 2f),
-                    new SizeF(12, 12));
+                    new SizeF(Size.Width, Size.Height));
 
                 graphics.DrawEllipse(OutlinePen, rect2);
                 graphics.FillEllipse(FillBrush, rect2);
@@ -69,7 +72,6 @@ namespace fieldtool.SharpmapExt.Symbolizers
                 var vLineNorm = Vector3.Normalize(vDiff);
 
                 var angleY_ = Math.Atan2(Vector3.UnitY.Y, Vector3.UnitY.X) - Math.Atan2(vLineNorm.Y, vLineNorm.X);
-                //angle of 2 relative to 1 = atan2(v2.y, v2.x) - atan2(v1.y, v1.x)
 
                 var matrix = Matrix4x4.CreateRotationZ((float)-angleY_);
                 matrix.Translation = vStart - Vector3.Zero;

@@ -4,6 +4,7 @@ using System.Linq;
 using DotSpatial.Projections;
 using fieldtool.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using fieldtool.Data.Movebank;
 
 namespace fieldtool.Test
 {

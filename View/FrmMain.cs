@@ -10,6 +10,10 @@ using fieldtool.Presenter;
 using GeoAPI.Geometries;
 using SharpMap.Data;
 using SharpMap.Forms;
+using System.Drawing.Design;
+using System.Windows.Forms.Design;
+using System.Runtime.InteropServices;
+using Syncfusion.Windows.Forms.Tools;
 
 namespace fieldtool.View
 {
@@ -227,38 +231,41 @@ namespace fieldtool.View
             int i = 0;
             foreach (var dataset in datasets)
             {
-                var parentTn = CreateParentTreeNode(dataset, i++);
-                var punktwolkteTn = CreatePunktwolkeTreeNode(dataset, parentTn.ImageIndex);
+                var parentTn = CreateParentTreeNode(dataset);
+                var punktwolkteTn = CreatePunktwolkeTreeNode(dataset, i++);
 
-                
                 treeViewTagList.Nodes.Add(parentTn);
                 parentTn.Nodes.Add(punktwolkteTn);
-            }           
 
-            
-
+                SetTreeNodeCheckState(punktwolkteTn, dataset.Active);
+            }
+            treeViewTagList.LeftImageList = imageListColorKeys;
             treeViewTagList.ExpandAll();
         }
 
-        private TreeNode CreateParentTreeNode(FtTransmitterDataset dataset, int i)
+        private TreeNodeAdv CreateParentTreeNode(FtTransmitterDataset dataset)
         {
-            //var tn = treeViewTagList.Nodes.Add(CreateTreeViewNodeDescriptor(dataset));
-            var tn = new TreeNode(CreateTreeViewNodeDescriptor(dataset));
-            tn.Tag = dataset.TagId;
-            tn.Checked = dataset.Active;
-            tn.ImageIndex = i;
-            tn.SelectedImageIndex = i;
-
+            var tn = new TreeNodeAdv(CreateTreeViewNodeDescriptor(dataset));
+            
+            //tn.Tag = dataset.TagId;
+            //tn.Checked = dataset.Active;
+            //tn.ImageIndex = i;
+            //tn.SelectedImageIndex = i;
             return tn;
+            
         }
 
-        private TreeNode CreatePunktwolkeTreeNode(FtTransmitterDataset dataset, int imageIndex)
+        private void SetTreeNodeCheckState(TreeNodeAdv tn, bool state)
         {
-            var tn = new TreeNode("Punktwolke");
+            tn.Checked = state;
+        }
+        private TreeNodeAdv CreatePunktwolkeTreeNode(FtTransmitterDataset dataset, int imageIndex)
+        {
+            var tn = new TreeNodeAdv("Punktwolke");
             tn.Tag = dataset.TagId;
-            tn.Checked = dataset.Active;
-            tn.ImageIndex = imageIndex;
-            tn.SelectedImageIndex = imageIndex;
+            tn.ShowCheckBox = true;
+            
+            tn.LeftImageIndices = new[] { imageIndex};
 
             return tn;
         }
@@ -719,18 +726,6 @@ namespace fieldtool.View
             InvokeCreateMCPs(new EventArgs());
         }
 
-        private void lviDatasets_ItemChecked(object sender, TreeViewEventArgs e)
-        {
-            InvokeDatasetCheckedChanged(new DatasetCheckedEventArgs((int)e.Node.Tag, e.Node.Checked));
-            InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs((int)e.Node.Tag));
-            mapBox1.Refresh();
-        }
-
-        private void treeViewTagList_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs((int)e.Node.Tag));
-        }
-
         private void mapBox1_MouseDrag(Coordinate worldPos, MouseEventArgs imagePos)
         {
             //Debug.WriteLine("im dragging " + i++);
@@ -837,15 +832,6 @@ namespace fieldtool.View
             }
         }
 
-        private void treeViewTagList_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            if (e.Button != MouseButtons.Right)
-                return;
-
-            tagContextMenu.Tag = e.Node.Tag;
-            tagContextMenu.Show(e.Location);
-        }
-
         private void alsShapefilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InvokeExportAsShape(new EventArgs());
@@ -880,6 +866,33 @@ namespace fieldtool.View
             {
                 handler(this, eventArgs);
             }
+        }
+
+        private void treeViewTagList_NodeMouseClick(object sender, TreeViewAdvMouseClickEventArgs e)
+        {
+            if (e.Node.Level == 1)
+                return;
+            if (e.Mousebutton != MouseButtons.Right)
+                return;
+
+            tagContextMenu.Tag = e.Node.Tag;
+
+            var treeview = sender as TreeViewAdv;
+            var pt = treeview.PointToScreen(treeview.Location);
+
+            tagContextMenu.Show(new Point(e.X + pt.X, e.Y + pt.Y));
+        }
+
+        private void treeViewTagList_AfterCheck(object sender, TreeNodeAdvEventArgs e)
+        {
+            InvokeDatasetCheckedChanged(new DatasetCheckedEventArgs((int)e.Node.Tag, e.Node.Checked));
+            InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs((int)e.Node.Tag));
+            mapBox1.Refresh();
+        }
+
+        private void treeViewTagList_AfterSelect(object sender, EventArgs e)
+        {
+
         }
     }
     public class CurrentDatasetChangedEventArgs : EventArgs

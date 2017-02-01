@@ -61,20 +61,24 @@ namespace fieldtool
                     symbolizerLayer = new VectorLayer(dataset.TagId.ToString(), dataSource);
 
                     symbolizerLayer.Style.PointSymbolizer = (IPointSymbolizer)symbolizer;
+
+                    (symbolizer as IPointSymbolizer).Size = new Size(Properties.Settings.Default.VisualizerMarkersize,
+                        Properties.Settings.Default.VisualizerMarkersize);
                 }
                 else
                 {
                     dataSource = dataset.GPSData.AsDataTableLine();
                     symbolizerLayer = new VectorLayer(dataset.TagId.ToString(), dataSource);
                     symbolizerLayer.Style.LineSymbolizer = (FtBasicLineSymbolizer) symbolizer;
+
+                    (symbolizer as FtBasicLineSymbolizer).Size = new Size(Properties.Settings.Default.VisualizerMarkersize,
+                        Properties.Settings.Default.VisualizerMarkersize);
                 }
 
                 symbolizerLayer.SmoothingMode = SmoothingMode.HighSpeed;
                 symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
 
                 LabelLayer labelLayer = null;
-                //if ((symbolizer is FtBasePointSymbolizer && (symbolizer as FtBasePointSymbolizer).Labeled) 
-                //    || symbolizer is BasicLineSymbolizer)
                 if((symbolizer as IFtBaseSymbolizer).Labeled)
                 {
                     labelLayer = new LabelLayer($"Label{dataset.TagId}")

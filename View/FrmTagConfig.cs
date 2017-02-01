@@ -93,11 +93,7 @@ namespace fieldtool.View
         private void FrmTagConfig_FormClosing(object sender, FormClosingEventArgs e)
         {
             _dataset.Visulization.VisulizationColor = NewColor;
-
-            if (NewSymbolizerType == typeof (BasicLineSymbolizer))
-                _dataset.Visulization.Symbolizer = (ISymbolizer)Activator.CreateInstance(NewSymbolizerType, NewLabelState);
-            else
-                _dataset.Visulization.Symbolizer = (ISymbolizer)Activator.CreateInstance(NewSymbolizerType, NewColor, NewLabelState);
+            _dataset.Visulization.Symbolizer = (ISymbolizer)Activator.CreateInstance(NewSymbolizerType, NewColor, NewLabelState);
         }
 
         private void chkLabeled_CheckedChanged(object sender, EventArgs e)

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieldtool", "fieldtool.csproj", "{69698469-7C2B-4E2A-8C0C-7AC30A9505C6}"
 EndProject
@@ -30,7 +30,6 @@ Global
 		{61FCEF23-C5E8-4E24-9002-63D87BFDACDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61FCEF23-C5E8-4E24-9002-63D87BFDACDD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EA3A7122-7FCB-496C-80F6-80600C80F581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA3A7122-7FCB-496C-80F6-80600C80F581}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA3A7122-7FCB-496C-80F6-80600C80F581}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA3A7122-7FCB-496C-80F6-80600C80F581}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FC726910-8BDA-4A61-9008-99ED285520CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
