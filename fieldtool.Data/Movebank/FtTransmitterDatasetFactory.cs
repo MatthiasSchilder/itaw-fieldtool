@@ -15,24 +15,18 @@ namespace fieldtool.Data.Movebank
         public static Action<int> SetupAction;
         private static void InvokeSetupAction(int num)
         {
-            if (SetupAction == null)
-                return;
-            SetupAction(num);
+            SetupAction?.Invoke(num);
         }
 
         public static Action<string> StepAction;
         private static void InvokeStepAction(string tagName)
         {
-            if (StepAction == null)
-                return;
-            StepAction(tagName);
+            StepAction?.Invoke(tagName);
         }
         public static Action FinishAction;
         private static void InvokeFinishAction()
         {
-            if (FinishAction == null)
-                return;
-            FinishAction();
+            FinishAction?.Invoke();
         }
 
         public static FtTransmitterDataset LoadFileset(FtFileset fileset, List<int> tagBlacklist)

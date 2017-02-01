@@ -126,7 +126,9 @@
     <EmbeddedResource Include="View\FrmTagConfig.resx">
       <DependentUpon>FrmTagConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="Decorations\LegendDecoration.cs" />
+    <Compile Include="Decorations\PolygonalLegendDecoration.cs" />
+    <Compile Include="Decorations\PuntualLegendDecoration.cs" />
+    <Compile Include="Layers\FtPuntualVectorLayer.cs" />
     <Compile Include="View\FrmAccAxisView.cs">
       <SubType>Form</SubType>
     </Compile>

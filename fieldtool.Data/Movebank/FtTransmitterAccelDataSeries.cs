@@ -29,7 +29,7 @@ namespace fieldtool
 
         private void ProcessColumns(string[] columns)
         {
-            if (columns.Count() != 6)
+            if (columns.Length != 6)
                 return;
             StartTimestamp = DateTime.Parse(columns[2]);
             AccelerationSamplingFrequency = double.Parse(columns[3], NumStyle, CultInfo);  

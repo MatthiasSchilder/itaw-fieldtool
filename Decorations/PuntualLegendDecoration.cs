@@ -7,7 +7,7 @@ using SharpMap.Rendering.Decoration;
 
 namespace fieldtool.Decorations
 {
-    class LegendDecoration : MapDecoration
+    class PuntualLegendDecoration : MapDecoration
     {
         /// <summary>
         /// Gets or sets the disclaimer text
@@ -41,19 +41,23 @@ namespace fieldtool.Decorations
         /// <summary>
         /// Creates an instance of this class
         /// </summary>
-        public LegendDecoration(List<FtTransmitterDataset> datasets)
+        public PuntualLegendDecoration()
         {
             this.Font = Properties.Settings.Default.MapLegendFont;
             this.ForeColor = Properties.Settings.Default.MapLegendTextColor;
             this.Opacity =Properties.Settings.Default.MapLegendBackgroundAlpha;
             ForeGroundBrush = new SolidBrush(this.ForeColor);
-            Datasets = datasets;
 
             base.Anchor = Properties.Settings.Default.MapLegendAnchor;
             base.BorderMargin = new Size(3, 3);
             base.BorderColor = Properties.Settings.Default.MapLegendBorderColor;
             base.BackgroundColor = base.OpacityColor(Properties.Settings.Default.MapLegendBackgroundColor);
             base.RoundedEdges = Properties.Settings.Default.MapLegendBorderRoundEdges;
+        }
+
+        public void Update(List<FtTransmitterDataset> datasets)
+        {
+            Datasets = datasets;
         }
 
         private const String FormatString = "{0} ({1})";

@@ -111,114 +111,70 @@ namespace fieldtool.Presenter
     class FtProjectMainPresenter : Presenter<IFtProjectMainView>
     {
         public EventHandler<MapZoomToEnvelopeArgs> MapZoomToEnvelopeRequested;
-        public void InvokeMapZoomToEnvelopeRequested(MapZoomToEnvelopeArgs e)
+        private void InvokeMapZoomToEnvelopeRequested(MapZoomToEnvelopeArgs e)
         {
-            var handler = MapZoomToEnvelopeRequested;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            MapZoomToEnvelopeRequested?.Invoke(this, e);
         }
 
         public EventHandler<MapDisplayIntervalChangedEventArgs> rMapDisplayIntervalChanged;
-        public void InvokeMapDisplayIntervalChanged(MapDisplayIntervalChangedEventArgs e)
+        private void InvokeMapDisplayIntervalChanged(MapDisplayIntervalChangedEventArgs e)
         {
-            var handler = rMapDisplayIntervalChanged;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            rMapDisplayIntervalChanged?.Invoke(this, e);
         }
 
         public EventHandler<MapEnvelopeExportRequestedArgs> MapEnvelopeExportRequested;
-        public void InvokeMapEnvelopeExportRequested(MapEnvelopeExportRequestedArgs e)
+        private void InvokeMapEnvelopeExportRequested(MapEnvelopeExportRequestedArgs e)
         {
-            var handler = MapEnvelopeExportRequested;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            MapEnvelopeExportRequested?.Invoke(this, e);
         }
 
         public EventHandler<CursorCoordsChangedArgs> CursorCoordinatesChanged;
-        public void InvokeCursorCoordinatesChanged(CursorCoordsChangedArgs e)
+        private void InvokeCursorCoordinatesChanged(CursorCoordsChangedArgs e)
         {
-            var handler = CursorCoordinatesChanged;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            CursorCoordinatesChanged?.Invoke(this, e);
         }
 
         public EventHandler<MapChangedArgs> MapChanged;
-        public void InvokeMapChanged(MapChangedArgs e)
+        private void InvokeMapChanged(MapChangedArgs e)
         {
-            var handler = MapChanged;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            MapChanged?.Invoke(this, e);
         }
 
         public EventHandler<ProjectStateArgs> ProjectStateChanged;
-        public void InvokeProjectStateChanged(ProjectStateArgs e)
+        private void InvokeProjectStateChanged(ProjectStateArgs e)
         {
-            var handler = ProjectStateChanged;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            ProjectStateChanged?.Invoke(this, e);
         }
 
         public EventHandler<MovebankImportedArgs> MovebankImported;
-        public void InvokeMovebankImported(MovebankImportedArgs e)
+        private void InvokeMovebankImported(MovebankImportedArgs e)
         {
-            var handler = MovebankImported;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            MovebankImported?.Invoke(this, e);
         }
 
         public EventHandler<MCPAvailableArgs> MCPAvailable;
-        public void InvokeMCPAvailable(MCPAvailableArgs e)
+        private void InvokeMCPAvailable(MCPAvailableArgs e)
         {
-            var handler = MCPAvailable;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            MCPAvailable?.Invoke(this, e);
         }
 
         public EventHandler<SetupProgressArgs> SetupProgress;
-        public void InvokeSetupProgress(int numTags)
+        private void InvokeSetupProgress(int numTags)
         {
-            var handler = SetupProgress;
-            if (handler != null)
-            {
-                handler(this, new SetupProgressArgs(numTags));
-            }
+            SetupProgress?.Invoke(this, new SetupProgressArgs(numTags));
         }
 
 
         public EventHandler<StepProgressArgs> StepProgress;
-        public void InvokeStepProgress(string tagName)
+        private void InvokeStepProgress(string tagName)
         {
-            var handler = StepProgress;
-            if (handler != null)
-            {
-                handler(this, new StepProgressArgs(tagName));
-            }
+            StepProgress?.Invoke(this, new StepProgressArgs(tagName));
         }
 
         public EventHandler FinishProgress;
         public void InvokeFinishProgress()
-        {
-            var handler = FinishProgress;
-            if (handler != null)
-            {
-                handler(this, new EventArgs());
-            }
+        {;
+            FinishProgress?.Invoke(this, new EventArgs());
         }
 
         private FtProject Project { get; set; }
@@ -300,15 +256,21 @@ namespace fieldtool.Presenter
                 return;
 
             const string DecoderBinaryFilename = "decoder_v7_2.exe";
-            
-            Process proc = new Process();
-            proc.StartInfo = new ProcessStartInfo(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), DecoderBinaryFilename), 
-                String.Format("-f {0} -c m", loggerBinOpenFileDialog.FileName));
-            proc.StartInfo.CreateNoWindow = false;
-            proc.StartInfo.UseShellExecute = true;
-            proc.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-            proc.StartInfo.WorkingDirectory = Path.GetDirectoryName(loggerBinOpenFileDialog.FileName);
-            proc.EnableRaisingEvents = true;
+
+            Process proc = new Process
+            {
+                StartInfo = new ProcessStartInfo(
+                    Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location),
+                        DecoderBinaryFilename),
+                    $"-f {loggerBinOpenFileDialog.FileName} -c m")
+                {
+                    CreateNoWindow = false,
+                    UseShellExecute = true,
+                    WindowStyle = ProcessWindowStyle.Normal,
+                    WorkingDirectory = Path.GetDirectoryName(loggerBinOpenFileDialog.FileName)
+                },
+                EnableRaisingEvents = true
+            };
             proc.Exited += ProcOnExited;
             AsyncOp = AsyncOperationManager.CreateOperation(null);
             proc.Start();       
@@ -402,7 +364,7 @@ namespace fieldtool.Presenter
                     GpsSeries.Where(gps => gps.IsValid()).Select(gps => new Coordinate(gps.Rechtswert.Value, gps.Hochwert.Value)).ToList());
                 var mcp = multipoint.MinimumConvexPolygon(frm.MCPPerc);
                 mcp.Vertices.Add(mcp.Vertices[0]);
-                Map.AddPolygonalData(dataset, mcp);
+                //Map.AddPolygonalData(dataset, mcp);
 
                 dataset.MCPs.Add(frm.MCPPerc, mcp);
                 InvokeMCPAvailable(new MCPAvailableArgs(dataset.TagId, frm.MCPPerc));
@@ -419,7 +381,11 @@ namespace fieldtool.Presenter
 
         private void View_DatasetCheckedChanged(object sender, DatasetCheckedEventArgs e)
         {
-            Project.SetDatasetState(e.TagObject.TagID, e.Checked);
+            if(e.TagObject.NodeType == TreeNodeTagObject.TreeViewNodeType.PunktewolkeNode)
+                Project.SetDatasetFeatureState(e.TagObject.TagID, e.Checked);
+            else if (e.TagObject.NodeType == TreeNodeTagObject.TreeViewNodeType.MCPNode)
+                ;
+                
             InvokeMapChanged(new MapChangedArgs(Map));
         }
 

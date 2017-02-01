@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Policy;
 using System.Xml.Serialization;
 using fieldtool.Annotations;
 using fieldtool.Data.Movebank;
@@ -14,7 +15,7 @@ namespace fieldtool
     public class FtProject : INotifyPropertyChanged
     {
         [XmlIgnore]
-        public EventHandler DataChangedEventHandler;
+        public EventHandler<DataChangedEventArgs> DataChangedEventHandler;
 
         [XmlIgnore]
         public List<FtTransmitterDataset> Datasets { get; set; }
@@ -27,6 +28,7 @@ namespace fieldtool
         public String ProjectName { get; set; }
         public String ProjectFilePath { get;  set; }
         public String DefaultMovebankLookupPath { get; set; }
+
         [XmlIgnore]
         public bool DefaultMovebankLookupPathAvailable => !String.IsNullOrEmpty(DefaultMovebankLookupPath);
 
@@ -53,20 +55,20 @@ namespace fieldtool
             EPSGTargetProjection = 31467;
         }
 
-        public void SetDatasetState(int tagId, bool checkState)
+        public void SetDatasetFeatureState(int tagId, bool checkState)
         {
             if (!Datasets.Any())
                 return;
 
             var dataset = Datasets.Find(d => d.TagId == tagId);
             dataset.Active = checkState;
-            DataChangedEventHandler(this, new EventArgs());
+            DataChangedEventHandler(this, new DataChangedEventArgs(dataset));
         }
 
         public void SetIntervalFilter(FtTransmitterDataset dataset, DateTime start, DateTime stop)
         {
             dataset.GPSData.SetIntervalFilter(start, stop);
-            DataChangedEventHandler(this, new EventArgs());
+            DataChangedEventHandler(this, new DataChangedEventArgs(dataset));
         }
 
         public void LoadDatasets(Action<int> setupAction, Action<string> stepAction, Action finishAction)
@@ -80,9 +82,7 @@ namespace fieldtool
 
         public FtTransmitterDataset GetTransmitterDataset(int tagId)
         {
-            if (Datasets == null)
-                return null;
-            return Datasets.Find(d => d.TagId == tagId);
+            return Datasets?.Find(d => d.TagId == tagId);
         }
 
         public void Save()
@@ -122,6 +122,15 @@ namespace fieldtool
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+    public class DataChangedEventArgs
+    {
+        public FtTransmitterDataset Dataset { get; }
+        public DataChangedEventArgs(FtTransmitterDataset dataset)
+        {
+            Dataset = dataset;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace fieldtool.Presenter
         public Presenter(TView view)
         {
             if (view == null)
-                throw new ArgumentNullException("view");
+                throw new ArgumentNullException(nameof(view));
 
             View = view;
             View.Initialize += OnViewInitialize;

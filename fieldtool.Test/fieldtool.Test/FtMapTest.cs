@@ -50,7 +50,7 @@ namespace fieldtool.Test
         [TestMethod]
         public void TestLayerCount1()
         {
-            _project.SetDatasetState(3914, true);
+            _project.SetDatasetFeatureState(3914, true);
 
             var layerCount = _map.VariableLayers.Count;
             var expectedValue = 1;
@@ -61,8 +61,8 @@ namespace fieldtool.Test
         [TestMethod]
         public void TestLayerCount2()
         {
-            _project.SetDatasetState(3914, true);
-            _project.SetDatasetState(3914, false);
+            _project.SetDatasetFeatureState(3914, true);
+            _project.SetDatasetFeatureState(3914, false);
 
             var layerCount = _map.VariableLayers.Count;
             var expectedValue = 0;
@@ -73,8 +73,8 @@ namespace fieldtool.Test
         [TestMethod]
         public void TestDoubleToggle()
         {
-            _project.SetDatasetState(3914, true);
-            _project.SetDatasetState(3914, true);
+            _project.SetDatasetFeatureState(3914, true);
+            _project.SetDatasetFeatureState(3914, true);
 
             var layerCount = _map.VariableLayers.Count;
             var expectedValue = 1;
@@ -85,7 +85,7 @@ namespace fieldtool.Test
         [TestMethod]
         public void TestEntCount()
         {
-            _project.SetDatasetState(3914, true);
+            _project.SetDatasetFeatureState(3914, true);
 
             var layer = _map.VariableLayers.First() as VectorLayer;
             if(layer == null)
@@ -102,7 +102,7 @@ namespace fieldtool.Test
         [TestMethod]
         public void TestCountInFullViewMatchesDS()
         {
-            _project.SetDatasetState(3914, true);
+            _project.SetDatasetFeatureState(3914, true);
 
             var layer = _map.VariableLayers.First() as VectorLayer;
             if (layer == null)
@@ -122,7 +122,7 @@ namespace fieldtool.Test
         [TestMethod]
         public void TestEntCountWithOwnEnvVsDSEnv()
         {
-            _project.SetDatasetState(3914, true);
+            _project.SetDatasetFeatureState(3914, true);
 
             var layer = _map.VariableLayers.First() as VectorLayer;
             if (layer == null)
@@ -144,7 +144,7 @@ namespace fieldtool.Test
         [TestMethod]
         public void TestDataProviderEnvVsOwnEnv()
         {
-            _project.SetDatasetState(3914, true);
+            _project.SetDatasetFeatureState(3914, true);
 
             var layer = _map.VariableLayers.First() as VectorLayer;
             if (layer == null)
@@ -174,7 +174,7 @@ namespace fieldtool.Test
         [TestMethod]
         public void TestDTPointCountsMatchesGeometriesCount()
         {
-            _project.SetDatasetState(3914, true);
+            _project.SetDatasetFeatureState(3914, true);
 
             var layer = _map.VariableLayers.First() as VectorLayer;
             if (layer == null)
@@ -195,7 +195,7 @@ namespace fieldtool.Test
         [TestMethod]
         public void TestFilter()
         {
-            _project.SetDatasetState(3914, true);
+            _project.SetDatasetFeatureState(3914, true);
 
             _project.SetIntervalFilter(_project.Datasets[0], new DateTime(2015, 3, 20, 13, 49, 50), new DateTime(2015, 03, 21, 13, 20, 0));
 
@@ -215,7 +215,7 @@ namespace fieldtool.Test
         [TestMethod]
         public void TestDoubleFiltering()
         {
-            _project.SetDatasetState(3914, true);
+            _project.SetDatasetFeatureState(3914, true);
 
             _project.SetIntervalFilter(_project.Datasets[0], new DateTime(2015, 3, 20, 13, 49, 50), new DateTime(2015, 03, 21, 13, 20, 0));
 
@@ -246,8 +246,8 @@ namespace fieldtool.Test
         [TestMethod]
         public void TestEntCountAfterToggling()
         {
-            _project.SetDatasetState(3914, true);
-            _project.SetDatasetState(3914, false);
+            _project.SetDatasetFeatureState(3914, true);
+            _project.SetDatasetFeatureState(3914, false);
 
             Assert.AreEqual(false, _map.VariableLayers.Any());
         }
