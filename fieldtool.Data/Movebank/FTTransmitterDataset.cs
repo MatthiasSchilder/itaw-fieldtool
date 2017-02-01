@@ -2,6 +2,8 @@
 using System.Drawing;
 using fieldtool.SharpmapExt.Symbolizers;
 using SharpmapGDAL;
+using System.Collections.Generic;
+using fieldtool.Data.Geometry;
 
 namespace fieldtool.Data.Movebank
 {
@@ -18,6 +20,8 @@ namespace fieldtool.Data.Movebank
         public FtTransmitterAccelData   AccelData { get; private set; }
         public FtTransmitterGpsData     GPSData { get; private set; }
 
+        public Dictionary<int, FtPolygon> MCPs;
+
         public FtTransmitterDataset(int id, FtFileset fileset)
         {
             TagId = id;
@@ -31,6 +35,8 @@ namespace fieldtool.Data.Movebank
                 
             };
             Visulization.Symbolizer = new FtDotPointSymbolizer(this.Visulization.VisulizationColor);
+
+            MCPs = new Dictionary<int, FtPolygon>();
 
         }
 
@@ -57,5 +63,8 @@ namespace fieldtool.Data.Movebank
                 return AccelData != null;
             return GPSData != null;
         }
+
+        
+
     }
 }

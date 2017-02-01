@@ -146,12 +146,18 @@ namespace fieldtool.View
             Presenter.MapChanged += MapChanged;
             Presenter.ProjectStateChanged += ProjectStateChanged;
             Presenter.MovebankImported += MovebankImported;
+            Presenter.MCPAvailable += MCPAvailable; 
             Presenter.rMapDisplayIntervalChanged += rrMapDisplayIntervalChanged;
             Presenter.MapEnvelopeExportRequested += MapEnvelopeExportRequested;
             Presenter.SetupProgress += SetupProgress;
             Presenter.StepProgress += StepProgress;
             Presenter.FinishProgress += FinishProgress;
             Presenter.MapZoomToEnvelopeRequested += MapZoomToEnvelopeRequested;
+        }
+
+        private void MCPAvailable(object sender, MCPAvailableArgs e)
+        {
+            CreateMCPNode(e.tagID, e.mcpPercentage);
         }
 
         private void MapZoomToEnvelopeRequested(object sender, MapZoomToEnvelopeArgs mapZoomToEnvelopeArgs)
@@ -247,7 +253,7 @@ namespace fieldtool.View
         {
             var tn = new TreeNodeAdv(CreateTreeViewNodeDescriptor(dataset));
             
-            //tn.Tag = dataset.TagId;
+            tn.Tag = dataset.TagId;
             //tn.Checked = dataset.Active;
             //tn.ImageIndex = i;
             //tn.SelectedImageIndex = i;
@@ -255,9 +261,30 @@ namespace fieldtool.View
             
         }
 
+        private TreeNodeAdv CreateMCPNode(int tagID, int mcpPercentage)
+        {
+            var parent = GetParentTreeNodeForTag(tagID);
+
+            var tn = new TreeNodeAdv(String.Format("MCP {0}%", mcpPercentage));
+            tn.ShowCheckBox = true;
+            tn.LeftImageIndices = parent.LeftImageIndices;
+            parent.Nodes.Add(tn);
+
+            return tn;
+
+
+            //tn.Tag = dataset.TagId;
+            //tn.Checked = dataset.Active;
+            //tn.ImageIndex = i;
+            //tn.SelectedImageIndex = i;
+            //return tn;
+
+        }
+
         private void SetTreeNodeCheckState(TreeNodeAdv tn, bool state)
         {
             tn.Checked = state;
+
         }
         private TreeNodeAdv CreatePunktwolkeTreeNode(FtTransmitterDataset dataset, int imageIndex)
         {
@@ -270,14 +297,14 @@ namespace fieldtool.View
             return tn;
         }
 
-        private TreeNode GetParentTreeNodeForTag(FtTransmitterDataset dataset)
+        private TreeNodeAdv GetParentTreeNodeForTag(int tagID)
         {
             if (treeViewTagList.Nodes.Count == 0)
                 return null;
 
-            foreach (TreeNode treeNode in treeViewTagList.Nodes)
+            foreach (TreeNodeAdv treeNode in treeViewTagList.Nodes)
             {
-                if ((int) treeNode.Tag == dataset.TagId)
+                if ((int) treeNode.Tag == tagID)
                     return treeNode;
             }
             return null;

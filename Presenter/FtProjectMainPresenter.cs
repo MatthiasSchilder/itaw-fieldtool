@@ -61,6 +61,17 @@ namespace fieldtool.Presenter
         }
     }
 
+    class MCPAvailableArgs : EventArgs
+    {
+        public int tagID;
+        public int mcpPercentage;
+        public MCPAvailableArgs(int tagID, int mcpPercentage)
+        {
+            this.tagID = tagID;
+            this.mcpPercentage = mcpPercentage;
+        }
+    }
+
     class SetupProgressArgs : EventArgs
     {
         public int NumTags { get; private set; }
@@ -163,6 +174,16 @@ namespace fieldtool.Presenter
         public void InvokeMovebankImported(MovebankImportedArgs e)
         {
             var handler = MovebankImported;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public EventHandler<MCPAvailableArgs> MCPAvailable;
+        public void InvokeMCPAvailable(MCPAvailableArgs e)
+        {
+            var handler = MCPAvailable;
             if (handler != null)
             {
                 handler(this, e);
@@ -364,9 +385,7 @@ namespace fieldtool.Presenter
 
         private void View_MapDisplayIntervalChanged(object sender, MapDisplayIntervalChangedEventArgs e)
         {
-            
             Project.SetIntervalFilter(CurrentDataset, e.IntervalStart, e.IntervalEnd);
-            //DataChangedEventHandler(this, new EventArgs());
             InvokeMapChanged(new MapChangedArgs(Map));
         }
 
@@ -384,9 +403,13 @@ namespace fieldtool.Presenter
                 var mcp = multipoint.MinimumConvexPolygon(frm.MCPPerc);
                 mcp.Vertices.Add(mcp.Vertices[0]);
                 Map.AddPolygonalData(dataset, mcp);
+
+                dataset.MCPs.Add(frm.MCPPerc, mcp);
+                InvokeMCPAvailable(new MCPAvailableArgs(dataset.TagId, frm.MCPPerc));
             }
 
             InvokeMapChanged(new MapChangedArgs(Map));
+            
         }
 
         private void View_ShowEinstellungen(object sender, EventArgs e)
