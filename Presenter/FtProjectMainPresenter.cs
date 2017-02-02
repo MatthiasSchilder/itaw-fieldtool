@@ -359,7 +359,7 @@ namespace fieldtool.Presenter
             InvokeMapChanged(new MapChangedArgs(Map));
         }
 
-        private Dictionary<int, Color> MCPPercToColorDict = new Dictionary<int, Color>()
+        private Dictionary<int, Color> MCPPercToColorDictBluish = new Dictionary<int, Color>()
         {
             {10, Color.FromArgb(0, 1, 229)},
             {20, Color.FromArgb(0, 22, 204)},
@@ -372,7 +372,21 @@ namespace fieldtool.Presenter
             {90, Color.FromArgb(0, 169, 135)},
             {100, Color.FromArgb(0, 191, 11)},
         };
-        private void View_CreateMCPs(object sender, CreateMCPEventArgs e)
+
+        private Dictionary<int, Color> MCPPercToColorDictRedish = new Dictionary<int, Color>()
+        {
+            {100, Color.FromArgb(0, 16, 229)},
+            {90, Color.FromArgb(38, 0, 227)},
+            {80, Color.FromArgb(92, 0, 225)},
+            {70, Color.FromArgb(145, 0, 223)},
+            {60, Color.FromArgb(198, 0, 221)},
+            {50, Color.FromArgb(220, 0, 190)},
+            {40, Color.FromArgb(218, 0, 136)},
+            {30, Color.FromArgb(216, 0, 82)},
+            {20, Color.FromArgb(214, 0, 30)},
+            {10, Color.FromArgb(213, 23, 0)},
+        };
+        private void View_CreateMCPs2(object sender, CreateMCPEventArgs e)
         {
             
             int[] mcpPercentages = null;
@@ -392,8 +406,8 @@ namespace fieldtool.Presenter
             {
                 foreach (var percentage in mcpPercentages.Reverse())
                 {
-                    if(MCPPercToColorDict.ContainsKey(percentage))
-                        dataset.AddMCP(new FtTransmitterMCPDataEntry(dataset, percentage, MCPPercToColorDict[percentage]));
+                    if(MCPPercToColorDictRedish.ContainsKey(percentage))
+                        dataset.AddMCP(new FtTransmitterMCPDataEntry(dataset, percentage, MCPPercToColorDictRedish[percentage]));
                     else
                     {
                         dataset.AddMCP(new FtTransmitterMCPDataEntry(dataset, percentage, dataset.Visulization.Color));
@@ -403,6 +417,103 @@ namespace fieldtool.Presenter
             }
             InvokeNewEntityAvailable(new NewEntityAvailableArgs(Project.Datasets));
             InvokeMapChanged(new MapChangedArgs(Map));
+        }
+
+        private void View_CreateMCPs(object sender, CreateMCPEventArgs e)
+        {
+            FtTransmitterDataset dataset = Project.Datasets.First(ds => ds.Active);
+
+            var xValuesAsArray = dataset.GPSData.XValueArray;
+            var yValuesAsArray = dataset.GPSData.YValueArray;
+
+            var xVariance = Accord.Statistics.Measures.Variance(xValuesAsArray);
+            var yVariance = Accord.Statistics.Measures.Variance(yValuesAsArray);
+
+            var cellsize = Math.Sqrt(Math.Min(xVariance, yVariance))/100;
+
+            var env = dataset.GPSData.GetEnvelope();
+
+            var rowCnt = (int)Math.Ceiling(env.Height / cellsize);
+            var colCnt = (int)Math.Ceiling(env.Width / cellsize);
+
+            var z = Math.Max(rowCnt, colCnt);
+
+            Dictionary<Envelope, Tuple<int, int>> envelopes = new Dictionary<Envelope, Tuple<int, int>>();
+            for(int i = 0; i < z; i++)
+            {
+                for(int j = 0; j < z; j++)
+                {
+                    Coordinate c1 = new Coordinate(env.MinX + j * cellsize, env.MinY + i * cellsize);
+                    Coordinate c2 = new Coordinate(env.MinX + (j + 1)* cellsize, env.MinY + (i + 1)* cellsize);
+
+                    envelopes.Add(new Envelope(c1, c2), new Tuple<int, int>(i, j));
+                }
+            }
+
+            //double[][] samples = new double[z][];
+            //for (int k = 0; k < ; k++)
+            //    samples[k] = new double[2];
+            //int w = 0;
+
+            List<double[]> samples = new List<double[]>();
+            foreach(var gpsPoint in dataset.GPSData)
+            {
+                if (!gpsPoint.IsValid())
+                    continue;
+                foreach (var kvp in envelopes)
+                {
+                    if (kvp.Key.Contains(new Coordinate(gpsPoint.Rechtswert.Value, gpsPoint.Hochwert.Value)))
+                    {
+                        //samples[kvp.Value.Item2][kvp.Value.Item1]++;
+                        samples.Add(new double[] { kvp.Value.Item2, kvp.Value.Item1 });
+                        break;
+                    }
+                }
+            }
+
+            double[][] samplesarr = new double[samples.Count][];
+            int h = 0;
+            foreach (var blub in samples)
+                samplesarr[h++] = blub;
+
+            Accord.Statistics.Distributions.Multivariate.MultivariateEmpiricalDistribution kde =
+                new Accord.Statistics.Distributions.Multivariate.MultivariateEmpiricalDistribution(samplesarr);
+            
+            Bitmap bmp = new Bitmap(z, z);
+
+            List<double> densities = new List<double>();
+            for (int i = 0; i < z; i++)
+            {
+                for (int j = 0; j < z; j++)
+                {
+                    densities.Add(kde.ProbabilityDensityFunction(new double[] { i, j }));
+                }
+            }
+
+            var minDens = densities.Min();
+            var maxDens = densities.Max();
+
+            var diffDens = maxDens - minDens;
+
+            var densStep = diffDens / 255;
+
+            for (int i = 0; i < z; i++)
+            {
+                for(int j = 0; j < z; j++)
+                {
+                    var densityAtPoint = kde.ProbabilityDensityFunction(new double[] { i, j});
+
+                    Debug.WriteLine(diffDens / densityAtPoint);
+
+                    var greyValue = (int) Math.Floor( 255 * densityAtPoint / maxDens);
+
+                    bmp.SetPixel(i, j, Color.FromArgb(greyValue, greyValue, greyValue));
+                }
+            }
+
+            bmp.Save("c:\\users\\ma\\desktop\\output.png");            
+
+            MessageBox.Show("");
         }
 
         private void View_ShowEinstellungen(object sender, EventArgs e)

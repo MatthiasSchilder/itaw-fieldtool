@@ -19,11 +19,14 @@ namespace fieldtool.SharpmapExt.Symbolizers
 
         public Color VisulizationColor { get; set; }
 
+        public bool NurUmring { get; set; }
+
         /// <summary>
         /// Creates an instance of this class
         /// </summary>
-        public FtPolygonWithAlphaSymbolizer(Color color)
+        public FtPolygonWithAlphaSymbolizer(Color color, bool nurUmring)
         {
+            NurUmring = nurUmring;
             this.Outline = new Pen(color, 1f);
 
             var fillColor = Color.FromArgb(255, color.R, color.G, color.B);
@@ -56,7 +59,7 @@ namespace fieldtool.SharpmapExt.Symbolizers
         /// <filterpriority>2</filterpriority>
         public override object Clone()
         {
-            return new FtPolygonWithAlphaSymbolizer(VisulizationColor)
+            return new FtPolygonWithAlphaSymbolizer(VisulizationColor, NurUmring)
             {
                 Fill = (Brush)base.Fill.Clone(),
                 Outline = (Pen)this.Outline.Clone(),
@@ -76,12 +79,22 @@ namespace fieldtool.SharpmapExt.Symbolizers
 
             if (base.Fill != null)
             {
-                //g.FillClosedCurve(base.Fill, array);
-                g.FillPolygon(base.Fill, array);
+                if (!NurUmring)
+                {
+                    g.FillPolygon(base.Fill, array);
+                }                
             }
             if (this.Outline != null)
             {
-                g.DrawPolygon(this.Outline, array);
+                if (NurUmring)
+                {
+                    g.DrawPolygon(this.Outline, array);
+                }
+                else
+                {
+                    g.DrawPolygon(Pens.Black, array);
+                }
+                
                 //g.DrawClosedCurve(this.Outline, array);
             }
         }

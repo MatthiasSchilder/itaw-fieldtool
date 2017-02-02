@@ -14,6 +14,8 @@ using System.Drawing.Design;
 using System.Windows.Forms.Design;
 using System.Runtime.InteropServices;
 using Syncfusion.Windows.Forms.Tools;
+using fieldtool.Data;
+using DotSpatial.Projections;
 
 namespace fieldtool.View
 {
@@ -38,6 +40,8 @@ namespace fieldtool.View
             mapBox1.MapChanging += MapBox1OnMapChanging;
             dateIntervalPicker1.IntervalChanged += DateIntervalPicker1_IntervalChanged;
             AddRecentlyUsedProjects();
+
+            ProjectionManager.TargetProjectionChanged += ProjectionManager_TargetProjectionChanged;
         }
 
         private void MapBox1OnMapChanging(object sender, CancelEventArgs cancelEventArgs)
@@ -417,6 +421,13 @@ namespace fieldtool.View
             var xDisplay = Math.Round(cursorCoordsChangedArgs.X, 4);
             var yDisplay = Math.Round(cursorCoordsChangedArgs.Y, 4);
             statusLabelCoords.Text = String.Format((string)statusLabelCoords.Tag, xDisplay, yDisplay);
+        }
+        private void ProjectionManager_TargetProjectionChanged(object sender, EventArgs e)
+        {
+            
+            var projEPSG = ProjectionManager.TargetProjection;
+
+            statusLblProjection.Text = String.Format((string)statusLblProjection.Tag, projEPSG.AuthorityCode, "-");
         }
 
         public void SetActiveTool(SharpMap.Forms.MapBox.Tools tool)

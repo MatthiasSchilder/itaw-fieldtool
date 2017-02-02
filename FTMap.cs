@@ -126,7 +126,8 @@ namespace fieldtool
                 var poly = this.Factory.CreatePolygon(polygonalFeature.Polygon.Vertices.ToArray());
                 var polygonalVectorLayer = new PolygonalVectorLayer(dataset.TagId.ToString() + "MCP" + polygonalFeature.PercentageMCP, new GeometryProvider(poly))
                 {
-                    Symbolizer = new FtPolygonWithAlphaSymbolizer(polygonalFeature.Color)
+                    Symbolizer = new FtPolygonWithAlphaSymbolizer(polygonalFeature.Color, 
+                        Properties.Settings.Default.HRPolygonDrawMode == HomeRangePolygonDrawMode.NurUmring)
                 };
 
                 ActivePolygonalVectorLayers.Add(polygonalFeature, polygonalVectorLayer);

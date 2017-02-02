@@ -202,5 +202,17 @@ namespace fieldtool.Properties {
                 this["VisualizerMarkersize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NurUmring")]
+        public global::fieldtool.HomeRangePolygonDrawMode HRPolygonDrawMode {
+            get {
+                return ((global::fieldtool.HomeRangePolygonDrawMode)(this["HRPolygonDrawMode"]));
+            }
+            set {
+                this["HRPolygonDrawMode"] = value;
+            }
+        }
     }
 }

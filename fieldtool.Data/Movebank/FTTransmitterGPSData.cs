@@ -140,5 +140,32 @@ namespace fieldtool.Data.Movebank
         {
             FilterChanged?.Invoke(this, new EventArgs());
         }
+
+        public double[] XValueArray
+        {
+            get
+            {
+                List<double> result = new List<double>();
+                foreach(var point in this)
+                {
+                    if (point.IsValid())
+                        result.Add(point.Rechtswert.Value);
+                }
+                return result.ToArray();
+            }
+        }
+        public double[] YValueArray
+        {
+            get
+            {
+                List<double> result = new List<double>();
+                foreach (var point in this)
+                {
+                    if (point.IsValid())
+                        result.Add(point.Hochwert.Value);
+                }
+                return result.ToArray();
+            }
+        }
     }
 }

@@ -47,5 +47,8 @@
     <Setting Name="VisualizerMarkersize" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">12</Value>
     </Setting>
+    <Setting Name="HRPolygonDrawMode" Type="fieldtool.HomeRangePolygonDrawMode" Scope="User">
+      <Value Profile="(Default)">NurUmring</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

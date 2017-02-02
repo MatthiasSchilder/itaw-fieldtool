@@ -33,6 +33,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.numTextgroesse = new System.Windows.Forms.NumericUpDown();
+            this.numSymbolgroesse = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.lblMassstab = new System.Windows.Forms.Label();
             this.chkShowMassstab = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -58,14 +62,18 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.btnSchließen = new System.Windows.Forms.Button();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.numSymbolgroesse = new System.Windows.Forms.NumericUpDown();
-            this.numTextgroesse = new System.Windows.Forms.NumericUpDown();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.rbUmring = new System.Windows.Forms.RadioButton();
+            this.label9 = new System.Windows.Forms.Label();
+            this.rbGefuellt = new System.Windows.Forms.RadioButton();
+            this.rbSchraffiert = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numTextgroesse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSymbolgroesse)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAlpha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxBorderColor)).BeginInit();
@@ -74,14 +82,15 @@
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picColor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numSymbolgroesse)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTextgroesse)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -133,6 +142,40 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Verschiedenes";
+            // 
+            // numTextgroesse
+            // 
+            this.numTextgroesse.Location = new System.Drawing.Point(450, 25);
+            this.numTextgroesse.Name = "numTextgroesse";
+            this.numTextgroesse.Size = new System.Drawing.Size(53, 20);
+            this.numTextgroesse.TabIndex = 8;
+            this.numTextgroesse.ValueChanged += new System.EventHandler(this.numTextgroesse_ValueChanged);
+            // 
+            // numSymbolgroesse
+            // 
+            this.numSymbolgroesse.Location = new System.Drawing.Point(318, 25);
+            this.numSymbolgroesse.Name = "numSymbolgroesse";
+            this.numSymbolgroesse.Size = new System.Drawing.Size(53, 20);
+            this.numSymbolgroesse.TabIndex = 7;
+            this.numSymbolgroesse.ValueChanged += new System.EventHandler(this.numSymbolgroesse_ValueChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(389, 27);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Textgröße";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(220, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Symbolgröße";
             // 
             // lblMassstab
             // 
@@ -374,39 +417,72 @@
             this.btnSchließen.UseVisualStyleBackColor = true;
             this.btnSchließen.Click += new System.EventHandler(this.btnSchließen_Click);
             // 
-            // label5
+            // tabPage3
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(220, 27);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Symbolgröße";
+            this.tabPage3.Controls.Add(this.groupBox5);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(571, 459);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Home ranges";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label8
+            // groupBox5
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(389, 27);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 13);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Textgröße";
+            this.groupBox5.Controls.Add(this.rbSchraffiert);
+            this.groupBox5.Controls.Add(this.rbGefuellt);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Controls.Add(this.rbUmring);
+            this.groupBox5.Location = new System.Drawing.Point(6, 6);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(559, 217);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Darstellung";
             // 
-            // numSymbolgroesse
+            // rbUmring
             // 
-            this.numSymbolgroesse.Location = new System.Drawing.Point(318, 25);
-            this.numSymbolgroesse.Name = "numSymbolgroesse";
-            this.numSymbolgroesse.Size = new System.Drawing.Size(53, 20);
-            this.numSymbolgroesse.TabIndex = 7;
-            this.numSymbolgroesse.ValueChanged += new System.EventHandler(this.numSymbolgroesse_ValueChanged);
+            this.rbUmring.AutoSize = true;
+            this.rbUmring.Location = new System.Drawing.Point(101, 27);
+            this.rbUmring.Name = "rbUmring";
+            this.rbUmring.Size = new System.Drawing.Size(76, 17);
+            this.rbUmring.TabIndex = 0;
+            this.rbUmring.Text = "nur Umring";
+            this.rbUmring.UseVisualStyleBackColor = true;
+            this.rbUmring.CheckedChanged += new System.EventHandler(this.rbUmring_CheckedChanged);
             // 
-            // numTextgroesse
+            // label9
             // 
-            this.numTextgroesse.Location = new System.Drawing.Point(450, 25);
-            this.numTextgroesse.Name = "numTextgroesse";
-            this.numTextgroesse.Size = new System.Drawing.Size(53, 20);
-            this.numTextgroesse.TabIndex = 8;
-            this.numTextgroesse.ValueChanged += new System.EventHandler(this.numTextgroesse_ValueChanged);
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 27);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Polygone";
+            // 
+            // rbGefuellt
+            // 
+            this.rbGefuellt.AutoSize = true;
+            this.rbGefuellt.Location = new System.Drawing.Point(101, 50);
+            this.rbGefuellt.Name = "rbGefuellt";
+            this.rbGefuellt.Size = new System.Drawing.Size(53, 17);
+            this.rbGefuellt.TabIndex = 2;
+            this.rbGefuellt.Text = "gefüllt";
+            this.rbGefuellt.UseVisualStyleBackColor = true;
+            this.rbGefuellt.CheckedChanged += new System.EventHandler(this.rbGefuellt_CheckedChanged);
+            // 
+            // rbSchraffiert
+            // 
+            this.rbSchraffiert.AutoSize = true;
+            this.rbSchraffiert.Enabled = false;
+            this.rbSchraffiert.Location = new System.Drawing.Point(101, 73);
+            this.rbSchraffiert.Name = "rbSchraffiert";
+            this.rbSchraffiert.Size = new System.Drawing.Size(71, 17);
+            this.rbSchraffiert.TabIndex = 3;
+            this.rbSchraffiert.Text = "schraffiert";
+            this.rbSchraffiert.UseVisualStyleBackColor = true;
+            this.rbSchraffiert.CheckedChanged += new System.EventHandler(this.rbSchraffiert_CheckedChanged);
             // 
             // FrmSettings
             // 
@@ -426,6 +502,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numTextgroesse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSymbolgroesse)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAlpha)).EndInit();
@@ -436,8 +514,9 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picColor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numSymbolgroesse)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTextgroesse)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -478,5 +557,11 @@
         private System.Windows.Forms.NumericUpDown numSymbolgroesse;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.RadioButton rbGefuellt;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RadioButton rbUmring;
+        private System.Windows.Forms.RadioButton rbSchraffiert;
     }
 }

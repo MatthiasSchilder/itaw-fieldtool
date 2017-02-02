@@ -1,12 +1,15 @@
 ﻿using DotSpatial.Projections;
 using GeoAPI.Geometries;
+using System;
 
 namespace fieldtool.Data
 {
     public class ProjectionManager
     {
-        public static ProjectionInfo SourceProjection;
-        public static ProjectionInfo TargetProjection;
+        public static event EventHandler TargetProjectionChanged;
+
+        public static ProjectionInfo SourceProjection { get; private set; }
+        public static ProjectionInfo TargetProjection { get; private set; }
 
         public static void SetSourceProjection(int epsg)
         {
@@ -16,6 +19,8 @@ namespace fieldtool.Data
         public static void SetTargetProjection(int epsg)
         {
             TargetProjection = ProjectionInfo.FromEpsgCode(epsg);
+            TargetProjectionChanged?.Invoke(null, new EventArgs());
+
         }
 
         public static Coordinate ReprojectCoordinate(Coordinate coord)

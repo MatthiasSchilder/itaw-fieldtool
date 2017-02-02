@@ -32,6 +32,16 @@ namespace fieldtool
             comboBox1.SelectedItem = Properties.Settings.Default.MapLegendAnchor;
             numSymbolgroesse.Value = Properties.Settings.Default.VisualizerMarkersize;
             numTextgroesse.Value = Properties.Settings.Default.VisualizerTextsize;
+
+            switch(Properties.Settings.Default.HRPolygonDrawMode)
+            {
+                case HomeRangePolygonDrawMode.Gefuellt:
+                    rbGefuellt.Checked = true;
+                    break;
+                case HomeRangePolygonDrawMode.NurUmring:
+                    rbUmring.Checked = true;
+                    break;
+            }
         }
 
         private void InitAnchorCombobox()
@@ -155,6 +165,29 @@ namespace fieldtool
             Properties.Settings.Default.VisualizerTextsize = (int)numTextgroesse.Value;
             Properties.Settings.Default.Save();
         }
+
+        private void rbUmring_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.HRPolygonDrawMode = HomeRangePolygonDrawMode.NurUmring;
+            Properties.Settings.Default.Save();
+        }
+
+        private void rbGefuellt_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.HRPolygonDrawMode = HomeRangePolygonDrawMode.Gefuellt;
+            Properties.Settings.Default.Save();
+        }
+
+        private void rbSchraffiert_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    public enum HomeRangePolygonDrawMode
+    {
+        NurUmring,
+        Gefuellt
     }
 }
 
