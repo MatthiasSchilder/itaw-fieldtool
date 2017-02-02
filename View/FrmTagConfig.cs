@@ -22,11 +22,11 @@ namespace fieldtool.View
             InitializeComponent();
             this.Text = $"Konfiguration für Tag {dataset.TagId}";
 
-            pictureBox1.BackColor = dataset.Visulization.VisulizationColor;
+            pictureBox1.BackColor = dataset.Visulization.Color;
 
             InitVisualizersCombobox();
             NewSymbolizerType = dataset.Visulization.Symbolizer.GetType();
-            NewColor = dataset.Visulization.VisulizationColor;
+            NewColor = dataset.Visulization.Color;
             NewLabelState = dataset.Visulization.SymbolizerWithLabel;
 
             int idx = 0;
@@ -92,7 +92,7 @@ namespace fieldtool.View
 
         private void FrmTagConfig_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _dataset.Visulization.VisulizationColor = NewColor;
+            _dataset.Visulization.Color = NewColor;
             _dataset.Visulization.Symbolizer = (ISymbolizer)Activator.CreateInstance(NewSymbolizerType, NewColor, NewLabelState);
         }
 

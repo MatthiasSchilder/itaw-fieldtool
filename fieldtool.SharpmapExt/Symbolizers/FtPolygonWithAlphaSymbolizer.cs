@@ -1,6 +1,7 @@
 ﻿using SharpMap;
 using SharpMap.Rendering.Symbolizer;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using GeoAPI.Geometries;
 
 namespace fieldtool.SharpmapExt.Symbolizers
@@ -25,8 +26,10 @@ namespace fieldtool.SharpmapExt.Symbolizers
         {
             this.Outline = new Pen(color, 1f);
 
-            var fillColor = Color.FromArgb(127, color.R, color.G, color.B);
+            var fillColor = Color.FromArgb(255, color.R, color.G, color.B);
             this.Fill = new SolidBrush(fillColor);
+
+            //this.Fill = new HatchBrush(HatchStyle.Cross, fillColor, Color.Transparent);
         }
 
         /// <summary>
@@ -73,11 +76,13 @@ namespace fieldtool.SharpmapExt.Symbolizers
 
             if (base.Fill != null)
             {
+                //g.FillClosedCurve(base.Fill, array);
                 g.FillPolygon(base.Fill, array);
             }
             if (this.Outline != null)
             {
                 g.DrawPolygon(this.Outline, array);
+                //g.DrawClosedCurve(this.Outline, array);
             }
         }
     }

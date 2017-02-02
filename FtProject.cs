@@ -8,6 +8,7 @@ using System.Security.Policy;
 using System.Xml.Serialization;
 using fieldtool.Annotations;
 using fieldtool.Data.Movebank;
+using fieldtool.View;
 using SharpmapGDAL;
 
 namespace fieldtool
@@ -55,14 +56,20 @@ namespace fieldtool
             EPSGTargetProjection = 31467;
         }
 
-        public void SetDatasetFeatureState(int tagId, bool checkState, FtDatasetFeatureType featureType)
+        public void SetDatasetFeatureState(TreeNodeTagObject tagObject, bool checkState, FtDatasetFeatureType featureType)
         {
-            if (!Datasets.Any())
-                return;
-
-            var dataset = Datasets.Find(d => d.TagId == tagId);
-            dataset.Active = checkState;
-            DataChangedEventHandler(this, new DataChangedEventArgs(dataset, featureType));
+            var dataset = tagObject.NodeDataset;
+            if (tagObject.NodeType == TreeNodeTagObject.TreeViewNodeType.PunktewolkeNode)
+            {
+                dataset.Active = checkState;
+                DataChangedEventHandler(this, new DataChangedEventArgs(dataset, featureType));
+            }
+            else if (tagObject.NodeType == TreeNodeTagObject.TreeViewNodeType.MCPNode)
+            {
+                var mcpEntry = (FtTransmitterMCPDataEntry) tagObject.NodeDatasetSubObject;
+                mcpEntry.Active = checkState;
+                DataChangedEventHandler(this, new DataChangedEventArgs(dataset, featureType));
+            }
         }
 
         public void SetIntervalFilter(FtTransmitterDataset dataset, DateTime start, DateTime stop)

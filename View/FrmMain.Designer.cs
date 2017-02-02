@@ -65,6 +65,8 @@ namespace fieldtool.View
             this.auswertungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.streifgebieteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mCPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stapelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manuellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.überToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -362,15 +364,31 @@ namespace fieldtool.View
             this.streifgebieteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mCPToolStripMenuItem});
             this.streifgebieteToolStripMenuItem.Name = "streifgebieteToolStripMenuItem";
-            this.streifgebieteToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
+            this.streifgebieteToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.streifgebieteToolStripMenuItem.Text = "Streifgebiete";
             // 
             // mCPToolStripMenuItem
             // 
+            this.mCPToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stapelToolStripMenuItem,
+            this.manuellToolStripMenuItem});
             this.mCPToolStripMenuItem.Name = "mCPToolStripMenuItem";
-            this.mCPToolStripMenuItem.Size = new System.Drawing.Size(114, 26);
+            this.mCPToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.mCPToolStripMenuItem.Text = "MCP";
-            this.mCPToolStripMenuItem.Click += new System.EventHandler(this.mCPToolStripMenuItem_Click);
+            // 
+            // stapelToolStripMenuItem
+            // 
+            this.stapelToolStripMenuItem.Name = "stapelToolStripMenuItem";
+            this.stapelToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.stapelToolStripMenuItem.Text = "Stapel";
+            this.stapelToolStripMenuItem.Click += new System.EventHandler(this.stapelToolStripMenuItem_Click);
+            // 
+            // manuellToolStripMenuItem
+            // 
+            this.manuellToolStripMenuItem.Name = "manuellToolStripMenuItem";
+            this.manuellToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.manuellToolStripMenuItem.Text = "Manuell";
+            this.manuellToolStripMenuItem.Click += new System.EventHandler(this.manuellToolStripMenuItem_Click);
             // 
             // überToolStripMenuItem
             // 
@@ -680,6 +698,8 @@ namespace fieldtool.View
         private System.Windows.Forms.ToolStripMenuItem loggerbinalleSetsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zoomAufTagToolStripMenuItem;
         private Syncfusion.Windows.Forms.Tools.TreeViewAdv treeViewTagList;
+        private System.Windows.Forms.ToolStripMenuItem stapelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manuellToolStripMenuItem;
     }
 }
 

@@ -120,13 +120,13 @@ namespace fieldtool
         {
             foreach (var polygonalFeature in dataset.MCPData)
             {
-                if (!polygonalFeature.Enabled)
+                if (!polygonalFeature.Active)
                     continue;
 
                 var poly = this.Factory.CreatePolygon(polygonalFeature.Polygon.Vertices.ToArray());
                 var polygonalVectorLayer = new PolygonalVectorLayer(dataset.TagId.ToString() + "MCP" + polygonalFeature.PercentageMCP, new GeometryProvider(poly))
                 {
-                    Symbolizer = new FtPolygonWithAlphaSymbolizer(dataset.Visulization.VisulizationColor)
+                    Symbolizer = new FtPolygonWithAlphaSymbolizer(polygonalFeature.Color)
                 };
 
                 ActivePolygonalVectorLayers.Add(polygonalFeature, polygonalVectorLayer);
@@ -136,13 +136,18 @@ namespace fieldtool
 
         private void ErasePolygonalFeatures(FtTransmitterDataset dataset)
         {
-            foreach (var polygonalVectorLayer in ActivePolygonalVectorLayers)
+            foreach (var mcpEntry in dataset.MCPData)
             {
-                this.VariableLayers.Remove(polygonalVectorLayer.Value);
-            }
-            ActivePolygonalVectorLayers.Clear();
+                if (!ActivePolygonalVectorLayers.ContainsKey(mcpEntry))
+                    continue;
 
-            var puntualVectorLayer = ActiveVectorLayers[dataset];
+                var activePolygonalVectorLayerMCP = ActivePolygonalVectorLayers[mcpEntry];
+
+                ActivePolygonalVectorLayers.Remove(mcpEntry);
+                this.VariableLayers.Remove(activePolygonalVectorLayerMCP);
+            }
+
+            //var puntualVectorLayer = ActiveVectorLayers[dataset];
         }
 
         private void AddScaleBar()

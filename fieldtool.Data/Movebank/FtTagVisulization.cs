@@ -11,7 +11,7 @@ namespace fieldtool.Data.Movebank
 {
     public class FtTagVisulization
     {
-        public Color VisulizationColor;
+        public Color Color;
         public ISymbolizer Symbolizer;
         public bool SymbolizerWithLabel;
     }

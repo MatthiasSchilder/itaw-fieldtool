@@ -75,7 +75,7 @@ namespace fieldtool.Layers
                     LabelColumn = "num",
                     LabelPositionDelegate = LabelPositionDelegate,
                     SmoothingMode = SmoothingMode.HighSpeed,
-                    Style = { Font = MapFont, VerticalAlignment = LabelStyle.VerticalAlignmentEnum.Top, HorizontalAlignment = LabelStyle.HorizontalAlignmentEnum.Left, CollisionDetection = false, ForeColor = dataset.Visulization.VisulizationColor }
+                    Style = { Font = MapFont, VerticalAlignment = LabelStyle.VerticalAlignmentEnum.Top, HorizontalAlignment = LabelStyle.HorizontalAlignmentEnum.Left, CollisionDetection = false, ForeColor = dataset.Visulization.Color }
                 };
             }
             if (LabelLayer != null)

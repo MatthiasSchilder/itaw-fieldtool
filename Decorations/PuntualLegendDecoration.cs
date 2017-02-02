@@ -117,8 +117,8 @@ namespace fieldtool.Decorations
             var spacingOffs = rowHeight*0.15;
             string str = CreateLegendString(dataset);
             
-            //g.DrawRectangle(new Pen(dataset.VisulizationColor), x, (float) (y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
-            g.FillRectangle(new SolidBrush(dataset.Visulization.VisulizationColor), x, (float)(y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
+            //g.DrawRectangle(new Pen(dataset.Color), x, (float) (y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
+            g.FillRectangle(new SolidBrush(dataset.Visulization.Color), x, (float)(y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
             g.DrawString(String.Format(FormatString, dataset.TagId, str), Font, ForeGroundBrush, x + colorFieldOffs, y);
         }
 

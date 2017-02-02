@@ -57,7 +57,7 @@ namespace fieldtool.Decorations
             MCPs = mcps;
         }
 
-        private const String FormatString = "{0} ({1}%)";
+        private const String FormatString = "Tag {0} - MCP {1}%";
         private const int colorFieldOffs = 20; // px
         protected override Size InternalSize(Graphics g, Map map)
         {
@@ -78,7 +78,7 @@ namespace fieldtool.Decorations
 
         private string CreateLegendString(FtTransmitterMCPDataEntry mcp)
         {
-            return String.Format(FormatString, "MCP", mcp.PercentageMCP);
+            return String.Format(FormatString, mcp.Parent.TagId, mcp.PercentageMCP);
         }
 
         protected override void OnRender(Graphics g, Map map)
@@ -98,9 +98,9 @@ namespace fieldtool.Decorations
             var spacingOffs = rowHeight*0.15;
             string str = CreateLegendString(mcp);
             
-            //g.DrawRectangle(new Pen(dataset.VisulizationColor), x, (float) (y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
-            g.FillRectangle(new SolidBrush(Color.BlueViolet), x, (float)(y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
-            g.DrawString(CreateLegendString(mcp), Font, ForeGroundBrush, x + colorFieldOffs, y);
+            //g.DrawRectangle(new Pen(dataset.Color), x, (float) (y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
+            g.FillRectangle(new SolidBrush(mcp.Color), x, (float)(y + spacingOffs), rowHeight, (float)(rowHeight - (float)(2 * spacingOffs)));
+            g.DrawString(str, Font, ForeGroundBrush, x + colorFieldOffs, y);
         }
 
         private float CalcRowHeight(RectangleF layoutRectangle)

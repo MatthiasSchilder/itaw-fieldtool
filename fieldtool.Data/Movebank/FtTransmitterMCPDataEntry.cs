@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using fieldtool.Data.Geometry;
 using GeoAPI.Geometries;
 using System.Linq;
@@ -8,12 +9,17 @@ namespace fieldtool.Data.Movebank
     public class FtTransmitterMCPDataEntry
     {
         public FtPolygon Polygon { get; }
-        public bool Enabled { get; set; }
+        public bool Active { get; set; }
         public int PercentageMCP { get; set; }
 
-        public FtTransmitterMCPDataEntry(FtTransmitterDataset dataset, int percentageMCP)
+        public FtTransmitterDataset Parent { get; }
+
+        public Color Color { get; }
+
+        public FtTransmitterMCPDataEntry(FtTransmitterDataset dataset, int percentageMCP, Color color)
         {
-            Enabled = true;
+            Color = color;
+            Active = true;
             PercentageMCP = percentageMCP;
 
             var validPositions =
@@ -24,6 +30,8 @@ namespace fieldtool.Data.Movebank
             FtMultipoint multipoint = new FtMultipoint(validPositions);
             Polygon = multipoint.MinimumConvexPolygon(percentageMCP);
             Polygon.Vertices.Add(Polygon.Vertices[0]);
+
+            Parent = dataset;
         }  
     }
 }

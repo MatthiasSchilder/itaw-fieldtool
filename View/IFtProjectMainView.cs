@@ -17,7 +17,7 @@ namespace fieldtool
         event EventHandler ShowEinstellungen;
         event EventHandler ShowInfo;
 
-        event EventHandler CreateMCPs;
+        event EventHandler<CreateMCPEventArgs> CreateMCPs;
 
         event EventHandler ShowRawTagInfo;
         event EventHandler ShowRawAccel;

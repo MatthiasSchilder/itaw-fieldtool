@@ -36,10 +36,10 @@ namespace fieldtool.Data.Movebank
             Random rnd = new Random();
             Visulization = new FtTagVisulization
             {
-                VisulizationColor = Color.FromArgb(rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255)),
+                Color = Color.FromArgb(rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255)),
                 
             };
-            Visulization.Symbolizer = new FtDotPointSymbolizer(this.Visulization.VisulizationColor);
+            Visulization.Symbolizer = new FtDotPointSymbolizer(this.Visulization.Color);
 
             MCPData = new FtTransmitterMCPData();
         }

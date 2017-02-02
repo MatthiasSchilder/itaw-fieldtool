@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -52,10 +53,10 @@ namespace fieldtool.Presenter
         }
     }
 
-    class MovebankImportedArgs : EventArgs
+    class NewEntityAvailableArgs : EventArgs
     {
         public List<FtTransmitterDataset> Datasets { get; set; }
-        public MovebankImportedArgs(List<FtTransmitterDataset> datasets)
+        public NewEntityAvailableArgs(List<FtTransmitterDataset> datasets)
         {
             Datasets = datasets;
         }
@@ -146,10 +147,10 @@ namespace fieldtool.Presenter
             ProjectStateChanged?.Invoke(this, e);
         }
 
-        public EventHandler<MovebankImportedArgs> MovebankImported;
-        private void InvokeMovebankImported(MovebankImportedArgs e)
+        public EventHandler<NewEntityAvailableArgs> NewEntityAvailable;
+        private void InvokeNewEntityAvailable(NewEntityAvailableArgs e)
         {
-            MovebankImported?.Invoke(this, e);
+            NewEntityAvailable?.Invoke(this, e);
         }
 
         public EventHandler<MCPAvailableArgs> MCPAvailable;
@@ -299,19 +300,25 @@ namespace fieldtool.Presenter
 
         private void ViewOnShowTagConfig(object sender, ContextMenuItemClickedEventArgs eventArgs)
         {
-            var dataset = Project.Datasets.FirstOrDefault(ds => ds.TagId == eventArgs.TagObject.TagID);
+            if (eventArgs.TagObject.NodeType == TreeNodeTagObject.TreeViewNodeType.MCPNode)
+                return;
+
+            var dataset = eventArgs.TagObject.NodeDataset;
             if (dataset == null)
                 return;
 
             FrmTagConfig frm = new FrmTagConfig(dataset);
             frm.ShowDialog();
 
-            InvokeMovebankImported(new MovebankImportedArgs(Project.Datasets));
+            InvokeNewEntityAvailable(new NewEntityAvailableArgs(Project.Datasets));
         }
 
-        private void View_ShowTagTabelle(object sender, ContextMenuItemClickedEventArgs e)
+        private void View_ShowTagTabelle(object sender, ContextMenuItemClickedEventArgs eventArgs)
         {
-            var dataset = Project.Datasets.FirstOrDefault(ds => ds.TagId == e.TagObject.TagID);
+            if (eventArgs.TagObject.NodeType == TreeNodeTagObject.TreeViewNodeType.MCPNode)
+                return;
+
+            var dataset = eventArgs.TagObject.NodeDataset;
             if (dataset == null)
                 return;
 
@@ -322,9 +329,10 @@ namespace fieldtool.Presenter
 
         private void ViewOnZoomToTag(object sender, ContextMenuItemClickedEventArgs currentDatasetChangedEventArgs)
         {
-            var dataset = Project.Datasets.FirstOrDefault(ds => ds.TagId == currentDatasetChangedEventArgs.TagObject.TagID);
-            if (dataset == null)
+            if (currentDatasetChangedEventArgs.TagObject.NodeType == TreeNodeTagObject.TreeViewNodeType.MCPNode)
                 return;
+
+            var dataset = currentDatasetChangedEventArgs.TagObject.NodeDataset;
 
             var envelope = dataset.GPSData.GetEnvelope();
             InvokeMapZoomToEnvelopeRequested(new MapZoomToEnvelopeArgs(envelope));
@@ -351,20 +359,49 @@ namespace fieldtool.Presenter
             InvokeMapChanged(new MapChangedArgs(Map));
         }
 
-        private void View_CreateMCPs(object sender, EventArgs e)
+        private Dictionary<int, Color> MCPPercToColorDict = new Dictionary<int, Color>()
         {
-            var frm = new FrmMCPPercentage();
-            if (frm.ShowDialog() == DialogResult.Cancel)
-                return;
+            {10, Color.FromArgb(0, 1, 229)},
+            {20, Color.FromArgb(0, 22, 204)},
+            {30, Color.FromArgb(0, 43, 180)},
+            {40, Color.FromArgb(0, 64, 156)},
+            {50, Color.FromArgb(0, 85, 132)},
+            {60, Color.FromArgb(0, 106, 107)},
+            {70, Color.FromArgb(0, 127, 83)},
+            {80, Color.FromArgb(0, 148, 59)},
+            {90, Color.FromArgb(0, 169, 135)},
+            {100, Color.FromArgb(0, 191, 11)},
+        };
+        private void View_CreateMCPs(object sender, CreateMCPEventArgs e)
+        {
+            
+            int[] mcpPercentages = null;
+            if (e.CreationMode == CreateMCPEventArgs.MCPCreationMode.Manual)
+            {
+                var frm = new FrmMCPPercentage();
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                    return;
+                mcpPercentages = new[] {frm.PercentageMCP};
+            }
+            else
+            {
+                mcpPercentages = new[] { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+            }
 
             foreach (var dataset in Project.Datasets.Where(dataset => dataset.Active))
             {
-                int percentageMCP = frm.PercentageMCP;
-
-                dataset.AddMCP(new FtTransmitterMCPDataEntry(dataset, percentageMCP) );
-                InvokeMCPAvailable(new MCPAvailableArgs(dataset, percentageMCP));
+                foreach (var percentage in mcpPercentages.Reverse())
+                {
+                    if(MCPPercToColorDict.ContainsKey(percentage))
+                        dataset.AddMCP(new FtTransmitterMCPDataEntry(dataset, percentage, MCPPercToColorDict[percentage]));
+                    else
+                    {
+                        dataset.AddMCP(new FtTransmitterMCPDataEntry(dataset, percentage, dataset.Visulization.Color));
+                    }
+                }
+                //InvokeMCPAvailable(new MCPAvailableArgs(dataset, percentageMCP));
             }
-
+            InvokeNewEntityAvailable(new NewEntityAvailableArgs(Project.Datasets));
             InvokeMapChanged(new MapChangedArgs(Map));
         }
 
@@ -376,9 +413,9 @@ namespace fieldtool.Presenter
         private void View_DatasetCheckedChanged(object sender, DatasetCheckedEventArgs e)
         {
             if(e.TagObject.NodeType == TreeNodeTagObject.TreeViewNodeType.PunktewolkeNode)
-                Project.SetDatasetFeatureState(e.TagObject.TagID, e.Checked, FtDatasetFeatureType.Puntual);
+                Project.SetDatasetFeatureState(e.TagObject, e.Checked, FtDatasetFeatureType.Puntual);
             else if (e.TagObject.NodeType == TreeNodeTagObject.TreeViewNodeType.MCPNode)
-                Project.SetDatasetFeatureState(e.TagObject.TagID, e.Checked, FtDatasetFeatureType.Polygonal);
+                Project.SetDatasetFeatureState(e.TagObject, e.Checked, FtDatasetFeatureType.Polygonal);
 
             InvokeMapChanged(new MapChangedArgs(Map));
         }
@@ -415,7 +452,10 @@ namespace fieldtool.Presenter
         
         private void View_CurrentDatasetChanged(object sender, CurrentDatasetChangedEventArgs e)
         {
-            CurrentDataset = !e.CurrentTagId.HasValue ? null : Project.GetTransmitterDataset(e.CurrentTagId.Value);
+            if (e.TagObject.NodeType == TreeNodeTagObject.TreeViewNodeType.MCPNode)
+                return; 
+
+            CurrentDataset = e.TagObject.NodeDataset;
             if (CurrentDataset == null)
                 return;
             if (CurrentDataset.GPSData.GpsSeries.Count == 0)
@@ -492,7 +532,7 @@ namespace fieldtool.Presenter
         private void ImportMovebank()
         {
             Project.LoadDatasets(InvokeSetupProgress, InvokeStepProgress, InvokeFinishProgress);
-            InvokeMovebankImported(new MovebankImportedArgs(Project.Datasets));
+            InvokeNewEntityAvailable(new NewEntityAvailableArgs(Project.Datasets));
         }
 
         private void View_ShowInfo(object sender, EventArgs e)

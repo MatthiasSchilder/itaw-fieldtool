@@ -145,8 +145,8 @@ namespace fieldtool.View
             Presenter.CursorCoordinatesChanged += CursorCoordinatesChanged;
             Presenter.MapChanged += MapChanged;
             Presenter.ProjectStateChanged += ProjectStateChanged;
-            Presenter.MovebankImported += MovebankImported;
-            Presenter.MCPAvailable += MCPAvailable; 
+            Presenter.NewEntityAvailable += NewEntityAvailable;
+            //Presenter.MCPAvailable += MCPAvailable; 
             Presenter.rMapDisplayIntervalChanged += rrMapDisplayIntervalChanged;
             Presenter.MapEnvelopeExportRequested += MapEnvelopeExportRequested;
             Presenter.SetupProgress += SetupProgress;
@@ -169,8 +169,6 @@ namespace fieldtool.View
         private void StepProgress(object sender, StepProgressArgs stepProgressArgs)
         {
             ProgressWindows.Invoke(new MethodInvoker(() => ProgressWindows.Step((stepProgressArgs.TagName))));
-            //ProgressWindows.Step(stepProgressArgs.TagName);
-            //Debug.WriteLine("stepping");
         }
 
         private void SetupProgress(object sender, SetupProgressArgs setupProgressArgs)
@@ -206,8 +204,6 @@ namespace fieldtool.View
             Bitmap bmp = new Bitmap(width, height);
             Graphics g = Graphics.FromImage(bmp);
 
-            
-
             mapBox1.Map.RenderMap(g);
 
             bmp.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
@@ -220,9 +216,9 @@ namespace fieldtool.View
             dateIntervalPicker1.SetDateInterval(minDate, maxDate);
         }
 
-        private void MovebankImported(object sender, MovebankImportedArgs movebankImportedArgs)
+        private void NewEntityAvailable(object sender, NewEntityAvailableArgs newEntityAvailableArgs)
         {
-            PopulateTreeView(movebankImportedArgs.Datasets);
+            PopulateTreeView(newEntityAvailableArgs.Datasets);
         }
 
         #region TreeView
@@ -240,36 +236,76 @@ namespace fieldtool.View
                 parentTn.Nodes.Add(punktwolkteTn);
 
                 SetTreeNodeCheckState(punktwolkteTn, dataset.Active);
+
+                foreach (var mcpEntry in dataset.MCPData)
+                {
+                    CreateMCPNode(dataset, mcpEntry, mcpEntry.PercentageMCP);
+                }
             }
             treeViewTagList.LeftImageList = imageListColorKeys;
             treeViewTagList.ExpandAll();
+
+            RegenImageList();
         }
 
         private TreeNodeAdv CreateParentTreeNode(FtTransmitterDataset dataset)
         {
             return new TreeNodeAdv(CreateTreeViewNodeDescriptor(dataset))
             {
-                Tag = new TreeNodeTagObject(TreeNodeTagObject.TreeViewNodeType.RootNode, dataset.TagId)
+                Tag = new TreeNodeTagObject(TreeNodeTagObject.TreeViewNodeType.RootNode, dataset)
             };            
         }
 
-        private void MCPAvailable(object sender, MCPAvailableArgs e)
-        {
-            CreateMCPNode(e.Dataset, e.PercentageMCP);
-        }
+        //private void MCPAvailable(object sender, MCPAvailableArgs e)
+        //{
+        //    CreateMCPNode(e.Dataset, e.PercentageMCP);
+        //}
 
-        private void CreateMCPNode(FtTransmitterDataset dataset, int percentageMCP)
+        private void CreateMCPNode(FtTransmitterDataset dataset, FtTransmitterMCPDataEntry mcpEntry, int percentageMCP)
         {
-            var parent = GetParentTreeNodeForTag(dataset.TagId);
+            var parent = GetParentTreeNodeForTag(dataset);
 
             var tn = new TreeNodeAdv($"MCP {percentageMCP}%")
             {
                 ShowCheckBox = true,
                 LeftImageIndices = parent.LeftImageIndices,
-                Tag = new TreeNodeTagObject(TreeNodeTagObject.TreeViewNodeType.MCPNode, dataset.TagId, percentageMCP)
+                Tag = new TreeNodeTagObject(TreeNodeTagObject.TreeViewNodeType.MCPNode, dataset, mcpEntry)
             };
             parent.Nodes.Add(tn);
             SetTreeNodeCheckState(tn, true);
+            RegenImageList();
+        }
+
+        private void RegenImageList()
+        {
+            imageListColorKeys.Images.Clear();
+            int imageIndex = 0;
+            foreach (TreeNodeAdv parentNode in treeViewTagList.Nodes)
+            {
+                var ds = ((TreeNodeTagObject) parentNode.Tag).NodeDataset;
+
+                imageListColorKeys.Images.Add(CreateMonochromaticImage(ds.Visulization.Color));
+                parentNode.LeftImageIndices = new[] {imageIndex++};
+
+                if (parentNode.Nodes.Count == 0)
+                    continue;
+                foreach (TreeNodeAdv childNode in parentNode.Nodes)
+                {
+                    var tagObject = (TreeNodeTagObject) childNode.Tag;
+                    var tagType = tagObject.NodeType;
+
+                    var tagAddiData = tagObject.NodeDatasetSubObject as FtTransmitterMCPDataEntry;
+
+                    if (tagType == TreeNodeTagObject.TreeViewNodeType.MCPNode)
+                        imageListColorKeys.Images.Add(CreateMonochromaticImage(tagAddiData.Color));
+                    else
+                    {
+                        imageListColorKeys.Images.Add(CreateMonochromaticImage(ds.Visulization.Color));
+                    }
+
+                    childNode.LeftImageIndices = new[] { imageIndex++ };
+                }
+            }
         }
 
         private void SetTreeNodeCheckState(TreeNodeAdv tn, bool state)
@@ -281,20 +317,20 @@ namespace fieldtool.View
         {
             return new TreeNodeAdv("Punktwolke")
             {
-                Tag = new TreeNodeTagObject(TreeNodeTagObject.TreeViewNodeType.PunktewolkeNode, dataset.TagId),
+                Tag = new TreeNodeTagObject(TreeNodeTagObject.TreeViewNodeType.PunktewolkeNode, dataset),
                 ShowCheckBox = true,
                 LeftImageIndices = new[] {imageIndex}
             };
         }
 
-        private TreeNodeAdv GetParentTreeNodeForTag(int tagID)
+        private TreeNodeAdv GetParentTreeNodeForTag(FtTransmitterDataset dataset)
         {
             if (treeViewTagList.Nodes.Count == 0)
                 return null;
 
             foreach (TreeNodeAdv treeNode in treeViewTagList.Nodes)
             {
-                if (((TreeNodeTagObject) treeNode.Tag).TagID == tagID)
+                if (((TreeNodeTagObject) treeNode.Tag).NodeDataset == dataset)
                     return treeNode;
             }
             return null;
@@ -311,7 +347,7 @@ namespace fieldtool.View
             imageListColorKeys.Images.Clear();
             foreach (var dataset in datasets)
             {
-                var img = CreateMonochromaticImage(dataset.Visulization.VisulizationColor);
+                var img = CreateMonochromaticImage(dataset.Visulization.Color);
                 imageListColorKeys.Images.Add(img);
             }
             
@@ -640,10 +676,11 @@ namespace fieldtool.View
             }
         }
 
-        public event EventHandler CreateMCPs;
-        public void InvokeCreateMCPs(EventArgs e)
+        public event EventHandler<CreateMCPEventArgs> CreateMCPs;
+
+        private void InvokeCreateMCPs(CreateMCPEventArgs e)
         {
-            EventHandler handler = CreateMCPs;
+            EventHandler<CreateMCPEventArgs> handler = CreateMCPs;
             if (handler != null)
             {
                 handler(this, e);
@@ -739,11 +776,6 @@ namespace fieldtool.View
             }
 
             return sb.ToString();
-        }
-
-        private void mCPToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            InvokeCreateMCPs(new EventArgs());
         }
 
         private void mapBox1_MouseDrag(Coordinate worldPos, MouseEventArgs imagePos)
@@ -908,13 +940,23 @@ namespace fieldtool.View
         private void treeViewTagList_AfterCheck(object sender, TreeNodeAdvEventArgs e)
         {
             InvokeDatasetCheckedChanged(new DatasetCheckedEventArgs((TreeNodeTagObject)e.Node.Tag, e.Node.Checked));
-            InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs(((TreeNodeTagObject)e.Node.Tag).TagID));
+            InvokeCurrentDatasetChanged(new CurrentDatasetChangedEventArgs(((TreeNodeTagObject)e.Node.Tag)));
             mapBox1.Refresh();
         }
 
         private void treeViewTagList_AfterSelect(object sender, EventArgs e)
         {
 
+        }
+
+        private void stapelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeCreateMCPs(new CreateMCPEventArgs(CreateMCPEventArgs.MCPCreationMode.Batch));
+        }
+
+        private void manuellToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeCreateMCPs(new CreateMCPEventArgs(CreateMCPEventArgs.MCPCreationMode.Manual));
         }
     }
 
@@ -928,14 +970,14 @@ namespace fieldtool.View
         }
 
         public TreeViewNodeType NodeType { get; private set; }
-        public int TagID { get; private set; }
-        public object NodeTypeData { get; private set; }
+        public FtTransmitterDataset NodeDataset { get; private set; }
+        public object NodeDatasetSubObject { get; private set; }
 
-        public TreeNodeTagObject(TreeViewNodeType nodeType, int tagID, object nodeTypeData = null)
+        public TreeNodeTagObject(TreeViewNodeType nodeType, FtTransmitterDataset nodeDataset, object nodeDatasetSubObject = null)
         {
             NodeType = nodeType;
-            TagID = tagID;
-            NodeTypeData = nodeTypeData;
+            NodeDataset = nodeDataset;
+            NodeDatasetSubObject = nodeDatasetSubObject;
         }
     }
 
@@ -949,12 +991,27 @@ namespace fieldtool.View
         }
     }
 
+    public class CreateMCPEventArgs : EventArgs
+    {
+        public enum MCPCreationMode
+        {
+            Manual,
+            Batch
+        }
+
+        public MCPCreationMode CreationMode { get; }
+        public CreateMCPEventArgs(MCPCreationMode creationMode)
+        {
+            CreationMode = creationMode;
+        }
+    }
+
     public class CurrentDatasetChangedEventArgs : EventArgs
     {
-        public int? CurrentTagId { get; private set; }
-        public CurrentDatasetChangedEventArgs(int? currentTagId)
+        public TreeNodeTagObject TagObject { get; private set; }
+        public CurrentDatasetChangedEventArgs(TreeNodeTagObject tagObject)
         {
-            CurrentTagId = currentTagId;
+            TagObject = tagObject;
         }
     }
 
