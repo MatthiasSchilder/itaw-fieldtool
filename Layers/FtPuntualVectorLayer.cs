@@ -29,7 +29,7 @@ namespace fieldtool.Layers
         {
             _ftMap = ftMap;
 
-            IProvider dataSource;
+            IProvider dataSource = null;
             var symbolizer = dataset.Visulization.Symbolizer;
 
             var pointSymbolizer = symbolizer as IPointSymbolizer;
@@ -58,8 +58,14 @@ namespace fieldtool.Layers
                     Properties.Settings.Default.VisualizerMarkersize);
             }
 
-            SymbolizerLayer.SmoothingMode = SmoothingMode.HighSpeed;
-            symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
+            SymbolizerLayer.SmoothingMode = SmoothingMode.HighQuality;
+            symbolizer.SmoothingMode = SmoothingMode.HighQuality;
+
+            if (dataSource?.GetFeatureCount() > 500)
+            {
+                SymbolizerLayer.SmoothingMode = SmoothingMode.HighSpeed;
+                symbolizer.SmoothingMode = SmoothingMode.HighSpeed;
+            }
 
             if ((symbolizer as IFtBaseSymbolizer).Labeled)
             {
