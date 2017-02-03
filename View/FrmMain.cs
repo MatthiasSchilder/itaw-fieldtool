@@ -13,9 +13,9 @@ using SharpMap.Forms;
 using System.Drawing.Design;
 using System.Windows.Forms.Design;
 using System.Runtime.InteropServices;
+using System.Windows.Media;
 using Syncfusion.Windows.Forms.Tools;
-using fieldtool.Data;
-using DotSpatial.Projections;
+using Color = System.Drawing.Color;
 
 namespace fieldtool.View
 {
@@ -41,7 +41,7 @@ namespace fieldtool.View
             dateIntervalPicker1.IntervalChanged += DateIntervalPicker1_IntervalChanged;
             AddRecentlyUsedProjects();
 
-            ProjectionManager.TargetProjectionChanged += ProjectionManager_TargetProjectionChanged;
+            
         }
 
         private void MapBox1OnMapChanging(object sender, CancelEventArgs cancelEventArgs)
@@ -421,13 +421,6 @@ namespace fieldtool.View
             var xDisplay = Math.Round(cursorCoordsChangedArgs.X, 4);
             var yDisplay = Math.Round(cursorCoordsChangedArgs.Y, 4);
             statusLabelCoords.Text = String.Format((string)statusLabelCoords.Tag, xDisplay, yDisplay);
-        }
-        private void ProjectionManager_TargetProjectionChanged(object sender, EventArgs e)
-        {
-            
-            var projEPSG = ProjectionManager.TargetProjection;
-
-            statusLblProjection.Text = String.Format((string)statusLblProjection.Tag, projEPSG.AuthorityCode, "-");
         }
 
         public void SetActiveTool(SharpMap.Forms.MapBox.Tools tool)
@@ -968,6 +961,24 @@ namespace fieldtool.View
         private void manuellToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InvokeCreateMCPs(new CreateMCPEventArgs(CreateMCPEventArgs.MCPCreationMode.Manual));
+        }
+
+        private Color panelBorderColor = System.Drawing.Color.FromArgb(137, 140, 149);
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            var rect = this.panel1.ClientRectangle;
+
+            var point = new Point(rect.Location.X - 1, rect.Location.Y - 1);
+            var newRect = new Rectangle(point, new Size(rect.Width + 1, rect.Height + 1));
+            ControlPaint.DrawBorder(e.Graphics, newRect, panelBorderColor, ButtonBorderStyle.Solid);
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            if (this.splitContainer1.CanFocus)
+            {
+                this.splitContainer1.ActiveControl = this.mapBox1;
+            }
         }
     }
 
