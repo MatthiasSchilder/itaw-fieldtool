@@ -87,6 +87,7 @@ namespace fieldtool.View
             this.zoomAufTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListColorKeys = new System.Windows.Forms.ImageList(this.components);
             this.mapZoomToolStrip1 = new SharpMap.Forms.ToolBar.MapZoomToolStrip(this.components);
+            this.kDEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -341,9 +342,10 @@ namespace fieldtool.View
             // streifgebieteToolStripMenuItem
             // 
             this.streifgebieteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mCPToolStripMenuItem});
+            this.mCPToolStripMenuItem,
+            this.kDEToolStripMenuItem});
             this.streifgebieteToolStripMenuItem.Name = "streifgebieteToolStripMenuItem";
-            this.streifgebieteToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
+            this.streifgebieteToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.streifgebieteToolStripMenuItem.Text = "Streifgebiete";
             // 
             // mCPToolStripMenuItem
@@ -352,7 +354,7 @@ namespace fieldtool.View
             this.stapelToolStripMenuItem,
             this.manuellToolStripMenuItem});
             this.mCPToolStripMenuItem.Name = "mCPToolStripMenuItem";
-            this.mCPToolStripMenuItem.Size = new System.Drawing.Size(114, 26);
+            this.mCPToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.mCPToolStripMenuItem.Text = "MCP";
             // 
             // stapelToolStripMenuItem
@@ -634,6 +636,13 @@ namespace fieldtool.View
             this.mapZoomToolStrip1.TabIndex = 7;
             this.mapZoomToolStrip1.Text = "mapZoomToolStrip1";
             // 
+            // kDEToolStripMenuItem
+            // 
+            this.kDEToolStripMenuItem.Name = "kDEToolStripMenuItem";
+            this.kDEToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.kDEToolStripMenuItem.Text = "KDE";
+            this.kDEToolStripMenuItem.Click += new System.EventHandler(this.kDEToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -723,6 +732,7 @@ namespace fieldtool.View
         private System.Windows.Forms.SplitContainer splitContainer1;
         private SharpMap.Forms.MapBox mapBox1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem kDEToolStripMenuItem;
     }
 }
 

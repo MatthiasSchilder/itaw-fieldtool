@@ -14,6 +14,9 @@ namespace fieldtool
         [STAThread]
         static void Main()
         {
+            FrmWorkerStatus frm = new FrmWorkerStatus();
+            frm.ShowDialog();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmMain());

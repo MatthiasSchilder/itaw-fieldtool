@@ -18,6 +18,7 @@ namespace fieldtool
         event EventHandler ShowInfo;
 
         event EventHandler<CreateMCPEventArgs> CreateMCPs;
+        event EventHandler CreateKDE;
 
         event EventHandler ShowRawTagInfo;
         event EventHandler ShowRawAccel;

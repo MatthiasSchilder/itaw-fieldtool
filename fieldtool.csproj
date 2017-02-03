@@ -230,6 +230,9 @@
     <EmbeddedResource Include="View\FrmTagTabelle.resx">
       <DependentUpon>FrmTagTabelle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmWorkerStatus.resx">
+      <DependentUpon>FrmWorkerStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="data\testdata\GeoData\DEM\Golden_CO.dem" />
     <None Include="data\testdata\GeoData\GeoTiff\airport.tfw">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -306,6 +309,12 @@
     </Compile>
     <Compile Include="View\FrmTagTabelle.Designer.cs">
       <DependentUpon>FrmTagTabelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmWorkerStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmWorkerStatus.Designer.cs">
+      <DependentUpon>FrmWorkerStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="View\IFtProjectMainView.cs" />
     <Compile Include="View\IFtProjectPropertiesView.cs" />

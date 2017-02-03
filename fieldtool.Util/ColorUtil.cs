@@ -7,13 +7,8 @@ using System.Windows.Media;
 
 namespace fieldtool.Util
 {
-    class ColorUtil
+    public class ColorUtil
     {
-        public static List<Color> CreateColorRamp()
-        {
-            var color = new System.Drawing.Color();
-            color.
-        }
 
         /// <summary>
         /// Convert HSV to RGB
@@ -22,7 +17,7 @@ namespace fieldtool.Util
         /// r,g,b values are 0-255
         /// Based upon http://ilab.usc.edu/wiki/index.php/HSV_And_H2SV_Color_Space#HSV_Transformation_C_.2F_C.2B.2B_Code_2
         /// </summary>
-        static void HsvToRgb(double h, double S, double V, out int r, out int g, out int b)
+        public static void HsvToRgb(double h, double S, double V, out int r, out int g, out int b)
         {
             // ######################################################################
             // T. Nathan Mundhenk
@@ -121,7 +116,7 @@ namespace fieldtool.Util
         /// <summary>
         /// Clamp a value to 0-255
         /// </summary>
-        int Clamp(int i)
+        static int Clamp(int i)
         {
             if (i < 0) return 0;
             if (i > 255) return 255;

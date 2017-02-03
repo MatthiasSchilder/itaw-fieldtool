@@ -691,6 +691,15 @@ namespace fieldtool.View
             }
         }
 
+        public event EventHandler CreateKDE;
+        private void InvokeCreateKDE(EventArgs e)
+        {
+            CreateKDE?.Invoke(this, e);
+        }
+
+
+        
+
         public event EventHandler<CurrentDatasetChangedEventArgs> CurrentDatasetChanged;
         public void InvokeCurrentDatasetChanged(CurrentDatasetChangedEventArgs e)
         {
@@ -979,6 +988,11 @@ namespace fieldtool.View
             {
                 this.splitContainer1.ActiveControl = this.mapBox1;
             }
+        }
+
+        private void kDEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvokeCreateKDE(new EventArgs());
         }
     }
 

@@ -6,9 +6,11 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using DotSpatial.Topology;
 using fieldtool.Data;
 using fieldtool.Data.Geometry;
 using fieldtool.Data.Movebank;
+using fieldtool.Util;
 using fieldtool.View;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using SharpmapGDAL;
@@ -235,6 +237,7 @@ namespace fieldtool.Presenter
             View.DatasetCheckedChanged += View_DatasetCheckedChanged;
             View.MapDisplayIntervalChanged += View_MapDisplayIntervalChanged;
             View.CreateMCPs += View_CreateMCPs;
+            View.CreateKDE += View_CreateKDE;
             View.ExportCurrentMapEnvelope += View_ExportCurrentMapEnvelope;
             View.ExportAsShape += ViewOnExportAsShape;
         }
@@ -386,7 +389,7 @@ namespace fieldtool.Presenter
             {20, Color.FromArgb(214, 0, 30)},
             {10, Color.FromArgb(213, 23, 0)},
         };
-        private void View_CreateMCPs2(object sender, CreateMCPEventArgs e)
+        private void View_CreateMCPs(object sender, CreateMCPEventArgs e)
         {
             
             int[] mcpPercentages = null;
@@ -419,7 +422,7 @@ namespace fieldtool.Presenter
             InvokeMapChanged(new MapChangedArgs(Map));
         }
 
-        private void View_CreateMCPs(object sender, CreateMCPEventArgs e)
+        private void View_CreateKDE(object sender, EventArgs e)
         {
             FtTransmitterDataset dataset = Project.Datasets.First(ds => ds.Active);
 
@@ -443,17 +446,12 @@ namespace fieldtool.Presenter
             {
                 for(int j = 0; j < z; j++)
                 {
-                    Coordinate c1 = new Coordinate(env.MinX + j * cellsize, env.MinY + i * cellsize);
-                    Coordinate c2 = new Coordinate(env.MinX + (j + 1)* cellsize, env.MinY + (i + 1)* cellsize);
+                    Coordinate c1 = new Coordinate(env.MinX + j * cellsize, env.MaxY - i * cellsize);
+                    Coordinate c2 = new Coordinate(env.MinX + (j + 1) * cellsize, env.MaxY - (i + 1) * cellsize);
 
                     envelopes.Add(new Envelope(c1, c2), new Tuple<int, int>(i, j));
                 }
             }
-
-            //double[][] samples = new double[z][];
-            //for (int k = 0; k < ; k++)
-            //    samples[k] = new double[2];
-            //int w = 0;
 
             List<double[]> samples = new List<double[]>();
             foreach(var gpsPoint in dataset.GPSData)
@@ -464,7 +462,6 @@ namespace fieldtool.Presenter
                 {
                     if (kvp.Key.Contains(new Coordinate(gpsPoint.Rechtswert.Value, gpsPoint.Hochwert.Value)))
                     {
-                        //samples[kvp.Value.Item2][kvp.Value.Item1]++;
                         samples.Add(new double[] { kvp.Value.Item2, kvp.Value.Item1 });
                         break;
                     }
@@ -495,8 +492,6 @@ namespace fieldtool.Presenter
 
             var diffDens = maxDens - minDens;
 
-            var densStep = diffDens / 255;
-
             for (int i = 0; i < z; i++)
             {
                 for(int j = 0; j < z; j++)
@@ -505,15 +500,29 @@ namespace fieldtool.Presenter
 
                     Debug.WriteLine(diffDens / densityAtPoint);
 
-                    var greyValue = (int) Math.Floor( 255 * densityAtPoint / maxDens);
+                    var greyValue = (int)Math.Floor(255 * densityAtPoint / maxDens);
 
                     bmp.SetPixel(i, j, Color.FromArgb(greyValue, greyValue, greyValue));
+
+                    //var bla = (int) Math.Floor(120*densityAtPoint/maxDens);
+
+                    //int r, g, b;
+                    //ColorUtil.HsvToRgb(bla, 1, 1, out r, out g, out b);
+                    //bmp.SetPixel(i, j, Color.FromArgb(r, g, b));
+
                 }
             }
 
-            bmp.Save("c:\\users\\ma\\desktop\\output.png");            
+            var userPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            var fileName = Path.ChangeExtension(Path.GetRandomFileName(), "png");
+            var outPath = Path.Combine(userPath, fileName);
+            bmp.Save(outPath);
 
-            MessageBox.Show("");
+            if (
+                MessageBox.Show(String.Format("Die Ausgabedatei wurde unter {0} abgelegt. Öffnen?", outPath), "Fertig.",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+                System.Diagnostics.Process.Start(outPath);
+
         }
 
         private void View_ShowEinstellungen(object sender, EventArgs e)
